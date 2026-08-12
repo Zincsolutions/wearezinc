@@ -1,0 +1,168 @@
+{
+  "items": [
+    {
+      "id": "695bda13c7c5d5a8fcdb46e1",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-07-01T18:39:07.899Z",
+      "lastUpdated": "2026-07-01T18:26:13.357Z",
+      "createdOn": "2025-11-17T20:52:41.082Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "post-body": "<p id=\"\">Your roadmap to understanding, implementing, and accelerating AI across every part of your business. Full length copy here</p>",
+        "post-summary": "Your roadmap to understanding, implementing, and accelerating AI across every part of your business.",
+        "post-image": {
+          "fileId": "695bda13c7c5d5a8fcdb4647",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb4647_68b78132c2072a0b93354ae8_z_ai_guid_01.png",
+          "alt": null
+        },
+        "alt-text-for-resource-page": "AI enablement guide for business leaders adopting AI strategy, workflows, and marketing systems.",
+        "thumbnail-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46b3",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46b3_68b7829fc8ff769d14a19863_z_ai_guid_sm_ban01.png",
+          "alt": null
+        },
+        "featured": true,
+        "category": "695bda13c7c5d5a8fcdb4619",
+        "sort-number": 2,
+        "hubspot-link": null,
+        "pdf-file": {
+          "fileId": "695bda13c7c5d5a8fcdb4503",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb4503_Dowlnload_ex.pdf",
+          "alt": null
+        },
+        "name": "2025 Definitive Guide to Ai Enablement",
+        "slug": "2025-definitive-guide-to-ai-enablement"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb46e0",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-07-01T18:39:07.899Z",
+      "lastUpdated": "2026-07-01T18:26:13.277Z",
+      "createdOn": "2025-11-17T20:52:41.082Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "post-body": "<p id=\"\">Choosing the Right CMS for Your Business long sorm</p><p>‍</p>",
+        "post-summary": "Summay Choosing the Right CMS for Your Business ",
+        "post-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e3",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e3_1-1200x670-1.webp",
+          "alt": null
+        },
+        "alt-text-for-resource-page": "Guide to choosing the right content management system for a growing business website.",
+        "thumbnail-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e3",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e3_1-1200x670-1.webp",
+          "alt": null
+        },
+        "featured": false,
+        "category": "695bda13c7c5d5a8fcdb462e",
+        "sort-number": 1003,
+        "hubspot-link": null,
+        "pdf-file": null,
+        "name": "Choosing the Right CMS for Your Business",
+        "slug": "choosing-the-right-cms"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb46df",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-07-01T18:39:07.899Z",
+      "lastUpdated": "2026-07-01T18:26:13.353Z",
+      "createdOn": "2025-11-17T20:52:41.082Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "post-body": "<p id=\"\">CMS Security Tips for Website Owners long form</p><p>‍</p>",
+        "post-summary": "Summary CMS Security Tips for Website Owners",
+        "post-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e4",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e4_Event-header-clean-1920x1080-1.webp",
+          "alt": null
+        },
+        "alt-text-for-resource-page": "CMS security resource for website owners improving protection and technical maintenance.",
+        "thumbnail-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e4",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e4_Event-header-clean-1920x1080-1.webp",
+          "alt": null
+        },
+        "featured": false,
+        "category": "695bda13c7c5d5a8fcdb4646",
+        "sort-number": 1004,
+        "hubspot-link": null,
+        "pdf-file": null,
+        "name": "CMS Security Tips for Website Owners",
+        "slug": "cms-security-tips"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb46de",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-07-01T18:39:07.899Z",
+      "lastUpdated": "2026-07-01T18:26:13.362Z",
+      "createdOn": "2025-11-17T20:52:41.081Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "post-body": "<p id=\"\">Best Practices for Using a CMS lon form</p><p>‍</p>",
+        "post-summary": "Summar Best Practices for Using a CMS",
+        "post-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e5",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e5_PhQLccbx0pYEOEXYe0RjcjyIJw.png",
+          "alt": null
+        },
+        "alt-text-for-resource-page": "Best practices guide for using a CMS to manage content, publishing, and website updates.",
+        "thumbnail-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e5",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e5_PhQLccbx0pYEOEXYe0RjcjyIJw.png",
+          "alt": null
+        },
+        "featured": false,
+        "category": "695bda13c7c5d5a8fcdb4646",
+        "sort-number": null,
+        "hubspot-link": null,
+        "pdf-file": null,
+        "name": "Best Practices for Using a CMS",
+        "slug": "best-practices-for-cms"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb46dd",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-07-01T18:39:07.899Z",
+      "lastUpdated": "2026-07-01T18:26:13.285Z",
+      "createdOn": "2025-11-17T20:52:41.081Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "post-body": "<p id=\"\">Understanding Content Management Systems long form</p><p>‍</p>",
+        "post-summary": "Summary Understanding Content Management Systems",
+        "post-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e6",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e6_Cloud-infrastructure.webp",
+          "alt": null
+        },
+        "alt-text-for-resource-page": "Content management systems overview for teams evaluating website platforms and digital publishing tools.",
+        "thumbnail-image": {
+          "fileId": "695bda13c7c5d5a8fcdb46e6",
+          "url": "https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb46e6_Cloud-infrastructure.webp",
+          "alt": null
+        },
+        "featured": false,
+        "category": "695bda13c7c5d5a8fcdb4646",
+        "sort-number": null,
+        "hubspot-link": null,
+        "pdf-file": null,
+        "name": "Understanding Content Management Systems",
+        "slug": "understanding-cms"
+      }
+    }
+  ],
+  "pagination": {
+    "limit": 50,
+    "offset": 0,
+    "total": 5
+  }
+}

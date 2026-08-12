@@ -1,0 +1,1087 @@
+<!DOCTYPE html><!-- Last Published: Fri Jul 17 2026 18:19:31 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.wearezinc.com" data-wf-page="695bda13c7c5d5a8fcdb442c" data-wf-site="695bda13c7c5d5a8fcdb4451" lang="en"><head><meta charset="utf-8"/><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/><title>Branding</title><meta content="Branding" property="og:title"/><meta content="Branding" name="twitter:title"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/css/zinc-v-3-491dd5ea9ef3a0a3f6a51bc45fcb45.shared.a36805e95.css" rel="stylesheet" type="text/css" integrity="sha384-o2gF6VQ4RG7LZw4igEyP7XYLpowcvMVa3OT8mHCgRrx90wbozC2lEIoG+xjt7WS7" crossorigin="anonymous"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><script type="text/javascript">WebFont.load({  google: {    families: ["Geist:300,400,500,600,700","Geist Mono:300,400,500,600,700","Geist Mono:300,400,500,600,700","Inter:300,400,500,600,700"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb45fc_zinc_fav.png" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png" rel="apple-touch-icon"/><link href="https://www.wearezinc.com/solutions/branding-positioning" rel="canonical"/><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push.apply(w[g],Array.isArray(i)?i:[i]);})(window,['G-H4WRSH6E2G'],'google_tags_first_party');</script><script async="" src="/nvhc9u4gxsagNjk1YmRhMTNjN2M1ZDVhOGZjZGI0NDUx/2Owa6X3Fen1zvK4Wp8OgovkuPWw"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('set', 'developer_id.dZGVlNj', true);gtag('set', 'developer_id.dYWYxNW', true);gtag('js', new Date());gtag('config', 'G-H4WRSH6E2G');</script><script>
+  // ставимо клас максимально рано, щоб не було "мигтіння" тексту
+  document.documentElement.classList.add('gsap-js');
+</script>
+
+<style>
+  /* Ховаємо тільки ті тексти, які будуть анімовані, і тільки коли JS активний */
+  html.gsap-js [data-gsap-lines] {
+    visibility: hidden;
+  }
+
+  /* Маска для рядків */
+  [data-gsap-lines] .line {
+    overflow: hidden;
+    display: block;
+  }
+
+  /* Сам текст, який рухаємо */
+  [data-gsap-lines] .line > span {
+    display: block;
+    will-change: transform, opacity;
+  }
+</style>
+
+
+<!-- GLOBAL CUSTOM CODE FOR ZINC NAV & TYPE -->
+
+<!-- Font smoothing (keep text looking crisp) -->
+<style>
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+/* =========================
+   MAIN NAV LINKS (TOP BAR)
+   ========================= */
+
+/* Base top-nav link */
+.navbar2_link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+  margin-inline: 1rem;
+  color: #0C2954; /* default text color */
+}
+
+/* Underline animation */
+.navbar2_link::after {
+  content: '';
+  position: absolute;
+  bottom: -0.05rem;
+  left: 0;
+  width: 100%;
+  height: 0.125rem;
+  background-color: #0C2954; /* default underline color */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    transform 0.22s ease-out,
+    background-color 0.2s ease-out;
+}
+
+/* Hover — both text & underline turn orange */
+.navbar2_link:hover {
+  color: #FF5B19;
+}
+
+.navbar2_link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  background-color: #FF5B19;
+}
+
+/* Hover out — underline collapses right → left */
+.navbar2_link:not(:hover)::after {
+  transform-origin: right;
+}
+
+/* Active page — keep orange text + underline visible */
+.navbar2_link.w--current {
+  color: #FF5B19;
+}
+
+.navbar2_link.w--current::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  background-color: #FF5B19;
+}
+
+/* =========================
+   DROPDOWN SUB-LINKS
+   ========================= */
+
+/* Base dropdown link */
+.navbar2_dropdown-link {
+  color: #111111;          /* default dropdown text color */
+  transition: color 0.2s ease-out;
+}
+
+/* Hover inside dropdown — orange, no underline */
+.navbar2_dropdown-link:hover {
+  color: #FF5B19;
+}
+
+/* Current dropdown page — stay orange */
+.navbar2_dropdown-link.w--current {
+  color: #FF5B19;
+}
+
+/* =========================
+   DROPDOWN CHEVRON
+   ========================= */
+
+/* Chevron uses currentColor via the SVG, so it will follow the link color. */
+.navbar2_dropdown-toggle .dropdown-chevron svg {
+  transition: transform 0.2s ease-out;
+}
+
+/* Rotate chevron when dropdown is open */
+.navbar2_dropdown-toggle.w--open .dropdown-chevron svg {
+  transform: rotate(180deg);
+}
+</style>
+
+<!-- JS: if any Solutions sub-link is current, mark Solutions toggle as current -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1) Find the current dropdown link.
+    // Webflow normally uses .w--current, but we'll also check aria-current just in case.
+    var currentDropdownLink =
+      document.querySelector(
+        '.navbar2_dropdown-link.w--current'
+      ) ||
+      document.querySelector(
+        '.navbar2_dropdown-link[aria-current="page"], .navbar2_dropdown-link[aria-current="true"]'
+      );
+
+    if (!currentDropdownLink) return;
+
+    // 2) Climb up to the Solutions dropdown wrapper
+    //    (try your custom class, then the generic Webflow dropdown wrapper).
+    var dropdownWrapper =
+      currentDropdownLink.closest('.navbar2_menu-dropdown') ||
+      currentDropdownLink.closest('.w-dropdown');
+
+    if (!dropdownWrapper) return;
+
+    // 3) Inside that wrapper, find the Solutions toggle element
+    var solutionsToggle =
+      dropdownWrapper.querySelector('.navbar2_dropdown-toggle');
+
+    if (!solutionsToggle) return;
+
+    // 4) Add w--current so it uses the same styling as other active nav links
+    solutionsToggle.classList.add('w--current');
+  });
+</script>
+
+<style>
+/* =========================
+   SOLUTIONS ACCORDION (FAQ2)
+   ========================= */
+
+/* Number inside the circle → Geist Mono only here */
+.solution-number-text {
+  font-family: "Geist Mono", system-ui, -apple-system,
+    BlinkMacSystemFont, "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+/* Smooth color tweaks on hover */
+.faq2_question,
+.faq2_question .solution-number,
+.faq2_question .solution-number-text,
+.faq2_question .text-size-medium,
+.faq2_question .faq2_icon-wrapper {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* (Optional) light row background on hover */
+.faq2_question:hover {
+  background-color: #f7f7f7;
+}
+
+/* Circle turns orange */
+.faq2_question:hover .solution-number {
+  background-color: #ff5b19 !important;
+  border-color: #ff5b19 !important;
+  color: #ffffff !important; /* if the number uses currentColor */
+}
+
+/* Number stays white on orange */
+.faq2_question:hover .solution-number-text {
+  color: #ffffff !important;
+}
+
+/* Title text turns orange (wrapper + inner text) */
+.faq2_question:hover .text-size-medium,
+.faq2_question:hover .text-size-medium * {
+  color: #ff5b19 !important;
+}
+
+/* Chevron turns orange – for both color + SVG stroke */
+.faq2_question:hover .faq2_icon-wrapper,
+.faq2_question:hover .faq2_icon-wrapper svg,
+.faq2_question:hover .faq2_icon-wrapper svg path {
+  color: #ff5b19 !important;
+  stroke: #ff5b19 !important;
+}
+</style>
+<style>
+  ::selection {
+    background: #FF5B19;   /* ZINC orange */
+  }
+
+  ::-moz-selection {
+    background: #FF5B19;   /* Firefox */
+  }
+</style>
+
+<script>
+window['_fs_host'] = 'fullstory.com';
+window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+window['_fs_org'] = '97GDT';
+window['_fs_namespace'] = 'FS';
+!function(m,n,e,t,l,o,g,y){var s,f,a=function(h){
+return!(h in m)||(m.console&&m.console.log&&m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'),!1)}(e)
+;function p(b){var h,d=[];function j(){h&&(d.forEach((function(b){var d;try{d=b[h[0]]&&b[h[0]](h[1])}catch(h){return void(b[3]&&b[3](h))}
+d&&d.then?d.then(b[2],b[3]):b[2]&&b[2](d)})),d.length=0)}function r(b){return function(d){h||(h=[b,d],j())}}return b(r(0),r(1)),{
+then:function(b,h){return p((function(r,i){d.push([b,h,r,i]),j()}))}}}a&&(g=m[e]=function(){var b=function(b,d,j,r){function i(i,c){
+h(b,d,j,i,c,r)}r=r||2;var c,u=/Async$/;return u.test(b)?(b=b.replace(u,""),"function"==typeof Promise?new Promise(i):p(i)):h(b,d,j,c,c,r)}
+;function h(h,d,j,r,i,c){return b._api?b._api(h,d,j,r,i,c):(b.q&&b.q.push([h,d,j,r,i,c]),null)}return b.q=[],b}(),y=function(b){function h(h){
+"function"==typeof h[4]&&h[4](new Error(b))}var d=g.q;if(d){for(var j=0;j<d.length;j++)h(d[j]);d.length=0,d.push=h}},function(){
+(o=n.createElement(t)).async=!0,o.crossOrigin="anonymous",o.src="https://"+l,o.onerror=function(){y("Error loading "+l)}
+;var b=n.getElementsByTagName(t)[0];b&&b.parentNode?b.parentNode.insertBefore(o,b):n.head.appendChild(o)}(),function(){function b(){}
+function h(b,h,d){g(b,h,d,1)}function d(b,d,j){h("setProperties",{type:b,properties:d},j)}function j(b,h){d("user",b,h)}function r(b,h,d){j({
+uid:b},d),h&&j(h,d)}g.identify=r,g.setUserVars=j,g.identifyAccount=b,g.clearUserCookie=b,g.setVars=d,g.event=function(b,d,j){h("trackEvent",{
+name:b,properties:d},j)},g.anonymize=function(){r(!1)},g.shutdown=function(){h("shutdown")},g.restart=function(){h("restart")},
+g.log=function(b,d){h("log",{level:b,msg:d})},g.consent=function(b){h("setIdentity",{consent:!arguments.length||b})}}(),s="fetch",
+f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){return g._w[s].apply(this,arguments)}),g._v="2.0.0")
+}(window,document,window._fs_namespace,"script",window._fs_script);
+</script>
+<!-- Hotjar Tracking Code for http://www.wearezinc.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:250039,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<style>
+.text-rich-text h3 { font-size: 1.75rem !important; line-height: 1.3 !important; font-weight: 600 !important; letter-spacing: 0 !important; margin-top: 2rem !important; margin-bottom: 0.5rem !important; }
+.text-rich-text h4 { font-size: 1.375rem !important; line-height: 1.4 !important; font-weight: 600 !important; letter-spacing: 0 !important; margin-top: 1.75rem !important; margin-bottom: 0.5rem !important; }
+.text-rich-text h5 { font-size: 1.125rem !important; line-height: 1.4 !important; font-weight: 700 !important; letter-spacing: 0 !important; margin-top: 1.5rem !important; margin-bottom: 0.5rem !important; }
+.text-rich-text h6 { font-size: 0.875rem !important; line-height: 1.4 !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; margin-top: 1.5rem !important; margin-bottom: 0.5rem !important; }
+@media screen and (max-width: 991px) {
+  .text-rich-text h3 { font-size: 1.5rem !important; }
+  .text-rich-text h4 { font-size: 1.25rem !important; }
+}
+@media screen and (max-width: 767px) {
+  .text-rich-text h3 { font-size: 1.375rem !important; }
+  .text-rich-text h4 { font-size: 1.125rem !important; }
+}
+</style></head><body><div class="page-wrapper"><div class="global-styles"><div class="style-overrides w-embed"><style>
+
+/* Ensure all elements inherit the color from its parent */
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-nav-brand,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+/* Prevent all click and hover interaction with an element */
+.pointer-events-off {
+	pointer-events: none;
+}
+
+/* Enables all click and hover interaction with an element */
+.pointer-events-on {
+  pointer-events: auto;
+}
+
+/* Create a class of .div-square which maintains a 1:1 dimension of a div */
+.div-square::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* Adds inline flex display */
+.display-inlineflex {
+  display: inline-flex;
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+/* Remove default Webflow chevron from form select */
+select{
+  -webkit-appearance:none;
+}
+
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+ 
+.margin-0 {
+  margin: 0rem !important;
+}
+  
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+  
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+  
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+  
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+  
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+/* Apply "..." at 100% width */
+.truncate-width { 
+		width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+/* Removes native scrollbar */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+</style>
+
+<style>
+  :root {
+    --font-from: 21;
+    --font-to: 21;
+    --vw-from: calc(1920 / 100);
+    --vw-to: calc(2400 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+
+  @media screen and (max-width: 1920px) {
+    :root {
+      --font-from: 16;
+      --font-to: 21;
+      --vw-from: calc(1440 / 100);
+      --vw-to: calc(1920 / 100);
+      }
+  }
+
+  @media screen and (max-width: 1440px) {
+    :root {
+      --font-from: 11;
+      --font-to: 16;
+      --vw-from: calc(991 / 100);
+      --vw-to: calc(1440 / 100);
+      }
+  }
+
+  @media screen and (max-width: 991px) {
+    :root {
+      --font-from: 16;
+      --font-to: 18;
+      --vw-from: calc(879 / 100);
+      --vw-to: calc(991 / 100);
+      }
+  }
+
+  @media screen and (max-width: 879px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(767 / 100);
+      --vw-to: calc(879 / 100);
+      }
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-from: 11;
+      --font-to: 16;
+      --vw-from: calc(479 / 100);
+      --vw-to: calc(767 / 100);
+      }
+  }
+
+  @media screen and (max-width: 479px) {
+    :root {
+      --font-from: 16;
+      --font-to: 19;
+      --vw-from: calc(390 / 100);
+      --vw-to: calc(479 / 100);
+      }
+  }
+
+  @media screen and (max-width: 390px) {
+    :root {
+      --font-from: 0;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(390 / 100);
+      }
+  }
+</style></div><div class="fonts w-embed"><style>@import url('https://fonts.googleapis.com/css?family=Inter:400')</style>
+<style>@import url('https://fonts.googleapis.com/css?family=Inter:400,500')</style></div><div class="color-schemes w-embed"><style>
+.color-scheme-1 {}
+
+  .color-scheme-2 {
+    --color-scheme-1--text: var(--color-scheme-2--text);
+    --color-scheme-1--background: var(--color-scheme-2--background);
+    --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+    --color-scheme-1--border: var(--color-scheme-2--border);
+    --color-scheme-1--accent: var(--color-scheme-2--accent);
+  }
+
+  
+
+.w-slider-dot {
+  background-color: var(--color-scheme-1--text);
+  opacity: 0.20;
+}
+
+.w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text);
+  opacity: 1;
+}
+
+/* Override .w-slider-nav-invert styles */
+.w-slider-nav-invert .w-slider-dot {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 0.20 !important;
+}
+
+.w-slider-nav-invert .w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 1 !important;
+}
+
+</style></div></div><div data-animation="default" class="navbar2_component navbar w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="413df887-76fc-b703-f286-67844b86b5f6" role="banner" data-duration="400"><div class="navbar2_container"><a href="/" class="navbar2_logo-link w-nav-brand"><img loading="eager" height="32" alt="" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4489_relume-127136.webp" class="navbar2_logo"/></a><nav role="navigation" class="navbar2_menu w-nav-menu"><div data-delay="200" data-hover="true" data-w-id="bc0a0105-6b84-606a-5f26-df083c9acce2" class="navbar2_menu-dropdown w-dropdown"><div class="navbar2_dropdwn-toggle navbar2_link w-dropdown-toggle"><div>Solutions</div><div class="dropdown-chevron w-embed"><svg width=" 100%" height=" 100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"/>
+</svg></div></div><nav class="navbar2_dropdown-list w-dropdown-list"><a href="/solutions/ai-strategy-optimization" class="navbar2_dropdown-link w-dropdown-link">Ai Strategy &amp; Optimization</a><a href="/solutions/website-design-development" class="navbar2_dropdown-link w-dropdown-link">Website Design &amp; Development</a><a href="/solutions/ecommerce-acceleration" class="navbar2_dropdown-link w-dropdown-link">Ecommerce Acceleration</a><a href="/solutions/content-campaign-systems" class="navbar2_dropdown-link w-dropdown-link">Content &amp; Campaign Systems</a><a href="/solutions/automation-workflows" class="navbar2_dropdown-link w-dropdown-link">Automations &amp; Workflows </a><a href="/solutions/branding-positioning" aria-current="page" class="navbar2_dropdown-link w-dropdown-link w--current">Branding &amp; Positioning</a></nav></div><div class="div-block-4"><a href="/work" class="navbar2_link w-nav-link">Work</a><a href="/blog" class="navbar2_link w-nav-link">Insights</a><a href="/about-us" class="navbar2_link w-nav-link">About</a></div><a href="/contact-us" class="button is--mobile w-button">Contact Us</a></nav><div class="navbar2_button-wrapper"><a data-w-id="47fdd589-240c-0e89-7720-a9d3c5fa8040" href="/solutions/on-brand-aeo-sprint" class="button_nav w-inline-block"><div class="div-block-11"><div class="div-block-9"><div class="code-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.48945 4.19006C10.7526 4.76021 12.0001 5.32568 13.2515 5.88252C13.4116 5.95376 13.4749 6.04763 13.4745 6.22077C13.4703 8.05865 13.4692 9.89654 13.4739 11.7344C13.4744 11.9262 13.4027 12.0263 13.229 12.1038C11.4373 12.9031 9.64813 13.7079 7.86043 14.5161C7.54757 14.6576 7.22208 14.7749 6.89935 14.9705C7.1408 15.1555 7.40833 15.2296 7.65298 15.3407C9.27885 16.0794 10.9096 16.8072 12.5389 17.5383C12.7772 17.6453 13.0136 17.7575 13.2557 17.8552C13.4074 17.9165 13.4741 18.0113 13.4738 18.1773C13.4709 20.0293 13.4726 21.8813 13.4714 23.7334C13.4713 23.9879 13.4317 24.0102 13.1971 23.9044C11.6915 23.2252 10.1871 22.5435 8.68034 21.8672C6.88387 21.0608 5.08496 20.26 3.28784 19.4551C2.283 19.005 1.28252 18.545 0.273295 18.1051C0.0603969 18.0123 -0.00126074 17.8889 1.94374e-05 17.6688C0.00810455 16.278 0.00401535 14.8871 0.00488607 13.4962C0.00515232 13.0705 0.0158833 12.6446 0.00685812 12.2191C0.0027741 12.0266 0.0785204 11.9251 0.251398 11.8483C1.67055 11.2178 3.08662 10.5803 4.50315 9.9438C5.12806 9.66303 5.7513 9.37852 6.377 9.09954C6.44344 9.06991 6.49471 9.02935 6.56559 8.97215C6.23966 8.76566 5.89334 8.64305 5.56211 8.49307C3.78723 7.6894 2.00913 6.89284 0.229986 6.09869C0.0701638 6.02735 0.0131318 5.92597 0.0123985 5.75459C0.00498711 4.02335 0.0144211 2.29224 0.039187 0.561181C0.0410133 0.433513 0.042322 0.305386 0.0339265 0.178132C0.022676 0.00762675 0.0670872 -0.0425374 0.239163 0.0365613C0.906468 0.343304 1.57823 0.640307 2.24841 0.940738C3.71702 1.59908 5.1858 2.25703 6.65427 2.91569C7.59474 3.33752 8.53478 3.76034 9.48945 4.19006Z" fill="currentcolor"/>
+</svg></div></div></div><div class="div-block-10"><p class="text-weight-medium">Get Ai Optimized</p><p class="text-size-tiny">AI SEO Sprint</p></div></a><a href="/contact-us" class="button is-nav w-button">Let&#x27;s Go!</a><div class="navbar2_menu-button w-nav-button"><div class="menu-icon2"><div class="menu-icon2_line-top"></div><div class="menu-icon2_line-middle"><div class="menu-icon2_line-middle-inner"></div></div><div class="menu-icon2_line-bottom"></div></div></div></div></div><div class="global-styles"><div class="style-overrides w-embed"><style>
+
+/* Ensure all elements inherit the color from its parent */
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-nav-brand,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+/* Prevent all click and hover interaction with an element */
+.pointer-events-off {
+	pointer-events: none;
+}
+
+/* Enables all click and hover interaction with an element */
+.pointer-events-on {
+  pointer-events: auto;
+}
+
+/* Create a class of .div-square which maintains a 1:1 dimension of a div */
+.div-square::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* Adds inline flex display */
+.display-inlineflex {
+  display: inline-flex;
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+/* Remove default Webflow chevron from form select */
+select{
+  -webkit-appearance:none;
+}
+
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+ 
+.margin-0 {
+  margin: 0rem !important;
+}
+  
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+  
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+  
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+  
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+  
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+/* Apply "..." at 100% width */
+.truncate-width { 
+		width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+/* Removes native scrollbar */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+</style>
+
+<style>
+  :root {
+    --font-from: 21;
+    --font-to: 21;
+    --vw-from: calc(1920 / 100);
+    --vw-to: calc(2400 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+
+  @media screen and (max-width: 1920px) {
+    :root {
+      --font-from: 16;
+      --font-to: 21;
+      --vw-from: calc(1440 / 100);
+      --vw-to: calc(1920 / 100);
+      }
+  }
+
+  @media screen and (max-width: 1440px) {
+    :root {
+      --font-from: 11;
+      --font-to: 16;
+      --vw-from: calc(991 / 100);
+      --vw-to: calc(1440 / 100);
+      }
+  }
+
+  @media screen and (max-width: 991px) {
+    :root {
+      --font-from: 16;
+      --font-to: 18;
+      --vw-from: calc(879 / 100);
+      --vw-to: calc(991 / 100);
+      }
+  }
+
+  @media screen and (max-width: 879px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(767 / 100);
+      --vw-to: calc(879 / 100);
+      }
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-from: 11;
+      --font-to: 16;
+      --vw-from: calc(479 / 100);
+      --vw-to: calc(767 / 100);
+      }
+  }
+
+  @media screen and (max-width: 479px) {
+    :root {
+      --font-from: 16;
+      --font-to: 19;
+      --vw-from: calc(390 / 100);
+      --vw-to: calc(479 / 100);
+      }
+  }
+
+  @media screen and (max-width: 390px) {
+    :root {
+      --font-from: 0;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(390 / 100);
+      }
+  }
+</style></div><div class="fonts w-embed"><style>@import url('https://fonts.googleapis.com/css?family=Inter:400')</style>
+<style>@import url('https://fonts.googleapis.com/css?family=Inter:400,500')</style></div><div class="color-schemes w-embed"><style>
+.color-scheme-1 {}
+
+  .color-scheme-2 {
+    --color-scheme-1--text: var(--color-scheme-2--text);
+    --color-scheme-1--background: var(--color-scheme-2--background);
+    --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+    --color-scheme-1--border: var(--color-scheme-2--border);
+    --color-scheme-1--accent: var(--color-scheme-2--accent);
+  }
+
+  
+
+.w-slider-dot {
+  background-color: var(--color-scheme-1--text);
+  opacity: 0.20;
+}
+
+.w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text);
+  opacity: 1;
+}
+
+/* Override .w-slider-nav-invert styles */
+.w-slider-nav-invert .w-slider-dot {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 0.20 !important;
+}
+
+.w-slider-nav-invert .w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 1 !important;
+}
+
+</style></div></div></div><main class="main-wrapper"><header class="section_aeo-hero color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="header46_component"><div class="max-width-large"><div class="margin-bottom margin-xsmall"><div data-gsap-lines="" class="text-style-tagline">&gt; Branding &amp; Positioning &lt;</div></div><div class="margin-bottom margin-small"><h1 data-gsap-lines="" class="heading-style-h1">Craft Your Identity</h1></div><p data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1cf1" style="-webkit-transform:translate3d(0, 1rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 1rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 1rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 1rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="text-size-medium">ZINC helps companies build brands that are clear, consistent, and ready to scale. From strategy and differentiation to design systems and messaging, we craft the foundation that every successful brand needs, especially in a world moving faster than ever with AI.</p></div></div></div></div></div></header><div class="section-divider"><div class="padding-global"><div class="container-large"><div class="row-top"><div class="divider-line"></div></div><div class="row-bottom"><div class="end-wrap"><div class="divider-number-right micro-type">&gt; 05</div><div class="div-block"></div></div><div class="divider-number-left micro-type">SCROLL 00 &gt;</div></div></div></div></div><section class="section_layout16 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout16_component"><div class="w-layout-grid layout16_content"><div class="layout16_content-left"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">Our Approach</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Clarity at the Core of Every Great Brand</h2></div><div class="margin-bottom margin-small"><p class="text-size-medium">In moments of growth, transition, or reinvention, how you present your brand determines how the world perceives it. We work with leadership to uncover your unique positioning, crystallize strategic direction, and build the foundation your brand deserves.</p></div><div class="layout16_item-list"><div id="w-node-_03320b50-f8d2-e14e-3462-21d2b80d1d04-fcdb442c" class="layout16_item"><div class="layout16_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-820.61 218.5-669.72 480-517.83l260.74-151.89L480-820.61ZM114.02-311.2v-337.6q0-18.06 8.83-33.81 8.83-15.75 25.24-25.37l297.84-171.8q8.83-5.24 16.86-7.1 8.04-1.86 17.11-1.86 9.08 0 17.61 1.89t16.56 7.07l297.84 171.8q16.41 9.62 25.36 25.37 8.95 15.75 8.95 33.81v174.73q0 14.43-10.01 24.25-10.02 9.82-24.49 9.82-14.48 0-24.18-9.82-9.69-9.82-9.69-24.25v-141.15L515.3-461.8q-15.91 9.43-34.06 9.93-18.15.5-34.07-8.93L182.15-614.22v303.02l288.11 165.44q7.7 4.53 12.3 12.2 4.61 7.67 4.61 17.3 0 19.56-17.03 29.33-17.03 9.78-33.94.34L148.09-252.02q-16.17-9.86-25.12-25.44-8.95-15.58-8.95-33.74ZM737.17 0q-78 0-134-55.4t-56-134q0-78.6 56-134.6t134-56q78 0 134 55.87 56 55.86 56 135.13 0 78.43-56 133.72Q815.17 0 737.17 0ZM480-476.09Zm279.61 282.13v-102.6q0-9.44-6.37-15.8-6.37-6.36-15.86-6.36-9.68 0-16.04 6.43-6.36 6.43-6.36 15.98v100.83q0 7.07 2.74 13.43 2.74 6.35 8.21 11.44l75.5 69.28q5.5 5.48 13.98 4.98t13.84-6.01q6.36-6.51 5.86-14.96-.5-8.44-6.74-13.92l-68.76-62.72Z"/></svg></div></div><div class="layout16_item-text-wrapper"><p>Define a strategic edge that sets you apart in any market </p></div></div><div id="w-node-_03320b50-f8d2-e14e-3462-21d2b80d1d10-fcdb442c" class="layout16_item"><div class="layout16_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout16_item-text-wrapper"><p>Identify your true audience, their mindset, and unmet needs</p></div></div><div id="w-node-_03320b50-f8d2-e14e-3462-21d2b80d1d0a-fcdb442c" class="layout16_item"><div class="layout16_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M479.9-114.02q-134.18 0-230.03-93.29t-95.85-227.78q0-57.87 16.88-107.11 16.88-49.23 53.12-91.95L71.3-786.87q-9.47-9.48-9.59-22.46-.12-12.97 9.48-22.45 9.6-9.72 22.51-9.72 12.92 0 22.52 9.72l716.56 716.56q9.48 9.48 9.48 21.96t-9.48 21.96q-9.48 9.47-22.45 9.47-12.98 0-22.46-9.47L677.84-180.26q-39.17 32-90.91 49.12-51.73 17.12-107.03 17.12Zm.1-68.13q44.75 0 83.08-11.4 38.33-11.41 66.85-35.93L273.48-585.93q-23.28 27.8-37.31 65.37-14.02 37.58-14.02 85.56 0 106.34 75.9 179.59 75.91 73.26 181.95 73.26Zm-27.91-237.94Zm256.98-242.45q71.28 70.04 88.97 158.32 17.7 88.29-12.91 176.57-3.76 11.39-12.2 19.56-8.43 8.18-21.34 8.18-17.96 0-28.37-14.36-10.42-14.36-4.89-29.8 27.08-71.04 12.3-144.25-14.78-73.2-71.3-127.25L480-792.89l-93.54 94.54q-10.44 10.2-23.87 10.32-13.44.12-23.89-10.21-10.18-10.3-10.18-24.45 0-14.14 10.2-24.64L443.7-853.3q7.71-7.72 17.41-11.32 9.69-3.6 18.89-3.6 9.2 0 18.89 3.48 9.7 3.48 17.41 11.44l192.77 190.76ZM570.2-568.48Z"/></svg></div></div><div class="layout16_item-text-wrapper"><p>Lay the groundwork for visual identity, content, and digital execution </p></div></div></div><div class="margin-top margin-medium"><div class="button-group"><a href="/contact-us" class="button is-secondary w-button">Schedule a Call</a></div></div></div><div class="layout16_image-wrapper"><img sizes="(max-width: 479px) 100vw, 240px" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44f6_about-02-p-500.webp 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44f6_about-02.webp 592w" alt="" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44f6_about-02.webp" loading="lazy" class="layout16_image"/></div></div></div></div></div></div></section><section class="section_aeo-4 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout207_component"><div class="w-layout-grid layout207_content"><div class="layout207_image-wrapper"><img sizes="(max-width: 479px) 100vw, 240px" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e7_ai_image_ex1.1-p-500.webp 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e7_ai_image_ex1.1.webp 685w" alt="AI-generated visual showing smart website conversion optimization and dynamic content delivery" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e7_ai_image_ex1.1.webp" loading="lazy" class="layout207_image"/></div><div id="w-node-e87aea86-a9f2-0a56-112b-7417f6b9fa84-fcdb442c" class="layout207_content-right"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">Ai Brand Library</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Create Brand Imagery That Didn’t Exist—Until Now</h2></div><div class="margin-bottom margin-small"><p class="text-size-medium">We build curated libraries of AI-generated brand visuals using tools like Midjourney, GPT-4o, and Adobe Firefly. Each image is created with your tone, palette, and identity in mind—complete with prompts, categories, and source settings for ongoing, on-brand production.</p></div><div class="layout207_item-list"><div id="w-node-e87aea86-a9f2-0a56-112b-7417f6b9fa8f-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>AI Visual Systems Development</p></div></div><div id="w-node-e87aea86-a9f2-0a56-112b-7417f6b9fa95-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M479.9-114.02q-134.18 0-230.03-93.29t-95.85-227.78q0-57.87 16.88-107.11 16.88-49.23 53.12-91.95L71.3-786.87q-9.47-9.48-9.59-22.46-.12-12.97 9.48-22.45 9.6-9.72 22.51-9.72 12.92 0 22.52 9.72l716.56 716.56q9.48 9.48 9.48 21.96t-9.48 21.96q-9.48 9.47-22.45 9.47-12.98 0-22.46-9.47L677.84-180.26q-39.17 32-90.91 49.12-51.73 17.12-107.03 17.12Zm.1-68.13q44.75 0 83.08-11.4 38.33-11.41 66.85-35.93L273.48-585.93q-23.28 27.8-37.31 65.37-14.02 37.58-14.02 85.56 0 106.34 75.9 179.59 75.91 73.26 181.95 73.26Zm-27.91-237.94Zm256.98-242.45q71.28 70.04 88.97 158.32 17.7 88.29-12.91 176.57-3.76 11.39-12.2 19.56-8.43 8.18-21.34 8.18-17.96 0-28.37-14.36-10.42-14.36-4.89-29.8 27.08-71.04 12.3-144.25-14.78-73.2-71.3-127.25L480-792.89l-93.54 94.54q-10.44 10.2-23.87 10.32-13.44.12-23.89-10.21-10.18-10.3-10.18-24.45 0-14.14 10.2-24.64L443.7-853.3q7.71-7.72 17.41-11.32 9.69-3.6 18.89-3.6 9.2 0 18.89 3.48 9.7 3.48 17.41 11.44l192.77 190.76ZM570.2-568.48Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Style-Matched Prompt Libraries</p></div></div><div id="w-node-e87aea86-a9f2-0a56-112b-7417f6b9fa9b-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M312.91-357q22.45 0 37.65-15.45 15.2-15.44 15.2-37.18v-140.98q0-21.64-15.37-37.01Q335.01-603 313.37-603h-74q-10.88 0-17.96 7.08-7.08 7.09-7.08 17.92v196q0 10.83 7.08 17.92 7.08 7.08 17.96 7.08h73.54Zm-46.19-52.63v-140.98h46.65v140.98h-46.65ZM432.48-357H510q10.58 0 18.01-7.94 7.42-7.94 7.42-19.36 0-11.26-6.97-18.3-6.98-7.03-18.46-7.03h-55.85v-49.13h31.59q9.18 0 15.16-6.57 5.97-6.58 5.97-15.78 0-9.31-5.91-15.22-5.9-5.91-15.23-5.91h-31.58v-48.37h55.09q11.39 0 18.79-7.42 7.4-7.42 7.4-18.84 0-11.41-7.4-18.77-7.4-7.36-18.79-7.36h-76.47q-13.53 0-22.27 8.79t-8.74 21.93v184.13q0 13.67 8.79 22.41t21.93 8.74Zm232.43-.76q15.75 0 27.05-9.94 11.3-9.93 15.54-24.37l53.37-177.26q4-12.81-3.95-23.24Q748.98-603 735.15-603q-8.6 0-15.5 5.1-6.89 5.1-8.89 13.57L664.91-431.8 619.3-584.57q-2.02-8.49-8.69-13.46-6.67-4.97-15.83-4.97-13.63 0-21.61 10.62-7.97 10.63-3.97 23.05l53.13 177.26q4.24 14.68 15.54 24.49 11.3 9.82 27.04 9.82ZM182.15-114.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-595.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34h595.7q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v595.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13h595.7v-595.7h-595.7v595.7Zm0-595.7v595.7-595.7Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Branded Stock &amp; Campaign Imagery</p></div></div><div id="w-node-e87aea86-a9f2-0a56-112b-7417f6b9faa1-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-820.61 218.5-669.72 480-517.83l260.74-151.89L480-820.61ZM114.02-311.2v-337.6q0-18.06 8.83-33.81 8.83-15.75 25.24-25.37l297.84-171.8q8.83-5.24 16.86-7.1 8.04-1.86 17.11-1.86 9.08 0 17.61 1.89t16.56 7.07l297.84 171.8q16.41 9.62 25.36 25.37 8.95 15.75 8.95 33.81v174.73q0 14.43-10.01 24.25-10.02 9.82-24.49 9.82-14.48 0-24.18-9.82-9.69-9.82-9.69-24.25v-141.15L515.3-461.8q-15.91 9.43-34.06 9.93-18.15.5-34.07-8.93L182.15-614.22v303.02l288.11 165.44q7.7 4.53 12.3 12.2 4.61 7.67 4.61 17.3 0 19.56-17.03 29.33-17.03 9.78-33.94.34L148.09-252.02q-16.17-9.86-25.12-25.44-8.95-15.58-8.95-33.74ZM737.17 0q-78 0-134-55.4t-56-134q0-78.6 56-134.6t134-56q78 0 134 55.87 56 55.86 56 135.13 0 78.43-56 133.72Q815.17 0 737.17 0ZM480-476.09Zm279.61 282.13v-102.6q0-9.44-6.37-15.8-6.37-6.36-15.86-6.36-9.68 0-16.04 6.43-6.36 6.43-6.36 15.98v100.83q0 7.07 2.74 13.43 2.74 6.35 8.21 11.44l75.5 69.28q5.5 5.48 13.98 4.98t13.84-6.01q6.36-6.51 5.86-14.96-.5-8.44-6.74-13.92l-68.76-62.72Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Asset Management &amp; Version Control</p></div></div></div><div class="margin-top margin-medium"><div class="button-group"><a href="/solutions/ai-image-library" class="button is-secondary w-button">See Ai Image Library</a></div></div></div></div></div></div></div></div></section><section class="section_layout3 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout3_component"><div class="w-layout-grid layout3_content"><div class="layout3_content-left"><div class="margin-bottom margin-small"><h2 class="heading-style-h3">Branding That’s Built to Endure—and Evolve</h2></div><p class="text-size-medium">We’ve led full-scale branding initiatives for private equity firms, fast-scaling startups, and industry-leading companies alike. From naming and messaging to logos, style systems, and launch strategy, our approach is grounded in insight and built to last.</p><div class="layout207_item-list"><div id="w-node-_0b3d5c14-723e-f8ca-f83d-6a9b3be27ba4-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Brand Strategy &amp; Positioning</p></div></div><div id="w-node-_0b3d5c14-723e-f8ca-f83d-6a9b3be27baa-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M479.9-114.02q-134.18 0-230.03-93.29t-95.85-227.78q0-57.87 16.88-107.11 16.88-49.23 53.12-91.95L71.3-786.87q-9.47-9.48-9.59-22.46-.12-12.97 9.48-22.45 9.6-9.72 22.51-9.72 12.92 0 22.52 9.72l716.56 716.56q9.48 9.48 9.48 21.96t-9.48 21.96q-9.48 9.47-22.45 9.47-12.98 0-22.46-9.47L677.84-180.26q-39.17 32-90.91 49.12-51.73 17.12-107.03 17.12Zm.1-68.13q44.75 0 83.08-11.4 38.33-11.41 66.85-35.93L273.48-585.93q-23.28 27.8-37.31 65.37-14.02 37.58-14.02 85.56 0 106.34 75.9 179.59 75.91 73.26 181.95 73.26Zm-27.91-237.94Zm256.98-242.45q71.28 70.04 88.97 158.32 17.7 88.29-12.91 176.57-3.76 11.39-12.2 19.56-8.43 8.18-21.34 8.18-17.96 0-28.37-14.36-10.42-14.36-4.89-29.8 27.08-71.04 12.3-144.25-14.78-73.2-71.3-127.25L480-792.89l-93.54 94.54q-10.44 10.2-23.87 10.32-13.44.12-23.89-10.21-10.18-10.3-10.18-24.45 0-14.14 10.2-24.64L443.7-853.3q7.71-7.72 17.41-11.32 9.69-3.6 18.89-3.6 9.2 0 18.89 3.48 9.7 3.48 17.41 11.44l192.77 190.76ZM570.2-568.48Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Messaging Architecture</p></div></div><div id="w-node-_0b3d5c14-723e-f8ca-f83d-6a9b3be27bb0-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M312.91-357q22.45 0 37.65-15.45 15.2-15.44 15.2-37.18v-140.98q0-21.64-15.37-37.01Q335.01-603 313.37-603h-74q-10.88 0-17.96 7.08-7.08 7.09-7.08 17.92v196q0 10.83 7.08 17.92 7.08 7.08 17.96 7.08h73.54Zm-46.19-52.63v-140.98h46.65v140.98h-46.65ZM432.48-357H510q10.58 0 18.01-7.94 7.42-7.94 7.42-19.36 0-11.26-6.97-18.3-6.98-7.03-18.46-7.03h-55.85v-49.13h31.59q9.18 0 15.16-6.57 5.97-6.58 5.97-15.78 0-9.31-5.91-15.22-5.9-5.91-15.23-5.91h-31.58v-48.37h55.09q11.39 0 18.79-7.42 7.4-7.42 7.4-18.84 0-11.41-7.4-18.77-7.4-7.36-18.79-7.36h-76.47q-13.53 0-22.27 8.79t-8.74 21.93v184.13q0 13.67 8.79 22.41t21.93 8.74Zm232.43-.76q15.75 0 27.05-9.94 11.3-9.93 15.54-24.37l53.37-177.26q4-12.81-3.95-23.24Q748.98-603 735.15-603q-8.6 0-15.5 5.1-6.89 5.1-8.89 13.57L664.91-431.8 619.3-584.57q-2.02-8.49-8.69-13.46-6.67-4.97-15.83-4.97-13.63 0-21.61 10.62-7.97 10.63-3.97 23.05l53.13 177.26q4.24 14.68 15.54 24.49 11.3 9.82 27.04 9.82ZM182.15-114.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-595.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34h595.7q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v595.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13h595.7v-595.7h-595.7v595.7Zm0-595.7v595.7-595.7Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Visual Identity &amp; Design Systems</p></div></div><div id="w-node-_0b3d5c14-723e-f8ca-f83d-6a9b3be27bb6-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-820.61 218.5-669.72 480-517.83l260.74-151.89L480-820.61ZM114.02-311.2v-337.6q0-18.06 8.83-33.81 8.83-15.75 25.24-25.37l297.84-171.8q8.83-5.24 16.86-7.1 8.04-1.86 17.11-1.86 9.08 0 17.61 1.89t16.56 7.07l297.84 171.8q16.41 9.62 25.36 25.37 8.95 15.75 8.95 33.81v174.73q0 14.43-10.01 24.25-10.02 9.82-24.49 9.82-14.48 0-24.18-9.82-9.69-9.82-9.69-24.25v-141.15L515.3-461.8q-15.91 9.43-34.06 9.93-18.15.5-34.07-8.93L182.15-614.22v303.02l288.11 165.44q7.7 4.53 12.3 12.2 4.61 7.67 4.61 17.3 0 19.56-17.03 29.33-17.03 9.78-33.94.34L148.09-252.02q-16.17-9.86-25.12-25.44-8.95-15.58-8.95-33.74ZM737.17 0q-78 0-134-55.4t-56-134q0-78.6 56-134.6t134-56q78 0 134 55.87 56 55.86 56 135.13 0 78.43-56 133.72Q815.17 0 737.17 0ZM480-476.09Zm279.61 282.13v-102.6q0-9.44-6.37-15.8-6.37-6.36-15.86-6.36-9.68 0-16.04 6.43-6.36 6.43-6.36 15.98v100.83q0 7.07 2.74 13.43 2.74 6.35 8.21 11.44l75.5 69.28q5.5 5.48 13.98 4.98t13.84-6.01q6.36-6.51 5.86-14.96-.5-8.44-6.74-13.92l-68.76-62.72Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Brand Guidelines &amp; Playbooks</p></div></div><div id="w-node-_851f9feb-a64c-1de7-5a9b-79414309e357-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Naming &amp; Verbal Identity</p></div></div><div id="w-node-f11027a7-d15b-179c-67fe-5b954d5c1c7d-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>AI-Enhanced Brand Asset Libraries</p></div></div></div></div><div class="layout3_image-wrapper"><img sizes="(max-width: 479px) 100vw, 239.984375px" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4528_img-web-panel-p-500.webp 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4528_img-web-panel-p-800.webp 800w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4528_img-web-panel-p-1080.webp 1080w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4528_img-web-panel.webp 1300w" alt="" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4528_img-web-panel.webp" loading="lazy" class="layout3_image"/></div></div></div></div></div></div></section><section class="section_testimonial13 color-scheme-2"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><section class="section_testimonial7"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="testimonial7_component"><div data-delay="4000" data-animation="slide" class="testimonial7_slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true"><div class="testimonial7_mask w-slider-mask"><div class="testimonial7_slide w-slide"><div class="testimonial7_content"><div class="margin-bottom margin-medium"><div class="testimonial7_logo-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb448a_logo-webflow.svg" alt="" class="testimonial7_logo"/></div></div><h3 class="heading-style-h5">&quot;I&#x27;ve relied on ZINC for over a decade across multiple successful projects. The Ai advancement they brought to the reinvention of Growth99 was absolutely game-changing, and has made a huge impact.&quot;</h3><div class="margin-top margin-medium"><div class="testimonial7_client"><div class="margin-bottom margin-xsmall"><div class="testimonial7_client-image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44af_1683297216545.webp" alt="" class="testimonial7_client-image"/></div></div><div class="text-weight-semibold">John DeBrincat</div><div>VP Marketing, Growth99</div></div></div></div></div><div class="testimonial7_slide w-slide"><div class="testimonial7_content"><div class="margin-bottom margin-medium"><div class="testimonial7_logo-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb448a_logo-webflow.svg" alt="" class="testimonial7_logo"/></div></div><h3 class="heading-style-h5"><strong>&quot;ZINC helped us rethink how our website drives growth. Their AI-powered approach transformed our content and visibility, delivering measurable gains in both traffic and qualified leads.&quot;</strong></h3><div class="margin-top margin-medium"><div class="testimonial7_client"><div class="margin-bottom margin-xsmall"><div class="testimonial7_client-image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44b0_rb_sm.webp" alt="" class="testimonial7_client-image"/></div></div><div class="text-weight-semibold">Robert Brown</div><div>President, OMNIMED</div></div></div></div></div></div><div class="slider-arrow is-centre-previous hide-mobile-landscape w-slider-arrow-left"><div class="slider-arrow-icon_default w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.31066 8.75001L9.03033 14.4697L7.96967 15.5303L0.439339 8.00001L7.96967 0.469676L9.03033 1.53034L3.31066 7.25001L15.5 7.25L15.5 8.75L3.31066 8.75001Z" fill="currentColor"/>
+</svg></div></div><div class="slider-arrow is-centre-next hide-mobile-landscape w-slider-arrow-right"><div class="slider-arrow-icon_default w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.6893 7.25L6.96967 1.53033L8.03033 0.469666L15.5607 8L8.03033 15.5303L6.96967 14.4697L12.6893 8.75H0.5V7.25H12.6893Z" fill="currentColor"/>
+</svg></div></div><div class="testimonial7_slide-nav w-slider-nav w-slider-nav-invert w-round"></div></div></div></div></div></div></section></div></div></div></section><section class="section_layout3 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout3_component"><div class="w-layout-grid layout3_content"><div class="layout3_content-left"><div class="margin-bottom margin-small"><h2 class="heading-style-h3">Strategic Branding in the Age of AI</h2></div><p class="text-size-medium">AI is transforming how brands create, scale, and show up in the world—but without clear brand direction, AI can lead to inconsistency and noise. We help clients build intelligent, scalable brand systems that guide content, visuals, and tone—powered by AI, but grounded in strategy.</p><div class="layout207_item-list"><div id="w-node-c2c7e0dd-02d4-b71a-e2c2-b12effcbe29b-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m443.93-165.33-214.5-125.89q-15.68-9.62-24.37-25.37-8.69-15.75-8.69-33.8v-250.78q0-18.06 8.69-33.81 8.69-15.75 24.37-25.37l215.5-128.13q15.92-9.19 35.07-9.19t35.07 9.19l215.5 128.13q15.68 9.62 24.37 25.37 8.69 15.75 8.69 33.81v250.78q0 18.05-8.95 33.8-8.95 15.75-25.11 25.37l-217.5 125.89q-16.25 9.44-34.23 9.44-17.99 0-33.91-9.44ZM450-241.5v-217.62L265.5-565.17v212.62L450-241.5Zm60 0 185.5-111.05v-212.62L510-459.12v217.62ZM106.6-658.85q-13.9 0-23.24-9.3-9.34-9.29-9.34-23.33v-126.37q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h126.37q13.95 0 23.41 9.52 9.46 9.51 9.46 23.57 0 13.98-9.46 23.31-9.46 9.34-23.41 9.34h-129v129q0 14.04-9.46 23.33-9.47 9.3-23.46 9.3Zm35.55 584.83q-28.35 0-48.24-19.89t-19.89-48.24v-126.37q0-13.95 9.51-23.41 9.52-9.46 23.42-9.46 13.9 0 23.24 9.46 9.33 9.46 9.33 23.41v129h129q13.95 0 23.41 9.46 9.46 9.47 9.46 23.46 0 13.9-9.46 23.24-9.46 9.34-23.41 9.34H142.15Zm675.7 0H691.48q-14.04 0-23.33-9.51-9.3-9.52-9.3-23.42 0-13.9 9.3-23.24 9.29-9.33 23.33-9.33h129v-129q0-13.95 9.51-23.41t23.49-9.46q13.97 0 23.35 9.46 9.39 9.46 9.39 23.41v126.37q0 28.35-19.96 48.24t-48.41 19.89Zm2.63-617.46v-129h-129q-14.04 0-23.33-9.51-9.3-9.51-9.3-23.49 0-13.97 9.3-23.35 9.29-9.39 23.33-9.39h126.37q28.45 0 48.41 19.96 19.96 19.96 19.96 48.41v126.37q0 14.04-9.52 23.33-9.51 9.3-23.57 9.3-13.98 0-23.31-9.3-9.34-9.29-9.34-23.33ZM480-513.28l184.74-106.89L480-726.3 295.26-620.17 480-513.28Zm0 24.52Zm0-24.52Zm30 54.24Zm-60 0Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Brand Style-Driven AI Prompt Libraries</p></div></div><div id="w-node-c2c7e0dd-02d4-b71a-e2c2-b12effcbe2a1-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M479.9-114.02q-134.18 0-230.03-93.29t-95.85-227.78q0-57.87 16.88-107.11 16.88-49.23 53.12-91.95L71.3-786.87q-9.47-9.48-9.59-22.46-.12-12.97 9.48-22.45 9.6-9.72 22.51-9.72 12.92 0 22.52 9.72l716.56 716.56q9.48 9.48 9.48 21.96t-9.48 21.96q-9.48 9.47-22.45 9.47-12.98 0-22.46-9.47L677.84-180.26q-39.17 32-90.91 49.12-51.73 17.12-107.03 17.12Zm.1-68.13q44.75 0 83.08-11.4 38.33-11.41 66.85-35.93L273.48-585.93q-23.28 27.8-37.31 65.37-14.02 37.58-14.02 85.56 0 106.34 75.9 179.59 75.91 73.26 181.95 73.26Zm-27.91-237.94Zm256.98-242.45q71.28 70.04 88.97 158.32 17.7 88.29-12.91 176.57-3.76 11.39-12.2 19.56-8.43 8.18-21.34 8.18-17.96 0-28.37-14.36-10.42-14.36-4.89-29.8 27.08-71.04 12.3-144.25-14.78-73.2-71.3-127.25L480-792.89l-93.54 94.54q-10.44 10.2-23.87 10.32-13.44.12-23.89-10.21-10.18-10.3-10.18-24.45 0-14.14 10.2-24.64L443.7-853.3q7.71-7.72 17.41-11.32 9.69-3.6 18.89-3.6 9.2 0 18.89 3.48 9.7 3.48 17.41 11.44l192.77 190.76ZM570.2-568.48Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>On-Brand AI Image Generation (Midjourney, GPT-4o, Adobe, Flux)</p></div></div><div id="w-node-c2c7e0dd-02d4-b71a-e2c2-b12effcbe2a7-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M312.91-357q22.45 0 37.65-15.45 15.2-15.44 15.2-37.18v-140.98q0-21.64-15.37-37.01Q335.01-603 313.37-603h-74q-10.88 0-17.96 7.08-7.08 7.09-7.08 17.92v196q0 10.83 7.08 17.92 7.08 7.08 17.96 7.08h73.54Zm-46.19-52.63v-140.98h46.65v140.98h-46.65ZM432.48-357H510q10.58 0 18.01-7.94 7.42-7.94 7.42-19.36 0-11.26-6.97-18.3-6.98-7.03-18.46-7.03h-55.85v-49.13h31.59q9.18 0 15.16-6.57 5.97-6.58 5.97-15.78 0-9.31-5.91-15.22-5.9-5.91-15.23-5.91h-31.58v-48.37h55.09q11.39 0 18.79-7.42 7.4-7.42 7.4-18.84 0-11.41-7.4-18.77-7.4-7.36-18.79-7.36h-76.47q-13.53 0-22.27 8.79t-8.74 21.93v184.13q0 13.67 8.79 22.41t21.93 8.74Zm232.43-.76q15.75 0 27.05-9.94 11.3-9.93 15.54-24.37l53.37-177.26q4-12.81-3.95-23.24Q748.98-603 735.15-603q-8.6 0-15.5 5.1-6.89 5.1-8.89 13.57L664.91-431.8 619.3-584.57q-2.02-8.49-8.69-13.46-6.67-4.97-15.83-4.97-13.63 0-21.61 10.62-7.97 10.63-3.97 23.05l53.13 177.26q4.24 14.68 15.54 24.49 11.3 9.82 27.04 9.82ZM182.15-114.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-595.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34h595.7q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v595.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13h595.7v-595.7h-595.7v595.7Zm0-595.7v595.7-595.7Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Custom Tone-of-Voice Guides for Language Models</p></div></div><div id="w-node-c2c7e0dd-02d4-b71a-e2c2-b12effcbe2ad-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-820.61 218.5-669.72 480-517.83l260.74-151.89L480-820.61ZM114.02-311.2v-337.6q0-18.06 8.83-33.81 8.83-15.75 25.24-25.37l297.84-171.8q8.83-5.24 16.86-7.1 8.04-1.86 17.11-1.86 9.08 0 17.61 1.89t16.56 7.07l297.84 171.8q16.41 9.62 25.36 25.37 8.95 15.75 8.95 33.81v174.73q0 14.43-10.01 24.25-10.02 9.82-24.49 9.82-14.48 0-24.18-9.82-9.69-9.82-9.69-24.25v-141.15L515.3-461.8q-15.91 9.43-34.06 9.93-18.15.5-34.07-8.93L182.15-614.22v303.02l288.11 165.44q7.7 4.53 12.3 12.2 4.61 7.67 4.61 17.3 0 19.56-17.03 29.33-17.03 9.78-33.94.34L148.09-252.02q-16.17-9.86-25.12-25.44-8.95-15.58-8.95-33.74ZM737.17 0q-78 0-134-55.4t-56-134q0-78.6 56-134.6t134-56q78 0 134 55.87 56 55.86 56 135.13 0 78.43-56 133.72Q815.17 0 737.17 0ZM480-476.09Zm279.61 282.13v-102.6q0-9.44-6.37-15.8-6.37-6.36-15.86-6.36-9.68 0-16.04 6.43-6.36 6.43-6.36 15.98v100.83q0 7.07 2.74 13.43 2.74 6.35 8.21 11.44l75.5 69.28q5.5 5.48 13.98 4.98t13.84-6.01q6.36-6.51 5.86-14.96-.5-8.44-6.74-13.92l-68.76-62.72Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p>Centralized Brand Asset Libraries via Dispatch</p></div></div></div></div><div class="layout3_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb453f_z_panes_02.webp" alt="" class="layout3_image"/></div><div class="margin-top margin-medium"><div class="button-group"><a href="/solutions/ai-dispatch" class="button is-secondary w-button">Learn More about Dispatch</a></div></div></div></div></div></div></div></section><section class="section_layout249 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout249_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">Efficiency</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Unlock the Power of AI in Your Brand Systems</h2></div><p class="text-size-medium">AI isn’t just about speed—it’s about clarity, consistency, and impact. ZINC helps brands design smarter systems that enhance creativity, streamline execution, and scale seamlessly across teams.</p></div></div><div class="w-layout-grid layout249_list"><div class="layout249_item"><div class="margin-bottom margin-medium"><div class="layout249_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e4_z_brd_01.webp" alt="" class="layout249_image"/></div></div><div class="margin-bottom margin-small"><h3 class="heading-style-h4">Transform Creative Workflows with AI</h3></div><p>Reimagine how campaigns, content, and brand assets are produced—faster, smarter, and always on-brand.</p></div><div class="layout249_item"><div class="margin-bottom margin-medium"><div class="layout249_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e5_z_brd_02.webp" alt="" class="layout249_image"/></div></div><div class="margin-bottom margin-small"><h3 class="heading-style-h4">Gain Real-Time Clarity</h3></div><p>Use AI-powered insights to guide decisions, optimize messaging, and stay aligned with your strategy.</p></div><div class="layout249_item"><div class="margin-bottom margin-medium"><div class="layout249_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb44e6_z_brd_03.webp" alt="" class="layout249_image"/></div></div><div class="margin-bottom margin-small"><h3 class="heading-style-h4">Collaborate Without Bottlenecks</h3></div><p>Empower teams with AI systems that reduce friction, foster alignment, and keep brand consistency intact.</p></div></div><div class="margin-top margin-xxlarge"><div class="button-group"><a href="/contact-us" class="button is-secondary w-button">Start a Project</a><a href="#" class="button is-link is-icon w-inline-block"></a></div></div></div></div></div></div></section><section class="section_layout195 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout195_component"><div class="w-layout-grid layout195_content"><div class="layout195_image-wrapper"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4590_Z_strat_09-p-500.webp 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4590_Z_strat_09-p-800.webp 800w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4590_Z_strat_09.webp 1000w" alt="AI-driven SEO strategy visualization showing smart search ranking optimization techniques for 2026" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/695bda13c7c5d5a8fcdb4590_Z_strat_09.webp" loading="lazy" class="layout195_image"/></div><div id="w-node-_03320b50-f8d2-e14e-3462-21d2b80d1d69-fcdb442c" class="layout195_content-right"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">Our Philosophy</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Strategy First. Always.</h2></div><div class="margin-bottom margin-medium"><p class="text-size-medium">Whether you&#x27;re launching something new or evolving what already exists, your brand is the connective tissue between what you do and how people experience it. ZINC approaches every brand engagement with one goal: to create something true, distinct, and built to endure—regardless of the medium, speed, or tools being used.</p></div><div class="w-layout-grid layout195_item-list"><div class="layout195_text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h6">Logo Design</h3></div><p>Custom logos that reflect your brand&#x27;s personality and values.</p></div><div class="layout195_text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h6">Color Schemes</h3></div><p>Strategically chosen colors to evoke the right emotions and enhance brand recognition.</p></div></div><div class="margin-top margin-medium"><div class="button-group"><a href="/thomabravo" class="button is-secondary w-button">See Case Study</a><a href="/contact-us" class="button is-link is-icon w-inline-block"><div>Schedule a Call</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"/>
+</svg></div></a></div></div></div></div></div></div></div></div></section><section class="section_aeo-6"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout207_component"><div class="w-layout-grid layout207_content"><div id="w-node-_8c951c22-8345-8d5f-954c-71566a2be86b-fcdb442c" class="layout207_content-right"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">&gt; Resource &lt;</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">2026 Guide to Answer Engine Optimization (AEO)</h2></div><div class="margin-bottom margin-small"><p class="text-size-medium">How modern brands earn visibility, authority, and demand inside AI-driven search platforms</p></div><div class="layout207_item-list"><div id="w-node-_8c951c22-8345-8d5f-954c-71566a2be876-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="m353.65-517.78 88.33-88.33-71.18-70.93-27.47 27q-9.24 9.47-21.36 9.24-12.12-.24-21.36-9.24-9-9.24-9-21.48t9-21.24l27.48-27.48-73.33-72.09-88.09 88.57 186.98 185.98ZM703-166.43l88.33-89.33-73.57-73.33-27.24 27.48q-9.24 9-21.48 9t-21.24-9.24q-9.23-9.24-9.23-21.48t9.23-21.47l27.24-27.24-70.17-70.42-88.57 88.57L703-166.43Zm7.04-613.09 70 70.24-70-70.24Zm-561.95 665.5q-14.68 0-24.37-9.7-9.7-9.69-9.7-24.37v-116.39q0-6.95 2.24-12.67t7.72-11.2L306.83-471.2l-196.5-196.26Q94.65-683.37 95.03-704q.38-20.63 15.3-36.54l107.13-108.89q15.67-15.92 36.3-15.92 20.63 0 36.54 15.68l198.5 197.74L665.37-828.5q9.24-9.24 20.6-13.48 11.36-4.24 22.83-4.24 11.48 0 22.84 4.24t20.6 13.48l76.26 76.02q9.24 9.24 13.48 20.6 4.24 11.36 4.24 22.84 0 11.71-4.24 23.07t-13.48 20.6L651.93-489.04 849.67-291.3q15.68 15.91 15.68 36.54t-15.68 36.3L741.78-111.33q-15.91 15.68-36.54 15.68t-36.54-15.68L471.72-308.3 287.87-124.22q-5.48 5.48-11.2 7.84-5.71 2.36-12.43 2.36H148.09Zm31.43-65.5h70.24l385.11-386.35-70-70.24L179.52-250v70.48Zm420.35-421.59-35-35 70 70.24-35-35.24Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p><strong>Website structure and page hierarchy</strong></p></div></div><div id="w-node-_8c951c22-8345-8d5f-954c-71566a2be87d-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M222-180h515L620-297q-29 23-64.5 35T480-250q-40 0-75.5-12.5T340-298L222-180Zm-39.85-45.15L297-340q-23-29-35-64.5T250-480q0-40 12.5-75.5T298-620L182.15-735.85v510.7ZM340-383l98-97-97-97q-14 21-22.5 45.5T310-480q0 27 8 51.5t22 45.5Zm140 73q27 0 51.5-8t45.5-22l-97-98-97 97q21 14 45.5 22.5T480-310Zm0-213 97-96q-21-14-45.5-22.5T480-650q-27 0-52 8t-45 22l97 97Zm140 140q14-20 22-45t8-52q0-27-8.5-51.5T619-577l-97 96 98 98Zm157.85 157.85v-510.7L662-620q23 29 35.5 64.5T710-480q0 40-12 75.5T663-340l114.85 114.85ZM620-662l118-118H223l117 117q29-23 64.5-35t75.5-12q40 0 75.5 12.5T620-662ZM182.15-114.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-595.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34h595.7q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v595.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p><strong>Schema, metadata, and technical essentials.</strong></p></div></div><div id="w-node-_8c951c22-8345-8d5f-954c-71566a2be884-fcdb442c" class="layout207_item"><div class="layout207_item-icon-wrapper"><div class="icon-embed-xsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-820.61 218.5-669.72 480-517.83l260.74-151.89L480-820.61ZM114.02-311.2v-337.6q0-18.06 8.83-33.81 8.83-15.75 25.24-25.37l297.84-171.8q8.83-5.24 16.86-7.1 8.04-1.86 17.11-1.86 9.08 0 17.61 1.89t16.56 7.07l297.84 171.8q16.41 9.62 25.36 25.37 8.95 15.75 8.95 33.81v174.73q0 14.43-10.01 24.25-10.02 9.82-24.49 9.82-14.48 0-24.18-9.82-9.69-9.82-9.69-24.25v-141.15L515.3-461.8q-15.91 9.43-34.06 9.93-18.15.5-34.07-8.93L182.15-614.22v303.02l288.11 165.44q7.7 4.53 12.3 12.2 4.61 7.67 4.61 17.3 0 19.56-17.03 29.33-17.03 9.78-33.94.34L148.09-252.02q-16.17-9.86-25.12-25.44-8.95-15.58-8.95-33.74ZM737.17 0q-78 0-134-55.4t-56-134q0-78.6 56-134.6t134-56q78 0 134 55.87 56 55.86 56 135.13 0 78.43-56 133.72Q815.17 0 737.17 0ZM480-476.09Zm250.98 339.5-64.85-64.61q-5.28-5.23-10.98-5.23-5.69 0-10.93 5.27-5 5.03-5 11.22 0 6.18 5 11.42l78.85 80.09q5.51 5.45 11.61 7.94T747.33-88q6.56 0 12.51-2.49 5.94-2.49 11.44-7.94l80.09-80.09q5.24-5.35 5.12-11.39-.12-6.05-5.39-11.29-5.28-5.23-11.46-5.23-6.18 0-11.42 5.23l-64.61 64.61v-152.89q0-6.48-4.87-11.34-4.87-4.85-11.36-4.85-6.68 0-11.54 4.85-4.86 4.86-4.86 11.34v152.89Z"/></svg></div></div><div class="layout207_item-text-wrapper"><p><strong>Core content AI uses to understand your business.</strong></p></div></div></div><div class="margin-top margin-medium"><div class="button-group"><a href="/lander-2" class="button is-secondary w-button">FREE Download &gt;</a></div></div></div><div class="layout207_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/6960842c2140301a707a4ef0_2026_aeo_guide1.webp" alt="" class="image"/></div></div></div></div></div></div></section><section class="section_home-7 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="blog38_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline">Blog</div></div><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Insights and Trends</h2></div><p class="text-size-medium">Explore our latest articles on digital marketing strategies.</p></div></div><div class="blog38_list-wrapper w-dyn-list"><div role="list" class="blog38_list w-dyn-items"><div role="listitem" class="blog38_item w-dyn-item"><a href="/post/the-ai-road-ahead-from-quick-wins-to-lasting-advantage" class="blog38_item-link w-inline-block"><div class="margin-bottom margin-small"><div class="blog38_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb451c_Z_blgim5.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb451c_Z_blgim5-p-500.png 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb451c_Z_blgim5.png 650w" class="blog38_image"/></div></div><div class="margin-bottom margin-xsmall"><div class="blog38_meta-wrapper"><div class="tag"><div>Marketing</div></div><div class="text-size-small">5 min read</div></div></div><div class="margin-bottom margin-xxsmall"><h3 class="heading-style-h5">The AI Road Ahead: From Quick Wins to Lasting Advantage</h3></div><div class="text-size-regular">The path forward isn’t about chasing hype—it’s about applying AI intentionally to drive growth now and in the future.</div><div class="margin-top margin-small"><div class="button-group"><div class="button is-link is-icon"><div>Read more</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"/>
+</svg></div></div></div></div></a></div><div role="listitem" class="blog38_item w-dyn-item"><a href="/post/the-zero-click-internet-what-brands-need-to-know-about-ai-search" class="blog38_item-link w-inline-block"><div class="margin-bottom margin-small"><div class="blog38_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb455f_zero_clk_bg.jpg" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb455f_zero_clk_bg-p-500.jpg 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4458/695bda13c7c5d5a8fcdb455f_zero_clk_bg.jpg 650w" class="blog38_image"/></div></div><div class="margin-bottom margin-xsmall"><div class="blog38_meta-wrapper"><div class="tag"><div>Marketing</div></div><div class="text-size-small">5 min read</div></div></div><div class="margin-bottom margin-xxsmall"><h3 class="heading-style-h5">The Zero-Click Internet: What Brands Need to Know About AI Search</h3></div><div class="text-size-regular">AI search is creating a zero-click world where structured, consistent content is now the key to brand visibility and citations.</div><div class="margin-top margin-small"><div class="button-group"><div class="button is-link is-icon"><div>Read more</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"/>
+</svg></div></div></div></div></a></div><div role="listitem" class="blog38_item w-dyn-item"><a href="/post/ai-in-marketing" class="blog38_item-link w-inline-block"><div class="margin-bottom margin-small"><div class="blog38_image-wrapper"><img loading="lazy" src="https://cdn.prod.website-files.com/6861b4cf5a86681187065183/689a7254a4733c6ec4441e9b_image20.jpeg" alt="" class="blog38_image"/></div></div><div class="margin-bottom margin-xsmall"><div class="blog38_meta-wrapper"><div class="tag"><div>Marketing</div></div><div class="text-size-small">5 min read</div></div></div><div class="margin-bottom margin-xxsmall"><h3 class="heading-style-h5">The Role of AI in Marketing</h3></div><div class="text-size-regular">Learn where AI improves marketing through personalization, automation, data analysis, and better customer experience.</div><div class="margin-top margin-small"><div class="button-group"><div class="button is-link is-icon"><div>Read more</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"/>
+</svg></div></div></div></div></a></div></div></div><div class="margin-top margin-xxlarge"><div class="button-group is-right"><a href="/work" class="button is-secondary w-button">View all</a></div></div></div></div></div></div></section><section class="section_on_brand_aeo_sprint-7 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="faq2_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-small"><h2 class="heading-style-h2">FAQs</h2></div><p class="text-size-medium">Find answers to common questions about our branding services and how we can help you.</p></div></div><div class="faq2_list"><div class="faq2_accordion"><div data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1e56" class="faq2_question"><div class="text-size-medium">What is branding?</div><div class="faq2_icon-wrapper"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5303 20.8839C16.2374 21.1768 15.7626 21.1768 15.4697 20.8839L7.82318 13.2374C7.53029 12.9445 7.53029 12.4697 7.82318 12.1768L8.17674 11.8232C8.46963 11.5303 8.9445 11.5303 9.2374 11.8232L16 18.5858L22.7626 11.8232C23.0555 11.5303 23.5303 11.5303 23.8232 11.8232L24.1768 12.1768C24.4697 12.4697 24.4697 12.9445 24.1768 13.2374L16.5303 20.8839Z" fill="currentColor"/>
+</svg></div></div></div><div style="width:100%;height:0px" class="faq2_answer"><div class="margin-bottom margin-small"><div class="max-width-large"><p>Branding is the process of creating a unique identity for your business. It encompasses your logo, color scheme, and overall messaging. A strong brand helps you stand out in a crowded market.</p></div></div></div></div><div class="faq2_accordion"><div data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1e61" class="faq2_question"><div class="text-size-medium">Why is branding important?</div><div class="faq2_icon-wrapper"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5303 20.8839C16.2374 21.1768 15.7626 21.1768 15.4697 20.8839L7.82318 13.2374C7.53029 12.9445 7.53029 12.4697 7.82318 12.1768L8.17674 11.8232C8.46963 11.5303 8.9445 11.5303 9.2374 11.8232L16 18.5858L22.7626 11.8232C23.0555 11.5303 23.5303 11.5303 23.8232 11.8232L24.1768 12.1768C24.4697 12.4697 24.4697 12.9445 24.1768 13.2374L16.5303 20.8839Z" fill="currentColor"/>
+</svg></div></div></div><div style="width:100%;height:0px" class="faq2_answer"><div class="margin-bottom margin-small"><div class="max-width-large"><p>Branding builds recognition and trust with your audience. It conveys your values and mission, making it easier for customers to connect with you. A well-defined brand can lead to increased loyalty and sales.</p></div></div></div></div><div class="faq2_accordion"><div data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1e6c" class="faq2_question"><div class="text-size-medium">How to improve branding?</div><div class="faq2_icon-wrapper"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5303 20.8839C16.2374 21.1768 15.7626 21.1768 15.4697 20.8839L7.82318 13.2374C7.53029 12.9445 7.53029 12.4697 7.82318 12.1768L8.17674 11.8232C8.46963 11.5303 8.9445 11.5303 9.2374 11.8232L16 18.5858L22.7626 11.8232C23.0555 11.5303 23.5303 11.5303 23.8232 11.8232L24.1768 12.1768C24.4697 12.4697 24.4697 12.9445 24.1768 13.2374L16.5303 20.8839Z" fill="currentColor"/>
+</svg></div></div></div><div style="width:100%;height:0px" class="faq2_answer"><div class="margin-bottom margin-small"><div class="max-width-large"><p>To improve your branding, focus on consistency across all platforms. Engage with your audience through storytelling and visual elements that reflect your brand&#x27;s personality. Regularly assess your brand&#x27;s performance and adapt as needed.</p></div></div></div></div><div class="faq2_accordion"><div data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1e77" class="faq2_question"><div class="text-size-medium">What services do you offer?</div><div class="faq2_icon-wrapper"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5303 20.8839C16.2374 21.1768 15.7626 21.1768 15.4697 20.8839L7.82318 13.2374C7.53029 12.9445 7.53029 12.4697 7.82318 12.1768L8.17674 11.8232C8.46963 11.5303 8.9445 11.5303 9.2374 11.8232L16 18.5858L22.7626 11.8232C23.0555 11.5303 23.5303 11.5303 23.8232 11.8232L24.1768 12.1768C24.4697 12.4697 24.4697 12.9445 24.1768 13.2374L16.5303 20.8839Z" fill="currentColor"/>
+</svg></div></div></div><div style="width:100%;height:0px" class="faq2_answer"><div class="margin-bottom margin-small"><div class="max-width-large"><p>We offer a range of branding services, including logo design, brand strategy development, and visual identity creation. Our team works closely with you to understand your vision and goals. Together, we create a cohesive brand that resonates with your target audience.</p></div></div></div></div><div class="faq2_accordion"><div data-w-id="03320b50-f8d2-e14e-3462-21d2b80d1e82" class="faq2_question"><div class="text-size-medium">How long does branding take?</div><div class="faq2_icon-wrapper"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.5303 20.8839C16.2374 21.1768 15.7626 21.1768 15.4697 20.8839L7.82318 13.2374C7.53029 12.9445 7.53029 12.4697 7.82318 12.1768L8.17674 11.8232C8.46963 11.5303 8.9445 11.5303 9.2374 11.8232L16 18.5858L22.7626 11.8232C23.0555 11.5303 23.5303 11.5303 23.8232 11.8232L24.1768 12.1768C24.4697 12.4697 24.4697 12.9445 24.1768 13.2374L16.5303 20.8839Z" fill="currentColor"/>
+</svg></div></div></div><div style="width:100%;height:0px" class="faq2_answer"><div class="margin-bottom margin-small"><div class="max-width-large"><p>The timeline for branding projects varies based on complexity and client needs. Typically, a complete branding project can take anywhere from a few weeks to several months. We ensure to work efficiently while maintaining high-quality results.</p></div></div></div></div></div></div></div></div></div></section><section class="section_aeo-10 color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="cta7_component"><div class="cta7_content"><div class="max-width-large"><div class="margin-bottom margin-xsmall"><h2 class="heading-style-h3">Unlock Your AI Potential Today</h2></div><p class="text-size-medium">Discover how AI can transform your business.</p></div><div class="button-group is-right"><a href="/contact-us" class="button w-button">Inquire</a><a href="/contact-us" class="button is-secondary w-button">Learn More</a></div></div></div></div></div></div></section></main><footer class="footer3_component color-scheme-1"><div class="padding-global"><div class="container-large"><div class="padding-vertical padding-xxlarge"><div class="padding-bottom padding-xxlarge"><div class="w-layout-grid footer3_top-wrapper"><div class="footer3_left-wrapper"><div class="margin-bottom margin-medium"><a href="/" class="footer3_logo-link w-nav-brand"><img width="100" height="100" alt="" src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/69606a5b2a8d96da39f97543_Zinc_footer_logo.webp" loading="eager" srcset="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/69606a5b2a8d96da39f97543_Zinc_footer_logo-p-500.webp 500w, https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/69606a5b2a8d96da39f97543_Zinc_footer_logo.webp 868w" sizes="100px" class="footer3_logo"/></a></div><div class="margin-bottom margin-medium"><div class="footer3_details-wrapper"><div class="margin-bottom margin-tiny"><div class="text-size-small">Contact ZINC:</div></div><div class="margin-bottom margin-small"><div class="text-size-small">Ph: (949) 719-4950</div><div class="text-size-small">hello@wearezinc.com</div></div></div></div></div><div class="w-layout-grid footer3_menu-wrapper"><div class="footer3_link-list"><a href="/solutions/ai-strategy-optimization" class="footer3_link">Ai Enablement</a><a href="/solutions/website-design-development" class="footer3_link">Website &amp; Optimization</a><a href="/solutions/ecommerce-acceleration" class="footer3_link">Ecommerce Acceleration </a><a href="/solutions/content-campaign-systems" class="footer3_link">Content &amp; Campaigns</a><a href="/solutions/automation-workflows" class="footer3_link">Automation &amp; Workflow</a><a href="/solutions/branding-positioning" aria-current="page" class="footer3_link w--current">Brand &amp; Positioning</a></div><div class="footer3_link-list"><a href="/work" class="footer3_link">Our Work</a><a href="/blog" class="footer3_link">Ideas &amp; Insights</a><a href="/about-us" class="footer3_link">About</a><a href="/contact-us" class="footer3_link">Contact Us</a></div></div></div></div><div class="divider-horizontal"></div><div class="padding-top padding-medium"><div class="footer3_bottom-wrapper"><div class="footer3_credit-text">© 2026 ZINC Solutions Inc. All rights reserved.</div><div class="w-layout-grid footer3_legal-list"><a href="/about/privacy-policy" class="footer3_legal-link">Privacy Policy</a><a href="/about/terms-of-use" class="footer3_legal-link">Terms of Use</a><a href="/about/cookie-policy" class="footer3_legal-link">Cookies Policy</a></div></div></div></div></div></div></footer></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=695bda13c7c5d5a8fcdb4451" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/js/zinc-v-3-491dd5ea9ef3a0a3f6a51bc45fcb45.schunk.36b8fb49256177c8.js" type="text/javascript" integrity="sha384-4abIlA5/v7XaW1HMXKBgnUuhnjBYJ/Z9C1OSg4OhmVw9O3QeHJ/qJqFBERCDPv7G" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/js/zinc-v-3-491dd5ea9ef3a0a3f6a51bc45fcb45.schunk.0a294da0ce97949d.js" type="text/javascript" integrity="sha384-w7Q+VSKuxPvPpvoMx8H5zsJGm3mf9aulROzdpTbvxHEW3SHVIUzachZLtBFm3vhp" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/js/zinc-v-3-491dd5ea9ef3a0a3f6a51bc45fcb45.schunk.bdf58efcee47c042.js" type="text/javascript" integrity="sha384-FoTOZ1artRQ01VebRzls7er2OghKKwHoIL613ODIUHjRJjMe2F+qjXEFsmVHiWgt" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/695bda13c7c5d5a8fcdb4451/js/zinc-v-3-491dd5ea9ef3a0a3f6a51bc45fcb45.c70df819.8bcf19a743e264f9.js" type="text/javascript" integrity="sha384-G3XnC5BoDYvxsRtYbhbC6feoIcmFBo+bdiwsoc0bQTMwr7+//jf1mRfPxVcFR0fm" crossorigin="anonymous"></script><script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("img").forEach(img => {
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+    });
+  });
+</script>
+
+<script>
+(function () {
+  const DEFAULTS = {
+    selector: '[data-gsap-lines]',
+    y: 26,
+    duration: 0.85,
+    stagger: 0.12,
+    delay: 0.25,
+    ease: 'power3.out',
+    start: 'top 85%',
+  };
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  async function ensureLibs() {
+    if (!window.SplitType) await loadScript('https://unpkg.com/split-type');
+    if (!window.gsap) await loadScript('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js');
+    if (!window.ScrollTrigger) await loadScript('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js');
+    if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+  }
+
+  const instances = new Map();
+
+  function killTriggerFor(el) {
+    if (!window.ScrollTrigger) return;
+    ScrollTrigger.getAll().forEach(t => {
+      if (t?.vars?.trigger === el) t.kill();
+    });
+  }
+
+  function getNumAttr(el, name, fallback) {
+    const raw = el.getAttribute(name);
+    if (raw == null || raw === '') return fallback;
+    const n = Number(String(raw).trim().replace(',', '.'));
+    return Number.isFinite(n) ? n : fallback;
+  }
+
+  function getStrAttr(el, name, fallback) {
+    const raw = el.getAttribute(name);
+    return (raw == null || raw === '') ? fallback : String(raw);
+  }
+
+  function splitToLines(el) {
+    // revert previous instance (важливо на resize)
+    if (instances.has(el)) {
+      try { instances.get(el).revert(); } catch (e) {}
+      instances.delete(el);
+    }
+
+    const inst = new SplitType(el, { types: 'lines', lineClass: 'line' });
+    instances.set(el, inst);
+
+    // wrap each line content into span (рухаємо span, line = маска)
+    el.querySelectorAll('.line').forEach(line => {
+      const span = document.createElement('span');
+      while (line.firstChild) span.appendChild(line.firstChild);
+      line.appendChild(span);
+    });
+
+    return el.querySelectorAll('.line > span');
+  }
+
+  function prepareHidden(el) {
+    // прибираємо FOUC: елемент видимий тільки коли ми вже підготували split + set()
+    el.style.visibility = 'hidden';
+  }
+
+  function reveal(el) {
+    el.style.visibility = 'visible';
+  }
+
+  function animate(el) {
+    // per-element overrides (через атрибути)
+    const delay   = getNumAttr(el, 'data-gsap-delay', DEFAULTS.delay);
+    const stagger = getNumAttr(el, 'data-gsap-stagger', DEFAULTS.stagger);
+    const y       = getNumAttr(el, 'data-gsap-y', DEFAULTS.y);
+    const dur     = getNumAttr(el, 'data-gsap-duration', DEFAULTS.duration);
+    const start   = getStrAttr(el, 'data-gsap-start', DEFAULTS.start);
+
+    // split
+    const parts = splitToLines(el);
+    if (!parts || !parts.length) {
+      // якщо нічого не розбилося — покажемо як є
+      reveal(el);
+      return;
+    }
+
+    killTriggerFor(el);
+
+    // set initial state BEFORE making it visible
+    gsap.set(parts, { y, opacity: 0 });
+    reveal(el);
+
+    gsap.to(parts, {
+      y: 0,
+      opacity: 1,
+      duration: dur,
+      ease: DEFAULTS.ease,
+      stagger,
+      delay,
+      scrollTrigger: {
+        trigger: el,
+        start,
+        once: true
+      }
+    });
+  }
+
+  function initAll() {
+    const els = document.querySelectorAll(DEFAULTS.selector);
+    els.forEach(prepareHidden);
+    els.forEach(animate);
+  }
+
+  // debounce resize (перерахунок line-breaks)
+  let rAF = null;
+  function onResize() {
+    if (rAF) cancelAnimationFrame(rAF);
+    rAF = requestAnimationFrame(() => {
+      initAll();
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    await ensureLibs();
+    initAll();
+    window.addEventListener('resize', onResize);
+  });
+})();
+</script>
+</body></html>

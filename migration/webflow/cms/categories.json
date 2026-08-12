@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "id": "695bda13c7c5d5a8fcdb4646",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-01-05T15:52:03.505Z",
+      "lastUpdated": "2025-11-19T19:46:05.050Z",
+      "createdOn": "2025-08-11T23:48:26.605Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "color": "#ff5b19",
+        "icon-2": null,
+        "name": "Insights",
+        "slug": "insights"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb462e",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-01-05T15:52:03.505Z",
+      "lastUpdated": "2025-11-15T15:43:31.536Z",
+      "createdOn": "2025-08-11T23:48:26.605Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "color": "#7ED321",
+        "icon-2": null,
+        "name": "News",
+        "slug": "news"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb4619",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-01-05T15:52:03.505Z",
+      "lastUpdated": "2025-11-22T00:22:53.533Z",
+      "createdOn": "2025-08-11T23:48:26.605Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "color": "#F5A623",
+        "icon-2": null,
+        "name": "Resources",
+        "slug": "resources"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb4618",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-01-05T15:52:03.505Z",
+      "lastUpdated": "2025-11-15T15:43:20.771Z",
+      "createdOn": "2025-08-11T23:48:26.605Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "color": "#E94E77",
+        "icon-2": null,
+        "name": "Ecommerce",
+        "slug": "ecommerce"
+      }
+    },
+    {
+      "id": "695bda13c7c5d5a8fcdb4617",
+      "cmsLocaleId": "695bda13c7c5d5a8fcdb4455",
+      "lastPublished": "2026-01-05T15:52:03.505Z",
+      "lastUpdated": "2025-11-15T15:39:53.861Z",
+      "createdOn": "2025-08-11T23:48:26.605Z",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "color": "#4A90E2",
+        "icon-2": null,
+        "name": "Web Design",
+        "slug": "web-design"
+      }
+    }
+  ],
+  "pagination": {
+    "limit": 50,
+    "offset": 0,
+    "total": 5
+  }
+}
