@@ -123,6 +123,13 @@ function injectSeo(html, isHome) {
   return html.replace('</head>', inject.join('') + '</head>');
 }
 
+// Forms post to our API (Supabase + HubSpot) instead of Webflow's backend.
+function injectFormsScript(html) {
+  return html.includes('/js/zinc-forms.js')
+    ? html
+    : html.replace('</body>', '<script src="/js/zinc-forms.js" defer></script></body>');
+}
+
 function fixGa4(html) {
   // swap Webflow's first-party GA proxy for standard gtag.js
   return html.replace(
@@ -169,6 +176,7 @@ for (const file of walk(PAGES)) {
   html = fixGa4(r.html);
   if (rel !== '404.html') html = injectSeo(html, rel === 'index.html'); // Z-03/Z-04
   html = applyOverrides(html, outRel.replace(/\.html$/, '')); // Z-08
+  html = injectFormsScript(html);
 
   const dest = path.join(PUB_PAGES, outRel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -199,6 +207,7 @@ for (const [src, out] of [
   html = replaceRevealScript(html).html;
   html = fixGa4(html);
   if (out === 'blog.html') html = applyOverrides(injectSeo(html, false), 'blog');
+  html = injectFormsScript(html);
   fs.writeFileSync(path.join(TPL, out), html);
 }
 console.log('templates: post.html, blog.html written to src/templates/');
