@@ -61,6 +61,41 @@ function replaceRevealScript(html) {
   return { html, replaced };
 }
 
+const SITE = 'https://www.wearezinc.com';
+const OG_IMAGE = `${SITE}/wf/695bda13c7c5d5a8fcdb44f2_home_header1.webp`;
+const ORG_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ZINC',
+  url: SITE,
+  logo: `${SITE}/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png`,
+  description:
+    'ZINC is an AI-driven digital strategy and design agency: AI enablement, answer engine optimization (AEO), web design and development, ecommerce, branding, and marketing systems.',
+};
+const SITE_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ZINC',
+  url: SITE,
+};
+
+// Z-03/Z-04 for static pages: default og:image/og:url + Organization JSON-LD.
+function injectSeo(html, isHome) {
+  const canon = html.match(/<link href="([^"]+)" rel="canonical"\/>/)?.[1];
+  // drop Webflow's empty JSON-LD block
+  html = html.replace(/<script type="application\/ld\+json">\s*<\/script>/, '');
+  const inject = [];
+  if (!html.includes('property="og:image"'))
+    inject.push(`<meta property="og:image" content="${OG_IMAGE}"/>`);
+  if (!html.includes('name="twitter:image"'))
+    inject.push(`<meta name="twitter:image" content="${OG_IMAGE}"/>`);
+  if (canon && !html.includes('property="og:url"'))
+    inject.push(`<meta property="og:url" content="${canon}"/>`);
+  inject.push(`<script type="application/ld+json">${JSON.stringify(ORG_LD)}</script>`);
+  if (isHome) inject.push(`<script type="application/ld+json">${JSON.stringify(SITE_LD)}</script>`);
+  return html.replace('</head>', inject.join('') + '</head>');
+}
+
 function fixGa4(html) {
   // swap Webflow's first-party GA proxy for standard gtag.js
   return html.replace(
@@ -105,6 +140,7 @@ for (const file of walk(PAGES)) {
   html = dropScriptContaining(html, 'removeAttribute("srcset")'); // Z-02
   const r = replaceRevealScript(html); // Z-01
   html = fixGa4(r.html);
+  if (rel !== '404.html') html = injectSeo(html, rel === 'index.html'); // Z-03/Z-04
 
   const dest = path.join(PUB_PAGES, outRel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });

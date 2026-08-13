@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/post/[slug]": ["./src/templates/**"],
     "/blog": ["./src/templates/**"],
+    "/sitemap.xml": ["./public/_wf/manifest.json"],
   },
   async rewrites() {
     return manifest.pages.map((p) => ({
