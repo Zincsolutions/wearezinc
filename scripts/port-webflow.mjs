@@ -79,6 +79,33 @@ const SITE_LD = {
   url: SITE,
 };
 
+const OVERRIDES = JSON.parse(
+  fs.readFileSync(path.join(ROOT, 'scripts', 'seo-overrides.json'), 'utf8')
+);
+const escAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+// Z-08: user-approved title/description rewrites (upserts each tag).
+function applyOverrides(html, key) {
+  const o = OVERRIDES[key];
+  if (!o) return html;
+  const upsertMeta = (h, attr, name, content) => {
+    const re = new RegExp(`<meta content="[^"]*" ${attr}="${name}"\\s*/>`);
+    const tag = `<meta content="${escAttr(content)}" ${attr}="${name}"/>`;
+    return re.test(h) ? h.replace(re, tag) : h.replace('</title>', `</title>${tag}`);
+  };
+  if (o.title) {
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${escAttr(o.title)}</title>`);
+    html = upsertMeta(html, 'property', 'og:title', o.title);
+    html = upsertMeta(html, 'name', 'twitter:title', o.title);
+  }
+  if (o.description) {
+    html = upsertMeta(html, 'name', 'description', o.description);
+    html = upsertMeta(html, 'property', 'og:description', o.description);
+    html = upsertMeta(html, 'name', 'twitter:description', o.description);
+  }
+  return html;
+}
+
 // Z-03/Z-04 for static pages: default og:image/og:url + Organization JSON-LD.
 function injectSeo(html, isHome) {
   const canon = html.match(/<link href="([^"]+)" rel="canonical"\/>/)?.[1];
@@ -141,6 +168,7 @@ for (const file of walk(PAGES)) {
   const r = replaceRevealScript(html); // Z-01
   html = fixGa4(r.html);
   if (rel !== '404.html') html = injectSeo(html, rel === 'index.html'); // Z-03/Z-04
+  html = applyOverrides(html, outRel.replace(/\.html$/, '')); // Z-08
 
   const dest = path.join(PUB_PAGES, outRel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -170,6 +198,7 @@ for (const [src, out] of [
   html = dropScriptContaining(html, 'removeAttribute("srcset")');
   html = replaceRevealScript(html).html;
   html = fixGa4(html);
+  if (out === 'blog.html') html = applyOverrides(injectSeo(html, false), 'blog');
   fs.writeFileSync(path.join(TPL, out), html);
 }
 console.log('templates: post.html, blog.html written to src/templates/');

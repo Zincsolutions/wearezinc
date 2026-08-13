@@ -1,0 +1,74 @@
+{
+  "_comment": "User-approved metadata (Aug 12, 2026 — see migration/seo-metadata-proposal.md). Applied by port-webflow.mjs to <title>, meta description, og:*, twitter:*.",
+  "about-us": {
+    "title": "About ZINC | AI-Driven Strategy & Design Agency",
+    "description": "Meet ZINC: 25+ years of brand, web, and ecommerce expertise, now helping companies adopt AI across strategy, design, and marketing operations."
+  },
+  "contact-us": {
+    "title": "Contact ZINC | Start Your AI, Web, or Brand Project",
+    "description": "Schedule a call with ZINC to talk AI enablement, AEO, web design, ecommerce, or branding. Tell us where you want to grow — we'll map the path."
+  },
+  "work": {
+    "title": "Our Work | AI, Web & Brand Case Studies | ZINC",
+    "description": "Explore ZINC case studies across private equity, ecommerce, healthcare, and consumer brands — strategy, design, and AI-driven results."
+  },
+  "blog": {
+    "title": "Blog | AI Strategy, AEO & Digital Growth Insights | ZINC",
+    "description": "Practical insights on AI search, answer engine optimization, ecommerce, and web strategy from the ZINC team."
+  },
+  "careers": {
+    "title": "Careers at ZINC | Join an AI-Native Creative Team",
+    "description": "Work at the intersection of strategy, design, and AI. See open roles and tell us how you'd make ZINC better."
+  },
+  "our-approach": {
+    "title": "Our Approach | Strategy-First, AI-Enabled | ZINC",
+    "description": "How ZINC works: 25 years of digital strategy fused with AI-powered systems for clarity, automation, and measurable growth."
+  },
+  "solutions/branding-positioning": {
+    "title": "Branding & Positioning Services | ZINC",
+    "description": "Brand strategy, identity, and positioning that sharpen how customers — and AI engines — understand and choose you."
+  },
+  "solutions/automation-workflows": {
+    "title": "AI Automation & Workflow Services | ZINC",
+    "description": "Design and implement AI-powered automations and marketing workflows that cut busywork and scale output without scaling headcount."
+  },
+  "solutions/content-campaign-systems": {
+    "title": "Content & Campaign Systems | ZINC",
+    "description": "Repeatable content and campaign systems: on-brand assets, faster production, and AI-assisted workflows your team can actually run."
+  },
+  "solutions/ai-image-library": {
+    "description": "Build an on-brand AI image system: trained styles, prompt libraries, and governance so every generated visual looks like you."
+  },
+  "partners/partners-2": {
+    "title": "Partners | Webflow, Shopify & Tech Alliances | ZINC",
+    "description": "ZINC partners with Webflow, Shopify, and leading platforms to design, build, and grow high-performing digital experiences."
+  },
+  "partners/shopify": {
+    "title": "Shopify Partner | Ecommerce Design & Growth | ZINC",
+    "description": "As a Shopify partner, ZINC designs, builds, and optimizes storefronts that convert — from UX and theme builds to AI-ready product content."
+  },
+  "partners/webflow": {
+    "title": "Webflow Partner | Site Design & Development | ZINC",
+    "description": "ZINC designs and develops fast, flexible marketing sites on Webflow — built to rank in classic search and AI answers alike."
+  },
+  "work/pivot": {
+    "title": "Pivot Case Study | Brand & Digital | ZINC",
+    "description": "How ZINC partnered with Pivot on brand and digital experience. See the work."
+  },
+  "work/growth99": {
+    "title": "Growth99 Case Study | Web & Brand | ZINC",
+    "description": "How ZINC partnered with Growth99 on digital design and brand. See the work."
+  },
+  "work/navigator-global": {
+    "title": "Navigator Global Case Study | Website & Brand | ZINC",
+    "description": "How ZINC partnered with Navigator Global on brand and web experience. See the work."
+  },
+  "work/bravo-foundation": {
+    "title": "Bravo Family Foundation Case Study | ZINC",
+    "description": "How ZINC supported the Bravo Family Foundation's digital presence and storytelling. See the work."
+  },
+  "about/privacy-policy": {
+    "title": "Privacy Policy | ZINC",
+    "description": "How ZINC collects, uses, and protects your information."
+  }
+}
