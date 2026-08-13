@@ -64,19 +64,35 @@ export async function getRelatedPosts(postId: string, limit = 3): Promise<PostRo
   return (data as unknown as JoinedPost[]).map(flatten);
 }
 
+// Matches the old Webflow listing: sort-order ascending with un-numbered posts
+// first (those sub-sorted newest-first by publish date), numbered ties oldest-first.
 export async function getAllPosts(): Promise<PostRow[]> {
-  const { data, error } = await db
-    .from("posts")
-    .select(POST_SELECT)
-    .order("publish_date", { ascending: false });
+  const { data, error } = await db.from("posts").select(POST_SELECT + ",sort_order");
   if (error) throw new Error(`getAllPosts: ${error.message}`);
-  return (data as unknown as JoinedPost[]).map(flatten);
+  type WithSort = JoinedPost & { sort_order: number | null };
+  const posts = (data as unknown as WithSort[]).slice();
+  posts.sort((a, b) => {
+    if (a.sort_order == null && b.sort_order == null)
+      return (b.publish_date ?? "").localeCompare(a.publish_date ?? "");
+    if (a.sort_order == null) return -1;
+    if (b.sort_order == null) return 1;
+    if (a.sort_order !== b.sort_order) return a.sort_order - b.sort_order;
+    return (a.publish_date ?? "").localeCompare(b.publish_date ?? "");
+  });
+  return posts.map(flatten);
 }
 
+// Template's original pill order (Webflow item order, not alphabetical).
+const CATEGORY_ORDER = ["Insights", "News", "Resources", "Ecommerce", "Web Design"];
+
 export async function getCategories(): Promise<{ name: string; slug: string }[]> {
-  const { data, error } = await db.from("categories").select("name,slug").order("name");
+  const { data, error } = await db.from("categories").select("name,slug");
   if (error) throw new Error(`getCategories: ${error.message}`);
-  return data ?? [];
+  return (data ?? []).sort((a, b) => {
+    const ai = CATEGORY_ORDER.indexOf(a.name);
+    const bi = CATEGORY_ORDER.indexOf(b.name);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
 }
 
 export const formatDate = (iso: string | null): string =>

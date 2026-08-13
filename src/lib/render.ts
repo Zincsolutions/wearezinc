@@ -67,21 +67,28 @@ function fillCard(
     .removeAttr("sizes");
   $card.find("h1,h2,h3,h4").first().text(post.name);
   $card.find(".text-size-regular").first().text(post.post_summary ?? "");
-  // category chips: either a nested dynamic list (grid cards) or a lone .tag
+  // category chips: either a nested dynamic list (grid cards) or a lone .tag.
+  // The .tag element holds either an inner <div> (hero/related cards) or bare
+  // text (grid cards, with fs-list-field="category" for Finsweet filtering).
+  const setTagText = (scope: cheerio.Cheerio<never>, c: string) => {
+    const tag = scope.find(".tag").first();
+    if (!tag.length) return;
+    const inner = tag.children("div").first();
+    if (inner.length) inner.text(c);
+    else tag.text(c);
+  };
   const chipList = $card.find(".w-dyn-items").first();
   if (chipList.length) {
     const chipProto = chipList.children(".w-dyn-item").first().clone();
     chipList.empty();
     for (const c of post.categories) {
       const chip = chipProto.clone();
-      chip.find(".tag div").first().text(c);
-      chip.find(".tag").length || chip.text(c);
+      setTagText(chip as never, c);
       chipList.append(chip);
     }
   } else {
-    const tag = $card.find(".tag").first();
-    if (post.categories.length) tag.find("div").first().text(post.categories[0]);
-    else tag.remove();
+    if (post.categories.length) setTagText($card, post.categories[0]);
+    else $card.find(".tag").first().remove();
   }
   // listing cards show a date in some layouts
   const date = $card.find('[class*="date"] .text-size-small').last();
@@ -146,7 +153,10 @@ export function renderBlog(posts: PostRow[], categories: { name: string }[]): st
 
     if (proto.find('a[href^="/post/"]').length) {
       const featured = proto.find('[class*="featured"]').length > 0;
-      const source = featured ? posts.filter((p) => p.featured) : posts;
+      // the grid mirrors the old site: featured post lives in the hero only
+      const source = featured
+        ? posts.filter((p) => p.featured)
+        : posts.filter((p) => !p.featured);
       const chosen = featured && !source.length ? posts.slice(0, 1) : source;
       const protoClone = proto.clone();
       $items.empty();
