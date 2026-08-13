@@ -142,8 +142,18 @@ export function renderPost(post: PostRow, related: PostRow[]): string {
   return $.html();
 }
 
-export function renderBlog(posts: PostRow[], categories: { name: string }[]): string {
+const PAGE_SIZE = 12; // matches the old Webflow listing
+
+export function renderBlog(
+  posts: PostRow[],
+  categories: { name: string }[],
+  page = 1
+): string {
   const $ = cheerio.load(tpl("blog.html"));
+
+  const nonFeatured = posts.filter((p) => !p.featured);
+  const totalPages = Math.max(1, Math.ceil(nonFeatured.length / PAGE_SIZE));
+  page = Math.min(Math.max(1, page), totalPages);
 
   $(".w-dyn-list").each((_, list) => {
     const $list = $(list);
@@ -153,10 +163,12 @@ export function renderBlog(posts: PostRow[], categories: { name: string }[]): st
 
     if (proto.find('a[href^="/post/"]').length) {
       const featured = proto.find('[class*="featured"]').length > 0;
-      // the grid mirrors the old site: featured post lives in the hero only
+      // the grid mirrors the old site: featured post lives in the hero only,
+      // and the server paginates like Webflow did (fs fetches other pages
+      // through the next/previous links to filter across the full set)
       const source = featured
         ? posts.filter((p) => p.featured)
-        : posts.filter((p) => !p.featured);
+        : nonFeatured.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
       const chosen = featured && !source.length ? posts.slice(0, 1) : source;
       const protoClone = proto.clone();
       $items.empty();
@@ -176,6 +188,24 @@ export function renderBlog(posts: PostRow[], categories: { name: string }[]): st
       }
     }
   });
+
+  // pagination: same param name as the old Webflow site so Finsweet and any
+  // indexed ?page URLs keep working
+  const wrap = $(".w-pagination-wrapper").first();
+  if (totalPages <= 1) {
+    wrap.remove();
+  } else {
+    const next = wrap.find(".w-pagination-next").first();
+    if (page < totalPages) next.attr("href", `?190f5589_page=${page + 1}`);
+    else next.remove();
+    if (page > 1) {
+      const prevHtml = `<a href="?190f5589_page=${page - 1}" aria-label="Previous Page" class="w-pagination-previous previous"><div class="w-inline-block">Previous</div></a>`;
+      const target = wrap.find(".div-block-2").first();
+      if (target.length) target.before(prevHtml);
+      else wrap.prepend(prevHtml);
+    }
+    wrap.find(".w-page-count").text(`${page} / ${totalPages}`);
+  }
 
   return $.html();
 }
