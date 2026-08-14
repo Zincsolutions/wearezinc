@@ -29,6 +29,20 @@ const nextConfig: NextConfig = {
         destination: "https://www.wearezinc.com/:path*",
         permanent: true,
       },
+      // legacy primary domain: single-hop, path-preserving, https 301
+      // (replaces GoDaddy forwarding, which 404'd deep links)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "zincsolutions.com" }],
+        destination: "https://www.wearezinc.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.zincsolutions.com" }],
+        destination: "https://www.wearezinc.com/:path*",
+        permanent: true,
+      },
       // /thomabravo stays at its original root URL (highest-traffic page).
       // Safety net for the briefly-used preview path:
       { source: "/work/thomabravo", destination: "/thomabravo", permanent: true },
