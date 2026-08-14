@@ -26,7 +26,9 @@ const PUB_ASSETS = path.join(ROOT, 'public', 'wf');
 const PUB_PAGES = path.join(ROOT, 'public', '_wf');
 
 const DROP = new Set(['blog-cats.html', 'lander-1.html', 'lander-2.html', 'partners-3.html', 'blog.html']);
-const MOVE = { 'thomabravo.html': 'work/thomabravo.html' };
+// /thomabravo stays at the root (user decision Aug 13, 2026: highest-traffic
+// page on the site — identical URL, no redirect).
+const MOVE = {};
 
 const CDN_RE =
   /https:\/\/(?:cdn\.prod\.website-files\.com|uploads-ssl\.webflow\.com|assets(?:-global)?\.website-files\.com)\/[^"\s)',]+/g;

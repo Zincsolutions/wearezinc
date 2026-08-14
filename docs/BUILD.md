@@ -97,8 +97,9 @@ Names only:
 1. **Source of truth = live published site** as of Aug 12, 2026. ~4 weeks of unpublished
    Webflow Designer edits were deliberately excluded (user decision).
 2. **Dropped pages** (user decision): `/blog-cats`, `/lander-1`, `/lander-2`,
-   `/partners-3` (duplicate). 301s: `/partners-3 → /partners/partners-2`,
-   `/thomabravo → /work/thomabravo` (moved under /work/), junk → home/blog.
+   `/partners-3` (duplicate). 301s: `/partners-3 → /partners/partners-2`, junk →
+   home/blog. **`/thomabravo` keeps its original root URL** (user decision Aug 13:
+   highest-traffic page, no redirect risk; `/work/thomabravo → /thomabravo` safety 301).
 3. **Post dates show the editorial `publish-date` CMS field.** The old Webflow template
    displayed the last-*republish* timestamp, which reset on every site publish (14 of 16
    posts all showed "July 1, 2026"). Intentional improvement; dates on some posts differ

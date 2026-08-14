@@ -17,7 +17,9 @@ Rebuild of wearezinc.com (migrating from Webflow "ZINC Growth Design" to Vercel,
 ## Page inventory (user decisions, Aug 12 2026)
 
 - **Drop** (do NOT port): `/blog-cats`, `/lander-1`, `/lander-2`, `/partners-3` (duplicate), `/style-guide-*`. Dropped URLs 301 to sensible targets (`/partners-3` → `/partners/partners-2`).
-- **Move**: `/thomabravo` → `/work/thomabravo` with a 301 from the old path.
+- **`/thomabravo` stays at the root** (user decision Aug 13, 2026 — reversed the earlier
+  move plan: it's the highest-traffic page on the site; identical URL, no redirect.
+  `/work/thomabravo` 301s back to it as a safety net).
 - **Everything else in the sitemap ports 1:1** with identical URLs (SEO/URL parity is a hard requirement).
 - Resources section: 5 CMS items exist but were never reachable on the old site (listing page was draft). Goes live properly in this build under `/resources` — confirm final scope with user before cutover.
 

@@ -22,8 +22,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // case study moved under /work/ (old URL was stranded at the root)
-      { source: "/thomabravo", destination: "/work/thomabravo", permanent: true },
+      // /thomabravo stays at its original root URL (highest-traffic page).
+      // Safety net for the briefly-used preview path:
+      { source: "/work/thomabravo", destination: "/thomabravo", permanent: true },
       // duplicate Partners page dropped
       { source: "/partners-3", destination: "/partners/partners-2", permanent: true },
       // dropped test pages
