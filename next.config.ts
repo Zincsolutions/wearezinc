@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // canonical host: apex -> www, matching the old site's behavior
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "wearezinc.com" }],
+        destination: "https://www.wearezinc.com/:path*",
+        permanent: true,
+      },
       // /thomabravo stays at its original root URL (highest-traffic page).
       // Safety net for the briefly-used preview path:
       { source: "/work/thomabravo", destination: "/thomabravo", permanent: true },
