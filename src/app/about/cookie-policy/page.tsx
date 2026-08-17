@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist } from "next/font/google";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
@@ -76,6 +77,10 @@ function PolicySection({
 export default function CookiePolicyPage() {
   return (
     <div className={`site ${geist.variable}`}>
+      {/* Set the class before the headline paints so hidden→reveal never flickers. */}
+      <script
+        dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('gsap-js');" }}
+      />
       <Navbar />
       <main>
         <header>
@@ -83,8 +88,8 @@ export default function CookiePolicyPage() {
             <div className="container-lg">
               <div className="section-pad">
                 <div className="col-narrow">
-                  <h1 className="display-h1">Cookie Policy</h1>
-                  <p className="text-md">
+                  <h1 className="display-h1" data-gsap-lines="">Cookie Policy</h1>
+                  <p className="text-md fade-up">
                     Last Updated: 01.02.2026
                     <br />
                     <br />
@@ -209,6 +214,7 @@ export default function CookiePolicyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
+      <Script src="/js/reveal.js" strategy="afterInteractive" />
       <SiteAnalytics />
     </div>
   );
