@@ -237,12 +237,13 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   align-items: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  transition: left 0.333s;
+  /* IX2 "Button HOVER": translate 8rem + full 360° roll, 500ms ease. */
+  transition: transform 0.5s ease;
 }
-.nav-pill:hover .nav-pill-icon-wrap { left: calc(100% - 3rem); }
+.nav-pill:hover .nav-pill-icon-wrap { transform: translateX(8rem) rotate(360deg); }
 .nav-pill-icon {
   background-color: rgba(12, 12, 12, 0.1);
-  transition: background-color 0.333s, color 0.333s;
+  transition: background-color 0.5s ease, color 0.5s ease;
   border-radius: 100%;
   width: 2rem;
   height: 2rem;
@@ -251,7 +252,7 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   align-items: center;
   justify-content: center;
 }
-.nav-pill-icon svg { width: 0.875rem; height: 1.5rem; }
+.nav-pill-icon svg { width: auto; height: 1rem; }
 .nav-pill:hover .nav-pill-icon { background-color: var(--paper); color: var(--orange); }
 .nav-pill-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
 .nav-pill-text .lg { font-weight: 500; margin: 0; }
