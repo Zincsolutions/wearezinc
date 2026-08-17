@@ -8,14 +8,21 @@ import { useEffect } from "react";
 // into .w-slider-nav, exactly like the Webflow runtime did.
 export function SliderBehavior({ root = ".w-slider" }: { root?: string }) {
   useEffect(() => {
-    const slider = document.querySelector<HTMLElement>(root);
-    if (!slider) return;
+    const sliders = [...document.querySelectorAll<HTMLElement>(root)];
+    const cleanups = sliders.map(setup).filter(Boolean) as (() => void)[];
+    return () => cleanups.forEach((fn) => fn());
+  }, [root]);
+  return null;
+}
+
+function setup(slider: HTMLElement): (() => void) | undefined {
+  {
     const mask = slider.querySelector<HTMLElement>(".w-slider-mask");
     const slides = [...slider.querySelectorAll<HTMLElement>(".w-slide")];
     const nav = slider.querySelector<HTMLElement>(".w-slider-nav");
     const left = slider.querySelector<HTMLElement>(".w-slider-arrow-left");
     const right = slider.querySelector<HTMLElement>(".w-slider-arrow-right");
-    if (!mask || slides.length < 2) return;
+    if (!mask || slides.length < 2) return undefined;
 
     let index = 0;
     const dots: HTMLElement[] = [];
@@ -61,6 +68,5 @@ export function SliderBehavior({ root = ".w-slider" }: { root?: string }) {
       mask.removeEventListener("pointerdown", down);
       mask.removeEventListener("pointerup", up);
     };
-  }, [root]);
-  return null;
+  }
 }

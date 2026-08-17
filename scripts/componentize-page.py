@@ -11,6 +11,13 @@ html_path = f"public/_wf/{page}.html"
 out_dir = "src/app/(home)" if page == "index" else f"src/app/{page}"
 os.makedirs(out_dir, exist_ok=True)
 s = io.open(html_path, encoding="utf-8").read()
+_ix2 = io.open(glob.glob("public/wf/*schunk.0a294da0ce97949d.js")[0], encoding="utf-8", errors="ignore").read()
+import re as _re
+_events = _re.findall(r'eventTypeId:"[A-Z_]+"[^\0]*?actionListId:"(a[-\d]*)"[^\0]*?target:\{id:"[^"|]+\|([^"]+)"', _ix2)
+_wid_action = {}
+for _al, _wid in _events:
+    _t = _re.search(r'"%s":\{id:"%s",title:"([^"]*)"' % (_al, _al), _ix2)
+    if _t: _wid_action.setdefault(_wid, _t.group(1))
 body = s[s.find("<body"):s.find("</body")]
 
 # ---------- main content (nav and footer replaced by the shell) ----------
@@ -21,6 +28,11 @@ main = body[main_start:foot_start]
 # there) are captured separately into page.css — strip them from markup
 # so JSX conversion never sees CSS braces.
 main = re.sub(r'<style[^>]*>.*?</style>', '', main, flags=re.S)
+main = re.sub(r'<script[^>]*type="application/json"[^>]*>.*?</script>', '', main, flags=re.S)
+_scripts_in_main = re.findall(r'<script[^>]*>', main)
+if _scripts_in_main:
+    print("NOTE: non-json scripts in main:", _scripts_in_main[:3], file=sys.stderr)
+main = re.sub(r'<script[^>]*>.*?</script>', '', main, flags=re.S)
 
 classes = set()
 for m in re.finditer(r'class="([^"]+)"', main):
@@ -138,7 +150,9 @@ for prefix in ["faq2", "faq3"]:
             ans_open = acc.rfind('<div', 0, ans_i)
             ans_end = find_matching_div(acc, ans_open)
             ans_inner = acc[acc.find('>', ans_open) + 1:ans_end - len('</div>')]
-            entries.append((q_inner.strip(), ans_inner.strip()))
+            # collapsed initial state is encoded as an inline height:0 style
+            default_open = 'style="width:100%;height:0px"' not in acc
+            entries.append((q_inner.strip(), ans_inner.strip(), default_open))
             pos = a_end
         tag_end = fb.find('>') + 1
         marker = f'<FaqList prefix="{prefix}" items={{{prefix.upper()}_ITEMS}} />'
@@ -154,8 +168,9 @@ def esc(t):
     return t.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
 for prefix, entries in faq_variants.items():
     ts.write(f'export const {prefix.upper()}_ITEMS: FaqEntry[] = [\n')
-    for q, a in entries:
-        ts.write(f'  {{ question: `{esc(q)}`, answer: `{esc(a)}` }},\n')
+    for q, a, dopen in entries:
+        extra = ", defaultOpen: true" if dopen else ""
+        ts.write(f'  {{ question: `{esc(q)}`, answer: `{esc(a)}`{extra} }},\n')
     ts.write('];\n\n')
 io.open(f"{out_dir}/faq-items.ts", "w").write(ts.getvalue())
 
@@ -163,9 +178,18 @@ io.open(f"{out_dir}/faq-items.ts", "w").write(ts.getvalue())
 main = re.sub(r'\s*data-w-id="[^"]*"', '', main)
 main = re.sub(r'\s*style="width:100%;height:0px"', '', main)
 def fade_sub(m):
-    tag = re.sub(r'\s*style="[^"]*"', '', m.group(0))
-    return tag.replace('class="text-size-medium"', 'class="text-size-medium fade-up"')
-main = re.sub(r'<p[^>]*style="[^"]*transform[^"]*"[^>]*>', fade_sub, main)
+    tag = m.group(0)
+    widm = re.search(r'data-w-id="([^"]+)"', tag)
+    title = _wid_action.get(widm.group(1), "") if widm else ""
+    variant = ""
+    if "0.8" in title: variant = " fade-up-08"
+    elif title.endswith(" 1") or "slide in 1" in title: variant = " fade-up-10"
+    tag = re.sub(r'\s*style="[^"]*"', '', tag)
+    if 'class="' in tag:
+        tag = re.sub(r'class="([^"]*)"', lambda c: f'class="{c.group(1)} fade-up{variant}"', tag, count=1)
+    return tag
+main = re.sub(r'<(?:p|div|h\d)[^>]*style="[^"]*transform:translate3d[^"]*opacity:0[^"]*"[^>]*>', fade_sub, main)
+main = re.sub(r'<(?:p|div|h\d)[^>]*style="[^"]*opacity:0[^"]*transform:translate3d[^"]*"[^>]*>', fade_sub, main)
 assert 'transform:translate3d' not in main, "IX2 inline style remains"
 leftovers = re.findall(r'style="[^"]{0,80}"', main)
 if leftovers:
@@ -175,7 +199,10 @@ text_only = re.sub(r'<[^>]+>', ' ', main)
 assert '{' not in text_only and '}' not in text_only, "curly braces in text"
 main = re.sub(r'<!--.*?-->', '', main, flags=re.S)
 for a, b in [('class="', 'className="'), ('srcset="', 'srcSet="'), ('fill-rule=', 'fillRule='),
-             ('clip-rule=', 'clipRule='), ('stroke-width=', 'strokeWidth='), ('tabindex=', 'tabIndex=')]:
+             ('clip-rule=', 'clipRule='), ('stroke-width=', 'strokeWidth='), ('tabindex=', 'tabIndex='),
+             ('for="', 'htmlFor="'), ('autocomplete=', 'autoComplete='), ('maxlength=', 'maxLength='),
+             ('novalidate', 'noValidate'), ('autofocus', 'autoFocus'),
+             ('xmlns:xlink=', 'xmlnsXlink='), ('xlink:href=', 'xlinkHref='), ('xml:space=', 'xmlSpace=')]:
     main = main.replace(a, b)
 
 comp = io.StringIO()
@@ -186,10 +213,38 @@ if faq_variants:
     names = ", ".join(f"{p.upper()}_ITEMS" for p in faq_variants)
     comp.write(f'import {{ {names} }} from "./faq-items";\n')
 comp.write('\n')
+# balance: some pages nest the footer inside <main>, so the slice can
+# leave wrapper elements unclosed — append the missing closers.
+VOID = {"br","img","hr","input","meta","link","source","area","base","col","embed","track","wbr"}
+stack = []
+for tm in re.finditer(r'<(/?)([a-zA-Z][a-zA-Z0-9]*)((?:"[^"]*"|[^">])*)>', main):
+    close, tag, _attrs = tm.groups()
+    self_closed = tm.group(0).rstrip(">").rstrip().endswith("/")
+    if tag.lower() in VOID or self_closed: continue
+    if close:
+        if stack and stack[-1] == tag: stack.pop()
+    else:
+        stack.append(tag)
+closers = "".join(f"</{t}>" for t in reversed(stack))
+if closers:
+    print("NOTE: auto-closing sliced wrappers:", closers, file=sys.stderr)
+
 comp.write('export function PageContent() {\n  return (\n    <>\n')
-comp.write(main.strip())
+comp.write(main.strip() + closers)
 comp.write('\n    </>\n  );\n}\n')
 io.open(f"{out_dir}/content.tsx", "w").write(comp.getvalue())
+
+# ---------- counters bundle ----------
+counter_bundle = None
+if "new PureCounter" in s:
+    _ci = s.find("purecounter_vanilla.js")
+    _cs = s.find("<script>", _ci)
+    _ce = s.find("</script>", _cs)
+    _init = s[_cs + 8:_ce]
+    _vendor = io.open("public/vendor/purecounter_vanilla.js").read()
+    _slug = page.replace("/", "-")
+    counter_bundle = f"/js/{_slug}-counters.js"
+    io.open(f"public/js/{_slug}-counters.js", "w").write(_vendor + "\n" + _init)
 
 # ---------- metadata for page.tsx ----------
 head = s.split("</head>")[0]
@@ -207,4 +262,97 @@ meta = {
     "hasParallax": "layout414_image-list" in s,
     "hasMarquee": "logo3_component" in s,
 }
+meta["hasSlider"] = 'w-slider"' in s or "w-slider " in s
+meta["hasForm"] = "<form" in s
+meta["hasTimeline"] = "layout121_progress-bar" in s
+meta["counterBundle"] = counter_bundle
 print(json.dumps(meta, indent=1))
+
+# ---------- page.tsx ----------
+import html as _html
+title = _html.unescape(meta["title"] or "")
+desc = _html.unescape(meta["description"] or "")
+canonical = meta["canonical"] or f"https://www.wearezinc.com/{page}"
+comp_name = "".join(w.capitalize() for w in re.split(r"[-/]", page)) + "Page"
+extra_imports, extra_jsx, extra_scripts = [], [], []
+if meta["hasParallax"]:
+    extra_imports.append('import { StripParallax } from "@/components/site/strip-parallax";')
+    extra_jsx.append("      <StripParallax />")
+if meta["hasSlider"]:
+    extra_imports.append('import { SliderBehavior } from "@/components/site/slider-behavior";')
+    extra_jsx.append("      <SliderBehavior />")
+if meta["hasTimeline"]:
+    extra_imports.append('import { TimelineProgress } from "@/components/site/timeline-progress";')
+    extra_jsx.append("      <TimelineProgress />")
+if counter_bundle:
+    extra_scripts.append(f'      <Script src="{counter_bundle}" strategy="afterInteractive" />')
+if meta["hasForm"]:
+    extra_scripts.append('      <Script src="/js/zinc-forms.js" strategy="afterInteractive" />')
+
+page_tsx = f"""import type {{ Metadata }} from "next";
+import Script from "next/script";
+import {{ Navbar }} from "@/components/site/navbar";
+import {{ Footer }} from "@/components/site/footer";
+import {{ SiteAnalytics }} from "@/components/site/analytics";
+{chr(10).join(extra_imports)}
+import {{ PageContent }} from "./content";
+import "@/components/site/site.css";
+import "@/components/site/page-animations.css";
+import "./page.css";
+
+// Generated by scripts/componentize-page.py from the Webflow capture.
+
+const TITLE = {json.dumps(title)};
+const DESCRIPTION = {json.dumps(desc)};
+
+export const metadata: Metadata = {{
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {{ canonical: {json.dumps(canonical)} }},
+  openGraph: {{
+    title: TITLE,
+    description: DESCRIPTION,
+    type: "website",
+    images: [{json.dumps(meta["ogImage"] or "https://www.wearezinc.com/wf/695bda13c7c5d5a8fcdb44f2_home_header1.webp")}],
+  }},
+  twitter: {{ card: "summary_large_image", title: TITLE, description: DESCRIPTION }},
+}};
+
+const ORG_SCHEMA = {{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ZINC",
+  url: "https://www.wearezinc.com",
+  logo: "https://www.wearezinc.com/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png",
+  description:
+    "ZINC is an AI-driven digital strategy and design agency: AI enablement, answer engine optimization (AEO), web design and development, ecommerce, branding, and marketing systems.",
+}};
+
+export default function {comp_name}() {{
+  return (
+    <div className="site">
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <script
+        dangerouslySetInnerHTML={{{{ __html: "document.documentElement.classList.add('gsap-js');" }}}}
+      />
+      <Navbar />
+      <PageContent />
+{chr(10).join(extra_jsx)}
+      <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{{{ __html: JSON.stringify(ORG_SCHEMA) }}}}
+      />
+      <Script src="/js/reveal.js" strategy="afterInteractive" />
+{chr(10).join(extra_scripts)}
+      <SiteAnalytics />
+    </div>
+  );
+}}
+"""
+io.open(f"{out_dir}/page.tsx", "w").write(page_tsx)
