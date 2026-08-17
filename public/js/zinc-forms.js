@@ -86,7 +86,14 @@
     );
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
     document.querySelectorAll('.w-form form, form[data-name]').forEach(bind);
-  });
+  }
+  // Run now if the DOM is already parsed (Next.js loads this script after
+  // DOMContentLoaded has fired); otherwise wait for it.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
