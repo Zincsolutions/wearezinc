@@ -3,25 +3,24 @@ import Script from "next/script";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { SiteAnalytics } from "@/components/site/analytics";
-import { EcomContent } from "./content";
 import { StripParallax } from "@/components/site/strip-parallax";
+import { PageContent } from "./content";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "./page.css";
 
-// Componentized from the Webflow capture (Phase B, page 2). Markup is a
-// mechanical conversion (see content.tsx); styles are the auto-extracted
-// subset of the compiled Webflow CSS (page.css); nav/footer come from the
-// shared shell; FAQ + reveals replace the Webflow interaction runtime.
+// Componentized from the Webflow capture (Phase B) via
+// scripts/componentize-page.py. Shell, FAQ, parallax, marquee, and reveal
+// come from the shared site components.
 
-const TITLE = "Ecommerce Acceleration | Shopify, BigCommerce & AI Growth | ZINC";
+const TITLE = "Website Design and Development, Webflow, Shopify, Wordpress";
 const DESCRIPTION =
-  "ZINC helps ecommerce brands improve strategy, design, UX, integrations, content, and growth using Shopify, BigCommerce, and AI-enhanced workflows.";
+  "AI-optimized website design & development for B2B, SaaS, and ecommerce. ZINC builds intelligent sites on Webflow, Shopify, WordPress that grow your business.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "https://www.wearezinc.com/solutions/ecommerce-acceleration" },
+  alternates: { canonical: "https://www.wearezinc.com/solutions/website-design-development" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -41,11 +40,9 @@ const ORG_SCHEMA = {
     "ZINC is an AI-driven digital strategy and design agency: AI enablement, answer engine optimization (AEO), web design and development, ecommerce, branding, and marketing systems.",
 };
 
-export default function EcommerceAccelerationPage() {
+export default function WebsiteDesignDevelopmentPage() {
   return (
     <div className="site">
-      {/* Geist/Geist Mono under their real family names, same source as the
-          static pages — the extracted CSS references them literally. */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
@@ -56,7 +53,7 @@ export default function EcommerceAccelerationPage() {
         dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('gsap-js');" }}
       />
       <Navbar />
-      <EcomContent />
+      <PageContent />
       <StripParallax />
       <Footer />
       <script

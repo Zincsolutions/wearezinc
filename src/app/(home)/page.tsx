@@ -3,25 +3,25 @@ import Script from "next/script";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { SiteAnalytics } from "@/components/site/analytics";
-import { EcomContent } from "./content";
-import { StripParallax } from "@/components/site/strip-parallax";
+import { SliderBehavior } from "@/components/site/slider-behavior";
+import { PageContent } from "./content";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "./page.css";
 
-// Componentized from the Webflow capture (Phase B, page 2). Markup is a
-// mechanical conversion (see content.tsx); styles are the auto-extracted
-// subset of the compiled Webflow CSS (page.css); nav/footer come from the
-// shared shell; FAQ + reveals replace the Webflow interaction runtime.
+// Homepage, componentized from the Webflow capture (Phase B) via
+// scripts/componentize-page.py. New archetypes vs earlier pages: the
+// testimonial slider (SliderBehavior) and the purecounter stat count-ups
+// (self-hosted vendor bundle + the page's original init, /js/home-counters.js).
 
-const TITLE = "Ecommerce Acceleration | Shopify, BigCommerce & AI Growth | ZINC";
+const TITLE = "ZINC | AI-Driven Digital Strategy & Design Agency";
 const DESCRIPTION =
-  "ZINC helps ecommerce brands improve strategy, design, UX, integrations, content, and growth using Shopify, BigCommerce, and AI-enhanced workflows.";
+  "ZINC brings 25+ years of strategy, design, and technology together to help brands stay visible in the AI era. AI enablement, web design, ecommerce & more.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "https://www.wearezinc.com/solutions/ecommerce-acceleration" },
+  alternates: { canonical: "https://www.wearezinc.com" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -41,11 +41,9 @@ const ORG_SCHEMA = {
     "ZINC is an AI-driven digital strategy and design agency: AI enablement, answer engine optimization (AEO), web design and development, ecommerce, branding, and marketing systems.",
 };
 
-export default function EcommerceAccelerationPage() {
+export default function HomePage() {
   return (
     <div className="site">
-      {/* Geist/Geist Mono under their real family names, same source as the
-          static pages — the extracted CSS references them literally. */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
@@ -56,14 +54,15 @@ export default function EcommerceAccelerationPage() {
         dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('gsap-js');" }}
       />
       <Navbar />
-      <EcomContent />
-      <StripParallax />
+      <PageContent />
+      <SliderBehavior root=".testimonial7_slider" />
       <Footer />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
       <Script src="/js/reveal.js" strategy="afterInteractive" />
+      <Script src="/js/home-counters.js" strategy="afterInteractive" />
       <SiteAnalytics />
     </div>
   );

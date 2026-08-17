@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { FAQ_ITEMS } from "./faq-items";
 
-// Same markup as the Webflow capture; open/close state drives the CSS
-// animation in page.css (measured: ~450ms height ease + icon rotation).
-export function FaqItems() {
+export interface FaqItem { q: string; a: string }
+
+// FAQ accordion per the IX2 spec ("FAQ 2 accordion"): 400ms ease height
+// animation + synced 180° icon rotation, driven by CSS in page-animations.css.
+// Answers are trusted static content from our own capture.
+export function FaqItems({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <>
-      {FAQ_ITEMS.map((item, i) => (
+      {items.map((item, i) => (
         <div key={i} className={`faq2_accordion${open === i ? " open" : ""}`}>
           <div
             className="faq2_question"

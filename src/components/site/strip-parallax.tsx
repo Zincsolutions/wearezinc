@@ -3,9 +3,8 @@
 import { useEffect } from "react";
 
 // Scroll-linked parallax on the layout414 image strips, replicating the
-// Webflow IX2 interaction (measured live): as the strips traverse the
-// viewport, the top strip translates from -36px to +84px and the bottom
-// strip mirrors it. Progress = (viewportH - top) / (viewportH + wrapperH).
+// IX2 interaction ("Layout 414 Images [Scroll]"): top strip translates
+// -36px..+84px across its viewport traverse; bottom strip mirrors it.
 export function StripParallax() {
   useEffect(() => {
     const top = document.querySelector<HTMLElement>(".image-list-top");
