@@ -1346,16 +1346,28 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 [data-gsap-lines] .line { overflow: hidden; display: block; }
 [data-gsap-lines] .line > span { display: block; will-change: transform, opacity; }
 @media (prefers-reduced-motion: no-preference) {
-  .fade-up { opacity: 0; transform: translate3d(0, 1rem, 0); animation: ecom-fade-up 0.6s ease-out 0.5s forwards; }
+  .fade-up { opacity: 0; transform: translate3d(0, 1rem, 0); animation: ecom-fade-up 0.5s ease 0.6s forwards; }
   @keyframes ecom-fade-up { to { opacity: 1; transform: none; } }
 }
 
-/* FAQ accordion — measured from the live page: height 0 -> auto over ~450ms
-   with a synced 180° icon rotation; question hover #f7f7f7. */
-.faq2_answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s ease; }
+/* FAQ accordion — per the IX2 spec ("FAQ 2 accordion"): height 0 -> auto
+   over 400ms ease with a synced 180° icon rotation. */
+.faq2_answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
 .faq2_answer > div { overflow: hidden; min-height: 0; }
 .faq2_accordion.open .faq2_answer { grid-template-rows: 1fr; }
-.faq2_icon-wrapper { transition: transform 0.45s ease; }
+.faq2_icon-wrapper { transition: transform 0.4s ease; }
 .faq2_accordion.open .faq2_icon-wrapper { transform: rotate(180deg); }
+
+/* Logo marquee — per the IX2 spec ("Logo 3 [Loop]"): the whole component
+   slides -112rem over 30s, linear, snaps back, loops. The duplicated
+   logo3_list makes the loop read as continuous. */
+@keyframes logo3-loop {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-112rem, 0, 0); }
+}
+.logo3_component { animation: logo3-loop 30s linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .logo3_component { animation: none; }
+}
 .faq2_question { cursor: pointer; transition: background-color 0.2s ease; }
 .faq2_question:hover { background-color: #f7f7f7; }
