@@ -30,6 +30,7 @@ export function Footer({ currentPath }: { currentPath?: string }) {
                     alt="ZINC"
                     className="footer-logo"
                     width={100}
+                    height={100}
                     loading="lazy"
                   />
                   </a>
