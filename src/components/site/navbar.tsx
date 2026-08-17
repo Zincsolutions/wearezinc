@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SOLUTIONS = [
   { href: "/solutions/ai-strategy-optimization", label: "AI Strategy & Optimization" },
@@ -30,7 +30,30 @@ function Chevron() {
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Smart nav: hide on scroll down, reveal on scroll up (the original
+  // drives this via its interaction runtime; same thresholds here).
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const y = window.scrollY;
+      const dy = y - lastY;
+      lastY = y;
+      if (y <= 80) setHidden(false);
+      else if (dy > 4) setHidden(true);
+      else if (dy < -4) setHidden(false);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   // Matches the original behavior: opens on hover; a short grace period on
   // leave lets the pointer cross into the list without flicker.
@@ -49,7 +72,7 @@ export function Navbar() {
   };
 
   return (
-    <div className="nav" role="banner">
+    <div className={`nav${hidden && !menuOpen ? " nav-hidden" : ""}`} role="banner">
       <div className="nav-inner">
         <a href="/" className="nav-logo-link" aria-label="ZINC home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
