@@ -1,0 +1,32 @@
+/* IX2-replacement animation layer shared by componentized pages.
+   Each rule replicates a measured/spec'd Webflow interaction. */
+
+/* Headline reveal plumbing (reveal.js). */
+html.gsap-js [data-gsap-lines] { visibility: hidden; }
+[data-gsap-lines] .line { overflow: hidden; display: block; }
+[data-gsap-lines] .line > span { display: block; will-change: transform, opacity; }
+
+/* Hero intro fade-up — IX2 "slide in 0.6": 500ms ease after a 600ms delay. */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up { opacity: 0; transform: translate3d(0, 1rem, 0); animation: page-fade-up 0.5s ease 0.6s forwards; }
+  @keyframes page-fade-up { to { opacity: 1; transform: none; } }
+}
+
+/* FAQ accordion — IX2 "FAQ 2 accordion": 400ms ease height + icon rotate. */
+.faq2_answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
+.faq2_answer > div { overflow: hidden; min-height: 0; }
+.faq2_accordion.open .faq2_answer { grid-template-rows: 1fr; }
+.faq2_icon-wrapper { transition: transform 0.4s ease; }
+.faq2_accordion.open .faq2_icon-wrapper { transform: rotate(180deg); }
+.faq2_question { cursor: pointer; transition: background-color 0.2s ease; }
+.faq2_question:hover { background-color: #f7f7f7; }
+
+/* Logo marquee — IX2 "Logo 3 [Loop]": -112rem over 30s linear, looping. */
+@keyframes logo3-loop {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-112rem, 0, 0); }
+}
+.logo3_component { animation: logo3-loop 30s linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .logo3_component { animation: none; }
+}

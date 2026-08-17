@@ -2,7 +2,8 @@
 // Markup converted mechanically from the Webflow capture (Phase B).
 // Structure is verbatim; only the FAQ accordions are componentized
 // (see faq.tsx) and IX2 inline styles replaced by CSS animations.
-import { FaqItems } from "./faq";
+import { FaqItems } from "@/components/site/faq";
+import { FAQ_ITEMS } from "./faq-items";
 
 export function EcomContent() {
   return (
@@ -22,7 +23,7 @@ export function EcomContent() {
 </svg></div></div></div></div></a></div><div role="listitem" className="blog38_item w-dyn-item"><a href="/post/how-to-make-your-ecommerce-store-ai-search-ready-in-2026" className="blog38_item-link w-inline-block"><div className="margin-bottom margin-small"><div className="blog38_image-wrapper"><img loading="lazy" src="/wf/695bda13c7c5d5a8fcdb468d_ecom_blog_o1.jpg" alt="" sizes="100vw" srcSet="/wf/695bda13c7c5d5a8fcdb468d_ecom_blog_o1-p-500.jpg 500w, /wf/695bda13c7c5d5a8fcdb468d_ecom_blog_o1.jpg 800w" className="blog38_image"/></div></div><div className="margin-bottom margin-xsmall"><div className="blog38_meta-wrapper"><div className="tag"><div>Marketing</div></div><div className="text-size-small">5 min read</div></div></div><div className="margin-bottom margin-xxsmall"><h3 className="heading-style-h5">How to Make Your Ecommerce Store AI-Search Ready in 2026</h3></div><div className="text-size-regular">Use this 2026 checklist to make your ecommerce store more visible to ChatGPT, Perplexity, and AI-powered shopping assistants.</div><div className="margin-top margin-small"><div className="button-group"><div className="button is-link is-icon"><div>Read more</div><div className="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 3L11 8L6 13" stroke="CurrentColor" strokeWidth="1.5"/>
 </svg></div></div></div></div></a></div></div></div><div className="margin-top margin-xxlarge"><div className="button-group is-right"><a href="/blog" className="button is-secondary w-button">View all</a></div></div></div></div></div></div></section><section className="section_on_brand_aeo_sprint-7 color-scheme-1"><div className="padding-global"><div className="container-large"><div className="padding-section-large"><div className="faq2_component"><div className="margin-bottom margin-xxlarge"><div className="max-width-large"><div className="margin-bottom margin-small"><h2 className="heading-style-h2">FAQs</h2></div><p className="text-size-medium">Get answers to your most pressing questions about our web design services.</p></div></div><div className="faq2_list">
-<FaqItems />
+<FaqItems items={FAQ_ITEMS} />
 </div></div></div></div></div></section><section className="section_aeo-10 color-scheme-1"><div className="padding-global"><div className="container-large"><div className="padding-section-large"><div className="cta7_component"><div className="cta7_content"><div className="max-width-large"><div className="margin-bottom margin-xsmall"><h2 className="heading-style-h3">Let&#x27;s Create Your Dream Website</h2></div><p className="text-size-medium">Contact us for a free consultation today!</p></div><div className="button-group is-right"><a href="/contact-us" className="button w-button">Start a Project</a></div></div></div></div></div></div></section></main>
     </>
   );

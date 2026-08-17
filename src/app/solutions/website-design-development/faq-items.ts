@@ -1,7 +1,6 @@
 import type { FaqItem } from "@/components/site/faq";
 
 // FAQ content extracted verbatim from the Webflow capture.
-// Answers are our own trusted static content (rendered via innerHTML).
 export const FAQ_ITEMS: FaqItem[] = [
   { q: "What is the turnaround time?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Our typical turnaround time for web design projects is between 4 to 6 weeks. This timeframe can vary based on project complexity and client feedback. We prioritize quality and ensure every detail meets your expectations.</p></div></div>` },
   { q: "What are the costs?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Costs for our web design services depend on various factors, including project scope and features. We offer customized quotes to fit your specific needs. Contact us for a detailed estimate.</p></div></div>` },
