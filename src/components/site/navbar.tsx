@@ -32,7 +32,8 @@ export function Navbar() {
   const [ddOpen, setDdOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Matches the original behavior: opens on hover, closes 200ms after leave.
+  // Matches the original behavior: opens on hover; a short grace period on
+  // leave lets the pointer cross into the list without flicker.
   // Hover handlers only run on hover-capable devices — on touch, a tap fires
   // mouseenter AND click, which would open-then-toggle-closed.
   const canHover = () =>
@@ -44,7 +45,7 @@ export function Navbar() {
   };
   const leave = () => {
     if (!canHover()) return;
-    closeTimer.current = setTimeout(() => setDdOpen(false), 200);
+    closeTimer.current = setTimeout(() => setDdOpen(false), 50);
   };
 
   return (
