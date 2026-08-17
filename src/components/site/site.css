@@ -130,7 +130,7 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   position: relative;
 }
 .nav-logo-link { display: flex; align-items: center; }
-.nav-logo { height: 2rem; width: auto; }
+.nav-logo { height: 32px; width: auto; }
 .nav-menu { display: flex; align-items: center; justify-content: center; column-gap: 60px; }
 .nav-pages { display: flex; column-gap: 60px; }
 .nav-link { display: flex; justify-content: center; padding: 0.5rem 0; margin: 0 1rem; transition: color 0.333s; }
@@ -163,19 +163,29 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   border-radius: 6.25rem;
   padding: 0.5rem 1rem 0.5rem 3rem;
   font-size: 0.875rem;
-  transition: background-color 0.333s, color 0.333s;
+  transition: all 0.333s;
 }
-.nav-pill:hover { background-color: var(--orange); color: var(--paper); }
+.nav-pill:hover {
+  background-color: var(--orange);
+  color: var(--paper);
+  padding-left: 1rem;
+  padding-right: 3rem;
+}
 .nav-pill-icon-wrap {
   position: absolute;
-  inset: 0 auto 0 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  transition: left 0.333s;
 }
+.nav-pill:hover .nav-pill-icon-wrap { left: calc(100% - 3rem); }
 .nav-pill-icon {
-  background-color: var(--ink-10);
+  background-color: rgba(12, 12, 12, 0.1);
+  transition: background-color 0.333s, color 0.333s;
   border-radius: 100%;
   width: 2rem;
   height: 2rem;
@@ -185,6 +195,7 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   justify-content: center;
 }
 .nav-pill-icon svg { width: 0.875rem; height: 1.5rem; }
+.nav-pill:hover .nav-pill-icon { background-color: var(--paper); color: var(--orange); }
 .nav-pill-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
 .nav-pill-text .lg { font-weight: 500; margin: 0; }
 .nav-pill-text .sm { font-size: 0.75rem; margin: 0; }
