@@ -30,3 +30,11 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .logo3_component { animation: none; }
 }
+
+/* FAQ 3 accordion — IX2 "FAQ 3 accordion": same 400ms ease mechanics. */
+.faq3_answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
+.faq3_answer > div { overflow: hidden; min-height: 0; }
+.faq3_accordion.open .faq3_answer { grid-template-rows: 1fr; }
+.faq3_icon-wrapper { transition: transform 0.4s ease; }
+.faq3_accordion.open .faq3_icon-wrapper { transform: rotate(180deg); }
+.faq3_question { cursor: pointer; }

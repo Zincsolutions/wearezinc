@@ -7,7 +7,8 @@ import io, re, sys, glob, json, os
 
 page = sys.argv[1]
 html_path = f"public/_wf/{page}.html"
-out_dir = f"src/app/{page}"
+# the homepage routes at / via a route group
+out_dir = "src/app/(home)" if page == "index" else f"src/app/{page}"
 os.makedirs(out_dir, exist_ok=True)
 s = io.open(html_path, encoding="utf-8").read()
 body = s[s.find("<body"):s.find("</body")]
@@ -16,11 +17,17 @@ body = s[s.find("<body"):s.find("</body")]
 main_start = body.rfind("<", 0, body.find('class="main-wrapper"'))
 foot_start = body.rfind("<footer", 0, body.find("footer3_component"))
 main = body[main_start:foot_start]
+# Style blocks inside main (some pages embed the global utility styles
+# there) are captured separately into page.css — strip them from markup
+# so JSX conversion never sees CSS braces.
+main = re.sub(r'<style[^>]*>.*?</style>', '', main, flags=re.S)
 
 classes = set()
 for m in re.finditer(r'class="([^"]+)"', main):
     classes.update(m.group(1).split())
 ids = set(re.findall(r'id="([^"]+)"', main))
+if "w-slider" in main:
+    classes.update(["w-slider-dot", "w-slider-nav", "w-active", "w-round", "w-slider-nav-invert"])
 
 # ---------- CSS subset extraction ----------
 css = "".join(io.open(f, encoding="utf-8", errors="ignore").read() for f in sorted(glob.glob("public/wf/*.css")))
@@ -105,38 +112,51 @@ def find_matching_div(t, start):
         depth += 1 if m.group(0) != '</div>' else -1
     return i
 
-items = []
-if 'faq2_list' in main:
-    fl = main.find('class="faq2_list"')
-    fl_open = main.rfind('<div', 0, fl)
-    fl_end = find_matching_div(main, fl_open)
-    fb = main[fl_open:fl_end]
-    pos = 0
+faq_variants = {}   # prefix -> [(question_inner, answer_inner)]
+for prefix in ["faq2", "faq3"]:
+    search = 0
     while True:
-        a = fb.find('class="faq2_accordion"', pos)
-        if a == -1: break
-        a_open = fb.rfind('<div', 0, a)
-        a_end = find_matching_div(fb, a_open)
-        acc = fb[a_open:a_end]
-        qm = re.search(r'faq2_question[^>]*>\s*<div[^>]*>(.*?)</div>', acc, re.S)
-        ans_i = acc.find('class="faq2_answer"')
-        ans_open = acc.rfind('<div', 0, ans_i)
-        ans_end = find_matching_div(acc, ans_open)
-        ans_inner = acc[acc.find('>', ans_open) + 1:ans_end - len('</div>')]
-        items.append((qm.group(1).strip(), ans_inner.strip()))
-        pos = a_end
-    tag_end = fb.find('>') + 1
-    main = main[:fl_open] + fb[:tag_end] + "\n<FaqItems items={FAQ_ITEMS} />\n</div>" + main[fl_end:]
+        fl = main.find(f'class="{prefix}_list"', search)
+        if fl == -1: break
+        fl_open = main.rfind('<div', 0, fl)
+        fl_end = find_matching_div(main, fl_open)
+        fb = main[fl_open:fl_end]
+        entries = faq_variants.setdefault(prefix, [])
+        pos = 0
+        while True:
+            a = fb.find(f'class="{prefix}_accordion"', pos)
+            if a == -1: break
+            a_open = fb.rfind('<div', 0, a)
+            a_end = find_matching_div(fb, a_open)
+            acc = fb[a_open:a_end]
+            # question inner = everything inside the question div (text + icon)
+            q_i = acc.find(f'class="{prefix}_question"')
+            q_open = acc.rfind('<div', 0, q_i)
+            q_end = find_matching_div(acc, q_open)
+            q_inner = acc[acc.find('>', q_open) + 1:q_end - len('</div>')]
+            ans_i = acc.find(f'class="{prefix}_answer"')
+            ans_open = acc.rfind('<div', 0, ans_i)
+            ans_end = find_matching_div(acc, ans_open)
+            ans_inner = acc[acc.find('>', ans_open) + 1:ans_end - len('</div>')]
+            entries.append((q_inner.strip(), ans_inner.strip()))
+            pos = a_end
+        tag_end = fb.find('>') + 1
+        marker = f'<FaqList prefix="{prefix}" items={{{prefix.upper()}_ITEMS}} />'
+        new_block = fb[:tag_end] + "\n" + marker + "\n</div>"
+        main = main[:fl_open] + new_block + main[fl_end:]
+        search = fl_open + len(new_block)
+items = [x for v in faq_variants.values() for x in v]
 
 ts = io.StringIO()
-ts.write('import type { FaqItem } from "@/components/site/faq";\n\n')
+ts.write('import type { FaqEntry } from "@/components/site/faq-list";\n\n')
 ts.write('// FAQ content extracted verbatim from the Webflow capture.\n')
-ts.write('export const FAQ_ITEMS: FaqItem[] = [\n')
-for q, a in items:
-    a_js = a.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
-    q_js = q.replace('\\', '\\\\').replace('"', '\\"')
-    ts.write(f'  {{ q: "{q_js}", a: `{a_js}` }},\n')
-ts.write('];\n')
+def esc(t):
+    return t.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
+for prefix, entries in faq_variants.items():
+    ts.write(f'export const {prefix.upper()}_ITEMS: FaqEntry[] = [\n')
+    for q, a in entries:
+        ts.write(f'  {{ question: `{esc(q)}`, answer: `{esc(a)}` }},\n')
+    ts.write('];\n\n')
 io.open(f"{out_dir}/faq-items.ts", "w").write(ts.getvalue())
 
 # ---------- IX2 artifact cleanup + JSX conversion ----------
@@ -161,8 +181,11 @@ for a, b in [('class="', 'className="'), ('srcset="', 'srcSet="'), ('fill-rule='
 comp = io.StringIO()
 comp.write('/* eslint-disable @next/next/no-img-element */\n')
 comp.write('// Markup converted mechanically from the Webflow capture (Phase B).\n')
-comp.write('import { FaqItems } from "@/components/site/faq";\n')
-comp.write('import { FAQ_ITEMS } from "./faq-items";\n\n')
+comp.write('import { FaqList } from "@/components/site/faq-list";\n')
+if faq_variants:
+    names = ", ".join(f"{p.upper()}_ITEMS" for p in faq_variants)
+    comp.write(f'import {{ {names} }} from "./faq-items";\n')
+comp.write('\n')
 comp.write('export function PageContent() {\n  return (\n    <>\n')
 comp.write(main.strip())
 comp.write('\n    </>\n  );\n}\n')
