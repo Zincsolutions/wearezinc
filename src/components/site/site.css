@@ -118,7 +118,14 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   padding-right: 5%;
   display: flex;
   align-items: center;
+  /* Smart nav (matches the original): sticky, hides on scroll down and
+     slides back over ~500ms on scroll up. */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.5s ease;
 }
+.nav.nav-hidden { transform: translateY(-100%); }
 @media screen and (max-width: 767px) { .nav { min-height: 4rem; } }
 .nav-inner {
   z-index: 100;
