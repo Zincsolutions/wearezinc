@@ -45,3 +45,10 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 .faq3_icon-wrapper { transition: transform 0.4s ease; }
 .faq3_accordion.open .faq3_icon-wrapper { transform: rotate(180deg); }
 .faq3_question { cursor: pointer; }
+
+/* IX2 opacity:0 initial states: fade in on first view (ix-fade.tsx). */
+.ix-fade { opacity: 0; transition: opacity 0.6s ease; }
+.ix-fade.ix-in { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .ix-fade { opacity: 1; transition: none; }
+}

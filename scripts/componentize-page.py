@@ -64,7 +64,8 @@ parse(css)
 
 cls_re = re.compile(r'\.((?:[\w-]|\\.)+)')
 id_re = re.compile(r'#((?:[\w-]|\\.)+)')
-ELEMENTS = {"html","body","h1","h2","h3","h4","h5","h6","p","a","ul","ol","li","img","figure","figcaption","blockquote","strong","em","div",":root","*"}
+ELEMENTS = {"html","body","h1","h2","h3","h4","h5","h6","p","a","ul","ol","li","img","figure","figcaption","blockquote","strong","em","div",":root","*",
+            "form","label","input","textarea","select","button","fieldset","legend","option","optgroup"}
 def part_applies(part):
     scs = {c.replace("\\", "") for c in cls_re.findall(part)}
     sids = {c.replace("\\", "") for c in id_re.findall(part)}
@@ -198,6 +199,34 @@ if leftovers:
 text_only = re.sub(r'<[^>]+>', ' ', main)
 assert '{' not in text_only and '}' not in text_only, "curly braces in text"
 main = re.sub(r'<!--.*?-->', '', main, flags=re.S)
+# numeric attrs -> JSX expressions; boolean attrs -> bare
+main = re.sub(r'\b(maxLength|maxlength)="(\d+)"', r'maxLength={\2}', main)
+main = re.sub(r'\btabindex="(-?\d+)"', r'tabIndex={\1}', main)
+main = re.sub(r'\b(required|disabled|checked|multiple|selected|readonly)=""', lambda m: {"readonly": "readOnly"}.get(m.group(1), m.group(1)), main)
+# IX2 opacity:0 initial states -> fade-in class (ix-fade.tsx reveals)
+def ix_fade_sub(m):
+    tag = m.group(0).replace(m.group(1), "")
+    if 'class="' in tag:
+        tag = re.sub(r'class="([^"]*)"', lambda c: f'class="{c.group(1)} ix-fade"', tag, count=1)
+    else:
+        tag = tag[:-1].rstrip("/") + ' class="ix-fade"' + ("/>" if tag.endswith("/>") else ">")
+    return tag
+main = re.sub(r'<[a-zA-Z][^>]*?(\s*style="opacity:0")[^>]*>', ix_fade_sub, main)
+
+# remaining inline styles -> JSX style objects (e.g. Webflow's visually-
+# hidden checkbox inputs)
+def style_obj(m):
+    decls = [d.strip() for d in m.group(1).split(";") if d.strip()]
+    parts = []
+    for d in decls:
+        k, _, v = d.partition(":")
+        k = k.strip(); v = v.strip()
+        kk = re.sub(r'-([a-z])', lambda c: c.group(1).upper(), k)
+        parts.append(f'{kk}:"{v}"')
+    return 'style={{' + ",".join(parts) + '}}'
+main = re.sub(r'style="([^"]*)"', style_obj, main)
+# for= only valid on <label>; Webflow puts it on spans — drop it there
+main = re.sub(r'(<span[^>]*?)\s+for="[^"]*"', r'\1', main)
 for a, b in [('class="', 'className="'), ('srcset="', 'srcSet="'), ('fill-rule=', 'fillRule='),
              ('clip-rule=', 'clipRule='), ('stroke-width=', 'strokeWidth='), ('tabindex=', 'tabIndex='),
              ('for="', 'htmlFor="'), ('autocomplete=', 'autoComplete='), ('maxlength=', 'maxLength='),
@@ -264,6 +293,7 @@ meta = {
 }
 meta["hasSlider"] = 'w-slider"' in s or "w-slider " in s
 meta["hasForm"] = "<form" in s
+meta["hasIxFade"] = "ix-fade" in main
 meta["hasTimeline"] = "layout121_progress-bar" in s
 meta["counterBundle"] = counter_bundle
 print(json.dumps(meta, indent=1))
@@ -284,6 +314,9 @@ if meta["hasSlider"]:
 if meta["hasTimeline"]:
     extra_imports.append('import { TimelineProgress } from "@/components/site/timeline-progress";')
     extra_jsx.append("      <TimelineProgress />")
+if meta.get("hasIxFade"):
+    extra_imports.append('import { IxFade } from "@/components/site/ix-fade";')
+    extra_jsx.append("      <IxFade />")
 if counter_bundle:
     extra_scripts.append(f'      <Script src="{counter_bundle}" strategy="afterInteractive" />')
 if meta["hasForm"]:
