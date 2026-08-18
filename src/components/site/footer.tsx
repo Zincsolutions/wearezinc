@@ -56,7 +56,13 @@ export function Footer({ currentPath }: { currentPath?: string }) {
             </div>
             <div className="footer-divider" />
             <div className="footer-bottom">
-              <div className="footer-credit">© 2026 ZINC Solutions Inc. All rights reserved.</div>
+              <div className="footer-credit">
+                <div>© 2026 ZINC Solutions Inc. All rights reserved.</div>
+                <div className="footer-governed">
+                  This site is operated with AI and governed by{" "}
+                  <a href="https://dispatchvault.com" target="_blank" rel="noopener noreferrer">Dispatch</a>
+                </div>
+              </div>
               <div className="footer-legal">
                 <a href="/about/privacy-policy" aria-current={currentPath === "/about/privacy-policy" ? "page" : undefined}>Privacy Policy</a>
                 <a href="/about/terms-of-use" aria-current={currentPath === "/about/terms-of-use" ? "page" : undefined}>Terms of Use</a>
