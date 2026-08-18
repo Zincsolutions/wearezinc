@@ -59,7 +59,7 @@ export function Footer({ currentPath }: { currentPath?: string }) {
               <div className="footer-credit">
                 <div>© 2026 ZINC Solutions Inc. All rights reserved.</div>
                 <div className="footer-governed">
-                  This site is operated with AI and governed by{" "}
+                  This site is governed by{" "}
                   <a href="https://dispatchvault.com" target="_blank" rel="noopener noreferrer">Dispatch</a>
                 </div>
               </div>
