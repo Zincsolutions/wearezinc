@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import * as cheerio from "cheerio";
 
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -82,6 +83,56 @@ test("homepage hero preserves the approved Webflow headline", () => {
   }
 
   assert.match(read(files[0]), /hero-headline-line/);
+});
+
+test("case-study images request enough pixels for their rendered width", () => {
+  const pages = [
+    "public/_wf/work/dfnd-shopify-website-design.html",
+    "public/_wf/work/pivot.html",
+    "migration/webflow/pages/work/dfnd-shopify-website-design.html",
+    "migration/webflow/pages/work/pivot.html",
+  ];
+  const fullWidthClasses = new Set([
+    "portfolio4-header_image",
+    "portfolio4-gallery1_image1",
+    "portfolio4-gallery1_image4",
+    "portfolio4-gallery2_image3",
+  ]);
+  const splitWidthClasses = new Set([
+    "portfolio4-gallery1_image2",
+    "portfolio4-gallery1_image3",
+    "portfolio4-gallery2_image1",
+    "portfolio4-gallery2_image2",
+    "portfolio4-related_image",
+  ]);
+
+  for (const page of pages) {
+    const $ = cheerio.load(read(page));
+    const responsiveImages = $("img[srcset]").filter((_, image) =>
+      ($(image).attr("class") ?? "").includes("portfolio4-")
+    );
+
+    assert.ok(responsiveImages.length > 0, `${page} should contain responsive images`);
+
+    responsiveImages.each((_, image) => {
+      const element = $(image);
+      const imageClass = (element.attr("class") ?? "")
+        .split(/\s+/)
+        .find((className) => className.startsWith("portfolio4-"));
+
+      if (fullWidthClasses.has(imageClass)) {
+        assert.equal(element.attr("sizes"), "100vw", `${page} ${imageClass}`);
+      }
+
+      if (splitWidthClasses.has(imageClass)) {
+        assert.equal(
+          element.attr("sizes"),
+          "(max-width: 767px) 100vw, 50vw",
+          `${page} ${imageClass}`
+        );
+      }
+    });
+  }
 });
 
 test("known migration placeholders cannot return", () => {
