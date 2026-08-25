@@ -46,12 +46,12 @@ export function Footer({ currentPath }: { currentPath?: string }) {
               <div className="footer-menus">
                 <div className="footer-list">
                   {SOLUTION_LINKS.map((l) => (
-                    <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
+                    <a key={l.href} href={l.href} className="footer-link">{l.label}</a>
                   ))}
                 </div>
                 <div className="footer-list">
                   {COMPANY_LINKS.map((l) => (
-                    <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
+                    <a key={l.href} href={l.href} className="footer-link">{l.label}</a>
                   ))}
                 </div>
               </div>
@@ -66,9 +66,9 @@ export function Footer({ currentPath }: { currentPath?: string }) {
                 </div>
               </div>
               <div className="footer-legal">
-                <Link href="/about/privacy-policy" aria-current={currentPath === "/about/privacy-policy" ? "page" : undefined}>Privacy Policy</Link>
-                <Link href="/about/terms-of-use" aria-current={currentPath === "/about/terms-of-use" ? "page" : undefined}>Terms of Use</Link>
-                <Link href="/about/cookie-policy" aria-current={currentPath === "/about/cookie-policy" ? "page" : undefined}>Cookies Policy</Link>
+                <a href="/about/privacy-policy" aria-current={currentPath === "/about/privacy-policy" ? "page" : undefined}>Privacy Policy</a>
+                <a href="/about/terms-of-use" aria-current={currentPath === "/about/terms-of-use" ? "page" : undefined}>Terms of Use</a>
+                <a href="/about/cookie-policy" aria-current={currentPath === "/about/cookie-policy" ? "page" : undefined}>Cookies Policy</a>
               </div>
             </div>
           </div>
