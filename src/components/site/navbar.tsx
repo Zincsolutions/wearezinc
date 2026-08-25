@@ -97,20 +97,20 @@ export function Navbar() {
             </button>
             <nav className="nav-dd-list">
               {SOLUTIONS.map((s) => (
-                <Link key={s.href} href={s.href} className="nav-dd-link">{s.label}</Link>
+                <a key={s.href} href={s.href} className="nav-dd-link">{s.label}</a>
               ))}
             </nav>
           </div>
           <div className="nav-pages">
-            <Link href="/work" className="nav-link">Work</Link>
-            <Link href="/blog" className="nav-link">Insights</Link>
-            <Link href="/about-us" className="nav-link">About</Link>
+            <a href="/work" className="nav-link">Work</a>
+            <a href="/blog" className="nav-link">Insights</a>
+            <a href="/about-us" className="nav-link">About</a>
           </div>
-          <Link href="/contact-us" className="btn menu-cta">Contact Us</Link>
+          <a href="/contact-us" className="btn menu-cta">Contact Us</a>
         </nav>
 
         <div className="nav-buttons">
-          <Link href="/solutions/on-brand-aeo-sprint" className="nav-pill">
+          <a href="/solutions/on-brand-aeo-sprint" className="nav-pill">
             <div className="nav-pill-icon-wrap">
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
@@ -118,8 +118,8 @@ export function Navbar() {
               <p className="lg">Get AI Optimized</p>
               <p className="sm">AI SEO Sprint</p>
             </div>
-          </Link>
-          <Link href="/contact-us" className="btn nav-cta">Let&apos;s Go!</Link>
+          </a>
+          <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
           <button
             type="button"
             className="nav-burger"

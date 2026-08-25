@@ -78,6 +78,17 @@ test("known migration placeholders cannot return", () => {
   assert.doesNotMatch(source, /href="#" className="button is-link is-icon w-inline-block"><\/a>/);
 });
 
+test("shared navigation does not prefetch static Webflow routes as RSC", () => {
+  const shell = [
+    read("src/components/site/navbar.tsx"),
+    read("src/components/site/footer.tsx"),
+  ].join("\n");
+
+  assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/on-brand-aeo-sprint"/);
+  assert.doesNotMatch(shell, /<Link[^>]+href="\/(?:work|about-us|contact-us)"/);
+  assert.match(shell, /<a href="\/solutions\/on-brand-aeo-sprint"/);
+});
+
 test("form handling is durable, privacy-safe, and measurable", () => {
   const route = read("src/app/api/forms/route.ts");
   const client = read("public/js/zinc-forms.js");
