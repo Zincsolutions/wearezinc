@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WeAreZinc.com
 
-## Getting Started
+Production website for [ZINC](https://www.wearezinc.com), built with Next.js and deployed through Vercel. Supabase stores published articles, categories, resources, and form submissions; HubSpot receives lead contacts.
 
-First, run the development server:
+## Safe change workflow
+
+1. Create a branch from `main`. Never develop directly on `main`.
+2. Copy `.env.example` to `.env.local` and fill it with approved development values.
+3. Run `npm ci`, then `npm run check`.
+4. Push the branch and review the Vercel preview, including forms, redirects, metadata, and mobile layout.
+5. Merge only after the preview and checks pass. Merging to `main` deploys production.
+
+Production secrets must not be copied into the repository or pasted into issues, commits, logs, or analytics events.
+
+## Local development
 
 ```bash
+npm ci
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
 
-## Learn More
+`npm run check` runs the complete sequence.
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app` contains the Next.js App Router, componentized landing pages, form API, sitemap, and robots rules.
+- `src/lib/content.ts` reads published content from Supabase using the public key and row-level security.
+- `src/lib/render.ts` renders the migrated blog templates.
+- `public/_wf` contains preserved, generated Webflow HTML. These files are served through rewrites in `next.config.ts` and are intentionally excluded from linting.
+- `supabase/migrations` is the source of truth for database schema changes.
+- `docs/BUILD.md` contains migration background; this README is the operational source of truth.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment variables
 
-## Deploy on Vercel
+See `.env.example`. Public Supabase values may be exposed to the browser; the service-role and HubSpot tokens are server-only and must never use the `NEXT_PUBLIC_` prefix.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment and domains
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub: `Zincsolutions/wearezinc`
+- Production: `www.wearezinc.com`
+- Vercel production branch: `main`
+- Canonical host: `https://www.wearezinc.com`
+
+Legacy domains should terminate at Vercel so the host-based redirects in `next.config.ts` can preserve the full request path.

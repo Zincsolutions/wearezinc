@@ -14,6 +14,27 @@ const nextConfig: NextConfig = {
     "/blog": ["./src/templates/**"],
     "/sitemap.xml": ["./public/_wf/manifest.json"],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        ],
+      },
+      {
+        // These are internal backing documents for the friendly public URLs.
+        source: "/_wf/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
   async rewrites() {
     return manifest.pages.map((p) => ({
       source: p === "index" ? "/" : `/${p}`,

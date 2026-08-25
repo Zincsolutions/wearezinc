@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const SOLUTIONS = [
@@ -74,10 +75,10 @@ export function Navbar() {
   return (
     <div className={`nav${hidden && !menuOpen ? " nav-hidden" : ""}`} role="banner">
       <div className="nav-inner">
-        <a href="/" className="nav-logo-link" aria-label="ZINC home">
+        <Link href="/" className="nav-logo-link" aria-label="ZINC home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/wf/695bda13c7c5d5a8fcdb4489_relume-127136.webp" alt="ZINC" className="nav-logo" height={32} loading="eager" />
-        </a>
+        </Link>
 
         <nav role="navigation" className={`nav-menu${menuOpen ? " open" : ""}`}>
           <div
@@ -96,20 +97,20 @@ export function Navbar() {
             </button>
             <nav className="nav-dd-list">
               {SOLUTIONS.map((s) => (
-                <a key={s.href} href={s.href} className="nav-dd-link">{s.label}</a>
+                <Link key={s.href} href={s.href} className="nav-dd-link">{s.label}</Link>
               ))}
             </nav>
           </div>
           <div className="nav-pages">
-            <a href="/work" className="nav-link">Work</a>
-            <a href="/blog" className="nav-link">Insights</a>
-            <a href="/about-us" className="nav-link">About</a>
+            <Link href="/work" className="nav-link">Work</Link>
+            <Link href="/blog" className="nav-link">Insights</Link>
+            <Link href="/about-us" className="nav-link">About</Link>
           </div>
-          <a href="/contact-us" className="btn menu-cta">Contact Us</a>
+          <Link href="/contact-us" className="btn menu-cta">Contact Us</Link>
         </nav>
 
         <div className="nav-buttons">
-          <a href="/solutions/on-brand-aeo-sprint" className="nav-pill">
+          <Link href="/solutions/on-brand-aeo-sprint" className="nav-pill">
             <div className="nav-pill-icon-wrap">
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
@@ -117,8 +118,8 @@ export function Navbar() {
               <p className="lg">Get AI Optimized</p>
               <p className="sm">AI SEO Sprint</p>
             </div>
-          </a>
-          <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
+          </Link>
+          <Link href="/contact-us" className="btn nav-cta">Let&apos;s Go!</Link>
           <button
             type="button"
             className="nav-burger"

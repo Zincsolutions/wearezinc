@@ -17,6 +17,16 @@ function setHead($: cheerio.CheerioAPI, post: PostRow) {
   const desc = post.meta_description || post.post_summary || "";
   const url = `${SITE}/post/${post.slug}`;
   const img = abs(post.main_image);
+  const body = cheerio.load(post.post_body ?? "");
+  const bodyText = body.text().replace(/\s+/g, " ").trim();
+  const citations = [
+    ...new Set(
+      body('a[href^="http"]')
+        .map((_, el) => body(el).attr("href"))
+        .get()
+        .filter((href): href is string => Boolean(href) && !href.startsWith(SITE))
+    ),
+  ];
 
   $("title").text(title);
   $('meta[name="description"]').attr("content", desc);
@@ -35,19 +45,51 @@ function setHead($: cheerio.CheerioAPI, post: PostRow) {
   ].join("");
   $('link[rel="canonical"]').after(og);
 
-  const ld = {
+  const article = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${url}#article`,
     headline: post.name,
     description: desc,
     image: img ?? undefined,
     datePublished: post.publish_date ?? undefined,
+    dateModified: post.updated_at || post.publish_date || undefined,
     url,
-    author: { "@type": "Organization", name: "ZINC", url: SITE },
-    publisher: { "@type": "Organization", name: "ZINC", url: SITE },
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    articleSection: post.categories.length ? post.categories : undefined,
+    keywords: post.categories.length ? post.categories.join(", ") : undefined,
+    wordCount: bodyText ? bodyText.split(/\s+/).length : undefined,
+    citation: citations.length ? citations : undefined,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "ZINC",
+      url: SITE,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "ZINC",
+      url: SITE,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png`,
+      },
+    },
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Insights", item: `${SITE}/blog` },
+      { "@type": "ListItem", position: 3, name: post.name, item: url },
+    ],
   };
   $("head").append(
-    `<script type="application/ld+json">${JSON.stringify(ld)}</script>`
+    `<script type="application/ld+json">${JSON.stringify([article, breadcrumb]).replace(/</g, "\\u003c")}</script>`
   );
 }
 
@@ -102,7 +144,14 @@ export function renderPost(post: PostRow, related: PostRow[]): string {
   setHead($, post);
 
   $("h1.heading-style-h2").first().text(post.name);
-  $(".blog-post-header4_date-wrapper .text-size-small").last().text(formatDate(post.publish_date));
+  const dateWrapper = $(".blog-post-header4_date-wrapper").first();
+  dateWrapper.find(".text-size-small").last().text(formatDate(post.publish_date));
+  dateWrapper.append('<div class="text-size-small">By ZINC Editorial Team</div>');
+  if (post.updated_at && post.updated_at !== post.publish_date) {
+    dateWrapper.append(
+      `<div class="text-size-small">Updated ${esc(formatDate(post.updated_at))}</div>`
+    );
+  }
 
   // category chips
   const meta = $(".blog-post-header4_meta-wrapper .w-dyn-items").first();
@@ -123,7 +172,43 @@ export function renderPost(post: PostRow, related: PostRow[]): string {
     .removeAttr("sizes");
 
   // body
-  $(".text-rich-text.w-richtext").first().html(post.post_body ?? "");
+  const body = $(".text-rich-text.w-richtext").first();
+  body.html(post.post_body ?? "");
+  body.find("h1").each((_, el) => {
+    el.tagName = "h2";
+  });
+  body.find("img").each((index, el) => {
+    const image = $(el);
+    if (!image.attr("alt")) image.attr("alt", `${post.name} — supporting image ${index + 1}`);
+  });
+
+  const shareUrl = encodeURIComponent(`${SITE}/post/${post.slug}`);
+  const shareTitle = encodeURIComponent(post.name);
+  const shareLinks = $(".content29_share a");
+  const destinations = [
+    { label: "Share on LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}` },
+    { label: "Share on X", href: `https://x.com/intent/post?url=${shareUrl}&text=${shareTitle}` },
+    { label: "Share on Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}` },
+    { label: "Share by email", href: `mailto:?subject=${shareTitle}&body=${shareUrl}` },
+  ];
+  shareLinks.each((index, el) => {
+    const destination = destinations[index];
+    if (!destination) return;
+    $(el)
+      .attr("href", destination.href)
+      .attr("aria-label", destination.label)
+      .attr("target", destination.href.startsWith("http") ? "_blank" : null)
+      .attr("rel", destination.href.startsWith("http") ? "noopener noreferrer" : null);
+  });
+
+  const tagList = $(".content29_tag-list").first();
+  tagList.empty();
+  for (const category of post.categories) {
+    tagList.append(`<div class="tag"><div>${esc(category)}</div></div>`);
+  }
+  if (!post.categories.length) tagList.closest(".content29_tag-list-wrapper").remove();
+  $(".show-mobile-landscape a.button").filter((_, el) => $(el).text().trim() === "View all").attr("href", "/blog");
+  $("a.button").filter((_, el) => $(el).text().trim() === "Subscribe").attr("href", "/contact-us?interest=newsletter");
 
   // related posts
   const relList = $(".collection-list-wrapper-4 .w-dyn-items").first();

@@ -69,12 +69,28 @@
           .then(function (r) { return r.json(); })
           .then(function (r) {
             if (!r.ok) throw new Error(r.error || 'failed');
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', {
+                form_name: payload.formName,
+                method: 'website_form',
+              });
+            }
             form.style.display = 'none';
             show(done, true);
             show(fail, false);
+            if (done) {
+              done.setAttribute('role', 'status');
+              done.setAttribute('tabindex', '-1');
+              done.focus();
+            }
           })
           .catch(function () {
             show(fail, true);
+            if (fail) {
+              fail.setAttribute('role', 'alert');
+              fail.setAttribute('tabindex', '-1');
+              fail.focus();
+            }
             if (btn) {
               if ('value' in btn && btn.value) btn.value = oldVal;
               else if (btn.textContent) btn.textContent = oldVal;

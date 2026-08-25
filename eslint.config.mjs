@@ -12,6 +12,14 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated Webflow capture and migration artifacts are preserved verbatim.
+    "public/**",
+    "migration/**",
+    "qa/**",
+    // Visual comparison utilities are generated for one-off migration QA.
+    "scripts/compare-layout.mjs",
+    "scripts/measure-page.mjs",
+    "scripts/qa-diff-*.mjs",
   ]),
 ]);
 
