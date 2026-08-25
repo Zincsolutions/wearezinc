@@ -2,11 +2,24 @@ import { createClient } from "@supabase/supabase-js";
 
 // Anon key on purpose: RLS guarantees only published content is readable,
 // so drafts can never leak through these queries.
-const db = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  { auth: { persistSession: false } }
-);
+export const isContentConfigured = () =>
+  Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+
+const db = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    throw new Error(
+      "Supabase content is not configured. Copy .env.example to .env.local and add approved development values."
+    );
+  }
+
+  return createClient(url, key, { auth: { persistSession: false } });
+};
 
 export type PostRow = {
   id: string;
@@ -19,6 +32,7 @@ export type PostRow = {
   main_image: string | null;
   thumbnail_image: string | null;
   publish_date: string | null;
+  updated_at: string;
   featured: boolean;
   categories: string[];
 };
@@ -35,10 +49,10 @@ const flatten = (p: JoinedPost): PostRow => ({
 });
 
 const POST_SELECT =
-  "id,name,slug,post_body,post_summary,seo_title,meta_description,main_image,thumbnail_image,publish_date,featured,post_categories(categories(name))";
+  "id,name,slug,post_body,post_summary,seo_title,meta_description,main_image,thumbnail_image,publish_date,updated_at,featured,post_categories(categories(name))";
 
 export async function getPost(slug: string): Promise<PostRow | null> {
-  const { data, error } = await db
+  const { data, error } = await db()
     .from("posts")
     .select(POST_SELECT)
     .eq("slug", slug)
@@ -48,14 +62,14 @@ export async function getPost(slug: string): Promise<PostRow | null> {
 }
 
 export async function getRelatedPosts(postId: string, limit = 3): Promise<PostRow[]> {
-  const { data: rel, error } = await db
+  const { data: rel, error } = await db()
     .from("post_related")
     .select("related_post_id")
     .eq("post_id", postId);
   if (error) throw new Error(`getRelatedPosts: ${error.message}`);
   const ids = (rel ?? []).map((r) => r.related_post_id);
   if (!ids.length) return [];
-  const { data, error: e2 } = await db
+  const { data, error: e2 } = await db()
     .from("posts")
     .select(POST_SELECT)
     .in("id", ids)
@@ -67,7 +81,7 @@ export async function getRelatedPosts(postId: string, limit = 3): Promise<PostRo
 // Matches the old Webflow listing: sort-order ascending with un-numbered posts
 // first (those sub-sorted newest-first by publish date), numbered ties oldest-first.
 export async function getAllPosts(): Promise<PostRow[]> {
-  const { data, error } = await db.from("posts").select(POST_SELECT + ",sort_order");
+  const { data, error } = await db().from("posts").select(POST_SELECT + ",sort_order");
   if (error) throw new Error(`getAllPosts: ${error.message}`);
   type WithSort = JoinedPost & { sort_order: number | null };
   const posts = (data as unknown as WithSort[]).slice();
@@ -86,7 +100,7 @@ export async function getAllPosts(): Promise<PostRow[]> {
 const CATEGORY_ORDER = ["Insights", "News", "Resources", "Ecommerce", "Web Design"];
 
 export async function getCategories(): Promise<{ name: string; slug: string }[]> {
-  const { data, error } = await db.from("categories").select("name,slug");
+  const { data, error } = await db().from("categories").select("name,slug");
   if (error) throw new Error(`getCategories: ${error.message}`);
   return (data ?? []).sort((a, b) => {
     const ai = CATEGORY_ORDER.indexOf(a.name);

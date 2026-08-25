@@ -86,7 +86,7 @@ ul, ol { margin-top: 0;
   display: table; }
 .w-embed:after { clear: both; }
 :root { --color-scheme-1--background: #fff;
-  --_typography---font-styles--body: Geist, sans-serif;
+  --_typography---font-styles--body: var(--font-geist), Arial, sans-serif;
   --color-scheme-1--text: var(--_primitives---colors--black);
   --_typography---font-styles--heading: "Bdogrotesk Bf 648 A 656 F 04 A 15", Arial, sans-serif;
   --_primitives---colors--orange-500: #ff5b19;
@@ -111,7 +111,7 @@ ul, ol { margin-top: 0;
   --border-color--border-primary\<deleted\|relume-variable-border-color-1\>: var(--base-color-neutral--black\<deleted\|relume-variable-color-neutral-1\>);
   --_primitives---colors--gray-100: #f4f4f4;
   --_ui-styles---radius--small: 16px;
-  --_typography---font-styles--micro: "Geist Mono", sans-serif;
+  --_typography---font-styles--micro: var(--font-geist-mono), monospace;
   --_ui-styles---radius--large: 0px;
   --color-scheme-1--accent\<deleted\|relume-variable-color-scheme-1-accent\>: #161616;
   --color-scheme-2--text\<deleted\|variable-7e7f9e29-bb39-6985-4145-7d8d228b1dab\>: var(--_primitives---colors--neutral-darkest\<deleted\|relume-variable-neutral-shade-7\>);
@@ -759,14 +759,14 @@ figcaption { text-align: center;
   font-size: .85rem;
   line-height: 1; }
 .divider-number-left.micro-type { color: var(--_primitives---colors--black);
-  font-family: Geist Mono, sans-serif;
+  font-family: var(--font-geist-mono), monospace;
   font-size: .9rem;
   font-weight: 400; }
 .divider-number-left.micro-type.text-color-white { color: var(--_primitives---colors--white); }
 .divider-number-right { margin-top: 0;
   font-size: .85rem;
   line-height: 1; }
-.divider-number-right.micro-type { font-family: Geist Mono, sans-serif;
+.divider-number-right.micro-type { font-family: var(--font-geist-mono), monospace;
   font-size: .9rem; }
 .div-block { background-color: var(--_primitives---colors--neutral-darkest\<deleted\|relume-variable-neutral-shade-7\>);
   border-radius: 50%;
@@ -1016,7 +1016,7 @@ figcaption { text-align: center;
 
 /* Number inside the circle → Geist Mono only here */
 .solution-number-text {
-  font-family: "Geist Mono", system-ui, -apple-system,
+  font-family: var(--font-geist-mono), system-ui, -apple-system,
     BlinkMacSystemFont, "SF Mono", Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }

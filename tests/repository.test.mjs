@@ -1,0 +1,95 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import test from "node:test";
+
+const root = process.cwd();
+const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
+
+test("every Webflow manifest entry has a captured HTML document", () => {
+  const manifest = JSON.parse(read("public/_wf/manifest.json"));
+
+  assert.ok(Array.isArray(manifest.pages));
+  assert.ok(manifest.pages.includes("index"));
+
+  for (const page of manifest.pages) {
+    assert.ok(
+      fs.existsSync(path.join(root, "public/_wf", `${page}.html`)),
+      `Missing public/_wf/${page}.html`
+    );
+  }
+});
+
+test("server secrets are never declared as public variables", () => {
+  const example = read(".env.example");
+
+  assert.doesNotMatch(example, /NEXT_PUBLIC_(?:SUPABASE_SERVICE_ROLE|HUBSPOT)/);
+  assert.match(example, /^SUPABASE_SERVICE_ROLE_KEY=/m);
+  assert.match(example, /^HUBSPOT_PRIVATE_APP_TOKEN=/m);
+});
+
+test("legacy domains retain path-preserving redirect rules", () => {
+  const config = read("next.config.ts");
+
+  assert.match(config, /value: "zincsolutions\.com"/);
+  assert.match(config, /value: "www\.zincsolutions\.com"/);
+  assert.match(config, /destination: "https:\/\/www\.wearezinc\.com\/:path\*"/);
+});
+
+test("internal Webflow backing documents cannot be indexed", () => {
+  const config = read("next.config.ts");
+  const robots = read("src/app/robots.ts");
+
+  assert.match(config, /source: "\/_wf\/:path\*"/);
+  assert.match(config, /X-Robots-Tag/);
+  assert.match(config, /noindex, nofollow/);
+  assert.doesNotMatch(robots, /disallow:\s*\["\/_wf\/"\]/);
+});
+
+test("sitemap dates are normalized to ISO 8601", () => {
+  const sitemap = read("src/app/sitemap.ts");
+
+  assert.match(sitemap, /function normalizeLastModified/);
+  assert.match(sitemap, /parsed\.toISOString\(\)/);
+  assert.doesNotMatch(sitemap, /lastModified: COMPONENT_LAST_MODIFIED\[p\] \|\| capturedDate/);
+});
+
+test("componentized landing pages have one primary heading", () => {
+  const pages = [
+    "src/app/(home)/content.tsx",
+    "src/app/solutions/ecommerce-acceleration/content.tsx",
+    "src/app/solutions/website-design-development/content.tsx",
+  ];
+
+  for (const page of pages) {
+    const h1Count = read(page).match(/<h1\b/g)?.length ?? 0;
+    assert.equal(h1Count, 1, `${page} should contain exactly one h1`);
+  }
+});
+
+test("known migration placeholders cannot return", () => {
+  const source = [
+    read("src/app/(home)/faq-items.ts"),
+    read("src/app/solutions/website-design-development/content.tsx"),
+  ].join("\n");
+
+  assert.doesNotMatch(source, /This sets expectations without duplicating/);
+  assert.doesNotMatch(source, /href="\/lander-2"/);
+  assert.doesNotMatch(source, /href="#" className="button is-link is-icon w-inline-block"><\/a>/);
+});
+
+test("form handling is durable, privacy-safe, and measurable", () => {
+  const route = read("src/app/api/forms/route.ts");
+  const client = read("public/js/zinc-forms.js");
+  const migration = read(
+    "supabase/migrations/20260825171943_harden_forms_and_database_advisors.sql"
+  );
+
+  assert.match(route, /rpc\("check_form_rate_limit"/);
+  assert.match(route, /\.eq\("id", submission\.id\)/);
+  assert.doesNotMatch(route, /failed for \$\{p\.email\}/);
+  assert.match(client, /'generate_lead'/);
+  assert.match(migration, /set search_path = ''/);
+  assert.match(migration, /enable row level security/);
+  assert.match(migration, /grant execute[\s\S]*to service_role/);
+});
