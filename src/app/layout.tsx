@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   title: "ZINC | AI-Driven Digital Strategy & Design Agency",
   description:
     "ZINC brings 25+ years of strategy, design, and technology together to help brands stay visible in the AI era.",
+  icons: {
+    icon: {
+      url: "/wf/695bda13c7c5d5a8fcdb45fc_zinc_fav.png",
+      type: "image/png",
+      sizes: "32x32",
+    },
+    shortcut: "/wf/695bda13c7c5d5a8fcdb45fc_zinc_fav.png",
+    apple: "/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png",
+  },
 };
 
 export default function RootLayout({

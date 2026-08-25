@@ -29,6 +29,21 @@ test("server secrets are never declared as public variables", () => {
   assert.match(example, /^HUBSPOT_PRIVATE_APP_TOKEN=/m);
 });
 
+test("all route families use the branded ZINC favicon", () => {
+  const faviconPath = "public/wf/695bda13c7c5d5a8fcdb45fc_zinc_fav.png";
+  const webclipPath = "public/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png";
+  const layout = read("src/app/layout.tsx");
+  const webflowHome = read("public/_wf/index.html");
+
+  assert.ok(fs.existsSync(path.join(root, faviconPath)));
+  assert.ok(fs.existsSync(path.join(root, webclipPath)));
+  assert.doesNotMatch(layout, /favicon\.ico/);
+  assert.match(layout, /695bda13c7c5d5a8fcdb45fc_zinc_fav\.png/);
+  assert.match(layout, /695bda13c7c5d5a8fcdb45fd_zinc_webclip\.png/);
+  assert.match(webflowHome, /695bda13c7c5d5a8fcdb45fc_zinc_fav\.png/);
+  assert.equal(fs.existsSync(path.join(root, "src/app/favicon.ico")), false);
+});
+
 test("legacy domains retain path-preserving redirect rules", () => {
   const config = read("next.config.ts");
 
