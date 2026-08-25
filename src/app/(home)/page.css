@@ -730,6 +730,7 @@ figcaption { text-align: center;
   font-size: .5rem; }
 .headline-small { text-transform: uppercase;
   font-size: 8rem; }
+.hero-headline-line { display: block; }
 .text-style-tagline { justify-content: center;
   align-items: center;
   font-weight: 600;

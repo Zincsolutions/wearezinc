@@ -67,6 +67,23 @@ test("componentized landing pages have one primary heading", () => {
   }
 });
 
+test("homepage hero preserves the approved Webflow headline", () => {
+  const files = [
+    "src/app/(home)/content.tsx",
+    "public/_wf/index.html",
+    "migration/webflow/pages/index.html",
+  ];
+
+  for (const file of files) {
+    const home = read(file);
+    assert.doesNotMatch(home, /AI-Driven Strategy\./, `${file} must not invent hero copy`);
+    assert.match(home, /&gt; see Further/, `${file} must preserve the first line`);
+    assert.match(home, /GO BiggeR &lt;/, `${file} must preserve the second line`);
+  }
+
+  assert.match(read(files[0]), /hero-headline-line/);
+});
+
 test("known migration placeholders cannot return", () => {
   const source = [
     read("src/app/(home)/faq-items.ts"),
