@@ -114,7 +114,7 @@ test("homepage hero uses a lightweight, reduced-motion-safe settle animation", (
   assert.match(homeCss, /@keyframes hero-headline-settle/);
   assert.match(homeCss, /transform: translate3d\(0, \.12em, 0\)/);
   assert.match(homeCss, /animation: hero-subtext-settle 900ms/);
-  assert.match(homeCss, /hero-subtext[\s\S]*animation-delay: 1050ms/);
+  assert.match(homeCss, /hero-subtext[\s\S]*animation-delay: 850ms/);
   assert.match(homeCss, /@keyframes hero-subtext-settle/);
   assert.match(read("src/app/(home)/content.tsx"), /hero-subtext/);
   assert.match(homeCss, /opacity: 0/);
