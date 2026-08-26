@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  if (!/(^|\.)wearezinc\.com$/i.test(window.location.hostname)) return;
+
   var TRACKED_BOOKING_HOSTS = [
     "calendly.com",
     "calendar.google.com",

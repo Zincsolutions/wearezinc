@@ -193,6 +193,8 @@ test("marketing CTA tracking is consistent and privacy-safe", () => {
   const component = read("src/components/site/analytics.tsx");
 
   assert.match(component, /src="\/js\/zinc-analytics\.js"/);
+  assert.match(component, /wearezinc\\\.com/);
+  assert.match(analytics, /wearezinc\\\.com/);
   assert.match(analytics, /"cta_click"/);
   assert.match(analytics, /cta_text:/);
   assert.match(analytics, /cta_location:/);
@@ -207,10 +209,21 @@ test("marketing CTA tracking is consistent and privacy-safe", () => {
     .concat("src/templates/blog.html", "src/templates/post.html");
 
   for (const file of staticDocuments) {
+    const document = read(file);
     assert.match(
-      read(file),
+      document,
       /<script src="\/js\/zinc-analytics\.js" defer><\/script>/,
       `${file} must load CTA tracking`
+    );
+    assert.match(
+      document,
+      /var ga4=document\.createElement\("script"\)/,
+      `${file} must load GA4 only after the production-host check`
+    );
+    assert.doesNotMatch(
+      document,
+      /<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js/,
+      `${file} must not load GA4 directly on previews or local development`
     );
   }
 });

@@ -6,12 +6,8 @@ import Script from "next/script";
 export function SiteAnalytics() {
   return (
     <>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-H4WRSH6E2G"
-        strategy="afterInteractive"
-      />
       <Script id="ga4" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-H4WRSH6E2G');`}
+        {`if(/(^|\.)wearezinc\.com$/.test(location.hostname)){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-H4WRSH6E2G');var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-H4WRSH6E2G';document.head.appendChild(s);}`}
       </Script>
       <Script src="/js/zinc-analytics.js" strategy="afterInteractive" />
       <Script id="fullstory" strategy="afterInteractive">
