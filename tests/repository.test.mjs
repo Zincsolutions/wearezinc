@@ -107,7 +107,7 @@ test("homepage hero uses a lightweight, reduced-motion-safe settle animation", (
   assert.match(homeCss, /@media \(prefers-reduced-motion: no-preference\)/);
   assert.match(
     homeCss,
-    /animation: hero-headline-settle 1100ms cubic-bezier\(\.25, \.1, \.25, 1\) both/
+    /animation: hero-headline-settle 1400ms cubic-bezier\(\.25, \.1, \.25, 1\) both/
   );
   assert.match(homeCss, /animation-delay: 70ms/);
   assert.match(homeCss, /nth-child\(2\) \{ animation-delay: 250ms/);
