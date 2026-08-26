@@ -739,7 +739,7 @@ figcaption { text-align: center;
   .hero-headline-line:nth-child(2) { animation-delay: 250ms; }
   .hero-subtext {
     animation: hero-subtext-settle 900ms cubic-bezier(.25, .1, .25, 1) both;
-    animation-delay: 1050ms;
+    animation-delay: 850ms;
   }
 }
 @keyframes hero-headline-settle {
