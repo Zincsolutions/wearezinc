@@ -187,3 +187,43 @@ test("form handling is durable, privacy-safe, and measurable", () => {
   assert.match(migration, /enable row level security/);
   assert.match(migration, /grant execute[\s\S]*to service_role/);
 });
+
+test("marketing CTA tracking is consistent and privacy-safe", () => {
+  const analytics = read("public/js/zinc-analytics.js");
+  const component = read("src/components/site/analytics.tsx");
+
+  assert.match(component, /src="\/js\/zinc-analytics\.js"/);
+  assert.match(component, /wearezinc\\\.com/);
+  assert.match(analytics, /wearezinc\\\.com/);
+  assert.match(analytics, /"cta_click"/);
+  assert.match(analytics, /cta_text:/);
+  assert.match(analytics, /cta_location:/);
+  assert.match(analytics, /cta_destination:/);
+  assert.match(analytics, /destination === "email"[\s\S]*"Email ZINC"/);
+  assert.match(analytics, /destination === "phone"[\s\S]*"Call ZINC"/);
+  assert.doesNotMatch(analytics, /link_url:/);
+
+  const manifest = JSON.parse(read("public/_wf/manifest.json"));
+  const staticDocuments = manifest.pages
+    .map((page) => `public/_wf/${page}.html`)
+    .concat("src/templates/blog.html", "src/templates/post.html");
+
+  for (const file of staticDocuments) {
+    const document = read(file);
+    assert.match(
+      document,
+      /<script src="\/js\/zinc-analytics\.js" defer><\/script>/,
+      `${file} must load CTA tracking`
+    );
+    assert.match(
+      document,
+      /var ga4=document\.createElement\("script"\)/,
+      `${file} must load GA4 only after the production-host check`
+    );
+    assert.doesNotMatch(
+      document,
+      /<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js/,
+      `${file} must not load GA4 directly on previews or local development`
+    );
+  }
+});
