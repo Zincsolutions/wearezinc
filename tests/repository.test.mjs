@@ -100,6 +100,18 @@ test("homepage hero preserves the approved Webflow headline", () => {
   assert.match(read(files[0]), /hero-headline-line/);
 });
 
+test("homepage hero uses a lightweight, reduced-motion-safe settle animation", () => {
+  const homeCss = read("src/app/(home)/page.css");
+  const homePage = read("src/app/(home)/page.tsx");
+
+  assert.match(homeCss, /@media \(prefers-reduced-motion: no-preference\)/);
+  assert.match(homeCss, /animation: hero-headline-settle/);
+  assert.match(homeCss, /@keyframes hero-headline-settle/);
+  assert.match(homeCss, /transform: translate3d/);
+  assert.match(homeCss, /opacity: 0/);
+  assert.doesNotMatch(homePage, /reveal\.js|gsap|SplitType/);
+});
+
 test("case-study images request enough pixels for their rendered width", () => {
   const pages = [
     "public/_wf/work/dfnd-shopify-website-design.html",
