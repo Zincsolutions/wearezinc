@@ -27,7 +27,7 @@ Rebuild of wearezinc.com (migrating from Webflow "ZINC Growth Design" to Vercel,
 
 - App Router + TypeScript + Tailwind CSS v4, `src/` layout, `@/*` alias. Next 16 / React 19.
 - **Content**: Supabase from day one (user decision) — blog posts, categories, resources in tables; blog routes use ISR. Import source: `migration/webflow/cms/*.json` (22 posts: 16 published + 6 drafts; keep drafts unpublished).
-- **Forms**: API route → (1) insert into Supabase `form_submissions`, (2) upsert HubSpot contact (Sales Pro account; env `HUBSPOT_PRIVATE_APP_TOKEN`). No Resend — HubSpot handles lead notifications. Honeypot + rate limiting required.
+- **Forms**: API route → (1) insert into Supabase `form_submissions`, (2) upsert HubSpot contact (Sales Pro account; env `HUBSPOT_PRIVATE_APP_TOKEN`). (3) email the team via Resend (`src/lib/lead-notify.ts`; env `RESEND_API_KEY`, `FORM_NOTIFY_TO`) and (4) assign HubSpot owner `HUBSPOT_OWNER_ID`. HubSpot does NOT notify on API-created contacts by itself (learned Sept 2026). Honeypot + rate limiting required. See `docs/inbound-leads.md`.
 - **Analytics**: GA4 `G-H4WRSH6E2G` via `next/script`. FullStory/Hotjar: ask user before porting (audit flagged duplicate trackers + consent gating).
 - Deploys: GitHub `Zincsolutions/wearezinc` → Vercel.
 

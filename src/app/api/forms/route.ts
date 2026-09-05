@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { createHash } from "node:crypto";
+import { sendLeadNotification } from "@/lib/lead-notify";
 
 export const runtime = "nodejs";
 
@@ -137,18 +138,26 @@ function trustedOrigin(req: Request): boolean {
   }
 }
 
-async function hubspotUpsert(p: Payload): Promise<string> {
+type HubspotResult = { status: string; contactId?: string };
+
+async function hubspotUpsert(p: Payload): Promise<HubspotResult> {
   const token = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
-  if (!token) return "skipped:no-token";
+  if (!token) return { status: "skipped:no-token" };
 
   const [first, ...rest] = (p.name ?? "").trim().split(/\s+/);
   const properties: Record<string, string> = {
     email: p.email!,
     firstname: p.firstName ?? first ?? "",
     lastname: p.lastName ?? rest.join(" "),
+    lifecyclestage: "lead",
+    hs_lead_status: "NEW",
   };
   if (p.phone) properties.phone = p.phone;
   if (p.company) properties.company = p.company;
+  // Assigning an owner makes the lead show up in that user's HubSpot queue and
+  // triggers HubSpot's own "record assigned to you" notification.
+  const owner = process.env.HUBSPOT_OWNER_ID;
+  if (owner) properties.hubspot_owner_id = owner;
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -164,7 +173,7 @@ async function hubspotUpsert(p: Payload): Promise<string> {
   if (create.ok) {
     const body = (await create.json()) as { id: string };
     await tryAttachNote(body.id, p, headers);
-    return `created:${body.id}`;
+    return { status: "created", contactId: body.id };
   }
   if (create.status === 409) {
     // existing contact — error message contains "Existing ID: <id>"
@@ -178,10 +187,10 @@ async function hubspotUpsert(p: Payload): Promise<string> {
         signal: AbortSignal.timeout(8_000),
       });
       await tryAttachNote(id, p, headers);
-      return `updated:${id}`;
+      return { status: "updated", contactId: id };
     }
   }
-  return `failed:${create.status}`;
+  return { status: `failed:${create.status}` };
 }
 
 // Message context as a Note on the contact. Needs notes scope — degrades
@@ -264,21 +273,54 @@ export async function POST(req: Request) {
     return json({ ok: false, error: "Storage failed" }, 500);
   }
 
-  let hubspot: string;
+  let hubspot: HubspotResult;
   try {
     hubspot = await hubspotUpsert(p);
   } catch (error) {
     console.error(`HubSpot sync failed for submission ${submission.id}`, error);
-    hubspot = "failed:network";
+    hubspot = { status: "failed:network" };
   }
-  if (hubspot.startsWith("failed")) {
+  if (hubspot.status.startsWith("failed")) {
     // stored in Supabase; flag for reconciliation rather than failing the user
-    console.error(`HubSpot sync failed for submission ${submission.id}: ${hubspot}`);
-  } else if (!hubspot.startsWith("skipped")) {
-    await db()
-      .from("form_submissions")
-      .update({ hubspot_synced: true })
-      .eq("id", submission.id);
+    console.error(`HubSpot sync failed for submission ${submission.id}: ${hubspot.status}`);
+  }
+
+  // Email the team. Best-effort: never blocks or fails the visitor's submission.
+  let notified: string;
+  try {
+    notified = await sendLeadNotification({
+      submissionId: submission.id,
+      formName: p.formName ?? "unknown",
+      name: p.name ?? ([p.firstName, p.lastName].filter(Boolean).join(" ") || undefined),
+      email: p.email,
+      phone: p.phone,
+      company: p.company,
+      message: p.message,
+      fields: p.fields ?? {},
+      hubspotContactId: hubspot.contactId,
+      receivedAt: new Date(),
+    });
+  } catch (error) {
+    console.error(`Lead notification failed for submission ${submission.id}`, error);
+    notified = "failed:network";
+  }
+  if (notified.startsWith("failed")) {
+    console.error(`Lead notification failed for submission ${submission.id}: ${notified}`);
+  } else if (notified.startsWith("skipped")) {
+    console.warn(`Lead notification skipped for submission ${submission.id}: ${notified}`);
+  }
+
+  const synced = Boolean(hubspot.contactId);
+  const { error: updateError } = await db()
+    .from("form_submissions")
+    .update({
+      hubspot_synced: synced,
+      hubspot_contact_id: hubspot.contactId ?? null,
+      notified_at: notified === "sent" ? new Date().toISOString() : null,
+    })
+    .eq("id", submission.id);
+  if (updateError) {
+    console.error(`Submission ${submission.id} post-processing update failed`, updateError);
   }
 
   return json({ ok: true });
