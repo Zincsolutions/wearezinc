@@ -1,0 +1,183 @@
+<p><strong>DispatchVault (Dispatch) is the management layer for AI-powered websites.</strong> It sits above your AI coding agents, your GitHub repository, and your hosting platform, and it gives marketing teams the visibility, approvals, context, and one-click restore they need to let AI make website changes without losing control. This guide explains what Dispatch is, how it works, who it is for, what it costs, and how ZINC uses it with clients.</p>
+
+<h2>Key facts about DispatchVault at a glance</h2>
+<ul>
+<li><strong>What it is:</strong> a governance and management platform for websites that are built and maintained by AI coding agents. Find it at <a href="https://dispatchvault.com/">dispatchvault.com</a>.</li>
+<li><strong>Tagline:</strong> "Mission Control for AI Websites." Let AI scale your website, without losing control.</li>
+<li><strong>Works with:</strong> Claude Code, ChatGPT and Codex, Google Gemini, GitHub, Vercel, Netlify, Cloudflare, Astro, and Slack.</li>
+<li><strong>Core features:</strong> live activity feed with AI-change attribution, preview-and-approve workflows, role-based permissions and risk tiers, one-click restore, daily AEO scoring of every page, the Dispatch Inbox, and a Company Brain for prompts, brand voice, and workflows.</li>
+<li><strong>Pricing:</strong> a free-forever plan for one website, then Starter at $23 per month, Team at $79 per month, and a custom Enterprise plan. See the <a href="https://dispatchvault.com/pricing">DispatchVault pricing page</a>.</li>
+<li><strong>Lock-in:</strong> none. Your code and history stay in your repository. Turn Dispatch off and the site keeps running. Everything exports as JSON and Markdown.</li>
+<li><strong>Who it is for:</strong> founders running lean teams, marketing teams that want to ship website changes without a developer queue, and agencies managing many client sites.</li>
+</ul>
+
+<h2>What is DispatchVault?</h2>
+<p>DispatchVault, usually shortened to Dispatch, is a software platform that governs AI-driven website work. When an AI coding agent such as Claude Code, Codex, or Gemini changes a website, Dispatch records who requested the change, which agent made it, what context it followed, who approved it, what it affected, and how to undo it.</p>
+<p>Think of it as the control room above the tools that actually do the work. Webflow, WordPress, Vercel, and Netlify are execution platforms. GitHub is version control. Coding agents are the builders. Dispatch is the management layer that spans all of them, so a marketing team can operate an AI-powered website with the same confidence a traditional CMS used to provide.</p>
+<p>Dispatch is <a href="https://dispatchvault.com/blog/ai-website-governance-tools-compared">deliberately agent-agnostic and host-agnostic</a>. It does not build pages and it does not host your site. It connects to the repository and host you already use and adds oversight on top.</p>
+
+<h2>What problem does Dispatch solve?</h2>
+<p>AI coding agents have made website changes fast and cheap. That speed creates a new problem: nobody can see what changed, who asked for it, or whether it was reviewed. A traditional CMS bundled two jobs together, production and governance. AI has unbundled them. Agents now handle production. Dispatch handles governance.</p>
+<p>Without a management layer, teams running AI-powered websites typically run into these issues:</p>
+<ul>
+<li><strong>No attribution.</strong> Commits land from agents and humans alike, and it is unclear which is which.</li>
+<li><strong>No approval trail.</strong> Changes go live without a preview or a named approver.</li>
+<li><strong>No shared context.</strong> Every agent session starts from scratch without the brand voice, messaging, or standards the team already agreed on.</li>
+<li><strong>Silent regressions.</strong> A title tag disappears, a canonical breaks, or structured data is dropped, and nobody notices until AI search and Google traffic fall.</li>
+<li><strong>Scary rollbacks.</strong> Fixing a bad change means finding the right commit and asking an engineer for help.</li>
+</ul>
+<p>Dispatch addresses each of these with attribution badges, role-gated approvals, a versioned Company Brain, scheduled AEO crawls, and one-click restore. The DispatchVault team calls the underlying idea <a href="https://dispatchvault.com/blog/governance-is-speed">"governance is speed"</a>: fast, structured review replaces slow handoffs and hero-level human memory.</p>
+
+<h2>How does DispatchVault work?</h2>
+<p>A change in Dispatch follows a clear path from intent to deployment:</p>
+<ol>
+<li><strong>Request.</strong> Someone on the team writes a plain-language change request, or Dispatch drafts one itself after a crawl finds a problem.</li>
+<li><strong>Handoff.</strong> The request becomes a scoped handoff to an AI coding agent, carrying approved brand context and a risk tier.</li>
+<li><strong>Branch and preview.</strong> The agent works on its own branch. The host generates a preview so reviewers can see the change before it goes live.</li>
+<li><strong>Approval.</strong> Approvers review the preview. Roles prevent self-approval. High-risk requests require two distinct approvers.</li>
+<li><strong>Deploy and record.</strong> The change deploys, and the activity feed records the request, the agent, the approver, and the result.</li>
+<li><strong>Restore if needed.</strong> Any prior version can be restored in one click. Nothing is deleted, and the recovery is part of the audit record.</li>
+</ol>
+<p>Every commit, pull request, and deployment streams into a live activity feed. Coding agents sign their commits with attribution trailers, and Dispatch reads those trailers to badge each change with the agent that made it.</p>
+
+<h2>What are the main features of DispatchVault?</h2>
+
+<h3>Website governance</h3>
+<ul>
+<li>Preview and approval workflow before any change reaches production</li>
+<li>Role-based permissions with separation of duties enforced in the database, not just the interface</li>
+<li>Risk tiers: low-risk requests can auto-approve by policy, standard-risk requests need an approver, and high-risk requests need two</li>
+<li>One-click restore to any previous version</li>
+<li>Complete audit trail showing who requested, who built, who approved, and when</li>
+</ul>
+
+<h3>The Dispatch Inbox</h3>
+<p>The <a href="https://dispatchvault.com/blog/introducing-the-dispatch-inbox">Dispatch Inbox</a>, launched in September 2026, is the single place where work waits for a decision. It holds four kinds of items: requests awaiting approval, crawl findings with a drafted fix ready, pages whose scores slipped since the last crawl, and work in progress. Approvers, operators, and owners each land on a view built for their role. Slack and email alerts include the draft and the recommended next step, so most decisions can be made from the notification itself.</p>
+
+<h3>AEO scoring</h3>
+<p>Dispatch crawls every governed page on a daily or weekly schedule and scores it from 0 to 100 for answer engine readiness. The score tracks eight checks: title tag, meta description, a single H1, canonical URL, structured data, Open Graph and social tags, indexability, and a clean HTTP 200 status. Structured data carries the heaviest weight. When a score drops significantly, Dispatch opens a finding and drafts the fix. This is the same discipline ZINC applies in our <a href="/solutions/on-brand-aeo-sprint">On-Brand AEO Sprint</a>, and it turns AEO from a one-time project into an ongoing monitored system.</p>
+
+<h3>Company Brain</h3>
+<p>The Company Brain is a centralized, versioned, searchable library of approved prompts, brand voice guidelines, messaging, workflows, agents, and AI-generated assets. It is exposed to connected coding agents as an MCP server, so every agent works from the same approved context instead of guessing. This is the feature ZINC clients know from our <a href="/solutions/ai-dispatch">AI Dispatch</a> offering: one client-owned vault that ends prompt sprawl and keeps AI output on brand.</p>
+
+<h3>Multiplayer collaboration</h3>
+<ul>
+<li>Several people and several agents work at the same time without conflicts</li>
+<li>Each request gets its own branch and its own preview</li>
+<li>Agents follow the same approval rules as humans</li>
+<li>Agencies can govern many client sites, each with its own repository, host, policies, and context, all reporting to one Inbox</li>
+</ul>
+
+<h2>Who should use DispatchVault?</h2>
+<p>Dispatch is built for organizations that already let AI touch their website, or are about to, and want that work to be safe and visible. Three groups get the most value:</p>
+<ul>
+<li><strong>Founders and lean teams.</strong> AI handles most development. Dispatch adds the approvals and restore path that make it safe to ship daily.</li>
+<li><strong>Marketing teams.</strong> Marketers publish website changes independently, without waiting in a developer queue, while engineering keeps oversight through roles and risk tiers.</li>
+<li><strong>Agencies.</strong> Agencies manage many client websites across different hosts from one dashboard. The client owns the Dispatch account from day one, and agency staff join as members, so handoff is clean.</li>
+</ul>
+<p>Small businesses often feel the pain of ungoverned AI earlier than large ones, because fewer people wear more hats. The free plan exists so a one-person team can start with governance on from the first change.</p>
+
+<h2>How much does DispatchVault cost?</h2>
+<p>DispatchVault offers four plans as of September 2026. Annual billing saves 20 percent.</p>
+<ul>
+<li><strong>Free:</strong> $0 forever. One governed website, one user, live activity feed with AI attribution, AEO scores for up to 25 pages, three open change requests, one-click restore, and a personal Company Brain.</li>
+<li><strong>Starter:</strong> $23 per month or $279 per year. Up to three websites and ten users, unlimited change requests, the Composer tool, previews and role-gated approvals, unlimited AEO page scoring, and GitHub plus Vercel, Netlify, or Cloudflare integration.</li>
+<li><strong>Team:</strong> $79 per month or $950 per year. Up to ten websites and fifty users, risk tiers with an enforced second approver, Slack and email approval alerts, a Governance Center with review queues, GitHub issue filing, cycle-time reporting, and priority support.</li>
+<li><strong>Enterprise:</strong> custom pricing. Unlimited websites and users, SSO and SCIM, custom roles and audit logs, MCP and API access, Dispatch-led CMS migration, and a dedicated success manager.</li>
+</ul>
+<p>Current details are always on the <a href="https://dispatchvault.com/pricing">DispatchVault pricing page</a>, and you can <a href="https://dispatchvault.com/signup">create a free Dispatch account</a> in a few minutes.</p>
+
+<h2>Which tools does DispatchVault integrate with?</h2>
+<ul>
+<li><strong>AI coding agents:</strong> Claude Code, ChatGPT and Codex, Google Gemini. Any agent that commits to Git can be governed.</li>
+<li><strong>Version control:</strong> GitHub.</li>
+<li><strong>Hosting:</strong> Vercel, Netlify, and Cloudflare, with Astro supported as a framework.</li>
+<li><strong>Communication:</strong> Slack and email for approval alerts and drafted fixes.</li>
+<li><strong>Context:</strong> the Company Brain is available to agents over MCP, and Enterprise plans add full MCP and API access.</li>
+</ul>
+<p>Dispatch governs code-based sites on GitHub. Agency clients who prefer to stay on Webflow, WordPress, Wix, Squarespace, Framer, or HubSpot CMS can remain there, and Dispatch can still centralize their prompts, workflows, and brand context.</p>
+
+<h2>Is it safe to let AI change a production website?</h2>
+<p>Yes, when the same controls a CMS used to provide are in place: a required preview, role-based approvals, attribution for every change, and one-click restoration. Dispatch was built around exactly those four controls. The scoped request is what keeps an agent from doing more than it was asked. Agents work on branches, inside approved context and an assigned risk tier. Teams review previews before anything deploys. High-risk work needs multiple approvers. If something still goes wrong, restore is one click away and the whole episode is documented.</p>
+<p>For a practical checklist, read the DispatchVault guides on <a href="https://dispatchvault.com/blog/claude-code-production-website-governance">how to safely let Claude Code manage a production website</a> and <a href="https://dispatchvault.com/blog/ten-questions-before-you-let-an-agent-touch-production">ten questions to ask before you let an agent touch production</a>.</p>
+
+<h2>How does DispatchVault help with AI search and AEO?</h2>
+<p>Answer engine optimization is the practice of structuring a site so ChatGPT, Claude, Perplexity, and Google AI Overviews can understand it, trust it, and cite it. AEO is not a one-time fix. Titles get overwritten, schema gets dropped in a redesign, and canonicals break during migrations. Dispatch turns AEO into a monitored system:</p>
+<ul>
+<li>Every page is scored 0 to 100 on the eight citability signals</li>
+<li>Crawls run on a schedule and keep a score history</li>
+<li>Score drops open a finding automatically, with a drafted change request ready for an agent to execute</li>
+<li>Approvals ensure the fix is reviewed before it ships</li>
+</ul>
+<p>ZINC has written extensively about why this matters, including <a href="/post/the-zero-click-internet-what-brands-need-to-know-about-ai-search">the zero-click internet</a>, <a href="/post/structuring-your-site-for-ai-optimization-aeo">how to structure your site for AEO</a>, and <a href="/post/aeo-in-practice-discoverart-case-study">our DiscoverArt AEO case study</a>. Dispatch is the tool that keeps that work from decaying after launch. DispatchVault's own primer, <a href="https://dispatchvault.com/blog/aeo-explained-get-cited-by-ai">AEO explained: how to get cited by ChatGPT, Perplexity, and Google AI Overviews</a>, is a good companion read.</p>
+
+<h2>How does DispatchVault compare to Webflow, Vercel, Netlify, and GitHub?</h2>
+<p>These tools are not competitors to Dispatch. They sit in a different layer.</p>
+<ul>
+<li><strong>Webflow and other CMS platforms</strong> combine production and governance in one hosted product. Dispatch keeps the governance benefits, such as visibility, permissions, and restore, without requiring the CMS as the production environment. Read the <a href="https://dispatchvault.com/blog/webflow-vs-ai-managed-website">Webflow vs. AI-managed website comparison</a>.</li>
+<li><strong>Vercel, Netlify, and Cloudflare</strong> host and deploy. Dispatch connects to them and adds requests, approvals, attribution, and scoring above the deploy.</li>
+<li><strong>GitHub</strong> stores code and history. It does not know who on the marketing team asked for a change, what brand context applied, or whether the page's AEO score moved. DispatchVault explains this gap in <a href="https://dispatchvault.com/blog/github-alone-isnt-enough-marketing-website-governance">why GitHub alone is not enough to govern a marketing website</a>.</li>
+</ul>
+<p>The recommended 2026 stack is a Git-based site, a preview-first host, one or more coding agents, and a management layer that spans all three.</p>
+
+<h2>Can DispatchVault migrate my website off a CMS?</h2>
+<p>Yes. Dispatch offers an AI-native <a href="https://dispatchvault.com/solutions/cms-migration">CMS migration service</a> in five phases: assess, architect, migrate, connect, and launch. Sites are rebuilt on a modern framework and verified pixel by pixel against the live site before cutover. URLs, redirects, titles, descriptions, canonical tags, sitemaps, structured data, forms, and analytics are preserved, so SEO is protected. Most business sites migrate in two to four weeks. Pricing is a scoped fixed quote, and a paid assessment is credited against the migration. Sites land connected to Dispatch on the free plan, and continued use is optional.</p>
+<p>ZINC follows the same discipline in our <a href="/solutions/website-design-development">website design and development</a> work, and we moved our own site off Webflow onto a Git-based stack in August 2026 using this approach.</p>
+
+<h2>How ZINC uses Dispatch with clients</h2>
+<p>ZINC is a Dispatch partner agency. Every ZINC engagement can land its deliverables in the client's own Dispatch vault, so prompts, brand rules, templates, workflows, and image libraries stay organized and client-owned after the project ends. In practice that looks like:</p>
+<ul>
+<li><strong><a href="/solutions/on-brand-aeo-sprint">On-Brand AEO Sprint</a>:</strong> a four to six week fixed-scope sprint. Findings, schema, and content standards land in Dispatch, and the AEO scores keep watching after we leave.</li>
+<li><strong><a href="/solutions/ai-enablement">AI Enablement</a>:</strong> we document your existing prompts, tools, and workflows, then set them up as a searchable Company Brain the whole team can use.</li>
+<li><strong><a href="/solutions/automation-workflows">Automation and Workflows</a>:</strong> repeatable AI workflows are documented in Dispatch so they are measurable and improvable.</li>
+<li><strong><a href="/solutions/content-campaign-systems">Content and Campaign Systems</a>:</strong> approved prompt libraries and brand context give every AI-assisted campaign the same voice.</li>
+</ul>
+<p>If you want to see Dispatch in action, <a href="/contact-us">book a demo with ZINC</a> or <a href="https://dispatchvault.com/signup">start free at dispatchvault.com</a>.</p>
+
+<h2>Frequently asked questions about DispatchVault</h2>
+
+<h3>What is DispatchVault?</h3>
+<p>DispatchVault, or Dispatch, is the management layer for AI-powered websites. It gives marketing teams visibility, context, approvals, and one-click restore for websites that are built and updated by AI coding agents, and it centralizes an organization's prompts, workflows, and brand context in a Company Brain.</p>
+
+<h3>Is DispatchVault free?</h3>
+<p>Yes. DispatchVault has a free-forever plan that covers one governed website and one user, including the live activity feed, AEO scores for up to 25 pages, three open change requests, and one-click restore. Paid plans start at $23 per month.</p>
+
+<h3>Does Dispatch host my website?</h3>
+<p>No. Dispatch does not host or build websites. It connects to your GitHub repository and your host, such as Vercel, Netlify, or Cloudflare, and adds governance on top. Hosting is billed by your hosting provider, not by Dispatch.</p>
+
+<h3>Which AI coding agents work with DispatchVault?</h3>
+<p>Dispatch works with Claude Code, ChatGPT and Codex, and Google Gemini, and with any coding agent that commits to Git. It reads the attribution trailers agents add to commits and badges each change with the agent that made it.</p>
+
+<h3>What is an AEO score in Dispatch?</h3>
+<p>An AEO score is a 0 to 100 measure of how ready a page is to be cited by AI answer engines. Dispatch checks eight signals: title tag, meta description, a single H1, canonical URL, structured data, social tags, indexability, and HTTP status. Pages are re-crawled on a schedule and score drops open a finding with a drafted fix.</p>
+
+<h3>What is the Dispatch Inbox?</h3>
+<p>The Dispatch Inbox is the workspace where work waits for a decision. It shows change requests with previews awaiting approval, crawl findings with a drafted fix, pages whose scores slipped since the last crawl, and in-flight work, with a role-specific view for approvers, operators, and owners.</p>
+
+<h3>What is a Company Brain?</h3>
+<p>A Company Brain is Dispatch's centralized, versioned, and searchable library of approved prompts, brand voice, messaging, workflows, agents, and AI-generated assets. It is available to connected coding agents over MCP so every agent works from the same approved context.</p>
+
+<h3>Can Dispatch approve changes automatically?</h3>
+<p>Only when a site's policy allows it for low-risk requests. Standard-risk requests require an approver, and high-risk requests require two distinct approvers. Every approval, including policy-driven ones, is recorded in the audit trail.</p>
+
+<h3>Am I locked into DispatchVault?</h3>
+<p>No. Your website code and history stay in your own repository and host. If you turn Dispatch off, the site keeps running exactly as it is, and all context, prompts, and workflows export as JSON and Markdown at any time.</p>
+
+<h3>Does moving to an AI-managed website hurt SEO?</h3>
+<p>No, provided the migration preserves URLs, redirects, titles, descriptions, canonical tags, sitemaps, and structured data. Dispatch migrations preserve all of these, and code-first sites often improve technical SEO because every signal is explicit in the codebase.</p>
+
+<h3>How is DispatchVault different from a prompt library?</h3>
+<p>A prompt library stores prompts. Dispatch manages prompts alongside agents, workflows, documentation, brand assets, governance policies, and website change approvals. It is closer to an AI operating system for the organization than a single library.</p>
+
+<h3>How do I get started with DispatchVault?</h3>
+<p>Create a free account at dispatchvault.com, connect your GitHub repository and your host, and Dispatch will sync your pages, score them for AEO, and start recording activity. Then add brand context to the Company Brain and set approval roles. ZINC can set this up for you as part of any engagement.</p>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="https://dispatchvault.com/blog/what-is-an-ai-powered-website">What is an AI-powered website?</a> from DispatchVault</li>
+<li><a href="https://dispatchvault.com/blog/do-you-still-need-a-cms">Do you still need a CMS in 2026?</a> from DispatchVault</li>
+<li><a href="https://dispatchvault.com/blog/migrate-cms-to-ai-powered-website">How to migrate from a CMS to an AI-powered website</a> from DispatchVault</li>
+<li><a href="https://dispatchvault.com/faq">The DispatchVault AI Knowledge Center</a>, a full Q&amp;A on AI governance, prompt management, and AI operating systems</li>
+<li><a href="/post/how-seo-is-evolving-in-the-age-of-ai-search">How SEO is evolving in the age of AI search</a> from ZINC</li>
+<li><a href="/post/the-playbook-for-prompting-training-your-llm-like-an-elite-athlete">The playbook for prompting</a> from ZINC</li>
+</ul>
