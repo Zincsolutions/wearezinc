@@ -27,6 +27,7 @@ function setHead($: cheerio.CheerioAPI, post: PostRow) {
         .filter((href): href is string => Boolean(href) && !href.startsWith(SITE))
     ),
   ];
+  const faqs = extractFaqs(body);
 
   $("title").text(title);
   $('meta[name="description"]').attr("content", desc);
@@ -88,9 +89,46 @@ function setHead($: cheerio.CheerioAPI, post: PostRow) {
       { "@type": "ListItem", position: 3, name: post.name, item: url },
     ],
   };
+  const faqPage = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
+  const graph = faqPage ? [article, breadcrumb, faqPage] : [article, breadcrumb];
   $("head").append(
-    `<script type="application/ld+json">${JSON.stringify([article, breadcrumb]).replace(/</g, "\\u003c")}</script>`
+    `<script type="application/ld+json">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>`
   );
+}
+
+/**
+ * AEO: any <h3> in the body that ends with "?" followed by one or more <p>
+ * (up to the next heading) is treated as a Q&A pair and emitted as FAQPage
+ * JSON-LD. Authors opt in simply by writing question-style subheadings.
+ */
+export function extractFaqs(body: cheerio.CheerioAPI): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = [];
+  body("h3").each((_, el) => {
+    const question = body(el).text().replace(/\s+/g, " ").trim();
+    if (!question.endsWith("?")) return;
+    const parts: string[] = [];
+    let next = body(el).next();
+    while (next.length && !/^h[1-6]$/i.test(next.prop("tagName") ?? "")) {
+      if (/^(p|ul|ol)$/i.test(next.prop("tagName") ?? "")) {
+        const text = next.text().replace(/\s+/g, " ").trim();
+        if (text) parts.push(text);
+      }
+      next = next.next();
+    }
+    if (parts.length) faqs.push({ question, answer: parts.join(" ") });
+  });
+  return faqs;
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
