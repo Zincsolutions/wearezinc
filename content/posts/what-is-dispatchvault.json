@@ -4,10 +4,12 @@
   "seo_title": "What Is DispatchVault? AI Website Governance & AEO Explained | ZINC",
   "meta_description": "DispatchVault (Dispatch) is the management layer for AI-powered websites: approvals, AI attribution, one-click restore, AEO scoring, and a Company Brain. Features, pricing, integrations, and FAQs.",
   "post_summary": "A complete guide to DispatchVault: what it is, how it governs AI coding agents like Claude Code on production websites, how AEO scoring works, what it costs, and how ZINC uses it with clients.",
-  "main_image": "https://dispatchvault.com/opengraph-image",
+  "main_image": "https://juebigeqdzpgtomlaygh.supabase.co/storage/v1/object/public/blog/dispatchvault-marketing-teams-banner.png",
   "publish_date": "2026-09-06T00:00:00.000Z",
   "featured": false,
-  "categories": ["insights"],
+  "categories": [
+    "insights"
+  ],
   "related": [
     "aeo-in-practice-discoverart-case-study",
     "structuring-your-site-for-ai-optimization-aeo",
