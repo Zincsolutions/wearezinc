@@ -41,6 +41,7 @@ npm run build
 - `public/_wf` contains preserved, generated Webflow HTML. These files are served through rewrites in `next.config.ts` and are intentionally excluded from linting.
 - `supabase/migrations` is the source of truth for database schema changes.
 - `docs/BUILD.md` contains migration background; this README is the operational source of truth.
+- `docs/inbound-leads.md` documents the form → Supabase → HubSpot → email pipeline and the `scripts/leads.mjs` triage CLI.
 
 ## Environment variables
 

@@ -248,3 +248,36 @@ test("marketing CTA tracking is consistent and privacy-safe", () => {
     );
   }
 });
+
+test("form submissions are stored before any notification and never block on it", () => {
+  const route = read("src/app/api/forms/route.ts");
+  const storeAt = route.indexOf('.from("form_submissions")\n    .insert(');
+  const hubspotAt = route.indexOf("await hubspotUpsert(p)");
+  const notifyAt = route.indexOf("await sendLeadNotification(");
+
+  assert.ok(storeAt > 0 && hubspotAt > storeAt && notifyAt > hubspotAt);
+  assert.match(route, /hubspot_owner_id/);
+  assert.match(route, /notified_at/);
+  assert.match(route, /hubspot_contact_id/);
+});
+
+test("lead notification env is documented and server-only", () => {
+  const example = read(".env.example");
+  const notify = read("src/lib/lead-notify.ts");
+
+  assert.doesNotMatch(example, /NEXT_PUBLIC_(?:RESEND|FORM_NOTIFY)/);
+  assert.match(example, /^RESEND_API_KEY=/m);
+  assert.match(example, /^FORM_NOTIFY_TO=/m);
+  assert.match(example, /^HUBSPOT_OWNER_ID=/m);
+  assert.match(notify, /Idempotency-Key/);
+  assert.match(notify, /reply_to/);
+});
+
+test("triage migration adds status tracking to form_submissions", () => {
+  const migration = read("supabase/migrations/20260905140000_form_submission_triage.sql");
+
+  assert.match(migration, /create type public\.lead_status as enum/);
+  assert.match(migration, /add column status public\.lead_status not null default 'new'/);
+  assert.match(migration, /add column hubspot_contact_id text/);
+  assert.match(migration, /add column notified_at timestamptz/);
+});
