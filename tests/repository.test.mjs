@@ -188,9 +188,12 @@ test("shared navigation does not prefetch static Webflow routes as RSC", () => {
     read("src/components/site/footer.tsx"),
   ].join("\n");
 
-  assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/on-brand-aeo-sprint"/);
+  assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/(?:on-brand-aeo-sprint|ai-strategy-optimization)"/);
   assert.doesNotMatch(shell, /<Link[^>]+href="\/(?:work|about-us|contact-us)"/);
-  assert.match(shell, /<a href="\/solutions\/on-brand-aeo-sprint"/);
+  // header pill drives the AI-native websites overview (a component route)
+  assert.match(shell, /<a href="\/solutions\/ai-native-websites#preview"/);
+  // static Webflow routes in the grouped menu render as plain anchors
+  assert.match(shell, /className=\{`nav-dd-link/);
 });
 
 test("form handling is durable, privacy-safe, and measurable", () => {

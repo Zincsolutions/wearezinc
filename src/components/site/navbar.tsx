@@ -3,13 +3,36 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const SOLUTIONS = [
-  { href: "/solutions/ai-strategy-optimization", label: "AI Strategy & Optimization" },
-  { href: "/solutions/website-design-development", label: "Website Design & Development" },
-  { href: "/solutions/ecommerce-acceleration", label: "Ecommerce Acceleration" },
-  { href: "/solutions/content-campaign-systems", label: "Content & Campaign Systems" },
-  { href: "/solutions/automation-workflows", label: "Automations & Workflows" },
-  { href: "/solutions/branding-positioning", label: "Branding & Positioning" },
+// Solutions menu, grouped. The first group is the driver: the overview page
+// is the top item and marked "Start here"; the others sit beneath it.
+type NavLink = { href: string; label: string; primary?: boolean };
+type NavGroup = { heading: string; links: NavLink[] };
+const SOLUTION_GROUPS: NavGroup[] = [
+  {
+    heading: "AI-Native Websites",
+    links: [
+      { href: "/solutions/ai-native-websites", label: "AI-Native Websites Overview", primary: true },
+      { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
+      { href: "/solutions/website-design-development", label: "Website Design & Builds" },
+      { href: "/solutions/ai-dispatch", label: "Dispatch: Governance & Control" },
+    ],
+  },
+  {
+    heading: "Grow on an AI-Native Site",
+    links: [
+      { href: "/solutions/ai-strategy-optimization", label: "AEO & AI Visibility" },
+      { href: "/solutions/content-campaign-systems", label: "Content & Campaign Systems" },
+      { href: "/solutions/automation-workflows", label: "Automations & Workflows" },
+      { href: "/solutions/ai-image-library", label: "AI Image Library" },
+    ],
+  },
+  {
+    heading: "Brand & Commerce",
+    links: [
+      { href: "/solutions/branding-positioning", label: "Branding & Positioning" },
+      { href: "/solutions/ecommerce-acceleration", label: "Ecommerce Acceleration" },
+    ],
+  },
 ];
 
 function BoltIcon() {
@@ -95,9 +118,17 @@ export function Navbar() {
               <div>Solutions</div>
               <div className="nav-dd-chevron"><Chevron /></div>
             </button>
-            <nav className="nav-dd-list">
-              {SOLUTIONS.map((s) => (
-                <a key={s.href} href={s.href} className="nav-dd-link">{s.label}</a>
+            <nav className="nav-dd-list nav-dd-grouped">
+              {SOLUTION_GROUPS.map((g) => (
+                <div key={g.heading} className="nav-dd-group">
+                  <div className="nav-dd-heading">{g.heading}</div>
+                  {g.links.map((l) => (
+                    <a key={l.href} href={l.href} className={`nav-dd-link${l.primary ? " is-primary" : ""}`}>
+                      {l.label}
+                      {l.primary ? <span className="nav-dd-badge">Start here</span> : null}
+                    </a>
+                  ))}
+                </div>
               ))}
             </nav>
           </div>
@@ -110,13 +141,13 @@ export function Navbar() {
         </nav>
 
         <div className="nav-buttons">
-          <a href="/solutions/on-brand-aeo-sprint" className="nav-pill">
+          <a href="/solutions/ai-native-websites#preview" className="nav-pill">
             <div className="nav-pill-icon-wrap">
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
             <div className="nav-pill-text">
-              <p className="lg">Get AI Optimized</p>
-              <p className="sm">AI SEO Sprint</p>
+              <p className="lg">See Your Site AI-Ready</p>
+              <p className="sm">Free Migration Preview</p>
             </div>
           </a>
           <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>

@@ -5,9 +5,16 @@ import { getAllPosts, isContentConfigured } from "@/lib/content";
 
 const SITE = "https://www.wearezinc.com";
 const COMPONENT_LAST_MODIFIED: Record<string, string> = {
-  index: "2026-08-25",
+  index: "2026-09-20",
   "solutions/ecommerce-acceleration": "2026-08-25",
   "solutions/website-design-development": "2026-08-25",
+};
+// Component routes that have no static twin in the manifest.
+const COMPONENT_ROUTES: Record<string, string> = {
+  "solutions/ai-dispatch": "2026-09-20",
+  "solutions/ai-native-websites": "2026-09-20",
+  "solutions/ai-website-migration": "2026-09-20",
+  "solutions/wordpress-ai-website-migration": "2026-09-20",
 };
 
 export const revalidate = 3600;
@@ -41,8 +48,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
+  const componentEntries: MetadataRoute.Sitemap = Object.entries(COMPONENT_ROUTES).map(
+    ([p, date]) => ({
+      url: `${SITE}/${p}`,
+      lastModified: normalizeLastModified(date),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    })
+  );
+
   const baseEntries: MetadataRoute.Sitemap = [
     ...staticEntries,
+    ...componentEntries,
     { url: `${SITE}/blog`, changeFrequency: "weekly", priority: 0.8 },
   ];
 

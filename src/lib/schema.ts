@@ -32,7 +32,7 @@ const organization = {
     url: `${SITE}/wf/695bda13c7c5d5a8fcdb45fd_zinc_webclip.png`,
   },
   description:
-    "ZINC is an AI-driven digital strategy and design agency specializing in AI enablement, answer engine optimization, websites, ecommerce, branding, and marketing systems.",
+    "ZINC is a digital strategy, brand, and web agency that moves companies to AI-native websites: migrating sites off WordPress and other CMS platforms, building new sites on Astro and Next.js, and connecting them to Dispatch, the management layer for AI-powered websites. Also answer engine optimization, ecommerce, branding, and marketing systems.",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+1-949-719-4950",
@@ -40,6 +40,9 @@ const organization = {
     contactType: "sales",
   },
   knowsAbout: [
+    "AI-native websites",
+    "AI website migration",
+    "Website governance with Dispatch",
     "AI enablement",
     "Answer engine optimization",
     "Website design and development",

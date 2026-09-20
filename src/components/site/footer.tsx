@@ -1,12 +1,16 @@
 import Link from "next/link";
 
 const SOLUTION_LINKS = [
-  { href: "/solutions/ai-strategy-optimization", label: "AI Enablement" },
-  { href: "/solutions/website-design-development", label: "Website & Optimization" },
-  { href: "/solutions/ecommerce-acceleration", label: "Ecommerce Acceleration" },
+  { href: "/solutions/ai-native-websites", label: "AI-Native Websites" },
+  { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
+  { href: "/solutions/website-design-development", label: "Website Design & Builds" },
+  { href: "/solutions/ai-dispatch", label: "Dispatch" },
+  { href: "/solutions/ai-strategy-optimization", label: "AEO & AI Visibility" },
   { href: "/solutions/content-campaign-systems", label: "Content & Campaigns" },
   { href: "/solutions/automation-workflows", label: "Automation & Workflow" },
+  { href: "/solutions/ai-image-library", label: "AI Image Library" },
   { href: "/solutions/branding-positioning", label: "Brand & Positioning" },
+  { href: "/solutions/ecommerce-acceleration", label: "Ecommerce Acceleration" },
 ];
 
 const COMPANY_LINKS = [

@@ -1,0 +1,13 @@
+import type { FaqItem } from "@/components/site/faq";
+
+// FAQ content for the Dispatch solutions page.
+// Answers are our own trusted static content (rendered via innerHTML).
+export const FAQ_ITEMS: FaqItem[] = [
+  { q: "What is Dispatch?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Dispatch is the management layer for AI-powered websites. It sits above your coding agent, your repository, and your host, and records who asked for each change, what context shaped it, who approved it, what it did to the site, and how to undo it.</p></div></div>` },
+  { q: "Is it safe to let AI change a production website?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Yes, with a record and a gate. Every change runs on its own branch, shows up on a preview first, and passes role-based approval before it ships. High-risk work needs two approvers, and any change can be restored in one click.</p></div></div>` },
+  { q: "Which agents and hosts does Dispatch work with?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Claude Code, Codex, and Gemini for the agent. GitHub for the code. Vercel, Netlify, and Cloudflare for hosting. Astro and Next.js for the framework, with Sanity where content needs a backend.</p></div></div>` },
+  { q: "Do we have to migrate to use Dispatch?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>No. A site already in a GitHub repo on Vercel, Netlify, or Cloudflare connects in minutes, and there is a free plan. Sites on a CMS get there through a migration.</p></div></div>` },
+  { q: "What does the AEO score measure?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Eight weighted checks on every page: structured data, title, meta description, H1, canonical, social metadata, indexability, and HTTP status. It measures readiness for answer engines, not visibility or rankings.</p></div></div>` },
+  { q: "Who owns the Dispatch account?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Your organization, from the start. ZINC is invited with agency roles, so handoff is a role change, not a transfer.</p></div></div>` },
+  { q: "What does Dispatch cost?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>There is a free plan for one site, plus Starter and Team plans. ZINC migrations land on Team with the first 90 days included. See <a href="https://www.dispatchvault.com/pricing" target="_blank" rel="noopener">dispatchvault.com/pricing</a> for current pricing.</p></div></div>` },
+];

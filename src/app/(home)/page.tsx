@@ -18,7 +18,7 @@ import "./page.css";
 
 const TITLE = "ZINC | AI-Driven Digital Strategy & Design Agency";
 const DESCRIPTION =
-  "ZINC brings 25+ years of strategy, design, and technology together to help brands stay visible in the AI era. AI enablement, web design, ecommerce & more.";
+  "ZINC brings business strategy, brand, and digital execution together. AI-native websites your team runs with its own AI agent, migrations off WordPress and other CMS platforms, and Dispatch to keep you in control.";
 
 export const metadata: Metadata = {
   title: TITLE,
