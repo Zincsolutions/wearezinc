@@ -58,11 +58,14 @@ const fmt = (r) => {
 };
 
 async function find(prefix) {
-  const { data, error } = await db.from("form_submissions").select(COLS).ilike("id", `${prefix}%`);
+  // `id` is a uuid, so PostgREST cannot ilike it; match the prefix client-side.
+  const needle = prefix.toLowerCase();
+  const { data, error } = await db.from("form_submissions").select(COLS);
   if (error) throw error;
-  if (!data.length) throw new Error(`No submission starting with ${prefix}`);
-  if (data.length > 1) throw new Error(`Ambiguous prefix ${prefix} (${data.length} matches)`);
-  return data[0];
+  const matches = data.filter((r) => r.id.toLowerCase().startsWith(needle));
+  if (!matches.length) throw new Error(`No submission starting with ${prefix}`);
+  if (matches.length > 1) throw new Error(`Ambiguous prefix ${prefix} (${matches.length} matches)`);
+  return matches[0];
 }
 
 async function main() {
