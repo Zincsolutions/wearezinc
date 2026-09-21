@@ -16,7 +16,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const GAP_X = 22;
 const GAP_Y = 24;
-const GLYPH = 8; // half-height at rest; same "radius" Lovable uses for dots
+const GLYPH = 9; // half-height at rest (Lovable uses 8 as the dot radius)
 const MAX_SCALE = 1.6;
 const EFFECT_RADIUS = 200;
 const ANIMATION_DURATION = 600;
@@ -43,21 +43,24 @@ type Glyph = {
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-// A bold ">" (dir = 1) or "<" (dir = -1) centered on (cx, cy). `s` is the
-// half-height; proportions come from the Figma mood board chevrons.
+// The ZINC chevron (dir = 1 points right, -1 points left), centered on
+// (cx, cy). Proportions traced from the Figma mood board: a 24 x 32 box with
+// a flat vertical front face and flat vertical backs on both arms, arms
+// about 30% of the height thick, no sharp point. `s` is the half-height.
+// Two of these stacked make the ZINC mark.
 function chevronPath(cx: number, cy: number, s: number, dir: 1 | -1) {
   if (s <= 0) return "";
-  const k = s / GLYPH;
+  const k = s / 8; // path below is drawn in a 12 x 16 box (half-height 8)
   const x = (v: number) => (cx + dir * v * k).toFixed(2);
   const y = (v: number) => (cy + v * k).toFixed(2);
-  // Stroke is 6.25 wide (was 5, +25% per user request); outer edge unchanged.
   return (
-    `M${x(-6.75)},${y(-8)}` +
-    `L${x(-0.5)},${y(-8)}` +
-    `L${x(6)},${y(0)}` +
-    `L${x(-0.5)},${y(8)}` +
-    `L${x(-6.75)},${y(8)}` +
-    `L${x(-0.25)},${y(0)}Z`
+    `M${x(-6)},${y(-8)}` +
+    `L${x(6)},${y(-2.125)}` +
+    `L${x(6)},${y(2.125)}` +
+    `L${x(-6)},${y(8)}` +
+    `L${x(-6)},${y(3.25)}` +
+    `L${x(0.75)},${y(0)}` +
+    `L${x(-6)},${y(-3.25)}Z`
   );
 }
 
