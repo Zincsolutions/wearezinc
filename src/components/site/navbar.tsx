@@ -146,8 +146,8 @@ export function Navbar() {
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
             <div className="nav-pill-text">
-              <p className="lg">See Your Site AI-Ready</p>
-              <p className="sm">Free Migration Preview</p>
+              <p className="lg">Go AI Native.</p>
+              <p className="sm">Free Migration Assessment</p>
             </div>
           </a>
           <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
