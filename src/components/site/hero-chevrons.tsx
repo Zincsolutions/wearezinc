@@ -69,8 +69,8 @@ function chevronPath(cx: number, cy: number, s: number, dir: 1 | -1) {
 // Horizontal half-width of the quiet zone around the copy, as a fraction of
 // half the canvas width, per breakpoint.
 function clearFraction(width: number) {
-  if (width >= 992) return 0.46;
-  if (width >= 768) return 0.72;
+  if (width >= 992) return 0.55;
+  if (width >= 768) return 0.76;
   return 0.68;
 }
 
@@ -338,7 +338,7 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
     [clear + band * 0.72, COLORS.orange],
     [1, COLORS.red],
   ] as const;
-  const gradientTransform = `translate(${width / 2} ${height / 2}) scale(${width / 2} ${height * 1.25})`;
+  const gradientTransform = `translate(${width / 2} ${height / 2}) scale(${width / 2} ${height * 1.4})`;
 
   return (
     <svg
