@@ -1332,6 +1332,3 @@ margin: 0rem !important;
   background-color: var(--color-scheme-1--text) !important;
   opacity: 1 !important;
 }
-
-/* Solutions groups (homepage): stacked service links inside the stats columns. */
-.solutions-links { display: flex; flex-direction: column; align-items: flex-start; row-gap: 0.5rem; }
