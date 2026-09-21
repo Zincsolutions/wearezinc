@@ -26,8 +26,7 @@ const ENTER_START_RADIUS = 400;
 
 const COLORS = {
   red: "#fe0d0d",
-  orange: "#fe5000",
-  amber: "#fe7700",
+  orange: "#ff5b19", // ZINC orange, same as the CTA hover (site --orange)
   yellow: "#feba00",
   paper: "#ffffff",
 };
@@ -328,11 +327,14 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
   // closer to the center at the top and bottom than they do beside the copy.
   const clear = clearFraction(width);
   const band = 1 - clear;
+  // From the copy outward: page color, a short yellow lead-in, then ZINC
+  // orange held across the middle of the band so the tie to the CTA reads
+  // clearly, and red only at the outer edge.
   const stops = [
     [clear, COLORS.paper],
-    [clear + band * 0.25, COLORS.yellow],
-    [clear + band * 0.5, COLORS.amber],
-    [clear + band * 0.75, COLORS.orange],
+    [clear + band * 0.18, COLORS.yellow],
+    [clear + band * 0.42, COLORS.orange],
+    [clear + band * 0.72, COLORS.orange],
     [1, COLORS.red],
   ] as const;
   const gradientTransform = `translate(${width / 2} ${height / 2}) scale(${width / 2} ${height * 1.25})`;
