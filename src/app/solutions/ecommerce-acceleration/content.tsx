@@ -5,6 +5,7 @@
 // DFND showcase) on the site's existing section archetypes (header46,
 // layout249, layout481, logo4, blog38, faq2, cta7). Copy is verbatim.
 import { FaqItems } from "@/components/site/faq";
+import { StepNumber } from "@/components/site/step-number";
 import { FAQ_ITEMS } from "./faq-items";
 
 const ArrowIcon = () => (
@@ -20,7 +21,7 @@ const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
   <div className={`w-layout-grid layout249_list${four ? " is-four" : ""}`}>
     {items.map((c) => (
       <div key={c.title} className="layout249_item">
-        {c.n ? <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">{c.n}</div></div> : null}
+        {c.n ? <div className="margin-bottom margin-xsmall"><StepNumber value={c.n} /></div> : null}
         <div className="margin-bottom margin-small"><h3 className="heading-style-h4"><strong>{c.title}</strong></h3></div>
         <p>{c.text}</p>
         {c.items ? (
