@@ -3,6 +3,7 @@
 // layout249, layout19, faq2) so the page inherits the site's look and feel.
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
 import { FaqItems } from "@/components/site/faq";
+import { StepNumber } from "@/components/site/step-number";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { FAQ_ITEMS } from "./faq-items";
@@ -20,7 +21,7 @@ const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
   <div className={`w-layout-grid layout249_list${four ? " is-four" : ""}`}>
     {items.map((c) => (
       <div key={c.title} className="layout249_item">
-        {c.n ? <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">{c.n}</div></div> : null}
+        {c.n ? <div className="margin-bottom margin-xsmall"><StepNumber value={c.n} /></div> : null}
         <div className="margin-bottom margin-small"><h3 className="heading-style-h4"><strong>{c.title}</strong></h3></div>
         <p>{c.text}</p>
       </div>

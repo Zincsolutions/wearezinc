@@ -69,3 +69,16 @@
 /* Capability bullet lists inside layout249 cards (commerce page) */
 .capability_list { margin: 1rem 0 0; padding-left: 1.1rem; }
 .capability_list li { margin-bottom: .4rem; }
+
+/* Step number badge: black circle, Geist Mono digits, orange on card hover */
+.step-number { display: flex; align-items: center; gap: .75rem; }
+.step-number__badge {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2rem; height: 2rem; border-radius: 9999px;
+  background-color: var(--_primitives---colors--black); color: #fff;
+  font-family: var(--_typography---font-styles--micro); font-size: .95rem; line-height: 1;
+  transition: background-color .2s ease;
+}
+.step-number__text { font-family: var(--_typography---font-styles--micro); font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; }
+.u-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.layout249_item:hover .step-number__badge { background-color: var(--_primitives---colors--orange-500); }
