@@ -1,11 +1,15 @@
 import type { FaqItem } from "@/components/site/faq";
 
-// FAQ content extracted verbatim from the Webflow capture.
+// Approved copy from the Sept 21, 2026 E-commerce Acceleration brief.
 // Answers are our own trusted static content (rendered via innerHTML).
+const wrap = (html: string) => `<div class="margin-bottom margin-small"><div class="max-width-large">${html}</div></div>`;
+
 export const FAQ_ITEMS: FaqItem[] = [
-  { q: "What is ecommerce acceleration?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Ecommerce acceleration is a focused program for improving an online store’s strategy, customer experience, technology, content, and conversion performance. ZINC identifies the highest-impact opportunities, then designs and implements the changes needed to grow efficiently.</p></div></div>` },
-  { q: "Which ecommerce platforms does ZINC support?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>ZINC works with Shopify, Shopify Plus, BigCommerce, and connected ecommerce systems. Platform recommendations depend on product complexity, integrations, internal workflows, growth goals, and the experience customers need.</p></div></div>` },
-  { q: "How can AI improve an ecommerce store?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>AI can improve product discovery, merchandising, content production, personalization, customer support, and operational workflows. ZINC prioritizes practical uses that improve the shopping experience or reduce repetitive work instead of adding technology without a measurable purpose.</p></div></div>` },
-  { q: "Can ZINC connect our ERP, CRM, and marketing tools?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Yes. ZINC plans and implements integrations across ecommerce platforms, ERP and inventory systems, CRM, email marketing, analytics, and other third-party tools. The integration scope is defined around reliable data flow and the team’s operating requirements.</p></div></div>` },
-  { q: "How long does an ecommerce project take?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Timing depends on the store, platform, integrations, catalog, and migration requirements. After an initial assessment, ZINC provides a phased plan with the expected schedule, responsibilities, and measurable launch goals.</p></div></div>` },
+  { q: "Do we need a new store to work with ZINC?", a: wrap(`<p>No. We can improve your current store, catalog, integrations, or team workflows. If a rebuild or platform move would better serve your goals, we can scope that separately.</p>`) },
+  { q: "Do you work with Shopify and BigCommerce?", a: wrap(`<p>Yes. We help with design, development, integrations, and ongoing improvements, recommending the approach around your business requirements.</p>`) },
+  { q: "Can you help our products appear in AI shopping experiences?", a: wrap(`<p>We can assess relevant channels, improve product data, and configure supported connections. Availability depends on the platform, market, products, and account eligibility. Inclusion does not guarantee recommendations or sales.</p>`) },
+  { q: "How do you decide which AI tools to use?", a: wrap(`<p>We start with the task, the systems involved, and the people responsible for the outcome. We assess built-in tools before adding apps or custom integrations, and test the workflow with your team.</p>`) },
+  { q: "Can you work with our existing marketing or internal team?", a: wrap(`<p>Yes. We can deliver a focused project or work alongside your team on ongoing commerce improvements, with clear responsibilities and priorities.</p>`) },
+  { q: "How do you measure progress?", a: wrap(`<p>We agree measures around the engagement, such as conversion, channel performance, repeat purchases, or time spent on recurring tasks. Where reliable data is available, we also consider costs and profitability.</p>`) },
+  { q: "What does an engagement cost?", a: wrap(`<p>We scope work around your priorities, platform, and integrations. Your proposal identifies implementation fees, third-party costs, and any optional ongoing support.</p>`) },
 ];

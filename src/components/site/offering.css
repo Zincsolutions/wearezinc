@@ -65,3 +65,7 @@
   .offering-page .layout19_content-left { order: 1; }
   .offering-page .layout19_image-wrapper { order: 2; }
 }
+
+/* Capability bullet lists inside layout249 cards (commerce page) */
+.capability_list { margin: 1rem 0 0; padding-left: 1.1rem; }
+.capability_list li { margin-bottom: .4rem; }

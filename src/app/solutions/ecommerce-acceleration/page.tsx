@@ -8,16 +8,16 @@ import { FAQ_ITEMS } from "./faq-items";
 import { buildServiceSchema, serializeSchema, textFromHtml } from "@/lib/schema";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
+import "@/components/site/offering.css";
 import "./page.css";
 
-// Componentized from the Webflow capture (Phase B, page 2). Markup is a
-// mechanical conversion (see content.tsx); styles are the auto-extracted
-// subset of the compiled Webflow CSS (page.css); nav/footer come from the
-// shared shell; FAQ + reveals replace the Webflow interaction runtime.
+// E-commerce Acceleration: rebuilt Sept 21, 2026 from the implementation
+// brief (see content.tsx). Styles are the page's auto-extracted Webflow CSS
+// subset (page.css) plus the shared offering styles.
 
-const TITLE = "Ecommerce Acceleration | Shopify, BigCommerce & AI Growth | ZINC";
+const TITLE = "E-commerce Acceleration | Shopify, BigCommerce & AI | ZINC";
 const DESCRIPTION =
-  "ZINC helps ecommerce brands improve strategy, design, UX, integrations, content, and growth using Shopify, BigCommerce, and AI-enhanced workflows.";
+  "Improve your storefront, product discovery, and commerce operations with ZINC’s strategy, design, development, integrations, and practical AI.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    images: ["https://www.wearezinc.com/wf/695bda13c7c5d5a8fcdb44f2_home_header1.webp"],
+    images: ["https://www.wearezinc.com/og/home.png"],
   },
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
 const SERVICE_SCHEMA = buildServiceSchema({
-  name: "AI-Powered Ecommerce Acceleration",
+  name: "E-commerce Acceleration",
   description: DESCRIPTION,
   path: "/solutions/ecommerce-acceleration",
-  serviceType: "Ecommerce strategy, design, development, integration, and optimization",
+  serviceType: "E-commerce strategy, Shopify and BigCommerce design and development, product discovery, integrations, and AI-assisted operations",
   faqs: FAQ_ITEMS.map((item) => ({ question: item.q, answer: textFromHtml(item.a) })),
 });
 
