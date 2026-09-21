@@ -199,3 +199,11 @@
 .contact6_form-block { flex-direction: column;
   align-items: stretch;
   margin-bottom: 0; }
+
+/* Enquiry form (website offering pages): inline validation + privacy note */
+.form_field-error { margin-top: .375rem; font-size: .875rem; color: #b42318; }
+.form_input[aria-invalid="true"] { border-color: #b42318; }
+.form_privacy-note { margin: 1rem 0 0; font-size: .875rem; color: var(--_primitives---colors--gray-500, #5f5f5f); }
+.form_privacy-note a { color: inherit; text-decoration: underline; }
+/* Submit button sizes to its label and sits left, like the hero buttons */
+.contact6_form .button.w-button[type="submit"] { display: inline-block; width: auto; min-width: 0; justify-self: start; align-self: flex-start; }

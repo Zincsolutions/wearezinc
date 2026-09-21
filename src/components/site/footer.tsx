@@ -1,7 +1,9 @@
 import Link from "next/link";
 
 const SOLUTION_LINKS = [
-  { href: "/solutions/ai-website-migration", label: "AI Website Migrations" },
+  { href: "/solutions/ai-native-websites", label: "AI-Native Websites" },
+  { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
+  { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
   { href: "/solutions/website-design-development", label: "Website Design & Development" },
   { href: "/solutions/ecommerce-acceleration", label: "Ecommerce" },
   { href: "/solutions/ai-enablement", label: "AI Strategy & Training" },

@@ -1,0 +1,67 @@
+/* Shared styles for the website offering pages (AI-native, migration,
+   enterprise): trust strip, walkthrough, notes, and bottom lines. Builds on
+   the solutions archetype CSS each page already imports. */
+
+.trust-strip { padding: 2.5rem 0; border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10, rgba(0,0,0,.08)); border-bottom: 1px solid var(--_primitives---opacity--neutral-darkest-10, rgba(0,0,0,.08)); }
+.trust-strip__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); grid-column-gap: 3rem; grid-row-gap: 1.5rem; align-items: center; }
+.trust-strip__copy { margin: 0; font-size: 1rem; }
+.trust-strip__note { margin: .5rem 0 0; font-size: .875rem; color: var(--_primitives---colors--gray-500, #5f5f5f); }
+.trust-strip__logos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-column-gap: 2rem; align-items: center; }
+.trust-strip__logo { display: flex; justify-content: center; align-items: center; }
+.trust-strip__logo img { max-height: 2.5rem; max-width: 100%; width: auto; filter: grayscale(1); opacity: .8; }
+
+.offering-lead { margin: 0; }
+.offering-note { margin: 1.5rem 0 0; font-size: .9375rem; color: var(--_primitives---colors--gray-500, #5f5f5f); }
+.offering-bottomline { margin: 2.5rem 0 0; font-size: 1.05rem; font-weight: 500; max-width: 44rem; }
+.offering-definition { margin: 2.5rem 0 0; padding: 1.5rem 1.75rem; border-left: 3px solid var(--_primitives---colors--orange-500); background: var(--_primitives---colors--gray-100, #f5f5f5); max-width: 44rem; }
+.offering-definition strong { display: block; margin-bottom: .5rem; }
+.offering-quote { margin: 0; font-style: italic; color: var(--_primitives---colors--black); }
+.offering-pair { display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 3rem; grid-row-gap: 2rem; margin-top: 2rem; }
+.offering-pair h3 { margin: 0 0 .75rem; }
+.offering-pair p { margin: 0; }
+.offering-steps { margin-top: 3.5rem; }
+.offering-links { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 2rem; }
+.faq-link { display: inline-block; margin-top: .75rem; text-decoration: underline; }
+
+/* Walkthrough (AI-native page) */
+.workflow { margin-top: 2.5rem; }
+.workflow_controls { display: flex; flex-wrap: wrap; gap: .5rem; }
+.workflow_control { display: inline-flex; align-items: center; gap: .5rem; padding: .625rem 1.125rem; border: 1px solid var(--_primitives---opacity--neutral-darkest-15, rgba(0,0,0,.15)); border-radius: 6.25rem; background: transparent; color: var(--_primitives---colors--black); font: inherit; font-weight: 500; cursor: pointer; transition: border-color .2s, background-color .2s, color .2s; }
+.workflow_control-number { font-family: var(--_typography---font-styles--micro); font-size: .75rem; color: var(--_primitives---colors--orange-500); }
+.workflow_control:hover { border-color: var(--_primitives---colors--orange-500); }
+.workflow_control:focus-visible { outline: 2px solid var(--_primitives---colors--orange-500); outline-offset: 2px; }
+.workflow_control.is-active { background: var(--_primitives---colors--black); border-color: var(--_primitives---colors--black); color: #fff; }
+.workflow_control.is-active .workflow_control-number { color: var(--_primitives---colors--orange-500); }
+.workflow_panel { display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 3rem; grid-row-gap: 1.5rem; margin-top: 2rem; padding: 2rem; border: 1px solid var(--_primitives---opacity--neutral-darkest-10, rgba(0,0,0,.08)); border-radius: var(--_ui-styles---radius--large, 1rem); background: #fff; }
+.workflow_text h3 { margin: 0 0 .75rem; }
+.workflow_text p { margin: 0; }
+.workflow_sketch { padding: 1.5rem; border-radius: var(--_ui-styles---radius--medium, .75rem); background: var(--_primitives---colors--gray-100, #f5f5f5); display: flex; flex-direction: column; justify-content: center; }
+.workflow_sketch-label { margin-bottom: .75rem; color: var(--_primitives---colors--orange-500); }
+.workflow_sketch-text { margin: 0; font-weight: 500; font-size: 1.05rem; }
+
+@media screen and (max-width: 991px) {
+  .trust-strip__inner { grid-template-columns: 1fr; }
+  .trust-strip__logos { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-column-gap: 1.25rem; }
+}
+@media screen and (max-width: 767px) {
+  .offering-pair, .workflow_panel { grid-template-columns: 1fr; }
+  .workflow_panel { padding: 1.5rem; }
+  .trust-strip__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-row-gap: 1.25rem; }
+}
+
+/* "Soft" sections on the offering pages: light gray surface for rhythm */
+.section_aeo-6.color-scheme-1 { background-color: var(--_primitives---colors--gray-100); }
+
+/* Approved copy on the offering pages is sentence case; the site's global
+   heading capitalization would retitle it. H1 keeps the site's uppercase. */
+.offering-page h2, .offering-page h3 { text-transform: none; }
+/* Four-card lists sit in two columns so no card is orphaned */
+.layout249_list.is-four { grid-template-columns: 1fr 1fr; }
+@media screen and (max-width: 767px) { .layout249_list.is-four { grid-template-columns: 1fr; } }
+
+/* On phones the enquiry copy comes before the form */
+@media screen and (max-width: 767px) {
+  .offering-page .layout19_content { display: grid; grid-template-columns: 1fr; grid-row-gap: 2.5rem; }
+  .offering-page .layout19_content-left { order: 1; }
+  .offering-page .layout19_image-wrapper { order: 2; }
+}

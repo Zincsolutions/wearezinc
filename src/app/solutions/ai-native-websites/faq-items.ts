@@ -1,50 +1,16 @@
 import type { FaqItem } from "@/components/site/faq";
 
+// Approved copy from the Sept 21, 2026 AI-native page handoff.
 // Answers are our own trusted static content (rendered via innerHTML).
-const wrap = (html: string) =>
-  `<div class="margin-bottom margin-small"><div class="max-width-large"><p>${html}</p></div></div>`;
+const wrap = (html: string) => `<div class="margin-bottom margin-small"><div class="max-width-large">${html}</div></div>`;
 
 export const FAQ_ITEMS: FaqItem[] = [
-  {
-    q: "What is an AI-native website?",
-    a: wrap(
-      "A website whose code and content live in a repository your AI agent can change directly, hosted on a modern platform, with your team previewing and approving each change. Astro or Next.js alone does not make a site AI-native. The workflow does."
-    ),
-  },
-  {
-    q: "Is it safe to let AI change our website?",
-    a: wrap(
-      "Yes, with a record and a gate. On Dispatch every change runs on its own branch with a preview, approvals follow roles, high-risk work needs two people, and any change can be restored in one click."
-    ),
-  },
-  {
-    q: "Will we lose our rankings?",
-    a: wrap(
-      "URLs are preserved or mapped, metadata and indexability are validated, and the site is monitored after launch. Google itself expects some movement after a site move. A careful process is the promise, not a guarantee."
-    ),
-  },
-  {
-    q: "Do we need a developer afterward?",
-    a: wrap(
-      "Not for day-to-day changes. Your team asks, reviews, and approves. ZINC stays on as operator, advisor, or escalation contact if you want us to."
-    ),
-  },
-  {
-    q: "Can we use AI without leaving our CMS?",
-    a: wrap(
-      "Often, yes. That is the Enable path. When cost, code portability, agent access, or speed has become the constraint, migration is the better answer, and we will say which."
-    ),
-  },
-  {
-    q: "Can you migrate a Webflow site?",
-    a: wrap(
-      "Yes. If Webflow still fits your team we may recommend keeping it. If not, we recreate the site on an open, agent-ready stack and keep the design and content."
-    ),
-  },
-  {
-    q: "What does it cost?",
-    a: wrap(
-      "Migrations and builds are fixed-quote projects after a short assessment. Every quote shows the one-time fee, what is included and excluded, the launch estimate, the stabilization period, and recurring costs next to what you pay today."
-    ),
-  },
+  { q: "What if our existing CMS is still the right choice?", a: wrap(`<p>We’ll recommend the approach that serves your business. We can help improve your existing platform and introduce AI where it adds value.</p><a class="faq-link" href="/solutions/enterprise-websites">Explore Enterprise Websites &amp; CMS &gt;</a>`) },
+  { q: "Do we have to redesign our website?", a: wrap(`<p>No. A migration can preserve your agreed design and content. We identify any changes needed for functionality, accessibility, or the new architecture before agreeing the scope.</p>`) },
+  { q: "What happens to our SEO, forms, and integrations?", a: wrap(`<p>We inventory what matters, preserve URLs where possible, plan redirects, and test agreed functionality before launch. Search rankings can fluctuate after a migration, so monitoring and follow-up are part of the plan.</p>`) },
+  { q: "Does our team need to know how to code?", a: wrap(`<p>Routine supported tasks can begin with plain-language requests. Your team still reviews the results. We provide training and agree which tasks need ZINC or a developer.</p>`) },
+  { q: "What will the migration and ongoing setup cost?", a: wrap(`<p>We scope the migration around your content, functionality, integrations, and team requirements. Your proposal separates implementation from hosting, agent usage, Dispatch, and any ongoing ZINC support.</p>`) },
+  { q: "Can we choose our tools and keep control of our website?", a: wrap(`<p>We agree code ownership, account access, and handover in your project scope. We can recommend tools such as Astro or Next.js and hosting on Cloudflare, Netlify, or Vercel based on your requirements.</p>`) },
+  { q: "What if AI makes an unwanted change?", a: wrap(`<p>The configured workflow lets your team review proposed changes before publication. We establish a restore process for supported site changes. Restoring code does not automatically reverse submitted forms, emails, or changes in external systems.</p>`) },
+  { q: "Will an AI-native website improve our visibility in AI search?", a: wrap(`<p>The architecture alone does not guarantee visibility. SEO and AEO depend on content, technical foundations, and ongoing work. We can help improve and measure those separately from migration.</p>`) },
 ];
