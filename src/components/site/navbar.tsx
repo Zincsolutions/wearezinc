@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-// Solutions menu: three categories, six services. Migration is featured.
+// Solutions menu: three categories. The website offering pages lead
+// (AI-native, migration, enterprise), Sept 2026.
 type NavLink = { href: string; label: string; primary?: boolean };
 type NavGroup = { heading: string; links: NavLink[] };
 const SOLUTION_GROUPS: NavGroup[] = [
   {
     heading: "Websites & Commerce",
     links: [
-      { href: "/solutions/ai-website-migration", label: "AI Website Migrations", primary: true },
+      { href: "/solutions/ai-native-websites", label: "AI-Native Websites", primary: true },
+      { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
+      { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
       { href: "/solutions/website-design-development", label: "Website Design & Development" },
       { href: "/solutions/ecommerce-acceleration", label: "Ecommerce" },
     ],
@@ -136,13 +139,13 @@ export function Navbar() {
         </nav>
 
         <div className="nav-buttons">
-          <a href="/solutions/ai-native-websites#preview" className="nav-pill">
+          <a href="/solutions/ai-native-websites#assessment" className="nav-pill">
             <div className="nav-pill-icon-wrap">
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
             <div className="nav-pill-text">
               <p className="lg">Go AI Native.</p>
-              <p className="sm">Free Migration Assessment</p>
+              <p className="sm">Website Assessment</p>
             </div>
           </a>
           <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
