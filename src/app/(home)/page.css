@@ -1334,19 +1334,11 @@ margin: 0rem !important;
 }
 
 /* ---------------------------------------------------------------------------
-   Hero banner (Sept 2026): centered headline flanked by chevron fields.
-   Left chevrons point right, right chevrons point left, both toward the copy.
-   Color runs red -> orange -> yellow from the outer edge inward and fades out
-   before it reaches the text. Built with a CSS mask (chevron tile) over a
-   gradient so it stays crisp at any size and costs no image requests.
+   Hero banner (Sept 2026): centered headline over a chevron field.
+   The field itself is src/components/site/hero-chevrons.tsx, a port of the
+   Lovable dot grid: enter animation, pointer hover, one SVG path.
    --------------------------------------------------------------------------- */
 .hero-banner {
-  --hero-chevron-tile: 3rem;
-  --hero-chevron-width: 26vw;
-  --hero-chevron-red: #fe0d0d;
-  --hero-chevron-orange: #fe5000;
-  --hero-chevron-amber: #fe7700;
-  --hero-chevron-yellow: #feba00;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -1358,49 +1350,14 @@ margin: 0rem !important;
 }
 .hero-chevrons {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: var(--hero-chevron-width);
-  max-width: 30rem;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   /* soften the field toward the bottom so it hands off cleanly to the next section */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
 }
-.hero-chevrons--left { left: 0; }
-.hero-chevrons--right { right: 0; transform: scaleX(-1); }
-.hero-chevrons__field {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-    to right,
-    var(--hero-chevron-red) 0%,
-    var(--hero-chevron-orange) 28%,
-    var(--hero-chevron-amber) 52%,
-    var(--hero-chevron-yellow) 74%,
-    rgb(254 186 0 / 0) 100%
-  );
-  /* chevron tile: a bold ">" glyph, centered in the cell */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M14 11h9l11 13-11 13h-9l11-13z' fill='%23000'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M14 11h9l11 13-11 13h-9l11-13z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: var(--hero-chevron-tile) var(--hero-chevron-tile);
-  mask-size: var(--hero-chevron-tile) var(--hero-chevron-tile);
-  -webkit-mask-repeat: repeat;
-  mask-repeat: repeat;
-  -webkit-mask-position: 0 0;
-  mask-position: 0 0;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hero-chevrons__field {
-    animation: hero-chevron-drift 9s linear infinite;
-  }
-}
-/* one tile per loop so the seam is invisible; the field appears to flow inward */
-@keyframes hero-chevron-drift {
-  from { -webkit-mask-position: 0 0; mask-position: 0 0; }
-  to { -webkit-mask-position: var(--hero-chevron-tile) 0; mask-position: var(--hero-chevron-tile) 0; }
-}
+.hero-chevrons svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-banner__content {
   position: relative;
   z-index: 1;
@@ -1428,20 +1385,13 @@ margin: 0rem !important;
 }
 @media screen and (max-width: 991px) {
   .hero-banner { min-height: 32rem; padding: 6rem 1.25rem 4rem; }
-  .hero-banner { --hero-chevron-width: 18vw; --hero-chevron-tile: 2.5rem; }
   .hero-banner__content { max-width: 34rem; }
   .heading-style-h1.is-home.hero-banner__headline { font-size: 5rem; }
   .text-size-medium.hero-subtext.hero-banner__subtext { max-width: 30rem; font-size: 1.1rem; }
 }
 @media screen and (max-width: 767px) {
   .hero-banner { min-height: 0; padding: 4.5rem 1.25rem 3rem; }
-  .hero-banner { --hero-chevron-width: 2rem; --hero-chevron-tile: 2rem; }
   .hero-banner__content { padding: 0 1.5rem; }
-  /* a single static column per side on phones: no drift, no inward fade */
-  .hero-chevrons__field {
-    animation: none;
-    background-image: linear-gradient(to right, var(--hero-chevron-red), var(--hero-chevron-orange));
-  }
   .hero-chevrons {
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
