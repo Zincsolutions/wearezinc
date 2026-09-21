@@ -24,6 +24,12 @@ await page.addStyleTag({
 // let the enter animation finish and the ResizeObserver settle
 await page.mouse.move(0, 0);
 await page.waitForTimeout(3500);
-await page.locator(".hero-banner").screenshot({ path: out });
+// clip to exactly 1200 x 630 CSS px (2400 x 1260 output); the element's
+// box can come out a pixel or two tall from sub-pixel padding
+const box = await page.locator(".hero-banner").boundingBox();
+await page.screenshot({
+  path: out,
+  clip: { x: box.x, y: box.y, width: 1200, height: 630 },
+});
 await browser.close();
 console.log(`wrote ${out}`);
