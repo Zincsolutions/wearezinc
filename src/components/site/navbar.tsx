@@ -3,34 +3,29 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-// Solutions menu, grouped. The first group is the driver: the overview page
-// is the top item and marked "Start here"; the others sit beneath it.
+// Solutions menu: three categories, six services. Migration is featured.
 type NavLink = { href: string; label: string; primary?: boolean };
 type NavGroup = { heading: string; links: NavLink[] };
 const SOLUTION_GROUPS: NavGroup[] = [
   {
-    heading: "AI-Native Websites",
+    heading: "Websites & Commerce",
     links: [
-      { href: "/solutions/ai-native-websites", label: "AI-Native Websites Overview", primary: true },
-      { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
-      { href: "/solutions/website-design-development", label: "Website Design & Builds" },
-      { href: "/solutions/ai-dispatch", label: "Dispatch: Governance & Control" },
+      { href: "/solutions/ai-website-migration", label: "AI Website Migrations", primary: true },
+      { href: "/solutions/website-design-development", label: "Website Design & Development" },
+      { href: "/solutions/ecommerce-acceleration", label: "Ecommerce" },
     ],
   },
   {
-    heading: "Grow on an AI-Native Site",
+    heading: "AI Enablement",
     links: [
-      { href: "/solutions/ai-strategy-optimization", label: "AEO & AI Visibility" },
-      { href: "/solutions/content-campaign-systems", label: "Content & Campaign Systems" },
-      { href: "/solutions/automation-workflows", label: "Automations & Workflows" },
-      { href: "/solutions/ai-image-library", label: "AI Image Library" },
+      { href: "/solutions/ai-enablement", label: "AI Strategy & Training" },
+      { href: "/solutions/automation-workflows", label: "AI Workflows & Automation" },
     ],
   },
   {
-    heading: "Brand & Commerce",
+    heading: "Strategy & Brand",
     links: [
-      { href: "/solutions/branding-positioning", label: "Branding & Positioning" },
-      { href: "/solutions/ecommerce-acceleration", label: "Ecommerce Acceleration" },
+      { href: "/solutions/branding-positioning", label: "Brand Strategy & Design" },
     ],
   },
 ];
@@ -125,7 +120,7 @@ export function Navbar() {
                   {g.links.map((l) => (
                     <a key={l.href} href={l.href} className={`nav-dd-link${l.primary ? " is-primary" : ""}`}>
                       {l.label}
-                      {l.primary ? <span className="nav-dd-badge">Start here</span> : null}
+                      {l.primary ? <span className="nav-dd-badge">Featured</span> : null}
                     </a>
                   ))}
                 </div>
