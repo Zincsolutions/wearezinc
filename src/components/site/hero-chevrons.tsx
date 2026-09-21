@@ -10,8 +10,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 // the pointer up to MAX_SCALE with a quadratic falloff, eased over time.
 // Differences from the original: the glyph is a chevron rather than a dot
 // (left half points right, right half points left, both toward the copy),
-// the fill is a horizontal gradient that runs red -> orange -> yellow from
-// the edge inward and dissolves into the page background before the text,
+// the radial fill runs red -> orange -> yellow from the edge inward and
+// dissolves into the page background in an ellipse around the text,
 // and the canvas sizes to its container instead of a fixed 1440 x 693.
 
 const GAP_X = 28;
@@ -60,11 +60,12 @@ function chevronPath(cx: number, cy: number, s: number, dir: 1 | -1) {
   );
 }
 
-// Width of the colored band on each side, in px, for a given canvas width.
-function bandWidth(width: number) {
-  if (width >= 992) return width * 0.27;
-  if (width >= 768) return width * 0.22;
-  return 48;
+// Horizontal half-width of the quiet zone around the copy, as a fraction of
+// half the canvas width, per breakpoint.
+function clearFraction(width: number) {
+  if (width >= 992) return 0.46;
+  if (width >= 768) return 0.72;
+  return 0.68;
 }
 
 export function HeroChevrons({ className = "" }: { className?: string }) {
@@ -315,20 +316,22 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
     };
   }, [glyphs, toCanvas, scaleFor, width, height]);
 
-  // Gradient stops: a colored band on each side, mirrored, fading to paper.
-  const band = bandWidth(width) / width;
+  // Fill: an elliptical gradient centered on the copy, like Lovable's. The
+  // inner ellipse is the page color, so the field dissolves in a curve
+  // around the headline and subtext instead of stopping at a vertical line.
+  // `clear` is the horizontal half-width of that quiet zone as a fraction of
+  // half the canvas; the ellipse is taller than the band so chevrons creep
+  // closer to the center at the top and bottom than they do beside the copy.
+  const clear = clearFraction(width);
+  const band = 1 - clear;
   const stops = [
-    [0, COLORS.red],
-    [band * 0.3, COLORS.orange],
-    [band * 0.55, COLORS.amber],
-    [band * 0.75, COLORS.yellow],
-    [band, COLORS.paper],
-    [1 - band, COLORS.paper],
-    [1 - band * 0.75, COLORS.yellow],
-    [1 - band * 0.55, COLORS.amber],
-    [1 - band * 0.3, COLORS.orange],
+    [clear, COLORS.paper],
+    [clear + band * 0.25, COLORS.yellow],
+    [clear + band * 0.5, COLORS.amber],
+    [clear + band * 0.75, COLORS.orange],
     [1, COLORS.red],
   ] as const;
+  const gradientTransform = `translate(${width / 2} ${height / 2}) scale(${width / 2} ${height * 1.25})`;
 
   return (
     <svg
@@ -344,11 +347,18 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
     >
       <path ref={pathRef} fill={`url(#${gradientId})`} />
       <defs>
-        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
+        <radialGradient
+          id={gradientId}
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform={gradientTransform}
+        >
           {stops.map(([offset, color], i) => (
             <stop key={i} offset={offset} stopColor={color} />
           ))}
-        </linearGradient>
+        </radialGradient>
       </defs>
     </svg>
   );
