@@ -1441,7 +1441,7 @@ margin: 0rem !important;
 .offer-panel__copy { color: rgba(255, 255, 255, .78); margin: 0; font-size: 1.05rem; line-height: 1.6; }
 .offer-panel__meta { color: rgba(255, 255, 255, .55); font-size: .9375rem; margin: 1.5rem 0 0; }
 .offer-panel__cta { margin-top: auto; padding-top: 1.75rem; }
-.offer-panel__cta .button { border-color: #fff; color: #fff; }
+.offer-panel__cta .button { display: inline-flex; width: auto; border-color: #fff; color: #fff; }
 .offer-panel__support {
   margin-top: 3rem;
   padding-top: 2.5rem;
