@@ -8,7 +8,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 // that grows each glyph in with a cubic ease-out staggered by distance from
 // the center, and a hover effect that scales glyphs within EFFECT_RADIUS of
 // the pointer up to MAX_SCALE with a quadratic falloff, eased over time.
-// Differences from the original: the glyph is a chevron rather than a dot
+// Differences from the original: the enter wave sweeps in from the outer
+// edges toward the copy (Lovable's radiates outward) and each glyph slides
+// a few px in its arrow direction as it lands, so the field reads as
+// arriving at the headline; the glyph is a chevron rather than a dot
 // (left half points right, right half points left, both toward the copy),
 // the radial fill runs red -> orange -> yellow from the edge inward and
 // dissolves into the page background in an ellipse around the text,
@@ -22,7 +25,7 @@ const EFFECT_RADIUS = 200;
 const ANIMATION_DURATION = 600;
 const ENTER_DURATION = 600;
 const ENTER_STAGGER = 2;
-const ENTER_START_RADIUS = 400;
+const ENTER_SLIDE = 18; // px each chevron travels in its arrow direction as it lands
 
 const COLORS = {
   red: "#fe0d0d",
@@ -36,7 +39,7 @@ type Glyph = {
   cy: number;
   key: string;
   dir: 1 | -1;
-  distanceFromCenter: number;
+  edgeDistance: number; // px from the nearest side edge; drives the enter stagger
 };
 
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
@@ -80,6 +83,7 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
   const pointerRef = useRef<{ x: number; y: number } | null>(null);
   const currentRef = useRef(new Map<string, number>());
   const targetRef = useRef(new Map<string, number>());
+  const progressRef = useRef(new Map<string, number>());
   const enterStartRef = useRef<number | null>(null);
   const enteredRef = useRef(false);
   const lastFrameRef = useRef(0);
@@ -110,7 +114,6 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
 
   const { width, height } = size;
   const centerX = width / 2;
-  const centerY = height / 2;
   const cols = Math.floor((width - GLYPH) / GAP_X) + 1;
   const rows = Math.floor((height - GLYPH) / GAP_Y) + 1;
 
@@ -127,18 +130,13 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
             cy,
             key: `g-${r}-${c}`,
             dir: cx < centerX ? 1 : -1,
-            distanceFromCenter: Math.hypot(cx - centerX, cy - centerY),
+            edgeDistance: Math.min(cx, width - cx),
           });
         }
       }
     }
     return list;
-  }, [rows, cols, width, height, centerX, centerY]);
-
-  const maxDistance = useMemo(
-    () => Math.max(0, ...glyphs.map((g) => g.distanceFromCenter)),
-    [glyphs]
-  );
+  }, [rows, cols, width, height, centerX]);
 
   const reducedMotion = useMemo(
     () =>
@@ -198,13 +196,11 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
         let goal: number;
         if (enterStartRef.current && !enteredRef.current) {
           const elapsed = now - enterStartRef.current;
-          const delay =
-            (Math.max(0, g.distanceFromCenter - ENTER_START_RADIUS) /
-              Math.max(1, maxDistance - ENTER_START_RADIUS)) *
-            ENTER_STAGGER *
-            ENTER_DURATION;
+          // outer edge first, sweeping inward toward the copy
+          const delay = (g.edgeDistance / centerX) * ENTER_STAGGER * ENTER_DURATION;
           const local = Math.max(0, elapsed - delay);
           const progress = Math.min(1, local / ENTER_DURATION);
+          progressRef.current.set(g.key, progress);
           const entering = GLYPH * easeOutCubic(progress);
           if (progress < 1) entered = false;
           goal =
@@ -229,7 +225,12 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
         currentRef.current = next;
         if (pathRef.current) {
           const d = glyphs
-            .map((g) => chevronPath(g.cx, g.cy, next.get(g.key) ?? 0, g.dir))
+            .map((g) => {
+              // trailing offset: starts ENTER_SLIDE px behind and lands on the grid
+              const p = enteredRef.current ? 1 : (progressRef.current.get(g.key) ?? 0);
+              const slide = (1 - easeOutCubic(p)) * ENTER_SLIDE * g.dir;
+              return chevronPath(g.cx - slide, g.cy, next.get(g.key) ?? 0, g.dir);
+            })
             .filter(Boolean)
             .join("");
           pathRef.current.setAttribute("d", d);
@@ -251,7 +252,7 @@ export function HeroChevrons({ className = "" }: { className?: string }) {
       runningRef.current = false;
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
-  }, [glyphs, maxDistance, scaleFor]);
+  }, [glyphs, centerX, scaleFor]);
 
   useEffect(() => {
     const wake = () => {
