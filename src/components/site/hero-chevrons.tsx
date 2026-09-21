@@ -50,13 +50,14 @@ function chevronPath(cx: number, cy: number, s: number, dir: 1 | -1) {
   const k = s / GLYPH;
   const x = (v: number) => (cx + dir * v * k).toFixed(2);
   const y = (v: number) => (cy + v * k).toFixed(2);
+  // Stroke is 6.25 wide (was 5, +25% per user request); outer edge unchanged.
   return (
-    `M${x(-5.5)},${y(-8)}` +
+    `M${x(-6.75)},${y(-8)}` +
     `L${x(-0.5)},${y(-8)}` +
     `L${x(6)},${y(0)}` +
     `L${x(-0.5)},${y(8)}` +
-    `L${x(-5.5)},${y(8)}` +
-    `L${x(1)},${y(0)}Z`
+    `L${x(-6.75)},${y(8)}` +
+    `L${x(-0.25)},${y(0)}Z`
   );
 }
 
