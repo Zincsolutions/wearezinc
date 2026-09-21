@@ -1354,7 +1354,7 @@ margin: 0rem !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8rem 1.5rem 5rem;
+  padding: 8rem 1.5rem 7rem;
 }
 .hero-chevrons {
   position: absolute;
@@ -1364,9 +1364,9 @@ margin: 0rem !important;
   max-width: 30rem;
   pointer-events: none;
   z-index: 0;
-  /* soften the field toward the bottom so it hands off cleanly to the image */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+  /* soften the field toward the bottom so it hands off cleanly to the next section */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
 }
 .hero-chevrons--left { left: 0; }
 .hero-chevrons--right { right: 0; transform: scaleX(-1); }
@@ -1426,8 +1426,6 @@ margin: 0rem !important;
   justify-content: center;
   margin-top: 2.25rem;
 }
-.hero-banner__media { padding-top: 0; }
-.hero-banner__media .header71_image-wrapper { margin-top: 0; }
 @media screen and (max-width: 991px) {
   .hero-banner { min-height: 32rem; padding: 6rem 1.25rem 4rem; }
   .hero-banner { --hero-chevron-width: 18vw; --hero-chevron-tile: 2.5rem; }
