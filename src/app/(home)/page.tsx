@@ -28,9 +28,21 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    images: ["https://www.wearezinc.com/wf/695bda13c7c5d5a8fcdb44f2_home_header1.webp"],
+    images: [
+      {
+        url: "https://www.wearezinc.com/og/home.png",
+        width: 2400,
+        height: 1260,
+        alt: "See Further, Go Bigger. ZINC hero with the chevron field.",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["https://www.wearezinc.com/og/home.png"],
+  },
 };
 
 const HOME_SCHEMA = buildHomeSchema(
