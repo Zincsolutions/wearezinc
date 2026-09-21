@@ -1332,3 +1332,74 @@ margin: 0rem !important;
   background-color: var(--color-scheme-1--text) !important;
   opacity: 1 !important;
 }
+
+/* ---------------------------------------------------------------------------
+   Hero banner (Sept 2026): centered headline over a chevron field.
+   The field itself is src/components/site/hero-chevrons.tsx, a port of the
+   Lovable dot grid: enter animation, pointer hover, one SVG path.
+   --------------------------------------------------------------------------- */
+.hero-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 38rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 7rem;
+}
+.hero-chevrons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* soften the field toward the bottom so it hands off cleanly to the next section */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+}
+.hero-chevrons svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-banner__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.heading-style-h1.is-home.hero-banner__headline {
+  text-transform: none;
+  letter-spacing: -.02em;
+  font-size: 7rem;
+  line-height: .98;
+  margin: 0 auto;
+}
+.text-size-medium.hero-subtext.hero-banner__subtext {
+  max-width: 40rem;
+  margin: 2.25rem auto 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.button-group.hero-banner__actions {
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+@media screen and (max-width: 991px) {
+  .hero-banner { min-height: 32rem; padding: 6rem 1.25rem 4rem; }
+  .hero-banner__content { max-width: 34rem; }
+  .heading-style-h1.is-home.hero-banner__headline { font-size: 5rem; }
+  .text-size-medium.hero-subtext.hero-banner__subtext { max-width: 30rem; font-size: 1.1rem; }
+}
+@media screen and (max-width: 767px) {
+  .hero-banner { min-height: 0; padding: 4.5rem 1.25rem 3rem; }
+  .hero-banner__content { padding: 0 1.5rem; }
+  .hero-chevrons {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
+  }
+  .heading-style-h1.is-home.hero-banner__headline { font-size: 3.25rem; }
+  .text-size-medium.hero-subtext.hero-banner__subtext { font-size: 1rem; margin-top: 1.5rem; }
+  .button-group.hero-banner__actions { flex-direction: column; align-items: center; gap: 1rem; }
+}
+@media screen and (max-width: 479px) {
+  .heading-style-h1.is-home.hero-banner__headline { font-size: 2.75rem; }
+}
