@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Chevron field behind the homepage hero. Ported from the dot grid on
 // lovable.dev/product-managers (their DotGrid component): one SVG path
-// rebuilt per animation frame, a grid on a 28 x 30 pitch, an enter animation
+// rebuilt per animation frame, a grid on a 22 x 24 pitch (Lovable: 28 x 30), an enter animation
 // that grows each glyph in with a cubic ease-out staggered by distance from
 // the center, and a hover effect that scales glyphs within EFFECT_RADIUS of
 // the pointer up to MAX_SCALE with a quadratic falloff, eased over time.
@@ -14,8 +14,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 // dissolves into the page background in an ellipse around the text,
 // and the canvas sizes to its container instead of a fixed 1440 x 693.
 
-const GAP_X = 28;
-const GAP_Y = 30;
+const GAP_X = 22;
+const GAP_Y = 24;
 const GLYPH = 8; // half-height at rest; same "radius" Lovable uses for dots
 const MAX_SCALE = 1.6;
 const EFFECT_RADIUS = 200;
