@@ -5,7 +5,7 @@ const SOLUTION_LINKS = [
   { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
   { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
   { href: "/solutions/website-design-development", label: "Website Design & Development" },
-  { href: "/solutions/ecommerce-acceleration", label: "Ecommerce" },
+  { href: "/solutions/ecommerce-acceleration", label: "E-commerce Acceleration" },
   { href: "/solutions/ai-enablement", label: "AI Strategy & Training" },
   { href: "/solutions/automation-workflows", label: "AI Workflows & Automation" },
   { href: "/solutions/branding-positioning", label: "Brand Strategy & Design" },

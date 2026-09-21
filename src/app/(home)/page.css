@@ -1490,3 +1490,7 @@ margin: 0rem !important;
   .solution-services { grid-template-columns: 1fr; grid-row-gap: 1.75rem; }
   .solution-links { flex-direction: column; gap: .625rem; }
 }
+.solution-capabilities { list-style: none; margin: 0 0 1.25rem; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.solution-capabilities li { margin: 0; padding: 0 0 0 1rem; position: relative; }
+.solution-capabilities li::before { content: ">"; position: absolute; left: 0; color: var(--_primitives---colors--orange-500); font-family: var(--_typography---font-styles--micro); }
+@media screen and (max-width: 767px) { .solution-capabilities { flex-direction: column; gap: .5rem; } }

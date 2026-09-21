@@ -3,19 +3,24 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-// Solutions menu: three categories. The website offering pages lead
-// (AI-native, migration, enterprise), Sept 2026.
+// Solutions menu: four categories (Websites, E-commerce Acceleration,
+// AI Enablement, Strategy & Brand), Sept 2026.
 type NavLink = { href: string; label: string; primary?: boolean };
 type NavGroup = { heading: string; links: NavLink[] };
 const SOLUTION_GROUPS: NavGroup[] = [
   {
-    heading: "Websites & Commerce",
+    heading: "Websites",
     links: [
       { href: "/solutions/ai-native-websites", label: "AI-Native Websites", primary: true },
       { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
       { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
       { href: "/solutions/website-design-development", label: "Website Design & Development" },
-      { href: "/solutions/ecommerce-acceleration", label: "Ecommerce" },
+    ],
+  },
+  {
+    heading: "E-commerce Acceleration",
+    links: [
+      { href: "/solutions/ecommerce-acceleration", label: "E-commerce Acceleration" },
     ],
   },
   {
