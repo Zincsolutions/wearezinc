@@ -421,3 +421,8 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 .footer-governed { font-size: 0.875rem; color: var(--gray-100); margin-top: 0.25rem; }
 .footer-governed a { color: var(--gray-100); text-decoration: underline; transition: color 0.333s; }
 .footer-governed a:hover { color: var(--orange); }
+
+/* Blog cards: "Read more" turns ZINC orange when the card is hovered or focused */
+.blog38_item-link:hover .button.is-link,
+.blog38_item-link:focus-visible .button.is-link { color: var(--orange); text-decoration: underline; }
+.blog38_item-link .button.is-link { transition: color .2s ease; }
