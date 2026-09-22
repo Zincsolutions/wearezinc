@@ -1494,3 +1494,14 @@ margin: 0rem !important;
 .solution-capabilities li { margin: 0; padding: 0 0 0 1rem; position: relative; }
 .solution-capabilities li::before { content: ">"; position: absolute; left: 0; color: var(--_primitives---colors--orange-500); font-family: var(--_typography---font-styles--micro); }
 @media screen and (max-width: 767px) { .solution-capabilities { flex-direction: column; gap: .5rem; } }
+
+/* Homepage FAQ (faq3): same orange hover as the Solutions accordion */
+.faq3_question,
+.faq3_question .text-size-medium,
+.faq3_question .faq3_icon-wrapper { transition: background-color .2s ease, color .2s ease; }
+.faq3_question:hover { background-color: #f7f7f7; }
+.faq3_question:hover .text-size-medium,
+.faq3_question:hover .text-size-medium * { color: #ff5b19; }
+.faq3_question:hover .faq3_icon-wrapper,
+.faq3_question:hover .faq3_icon-wrapper svg,
+.faq3_question:hover .faq3_icon-wrapper svg path { color: #ff5b19; fill: #ff5b19; stroke: #ff5b19; }
