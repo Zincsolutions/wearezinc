@@ -14450,3 +14450,6 @@ figcaption {
     grid-column: span 1 / span 1;
   }
 }
+
+/* ZINC (Sept 2026): text-link buttons turn orange on hover/focus, matching the homepage hero link */
+.button.is-link:hover,.button.is-link:focus-visible,.button.is-link.on-dark:hover,.button.is-link.on-dark:focus-visible{color:#ff5b19;text-decoration:underline}

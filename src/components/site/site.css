@@ -426,3 +426,11 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 .blog38_item-link:hover .button.is-link,
 .blog38_item-link:focus-visible .button.is-link { color: var(--orange); text-decoration: underline; }
 .blog38_item-link .button.is-link { transition: color .2s ease; }
+
+/* Text-link buttons (.button.is-link, used in page heroes and section CTAs)
+   turn ZINC orange on hover and keyboard focus, like the homepage hero link */
+.button.is-link { transition: color .2s ease; }
+.button.is-link:hover,
+.button.is-link:focus-visible,
+.button.is-link.on-dark:hover,
+.button.is-link.on-dark:focus-visible { color: var(--orange); text-decoration: underline; }
