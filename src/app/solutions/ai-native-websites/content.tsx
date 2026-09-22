@@ -134,7 +134,7 @@ export function OverviewContent() {
                 <p className="offering-bottomline">Bring your own agent, such as Codex or Claude Code. ZINC connects the tools and helps your team use them confidently.</p>
                 <div className="margin-top margin-medium"><div className="button-group">
                   <a href="#assessment" className="button w-button">Request a Website Assessment &gt;</a>
-                  <a href="https://dispatchvault.com/product/website-governance" className="button is-link is-icon w-inline-block" rel="noopener"><div>Explore Dispatch Governance</div><ArrowIcon /></a>
+                  <a href="/solutions/ai-dispatch" className="button is-link is-icon w-inline-block"><div>Explore Dispatch Governance</div><ArrowIcon /></a>
                 </div></div>
               </div>
             </div></div>

@@ -82,3 +82,7 @@
 .step-number__text { font-family: var(--_typography---font-styles--micro); font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; }
 .u-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .layout249_item:hover .step-number__badge { background-color: var(--_primitives---colors--orange-500); }
+
+/* Dispatch page: example agent requests */
+.dispatch-prompts { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: .75rem; }
+.dispatch-prompts li { margin: 0; padding: .875rem 1.125rem; border-left: 3px solid var(--_primitives---colors--orange-500); background: #fff; font-style: italic; }

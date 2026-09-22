@@ -11,7 +11,7 @@ const COMPONENT_LAST_MODIFIED: Record<string, string> = {
 };
 // Component routes that have no static twin in the manifest.
 const COMPONENT_ROUTES: Record<string, string> = {
-  "solutions/ai-dispatch": "2026-09-20",
+  "solutions/ai-dispatch": "2026-09-22",
   "solutions/ai-native-websites": "2026-09-21",
   "solutions/ai-website-migration": "2026-09-21",
   "solutions/enterprise-websites": "2026-09-21",

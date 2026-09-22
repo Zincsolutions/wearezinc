@@ -15,6 +15,7 @@ const SOLUTION_GROUPS: NavGroup[] = [
       { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
       { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
       { href: "/solutions/website-design-development", label: "Website Design & Development" },
+      { href: "/solutions/ai-dispatch", label: "Dispatch: AI Website Governance" },
     ],
   },
   {
