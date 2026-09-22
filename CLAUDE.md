@@ -45,6 +45,8 @@ The old site had bugs that must NOT be ported:
 
 ## Brand notes
 
+- Positioning and approved offer lines live in `docs/positioning.md` (e.g. "AI website migration, with control built in"). Check it before writing new copy.
+
 - Colors: ZINC orange `#FF5B19`, navy `#0C2954` (extract full palette into Tailwind theme tokens from the captured CSS).
 - Fonts: Geist, Geist Mono, Inter (self-host via `next/font`, don't use webfont.js).
 - Copy rule: it's "AI", never "Ai" (old site was inconsistent — normalize during port).
