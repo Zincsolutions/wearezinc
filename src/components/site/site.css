@@ -434,3 +434,14 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
 .button.is-link:focus-visible,
 .button.is-link.on-dark:hover,
 .button.is-link.on-dark:focus-visible { color: var(--orange); text-decoration: underline; }
+
+/* Footer ZINC mark: white circle, black Z; on hover ZINC orange with a white
+   Z (same behavior as the mark on jimzaslaw.com) */
+.footer-logo-mark { display: inline-block; border-radius: 9999px; line-height: 0; }
+.footer-logo-mark__bg { fill: #fff; transition: fill .18s cubic-bezier(.2,.8,.2,1); }
+.footer-logo-mark__symbol { fill: #161616; transition: fill .18s cubic-bezier(.2,.8,.2,1); }
+.footer-logo-mark:hover .footer-logo-mark__bg,
+.footer-logo-mark:focus-visible .footer-logo-mark__bg { fill: var(--orange); }
+.footer-logo-mark:hover .footer-logo-mark__symbol,
+.footer-logo-mark:focus-visible .footer-logo-mark__symbol { fill: #fff; }
+.footer-logo-mark:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
