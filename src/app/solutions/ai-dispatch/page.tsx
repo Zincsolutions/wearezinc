@@ -8,16 +8,18 @@ import { FAQ_ITEMS } from "./faq-items";
 import { buildServiceSchema, serializeSchema, textFromHtml } from "@/lib/schema";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
+import "@/components/site/forms.css";
+import "@/components/site/offering.css";
 import "./page.css";
 
-// Rebuilt from the existing solutions-page archetypes (header46, layout207,
-// layout249, layout19, layout210, faq2, cta7). Styles are the ecommerce
-// page's extracted Webflow subset plus the layout210 rules from the
-// website-design page (page.css); nav/footer come from the shared shell.
+// Dispatch: rebuilt Sept 22, 2026 from the Dispatch messaging
+// recommendations. Governance-led: control-first hero, the new operating
+// model, governance features, BYOA, the CMS safety net, three paths, AEO as
+// a supporting capability, why ZINC, FAQs, and an enquiry.
 
-const TITLE = "Dispatch, the Management Layer for AI-Powered Websites | ZINC";
+const TITLE = "Dispatch: AI Website Governance & Management | ZINC";
 const DESCRIPTION =
-  "Dispatch gives your team the visibility, approvals, attribution, and one-click restore that make it safe to let an AI agent run your website. ZINC connects every migrated site to Dispatch and runs its own site the same way.";
+  "Run an AI-powered website without losing control. ZINC connects your agents, team, repository, and host through Dispatch for approvals, attribution, monitoring, and one-click restore.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,13 +29,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    images: ["https://www.wearezinc.com/wf/695bda13c7c5d5a8fcdb4592_z_dispatch_01.1.webp"],
+    images: ["https://www.wearezinc.com/og/home.png"],
   },
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
 const SERVICE_SCHEMA = buildServiceSchema({
-  name: "Dispatch Website Governance Setup",
+  name: "Dispatch: AI Website Governance",
   description: DESCRIPTION,
   path: "/solutions/ai-dispatch",
   serviceType:

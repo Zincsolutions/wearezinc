@@ -103,7 +103,7 @@ export function MigrationContent() {
                   <div>
                     <h3 className="heading-style-h5">Control comes with the setup.</h3>
                     <p>Our governance platform, Dispatch, provides visibility into AI website work. We configure your review and approval workflow and establish a recovery process for supported changes.</p>
-                    <a href="https://dispatchvault.com/" className="faq-link" rel="noopener">Meet Dispatch &gt;</a>
+                    <a href="/solutions/ai-dispatch" className="faq-link">Meet Dispatch &gt;</a>
                   </div>
                   <div>
                     <h3 className="heading-style-h5">Support beyond the switch.</h3>

@@ -73,6 +73,9 @@ const nextConfig: NextConfig = {
       { source: "/blog-cats", destination: "/blog", permanent: true },
       { source: "/lander-1", destination: "/", permanent: true },
       { source: "/lander-2", destination: "/", permanent: true },
+      // Sept 2026: the page described Dispatch as an AI asset vault (retired
+      // positioning); AI imagery is covered on the brand page.
+      { source: "/solutions/ai-image-library", destination: "/solutions/branding-positioning", permanent: true },
     ];
   },
 };
