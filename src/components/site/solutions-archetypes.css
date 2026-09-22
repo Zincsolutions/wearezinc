@@ -9,7 +9,9 @@
 }
 
 /* Auto-extracted subset of the compiled Webflow CSS (classes, ids,
-   elements, :root vars) for the solutions archetypes (shared with /solutions/ecommerce-acceleration). */
+   elements, :root vars) for the solutions archetypes. Shared by the AI-native,
+   AI website migration, and enterprise websites pages (one copy instead of three).
+   Hover rules are gated to hover-capable pointers so taps don't leave sticky hovers. */
 
 html { -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -325,29 +327,29 @@ figcaption { text-align: center;
   text-decoration: none;
   transition: border-color .2s, background-color .2s;
   display: flex; }
-.button:hover { border-color: var(--_primitives---colors--orange-500);
+@media (hover: hover) and (pointer: fine) { .button:hover { border-color: var(--_primitives---colors--orange-500);
   background-color: var(--_primitives---colors--orange-500);
   color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>);
-  -webkit-text-stroke-color: var(--_primitives---colors--orange-500); }
+  -webkit-text-stroke-color: var(--_primitives---colors--orange-500); } }
 .button.is-link { background-color: var(--_primitives---opacity--transparent);
   color: var(--_primitives---colors--neutral-darkest\<deleted\|relume-variable-neutral-shade-7\>);
   border-style: none;
   padding: .25rem 0;
   line-height: 1;
   text-decoration: none; }
-.button.is-link:hover { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .button.is-link:hover { text-decoration: underline; } }
 .button.is-link.is-alternate { background-color: var(--_primitives---opacity--transparent);
   color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>); }
 .button.is-link.is-icon { grid-column-gap: .5rem;
   grid-row-gap: .5rem;
   border-width: 0;
   border-radius: 0; }
-.button.is-link.is-icon:hover { border: 0px none var(--_primitives---opacity--transparent);
+@media (hover: hover) and (pointer: fine) { .button.is-link.is-icon:hover { border: 0px none var(--_primitives---opacity--transparent);
   background-color: var(--_primitives---opacity--transparent);
   -webkit-text-stroke-color: var(--_primitives---opacity--transparent);
   word-break: normal;
   overflow-wrap: normal;
-  border-radius: 0; }
+  border-radius: 0; } }
 .button.is-link.on-dark { color: var(--_primitives---colors--white); }
 .button.is-icon { grid-column-gap: .75rem;
   grid-row-gap: .75rem;
@@ -359,23 +361,23 @@ figcaption { text-align: center;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>); }
-.button.is-secondary:hover { border-color: var(--_primitives---colors--orange-500);
-  background-color: var(--_primitives---opacity--neutral-darkest-5\<deleted\|relume-variable-neutral-shade-7-5\>); }
+@media (hover: hover) and (pointer: fine) { .button.is-secondary:hover { border-color: var(--_primitives---colors--orange-500);
+  background-color: var(--_primitives---opacity--neutral-darkest-5\<deleted\|relume-variable-neutral-shade-7-5\>); } }
 .button.is-secondary.is-alternate { border-color: var(--_primitives---opacity--white-20);
   background-color: var(--_primitives---opacity--transparent);
   color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>); }
-.button.is-secondary.is-alternate:hover { border-color: var(--_primitives---opacity--white-20);
-  background-color: var(--_primitives---opacity--white-10); }
+@media (hover: hover) and (pointer: fine) { .button.is-secondary.is-alternate:hover { border-color: var(--_primitives---opacity--white-20);
+  background-color: var(--_primitives---opacity--white-10); } }
 .button.is-secondary.on-dark { background-color: var(--_primitives---opacity--transparent);
   color: var(--_primitives---colors--white); }
-.button.is-secondary.on-dark:hover { background-color: var(--_primitives---colors--orange-500);
-  color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>); }
+@media (hover: hover) and (pointer: fine) { .button.is-secondary.on-dark:hover { background-color: var(--_primitives---colors--orange-500);
+  color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>); } }
 .button.is-small { padding: .25rem .625rem; }
 .button.is-alternate { border-color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>);
   background-color: var(--_primitives---colors--white-2\<deleted\|relume-variable-neutral-white\>);
   color: var(--_primitives---colors--neutral-darkest\<deleted\|relume-variable-neutral-shade-7\>); }
-.button.is-alternate:hover { border-color: var(--_primitives---colors--neutral-lighter\<deleted\|relume-variable-neutral-shade-2\>);
-  background-color: var(--_primitives---colors--neutral-lighter\<deleted\|relume-variable-neutral-shade-2\>); }
+@media (hover: hover) and (pointer: fine) { .button.is-alternate:hover { border-color: var(--_primitives---colors--neutral-lighter\<deleted\|relume-variable-neutral-shade-2\>);
+  background-color: var(--_primitives---colors--neutral-lighter\<deleted\|relume-variable-neutral-shade-2\>); } }
 .button.is-navbar16-button { z-index: 1;
   padding-top: .5rem;
   padding-bottom: .5rem;
@@ -385,8 +387,8 @@ figcaption { text-align: center;
   padding-bottom: .5rem; }
 .button.is-white { background-color: var(--_primitives---colors--white);
   color: var(--_primitives---colors--black); }
-.button.is-white:hover { background-color: var(--_primitives---colors--orange-500);
-  color: var(--_primitives---colors--white); }
+@media (hover: hover) and (pointer: fine) { .button.is-white:hover { background-color: var(--_primitives---colors--orange-500);
+  color: var(--_primitives---colors--white); } }
 .button.is-nav { padding-top: .25rem;
   padding-bottom: .25rem;
   line-height: 1; }
@@ -1034,35 +1036,35 @@ figcaption { text-align: center;
 }
 
 /* (Optional) light row background on hover */
-.faq2_question:hover {
+@media (hover: hover) and (pointer: fine) { .faq2_question:hover {
   background-color: #f7f7f7;
-}
+} }
 
 /* Circle turns orange */
-.faq2_question:hover .solution-number {
+@media (hover: hover) and (pointer: fine) { .faq2_question:hover .solution-number {
   background-color: #ff5b19 !important;
   border-color: #ff5b19 !important;
   color: #ffffff !important; /* if the number uses currentColor */
-}
+} }
 
 /* Number stays white on orange */
-.faq2_question:hover .solution-number-text {
+@media (hover: hover) and (pointer: fine) { .faq2_question:hover .solution-number-text {
   color: #ffffff !important;
-}
+} }
 
 /* Title text turns orange (wrapper + inner text) */
-.faq2_question:hover .text-size-medium,
+@media (hover: hover) and (pointer: fine) { .faq2_question:hover .text-size-medium,
 .faq2_question:hover .text-size-medium * {
   color: #ff5b19 !important;
-}
+} }
 
 /* Chevron turns orange – for both color + SVG stroke */
-.faq2_question:hover .faq2_icon-wrapper,
+@media (hover: hover) and (pointer: fine) { .faq2_question:hover .faq2_icon-wrapper,
 .faq2_question:hover .faq2_icon-wrapper svg,
 .faq2_question:hover .faq2_icon-wrapper svg path {
   color: #ff5b19 !important;
   stroke: #ff5b19 !important;
-}
+} }
 
 /* --- page-embedded style block 4 (verbatim from capture) --- */
 ::selection {

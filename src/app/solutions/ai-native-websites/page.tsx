@@ -10,7 +10,8 @@ import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "@/components/site/forms.css";
 import "@/components/site/offering.css";
-import "./page.css";
+import "@/components/site/solutions-archetypes.css";
+import "@/components/site/offering-refresh.css";
 
 // AI-native websites: the broad explanation behind the homepage's
 // "Explore AI-Native Websites" path. Conversation-led benefits, an

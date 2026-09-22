@@ -10,7 +10,8 @@ import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "@/components/site/forms.css";
 import "@/components/site/offering.css";
-import "./page.css";
+import "@/components/site/solutions-archetypes.css";
+import "@/components/site/offering-refresh.css";
 
 // Built from the section archetypes already componentized on the other
 // solutions pages (see content.tsx); page.css is the ecommerce page's

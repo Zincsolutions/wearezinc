@@ -2,7 +2,10 @@
 // Section markup follows the solutions archetypes (header46, layout207,
 // layout249, layout19, faq2) so the page inherits the site's look and feel.
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
+import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -42,8 +45,8 @@ const Items = ({ items }: { items: Item[] }) => (
 type Card = { n?: string; title: string; text: string; quote?: boolean };
 const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
   <div className={`w-layout-grid layout249_list${four ? " is-four" : ""}`}>
-    {items.map((c) => (
-      <div key={c.title} className="layout249_item">
+    {items.map((c, i) => (
+      <div key={c.title} className="layout249_item" data-reveal="" style={{ "--i": i } as CSSProperties}>
         {c.n ? <div className="margin-bottom margin-xsmall"><StepNumber value={c.n} /></div> : null}
         <div className="margin-bottom margin-small"><h3 className="heading-style-h4"><strong>{c.title}</strong></h3></div>
         <p className={c.quote ? "offering-quote" : undefined}>{c.text}</p>
@@ -53,8 +56,8 @@ const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
 );
 
 const Intro = ({ tagline, heading, text }: { tagline: string; heading: string; text?: string }) => (
-  <div className="margin-bottom margin-xxlarge"><div className="max-width-large">
-    <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; {tagline} &lt;</div></div>
+  <div className="margin-bottom margin-xxlarge" data-reveal=""><div className="max-width-large">
+    <div className="margin-bottom margin-xsmall hero-seq__item"><div className="text-style-tagline">&gt; {tagline} &lt;</div></div>
     <div className="margin-bottom margin-small"><h2 className="heading-style-h2">{heading}</h2></div>
     {text ? <p className="text-size-medium">{text}</p> : null}
   </div></div>
@@ -63,19 +66,21 @@ const Intro = ({ tagline, heading, text }: { tagline: string; heading: string; t
 export function OverviewContent() {
   return (
     <>
-      <main className="main-wrapper offering-page">
+      <main className="main-wrapper offering-page offering-refresh">
+        <ScrollReveal />
         {/* Hero (header46) */}
         <header className="section_aeo-hero color-scheme-1">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
-            <div className="header46_component"><div className="max-width-large">
+            <div className="header46_component offering-hero"><div className="max-width-large">
               <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; AI-Native Websites by ZINC &lt;</div></div>
-              <div className="margin-bottom margin-small"><h1 className="heading-style-h1">Keep the website you love. Change how you run it.</h1></div>
-              <p className="text-size-medium fade-up">We move your website to a foundation your team can update by asking an AI agent, preserving the design and content you value while our governance platform, Dispatch, provides visibility and control.</p>
-              <div className="margin-top margin-medium"><div className="button-group">
+              <div className="margin-bottom margin-small hero-seq__item"><h1 className="heading-style-h1">Keep the website you love. Change how you run it.</h1></div>
+              <p className="text-size-medium hero-seq__item">We move your website to a foundation your team can update by asking an AI agent, preserving the design and content you value while our governance platform, Dispatch, provides visibility and control.</p>
+              <div className="margin-top margin-medium hero-seq__item"><div className="button-group">
                 <a href="#assessment" className="button w-button">Request a Website Assessment &gt;</a>
                 <a href="#walkthrough" className="button is-link is-icon w-inline-block"><div>See How It Works</div><ArrowIcon /></a>
               </div></div>
-            </div></div>
+            </div>
+            <OfferingHeroVisual variant="workflow" /></div>
           </div></div></div>
         </header>
 
@@ -94,7 +99,7 @@ export function OverviewContent() {
             </div>
             <WorkflowSteps />
             <p className="offering-note">Illustrative workflow, not a live agent or Dispatch product demo.</p>
-            <div className="offering-definition">
+            <div className="offering-definition" data-reveal="">
               <strong>That’s the idea behind an AI-native website.</strong>
               Your agent works with the website’s code and content. You describe the change and review the result. ZINC sets up the website and the management tools that make this possible.
             </div>
@@ -121,8 +126,8 @@ export function OverviewContent() {
         <section id="dispatch" className="section_aeo-4">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout207_component"><div className="w-layout-grid layout207_content">
-              <div className="layout207_image-wrapper"><img sizes="(max-width: 767px) 100vw, 600px" srcSet="/wf/69bb3df66dfef39d53c3f700_dispatch_04-p-500.png 500w, /wf/69bb3df66dfef39d53c3f700_dispatch_04.png 1200w" alt="Dispatch review screen showing a previewed website change waiting for approval" src="/wf/69bb3df66dfef39d53c3f700_dispatch_04.png" loading="lazy" className="layout207_image" /></div>
-              <div className="layout207_content-right">
+              <div className="layout207_image-wrapper" data-reveal=""><img sizes="(max-width: 767px) 100vw, 600px" srcSet="/wf/69bb3df66dfef39d53c3f700_dispatch_04-p-500.png 500w, /wf/69bb3df66dfef39d53c3f700_dispatch_04.png 1200w" alt="Dispatch review screen showing a previewed website change waiting for approval" src="/wf/69bb3df66dfef39d53c3f700_dispatch_04.png" loading="lazy" className="layout207_image" /></div>
+              <div className="layout207_content-right" data-reveal="" style={{ "--i": 1 } as CSSProperties}>
                 <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Dispatch · Our governance platform &lt;</div></div>
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">More freedom to create. A clear way to stay in control.</h2></div>
                 <div className="margin-bottom margin-small"><p className="text-size-medium">Dispatch gives your team visibility into AI website work. ZINC configures the approval process and management layer around the way your business operates.</p></div>
@@ -146,7 +151,7 @@ export function OverviewContent() {
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout249_component">
               <Intro tagline="From your current CMS to an AI-native website" heading="Keep what works. Change what’s possible." text="Your brand. Your content. Your next chapter. We assess your pages, design, content, URLs, forms, and integrations, then plan what carries over and what needs rebuilding. You review the new site before the switch." />
-              <div className="offering-pair" style={{ marginTop: 0 }}>
+              <div className="offering-pair" data-reveal="" style={{ marginTop: 0 }}>
                 <div><h3 className="heading-style-h5">What we work to preserve</h3><p>Your agreed design and content. Existing URLs where possible. Forms, tracking, and business integrations, assessed and rebuilt or reconnected as needed.</p></div>
                 <div><h3 className="heading-style-h5">What changes underneath</h3><p>An agent-accessible codebase, suitable hosting, and a managed review and publishing workflow. We recommend the architecture around your website’s actual requirements.</p></div>
               </div>
@@ -171,7 +176,7 @@ export function OverviewContent() {
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout249_component">
               <Intro tagline="Ready for your team to use" heading="Your team. Our team. Or both." text="We configure your website, connect Dispatch, and guide your team through its first AI-assisted changes. Continue independently, collaborate with ZINC, or have us handle ongoing work." />
-              <div className="offering-pair" style={{ marginTop: 0 }}>
+              <div className="offering-pair" data-reveal="" style={{ marginTop: 0 }}>
                 <div><h3 className="heading-style-h4"><strong>An experienced partner.</strong></h3><p>Bring over 25 years of ZINC’s strategy, brand, and website experience to your next move.</p></div>
                 <div><h3 className="heading-style-h4"><strong>Room to keep growing.</strong></h3><p>Work with us on content, campaigns, SEO and AEO, and improvements that help turn visits into opportunities.</p></div>
               </div>
@@ -190,7 +195,7 @@ export function OverviewContent() {
               <div className="margin-bottom margin-xxlarge"><div className="max-width-large">
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">Questions before you make a move.</h2></div>
               </div></div>
-              <div className="faq2_list"><FaqItems items={FAQ_ITEMS} /></div>
+              <div className="faq2_list" data-reveal=""><FaqItems items={FAQ_ITEMS} /></div>
             </div>
           </div></div></div>
         </section>
@@ -199,7 +204,7 @@ export function OverviewContent() {
         <section id="assessment" className="section_layout19">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout19_component"><div className="w-layout-grid layout19_content">
-              <div className="layout19_content-left">
+              <div className="layout19_content-left" data-reveal="">
                 <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Your next step &lt;</div></div>
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">See what’s possible for your website.</h2></div>
                 <div className="margin-bottom margin-small"><p className="text-size-medium">Share your website and what you’d like to accomplish. We’ll discuss the right next step for your business.</p></div>
@@ -210,7 +215,7 @@ export function OverviewContent() {
                 </ul>
                 <p className="offering-note">No platform credentials needed for an initial conversation.</p>
               </div>
-              <div className="layout19_image-wrapper">
+              <div className="layout19_image-wrapper" data-reveal="" style={{ "--i": 1 } as CSSProperties}>
                 <EnquiryForm
                   formName="Website Assessment Request"
                   offer="AI-Native Websites"

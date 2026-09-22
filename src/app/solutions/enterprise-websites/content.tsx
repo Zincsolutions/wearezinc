@@ -2,7 +2,10 @@
 // Section markup follows the solutions archetypes (header46, layout207,
 // layout249, layout19, faq2) so the page inherits the site's look and feel.
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
+import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -19,8 +22,8 @@ const ArrowIcon = () => (
 type Card = { n?: string; title: string; text: string };
 const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
   <div className={`w-layout-grid layout249_list${four ? " is-four" : ""}`}>
-    {items.map((c) => (
-      <div key={c.title} className="layout249_item">
+    {items.map((c, i) => (
+      <div key={c.title} className="layout249_item" data-reveal="" style={{ "--i": i } as CSSProperties}>
         {c.n ? <div className="margin-bottom margin-xsmall"><StepNumber value={c.n} /></div> : null}
         <div className="margin-bottom margin-small"><h3 className="heading-style-h4"><strong>{c.title}</strong></h3></div>
         <p>{c.text}</p>
@@ -30,8 +33,8 @@ const Cards = ({ items, four }: { items: Card[]; four?: boolean }) => (
 );
 
 const Intro = ({ tagline, heading, text }: { tagline: string; heading: string; text?: string }) => (
-  <div className="margin-bottom margin-xxlarge"><div className="max-width-large">
-    <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; {tagline} &lt;</div></div>
+  <div className="margin-bottom margin-xxlarge" data-reveal=""><div className="max-width-large">
+    <div className="margin-bottom margin-xsmall hero-seq__item"><div className="text-style-tagline">&gt; {tagline} &lt;</div></div>
     <div className="margin-bottom margin-small"><h2 className="heading-style-h2">{heading}</h2></div>
     {text ? <p className="text-size-medium">{text}</p> : null}
   </div></div>
@@ -40,19 +43,21 @@ const Intro = ({ tagline, heading, text }: { tagline: string; heading: string; t
 export function EnterpriseContent() {
   return (
     <>
-      <main className="main-wrapper offering-page">
+      <main className="main-wrapper offering-page offering-refresh">
+        <ScrollReveal />
         {/* Hero (header46) */}
         <header className="section_aeo-hero color-scheme-1">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
-            <div className="header46_component"><div className="max-width-large">
+            <div className="header46_component offering-hero"><div className="max-width-large">
               <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Enterprise Websites &amp; CMS &lt;</div></div>
-              <div className="margin-bottom margin-small"><h1 className="heading-style-h1">The right platform. More potential.</h1></div>
-              <p className="text-size-medium fade-up">Grow with Webflow Enterprise and the systems your business relies on, with ZINC bringing strategy, design, development, and AI integration to help your team accomplish more.</p>
-              <div className="margin-top margin-medium"><div className="button-group">
+              <div className="margin-bottom margin-small hero-seq__item"><h1 className="heading-style-h1">The right platform. More potential.</h1></div>
+              <p className="text-size-medium hero-seq__item">Grow with Webflow Enterprise and the systems your business relies on, with ZINC bringing strategy, design, development, and AI integration to help your team accomplish more.</p>
+              <div className="margin-top margin-medium hero-seq__item"><div className="button-group">
                 <a href="#contact" className="button w-button">Talk About Your Website &gt;</a>
                 <a href="#ai-integrations" className="button is-link is-icon w-inline-block"><div>Explore AI Integrations</div><ArrowIcon /></a>
               </div></div>
-            </div></div>
+            </div>
+            <OfferingHeroVisual variant="platform" /></div>
           </div></div></div>
         </header>
 
@@ -62,12 +67,12 @@ export function EnterpriseContent() {
         <section className="section_aeo-4">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout207_component"><div className="w-layout-grid layout207_content">
-              <div className="layout207_image-wrapper"><img sizes="(max-width: 767px) 100vw, 600px" srcSet="/wf/695bda13c7c5d5a8fcdb45bd_web_design_04-p-500.webp 500w, /wf/695bda13c7c5d5a8fcdb45bd_web_design_04-p-800.webp 800w, /wf/695bda13c7c5d5a8fcdb45bd_web_design_04.webp 1024w" alt="Website layouts designed and built by ZINC on an enterprise CMS" src="/wf/695bda13c7c5d5a8fcdb45bd_web_design_04.webp" loading="lazy" className="layout207_image" /></div>
-              <div className="layout207_content-right">
+              <div className="layout207_image-wrapper" data-reveal=""><img sizes="(max-width: 767px) 100vw, 600px" srcSet="/wf/695bda13c7c5d5a8fcdb45bd_web_design_04-p-500.webp 500w, /wf/695bda13c7c5d5a8fcdb45bd_web_design_04-p-800.webp 800w, /wf/695bda13c7c5d5a8fcdb45bd_web_design_04.webp 1024w" alt="Website layouts designed and built by ZINC on an enterprise CMS" src="/wf/695bda13c7c5d5a8fcdb45bd_web_design_04.webp" loading="lazy" className="layout207_image" /></div>
+              <div className="layout207_content-right" data-reveal="" style={{ "--i": 1 } as CSSProperties}>
                 <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Webflow expertise. Business perspective. &lt;</div></div>
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">Get more from Webflow Enterprise.</h2></div>
                 <div className="margin-bottom margin-small"><p className="text-size-medium">Your website needs to serve marketing, IT, and the people who use it every day. As a Webflow partner, we help you bring those needs together in a website that reflects your brand and supports your business.</p></div>
-                <div className="offering-pair">
+                <div className="offering-pair" data-reveal="">
                   <div><h3 className="heading-style-h5">A stronger brand experience.</h3><p>Build or refine your website with thoughtful design, reusable components, and content structures that support growth.</p></div>
                   <div><h3 className="heading-style-h5">A more capable team.</h3><p>Give marketers clearer workflows, useful templates, and training so everyday website work moves with less friction.</p></div>
                   <div><h3 className="heading-style-h5">Connected business systems.</h3><p>Connect your CMS with CRM, marketing, analytics, and other essential tools, with clear responsibilities for how they operate.</p></div>
@@ -145,7 +150,7 @@ export function EnterpriseContent() {
               <div className="margin-bottom margin-xxlarge"><div className="max-width-large">
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">Questions about your next step.</h2></div>
               </div></div>
-              <div className="faq2_list"><FaqItems items={FAQ_ITEMS} /></div>
+              <div className="faq2_list" data-reveal=""><FaqItems items={FAQ_ITEMS} /></div>
             </div>
           </div></div></div>
         </section>
@@ -154,7 +159,7 @@ export function EnterpriseContent() {
         <section id="contact" className="section_layout19">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="layout19_component"><div className="w-layout-grid layout19_content">
-              <div className="layout19_content-left">
+              <div className="layout19_content-left" data-reveal="">
                 <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Your website. Your next opportunity. &lt;</div></div>
                 <div className="margin-bottom margin-small"><h2 className="heading-style-h2">What could your team do better?</h2></div>
                 <div className="margin-bottom margin-small"><p className="text-size-medium">Tell us about your website and what you’d like to improve. We’ll help identify the right next step for your platform, your team, and your business.</p></div>
@@ -164,7 +169,7 @@ export function EnterpriseContent() {
                   <li className="layout19_item"><p>Define a practical scope and next step.</p></li>
                 </ul>
               </div>
-              <div className="layout19_image-wrapper">
+              <div className="layout19_image-wrapper" data-reveal="" style={{ "--i": 1 } as CSSProperties}>
                 <EnquiryForm
                   formName="Enterprise Website Enquiry"
                   offer="Enterprise Websites & CMS"
