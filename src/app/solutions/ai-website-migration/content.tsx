@@ -45,7 +45,7 @@ export function MigrationContent() {
         <header className="section_aeo-hero color-scheme-1">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="header46_component"><div className="max-width-large">
-              <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; AI Website Migration &lt;</div></div>
+              <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; AI website migration, with control built in &lt;</div></div>
               <div className="margin-bottom margin-small"><h1 className="heading-style-h1">Your move to AI-native. Handled by ZINC.</h1></div>
               <p className="text-size-medium fade-up">Bring your website into an AI-native environment with an experienced team handling the migration, our governance platform, Dispatch, providing control, and your team prepared to take over.</p>
               <div className="margin-top margin-medium"><div className="button-group">
