@@ -57,11 +57,13 @@ export function WorkflowSteps() {
         ))}
       </div>
       <div className="workflow_panel" aria-live="polite">
-        <div className="workflow_text">
+        {/* Keyed per step so each swap replays a short crossfade
+            (offering-refresh.css); the live region itself stays mounted. */}
+        <div key={`text-${active}`} className="workflow_text workflow_swap">
           <h3 className="heading-style-h4">{step.title}</h3>
           <p className="text-size-medium">{step.body}</p>
         </div>
-        <div className="workflow_sketch">
+        <div key={`sketch-${active}`} className="workflow_sketch workflow_swap">
           <div className="text-style-tagline workflow_sketch-label">{step.sketchLabel}</div>
           <p className="workflow_sketch-text">{step.sketch}</p>
         </div>
