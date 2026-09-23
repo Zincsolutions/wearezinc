@@ -18,11 +18,15 @@ const CARD_GROUPS =
   ".layout249_list, .blog38_list, .portfolio6_list, .offer-panel__paths, .solution-services";
 const NEVER = "form, .faq2_list, .faq3_list, header, [data-no-reveal], .dark-fade";
 
-// Dark blocks (the homepage's black bands and the footer) fade in from the
-// color of the block above them as they scroll into view. The motion itself
-// is CSS scroll-driven (globals.css); this only marks the blocks and records
-// the starting color. Without JS or support they simply stay black.
-function markDarkBlocks(main: HTMLElement) {
+// Dark blocks (the homepage's black bands and the footer) stay the color of
+// the block above until they fill about half the screen, then ease to black
+// in one move (650ms, the slow-in/slow-out curve Basic uses) with their
+// content fading in just behind. Time-based, not scroll-scrubbed, so there is
+// no lingering gray. Styles in globals.css under .dark-fade. Without JS or
+// with reduced motion they simply stay black.
+function markDarkBlocks(main: HTMLElement): IntersectionObserver | null {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+  const marked: HTMLElement[] = [];
   const blocks = Array.from(main.children).concat(Array.from(document.querySelectorAll("footer.footer")));
   const bgOf = (el: Element | null): string => {
     for (let x = el; x; x = x.parentElement) {
@@ -36,14 +40,30 @@ function markDarkBlocks(main: HTMLElement) {
     return !!m && (Number(m[0]) + Number(m[1]) + Number(m[2])) / 3 < 60;
   };
   blocks.forEach((el) => {
-    if (!(el instanceof HTMLElement) || el.classList.contains("dark-fade")) return;
+    if (!(el instanceof HTMLElement)) return;
+    if (el.classList.contains("dark-fade")) {
+      marked.push(el); // marked by an earlier run; observe it again
+      return;
+    }
     if (!isDark(bgOf(el))) return;
     const prev = el.tagName === "FOOTER" ? main.lastElementChild : el.previousElementSibling;
     const from = bgOf(prev);
     if (isDark(from)) return; // dark after dark: nothing to fade from
     el.style.setProperty("--dark-from", from);
+    // Decide the starting state before the class lands, so nothing flashes.
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.55 && r.bottom > 0) el.classList.add("is-dark");
     el.classList.add("dark-fade");
+    marked.push(el);
   });
+  if (!marked.length) return null;
+  // Dark while the block reaches into the top 55% of the viewport.
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.target.classList.toggle("is-dark", e.isIntersecting)),
+    { rootMargin: "0px 0px -45% 0px" }
+  );
+  marked.forEach((el) => io.observe(el));
+  return io;
 }
 
 export function ScrollReveal() {
@@ -53,7 +73,7 @@ export function ScrollReveal() {
     if (!("IntersectionObserver" in window)) return;
     const main = document.querySelector("main");
     if (!main) return;
-    markDarkBlocks(main);
+    const darkIo = markDarkBlocks(main);
 
     const targets: HTMLElement[] = [];
     const add = (el: Element | null, step = 0) => {
@@ -73,7 +93,7 @@ export function ScrollReveal() {
     main.querySelectorAll<HTMLElement>('[data-reveal=""]').forEach((el) => {
       if (!targets.includes(el)) targets.push(el);
     });
-    if (!targets.length) return;
+    if (!targets.length) return () => darkIo?.disconnect();
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -86,7 +106,10 @@ export function ScrollReveal() {
       { rootMargin: "0px 0px -12% 0px" }
     );
     targets.forEach((t) => io.observe(t));
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      darkIo?.disconnect();
+    };
   }, [pathname]);
 
   return null;
