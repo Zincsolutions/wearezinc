@@ -250,3 +250,11 @@ html.reveal-ready .offering-refresh [data-reveal]:not(.is-revealed) {
   .hv-steps { grid-template-columns: repeat(2, 1fr); }
   .hv-steps.is-flow { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Hero H1 steps down on small screens (matches the other solutions pages) */
+@media screen and (max-width: 767px) {
+  .offering-refresh .offering-hero .heading-style-h1 { font-size: 2.5rem; line-height: 1.05; }
+}
+@media screen and (max-width: 479px) {
+  .offering-refresh .offering-hero .heading-style-h1 { font-size: 2rem; }
+}
