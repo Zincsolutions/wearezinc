@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* ---------------------------------------------------------------------------
+   Subtle motion (Sept 2026). One curve for everything: ZINC ease-out.
+   --------------------------------------------------------------------------- */
+:root { --zinc-ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* Scroll pacing: set by components/site/scroll-reveal.tsx */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition: opacity 500ms var(--zinc-ease-out), transform 500ms var(--zinc-ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="in"] { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transform: none; transition: opacity 200ms linear; transition-delay: 0ms; }
+}
+
+/* Work and blog images: a slight lift on hover, mouse only */
+.portfolio6_image-wrapper, .blog38_image-wrapper { overflow: hidden; }
+.portfolio6_image-wrapper img, .blog38_image { transition: transform 500ms var(--zinc-ease-out); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portfolio6_item-link:hover .portfolio6_image-wrapper img,
+  .blog38_item-link:hover .blog38_image,
+  a:hover > .blog38_image-wrapper .blog38_image { transform: scale(1.03); }
+}
+
+/* Press feedback on buttons */
+.site .button, .site .btn { transition: border-color .2s, background-color .2s, color .2s, transform 160ms var(--zinc-ease-out); }
+.site .button:active, .site .btn:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .site .button:active, .site .btn:active { transform: none; } }
+
+/* Mobile menu: fades in instead of appearing at once */
+@media screen and (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .nav-menu.open { transition: opacity 250ms var(--zinc-ease-out), transform 250ms var(--zinc-ease-out); }
+  @starting-style { .nav-menu.open { opacity: 0; transform: translate3d(0, -8px, 0); } }
+}
