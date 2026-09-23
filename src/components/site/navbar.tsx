@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 // Solutions menu: four categories (Websites, E-commerce Acceleration,
@@ -55,7 +56,22 @@ function Chevron() {
   );
 }
 
+const PILL_HREF = "/solutions/ai-native-websites";
+
 export function Navbar() {
+  const router = useRouter();
+  const [pillLaunching, setPillLaunching] = useState(false);
+  // Touch screens have no hover, so the pill's roll animation never got to
+  // play before the page changed. On touch, play it first, then navigate.
+  function onPillClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    const noHover = window.matchMedia("(hover: none)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!noHover || reduced) return;
+    e.preventDefault();
+    setPillLaunching(true);
+    window.setTimeout(() => router.push(PILL_HREF), 550);
+  }
   const [menuOpen, setMenuOpen] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -145,7 +161,11 @@ export function Navbar() {
         </nav>
 
         <div className="nav-buttons">
-          <a href="/solutions/ai-native-websites#assessment" className="nav-pill">
+          <a
+            href={PILL_HREF}
+            className={`nav-pill${pillLaunching ? " is-launching" : ""}`}
+            onClick={onPillClick}
+          >
             <div className="nav-pill-icon-wrap">
               <div className="nav-pill-icon"><BoltIcon /></div>
             </div>
