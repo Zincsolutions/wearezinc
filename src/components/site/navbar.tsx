@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { HomeLink } from "./home-link";
 import { useEffect, useRef, useState } from "react";
 
 // Solutions menu: four categories (Websites, E-commerce Acceleration,
@@ -118,10 +118,10 @@ export function Navbar() {
   return (
     <div className={`nav${hidden && !menuOpen ? " nav-hidden" : ""}`} role="banner">
       <div className="nav-inner">
-        <Link href="/" className="nav-logo-link" aria-label="ZINC home">
+        <HomeLink className="nav-logo-link">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/wf/695bda13c7c5d5a8fcdb4489_relume-127136.webp" alt="ZINC" className="nav-logo" height={32} loading="eager" />
-        </Link>
+        </HomeLink>
 
         <nav role="navigation" className={`nav-menu${menuOpen ? " open" : ""}`}>
           <div
