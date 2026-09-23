@@ -63,29 +63,13 @@ body {
   @starting-style { .nav-menu.open { opacity: 0; transform: translate3d(0, -8px, 0); } }
 }
 
-/* Dark blocks deepen from the color above to black as they scroll in, and
-   their content fades up with them. Scroll-linked, so it reverses on the way
-   back up. Unsupported browsers and reduced motion keep the static black. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .dark-fade {
-      view-timeline: --zinc-dark block;
-      animation: zinc-dark-bg linear both;
-      animation-timeline: --zinc-dark;
-      animation-range: entry 0% entry 70%;
-    }
-    .dark-fade > * {
-      animation: zinc-dark-content linear both;
-      animation-timeline: --zinc-dark;
-      animation-range: entry 25% entry 85%;
-    }
-  }
+/* Dark blocks: hold the color of the block above, then ease to black in one
+   move once they fill about half the screen (scroll-reveal.tsx toggles
+   .is-dark). The html prefix plus doubled class outranks the page stylesheets' two-class rules. */
+html .dark-fade.dark-fade {
+  background-color: var(--dark-from, #fff);
+  transition: background-color 650ms cubic-bezier(0.72, 0, 0.28, 1);
 }
-@keyframes zinc-dark-bg {
-  from { background-color: var(--dark-from, #fff); }
-  to { background-color: #161616; }
-}
-@keyframes zinc-dark-content {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+html .dark-fade.dark-fade > * { opacity: 0; transition: opacity 500ms cubic-bezier(0.72, 0, 0.28, 1); }
+html .dark-fade.dark-fade.is-dark { background-color: #161616; }
+html .dark-fade.dark-fade.is-dark > * { opacity: 1; transition-delay: 150ms; }
