@@ -10,13 +10,41 @@ import { usePathname } from "next/navigation";
 // - content is fully visible without JS (the hide class is added here);
 // - forms and FAQs are never hidden;
 // - each element animates once; reduced motion gets a short fade only.
-// Styles live in globals.css under [data-reveal].
+// Styles live in globals.css under [data-reveal] and .dark-fade.
 
 const HEADING_BLOCKS =
   ".max-width-large, .layout207_content-right, .layout19_content-left, .layout481_content-left, .layout414_content-left, .logo4_content-left, .offer-panel__intro";
 const CARD_GROUPS =
   ".layout249_list, .blog38_list, .portfolio6_list, .offer-panel__paths, .solution-services";
-const NEVER = "form, .faq2_list, .faq3_list, header, [data-no-reveal]";
+const NEVER = "form, .faq2_list, .faq3_list, header, [data-no-reveal], .dark-fade";
+
+// Dark blocks (the homepage's black bands and the footer) fade in from the
+// color of the block above them as they scroll into view. The motion itself
+// is CSS scroll-driven (globals.css); this only marks the blocks and records
+// the starting color. Without JS or support they simply stay black.
+function markDarkBlocks(main: HTMLElement) {
+  const blocks = Array.from(main.children).concat(Array.from(document.querySelectorAll("footer.footer")));
+  const bgOf = (el: Element | null): string => {
+    for (let x = el; x; x = x.parentElement) {
+      const c = getComputedStyle(x).backgroundColor;
+      if (c && c !== "rgba(0, 0, 0, 0)" && c !== "transparent") return c;
+    }
+    return "rgb(255, 255, 255)";
+  };
+  const isDark = (c: string) => {
+    const m = c.match(/\d+/g);
+    return !!m && (Number(m[0]) + Number(m[1]) + Number(m[2])) / 3 < 60;
+  };
+  blocks.forEach((el) => {
+    if (!(el instanceof HTMLElement) || el.classList.contains("dark-fade")) return;
+    if (!isDark(bgOf(el))) return;
+    const prev = el.tagName === "FOOTER" ? main.lastElementChild : el.previousElementSibling;
+    const from = bgOf(prev);
+    if (isDark(from)) return; // dark after dark: nothing to fade from
+    el.style.setProperty("--dark-from", from);
+    el.classList.add("dark-fade");
+  });
+}
 
 export function ScrollReveal() {
   const pathname = usePathname();
@@ -25,6 +53,7 @@ export function ScrollReveal() {
     if (!("IntersectionObserver" in window)) return;
     const main = document.querySelector("main");
     if (!main) return;
+    markDarkBlocks(main);
 
     const targets: HTMLElement[] = [];
     const add = (el: Element | null, step = 0) => {
