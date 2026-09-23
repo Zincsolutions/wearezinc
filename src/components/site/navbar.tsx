@@ -4,38 +4,38 @@ import { useRouter } from "next/navigation";
 import { HomeLink } from "./home-link";
 import { useEffect, useRef, useState } from "react";
 
-// Solutions menu: four categories (Websites, E-commerce Acceleration,
-// AI Enablement, Strategy & Brand), Sept 2026.
-type NavLink = { href: string; label: string; primary?: boolean };
+// Solutions mega menu: four categories, each link with a one-line
+// description. AI-Native Websites is the featured entry (Sept 2026).
+type NavLink = { href: string; label: string; desc: string; featured?: boolean };
 type NavGroup = { heading: string; links: NavLink[] };
 const SOLUTION_GROUPS: NavGroup[] = [
   {
     heading: "Websites",
     links: [
-      { href: "/solutions/ai-native-websites", label: "AI-Native Websites", primary: true },
-      { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
-      { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
-      { href: "/solutions/website-design-development", label: "Website Design & Development" },
-      { href: "/solutions/ai-dispatch", label: "Dispatch: AI Website Governance" },
+      { href: "/solutions/ai-native-websites", label: "AI-Native Websites", desc: "Update your site by asking an AI agent.", featured: true },
+      { href: "/solutions/ai-website-migration", label: "AI Website Migration", desc: "Move your site. Keep what works." },
+      { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS", desc: "Webflow Enterprise and CMS integrations." },
+      { href: "/solutions/website-design-development", label: "Website Design & Development", desc: "New builds and focused improvements." },
+      { href: "/solutions/ai-dispatch", label: "Dispatch", desc: "Governance for AI-powered websites." },
     ],
   },
   {
     heading: "E-commerce Acceleration",
     links: [
-      { href: "/solutions/ecommerce-acceleration", label: "E-commerce Acceleration" },
+      { href: "/solutions/ecommerce-acceleration", label: "E-commerce Acceleration", desc: "Storefronts, product discovery, and automation." },
     ],
   },
   {
     heading: "AI Enablement",
     links: [
-      { href: "/solutions/ai-enablement", label: "AI Strategy & Training" },
-      { href: "/solutions/automation-workflows", label: "AI Workflows & Automation" },
+      { href: "/solutions/ai-enablement", label: "AI Strategy & Training", desc: "Find where AI helps and train your team." },
+      { href: "/solutions/automation-workflows", label: "AI Workflows & Automation", desc: "Connect AI to your CMS, CRM, and marketing." },
     ],
   },
   {
     heading: "Strategy & Brand",
     links: [
-      { href: "/solutions/branding-positioning", label: "Brand Strategy & Design" },
+      { href: "/solutions/branding-positioning", label: "Brand Strategy & Design", desc: "Positioning, messaging, and identity." },
     ],
   },
 ];
@@ -99,6 +99,27 @@ export function Navbar() {
     };
   }, []);
 
+  // Escape closes the mega menu and the mobile sheet; the page behind the
+  // mobile sheet does not scroll while it is open.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setDdOpen(false);
+      setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("nav-sheet-open", menuOpen);
+    // The header's height follows the fluid type scale; the sheet starts
+    // exactly at its bottom edge.
+    const nav = document.querySelector<HTMLElement>(".nav");
+    if (menuOpen && nav) root.style.setProperty("--nav-h", `${Math.round(nav.getBoundingClientRect().bottom)}px`);
+    return () => root.classList.remove("nav-sheet-open");
+  }, [menuOpen]);
+
   // Matches the original behavior: opens on hover; a short grace period on
   // leave lets the pointer cross into the list without flicker.
   // Hover handlers only run on hover-capable devices — on touch, a tap fires
@@ -116,7 +137,7 @@ export function Navbar() {
   };
 
   return (
-    <div className={`nav${hidden && !menuOpen ? " nav-hidden" : ""}`} role="banner">
+    <div className={`nav${hidden && !menuOpen ? " nav-hidden" : ""}${menuOpen ? " is-sheet-open" : ""}`} role="banner">
       <div className="nav-inner">
         <HomeLink className="nav-logo-link">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -128,29 +149,48 @@ export function Navbar() {
             className={`nav-dd${ddOpen ? " open" : ""}`}
             onMouseEnter={enter}
             onMouseLeave={leave}
+            onBlur={(e) => {
+              if (canHover() && !e.currentTarget.contains(e.relatedTarget as Node | null)) setDdOpen(false);
+            }}
           >
             <button
               type="button"
               className="nav-dd-toggle nav-link"
               aria-expanded={ddOpen}
+              aria-controls="nav-mega"
               onClick={() => setDdOpen((v) => !v)}
             >
               <div>Solutions</div>
               <div className="nav-dd-chevron"><Chevron /></div>
             </button>
-            <nav className="nav-dd-list nav-dd-grouped">
-              {SOLUTION_GROUPS.map((g) => (
-                <div key={g.heading} className="nav-dd-group">
-                  <div className="nav-dd-heading">{g.heading}</div>
-                  {g.links.map((l) => (
-                    <a key={l.href} href={l.href} className={`nav-dd-link${l.primary ? " is-primary" : ""}`}>
-                      {l.label}
-                      {l.primary ? <span className="nav-dd-badge">Featured</span> : null}
-                    </a>
+            <div id="nav-mega" className="nav-mega" role="region" aria-label="Solutions">
+              <div className="nav-mega__inner">
+                <div className="nav-mega__grid">
+                  {SOLUTION_GROUPS.map((g) => (
+                    <div key={g.heading} className="nav-mega__col">
+                      <p className="nav-mega__heading">{g.heading}</p>
+                      <ul className="nav-mega__list" role="list">
+                        {g.links.map((l) => (
+                          <li key={l.href}>
+                            <a href={l.href} className={`nav-mega__link${l.featured ? " is-featured" : ""}`}>
+                              <span className="nav-mega__label">
+                                {l.label}
+                                {l.featured ? <span className="nav-mega__badge">Featured</span> : null}
+                              </span>
+                              <span className="nav-mega__desc">{l.desc}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
                 </div>
-              ))}
-            </nav>
+                <div className="nav-mega__foot">
+                  <p>Not sure where to start?</p>
+                  <a href="/contact-us" className="nav-mega__cta">Talk About Your Goals &gt;</a>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="nav-pages">
             <a href="/work" className="nav-link">Work</a>
@@ -180,7 +220,12 @@ export function Navbar() {
             className="nav-burger"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => {
+              setMenuOpen((v) => {
+                if (!v) setDdOpen(true); // Solutions starts open in the mobile menu
+                return !v;
+              });
+            }}
           >
             <span /><span /><span />
           </button>
