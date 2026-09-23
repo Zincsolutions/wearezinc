@@ -83,21 +83,21 @@ test("componentized landing pages have one primary heading", () => {
   }
 });
 
-test("homepage hero preserves the approved Webflow headline", () => {
-  const files = [
-    "src/app/(home)/content.tsx",
-    "public/_wf/index.html",
-    "migration/webflow/pages/index.html",
-  ];
+test("homepage hero keeps the approved headline", () => {
+  // The live hero uses the mixed-case "See Further / Go Bigger" headline
+  // approved with the chevron banner (Sept 21, 2026). The archived Webflow
+  // copies keep the original uppercase lines.
+  const live = read("src/app/(home)/content.tsx");
+  assert.doesNotMatch(live, /AI-Driven Strategy\./, "live hero must not invent hero copy");
+  assert.match(live, /<span className="hero-headline-line">See Further<\/span>/);
+  assert.match(live, /<span className="hero-headline-line">Go Bigger<\/span>/);
 
-  for (const file of files) {
-    const home = read(file);
-    assert.doesNotMatch(home, /AI-Driven Strategy\./, `${file} must not invent hero copy`);
-    assert.match(home, /&gt; see Further/, `${file} must preserve the first line`);
-    assert.match(home, /GO BiggeR &lt;/, `${file} must preserve the second line`);
+  for (const file of ["public/_wf/index.html", "migration/webflow/pages/index.html"]) {
+    const archived = read(file);
+    assert.doesNotMatch(archived, /AI-Driven Strategy\./, `${file} must not invent hero copy`);
+    assert.match(archived, /&gt; see Further/, `${file} must preserve the first line`);
+    assert.match(archived, /GO BiggeR &lt;/, `${file} must preserve the second line`);
   }
-
-  assert.match(read(files[0]), /hero-headline-line/);
 });
 
 test("homepage hero uses a lightweight, reduced-motion-safe settle animation", () => {
@@ -191,9 +191,10 @@ test("shared navigation does not prefetch static Webflow routes as RSC", () => {
   assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/(?:on-brand-aeo-sprint|ai-strategy-optimization)"/);
   assert.doesNotMatch(shell, /<Link[^>]+href="\/(?:work|about-us|contact-us)"/);
   // header pill drives the AI-native websites overview (a component route)
-  assert.match(shell, /<a href="\/solutions\/ai-native-websites#preview"/);
-  // static Webflow routes in the grouped menu render as plain anchors
-  assert.match(shell, /className=\{`nav-dd-link/);
+  assert.match(shell, /const PILL_HREF = "\/solutions\/ai-native-websites";/);
+  assert.match(shell, /href=\{PILL_HREF\}/);
+  // links in the Solutions mega menu render as plain anchors
+  assert.match(shell, /<a href=\{l\.href\} className=\{`nav-mega__link/);
 });
 
 test("form handling is durable, privacy-safe, and measurable", () => {
