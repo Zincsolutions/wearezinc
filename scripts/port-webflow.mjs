@@ -132,6 +132,14 @@ function injectFormsScript(html) {
     : html.replace('</body>', '<script src="/js/zinc-forms.js" defer></script></body>');
 }
 
+// Header: the Solutions mega menu replaces the old Webflow dropdown.
+function injectNavMega(html) {
+  if (!html.includes('class="navbar2_menu-dropdown') || html.includes('/js/nav-mega.js')) return html;
+  return html
+    .replace('</head>', '<link href="/css/nav-mega.css" rel="stylesheet" type="text/css"/></head>')
+    .replace('</body>', '<script src="/js/nav-mega.js" defer></script></body>');
+}
+
 function fixGa4(html) {
   // swap Webflow's first-party GA proxy for standard gtag.js
   return html.replace(
@@ -179,6 +187,7 @@ for (const file of walk(PAGES)) {
   if (rel !== '404.html') html = injectSeo(html, rel === 'index.html'); // Z-03/Z-04
   html = applyOverrides(html, outRel.replace(/\.html$/, '')); // Z-08
   html = injectFormsScript(html);
+  html = injectNavMega(html);
 
   const dest = path.join(PUB_PAGES, outRel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -210,6 +219,7 @@ for (const [src, out] of [
   html = fixGa4(html);
   if (out === 'blog.html') html = applyOverrides(injectSeo(html, false), 'blog');
   html = injectFormsScript(html);
+  html = injectNavMega(html);
   fs.writeFileSync(path.join(TPL, out), html);
 }
 console.log('templates: post.html, blog.html written to src/templates/');
