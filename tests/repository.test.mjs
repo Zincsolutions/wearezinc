@@ -211,11 +211,34 @@ test("static pages use the same Solutions mega menu as the React header", () => 
     "src/templates/blog.html",
     "src/templates/post.html",
   ];
+  const menuHrefs = shared.flatMap((g) => g.links.map((l) => l.href));
+  const footerTsx = read("src/components/site/footer.tsx");
+  const footerLinks = [
+    ...footerTsx
+      .slice(footerTsx.indexOf("const SOLUTION_LINKS"), footerTsx.indexOf("const COMPANY_LINKS"))
+      .matchAll(/href: "([^"]+)", label: "([^"]+)"/g),
+  ].map((m) => [m[1], m[2]]);
+  assert.equal(footerLinks.length, 9);
+
   for (const page of pages) {
     const html = read(page);
-    if (!html.includes("navbar2_menu-dropdown")) continue;
+    if (!html.includes('class="navbar2_menu-dropdown')) continue;
     assert.match(html, /<link href="\/css\/nav-mega\.css"/, `${page} loads the mega menu styles`);
     assert.match(html, /<script src="\/js\/nav-mega\.js" defer><\/script>/, `${page} loads the mega menu`);
+
+    const $ = cheerio.load(html);
+    // no-JS fallback list carries the same links as the mega menu
+    const fallback = $(".navbar2_dropdown-list a").map((_, a) => $(a).attr("href")).get();
+    assert.deepEqual(fallback, menuHrefs, `${page} dropdown fallback links`);
+    // header pill matches navbar.tsx
+    const pill = $("a.button_nav").first();
+    assert.equal(pill.attr("href"), "/solutions/ai-native-websites", `${page} pill link`);
+    assert.equal(pill.find(".div-block-10").text(), "Go AI Native.Website Assessment", `${page} pill text`);
+    // footer Solutions links and the Dispatch line match footer.tsx
+    const footer = $("footer .footer3_link-list").first().find("a")
+      .map((_, a) => [[$(a).attr("href"), $(a).text()]]).get();
+    assert.deepEqual(footer, footerLinks, `${page} footer Solutions links`);
+    assert.match($("footer").text(), /This site is governed by Dispatch/, `${page} footer Dispatch line`);
   }
 });
 

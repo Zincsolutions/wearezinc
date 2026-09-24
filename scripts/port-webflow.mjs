@@ -134,7 +134,7 @@ function injectFormsScript(html) {
 
 // Header: the Solutions mega menu replaces the old Webflow dropdown.
 function injectNavMega(html) {
-  if (!html.includes('navbar2_menu-dropdown') || html.includes('/js/nav-mega.js')) return html;
+  if (!html.includes('class="navbar2_menu-dropdown') || html.includes('/js/nav-mega.js')) return html;
   return html
     .replace('</head>', '<link href="/css/nav-mega.css" rel="stylesheet" type="text/css"/></head>')
     .replace('</body>', '<script src="/js/nav-mega.js" defer></script></body>');
