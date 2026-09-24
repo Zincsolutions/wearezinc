@@ -197,6 +197,28 @@ test("shared navigation does not prefetch static Webflow routes as RSC", () => {
   assert.match(shell, /<a href=\{l\.href\} className=\{`nav-mega__link/);
 });
 
+test("static pages use the same Solutions mega menu as the React header", () => {
+  const shared = JSON.parse(read("src/components/site/solution-groups.json"));
+  const script = read("public/js/nav-mega.js");
+  const embedded = script.match(/\/\* solution-groups:start \*\/([\s\S]*?)\/\* solution-groups:end \*\//);
+  assert.ok(embedded, "nav-mega.js keeps its list between the solution-groups markers");
+  assert.deepEqual(JSON.parse(embedded[1]), shared);
+
+  const pages = [
+    ...fs.readdirSync(path.join(root, "public/_wf"), { recursive: true })
+      .filter((f) => f.endsWith(".html"))
+      .map((f) => `public/_wf/${f}`),
+    "src/templates/blog.html",
+    "src/templates/post.html",
+  ];
+  for (const page of pages) {
+    const html = read(page);
+    if (!html.includes("navbar2_menu-dropdown")) continue;
+    assert.match(html, /<link href="\/css\/nav-mega\.css"/, `${page} loads the mega menu styles`);
+    assert.match(html, /<script src="\/js\/nav-mega\.js" defer><\/script>/, `${page} loads the mega menu`);
+  }
+});
+
 test("form handling is durable, privacy-safe, and measurable", () => {
   const route = read("src/app/api/forms/route.ts");
   const client = read("public/js/zinc-forms.js");

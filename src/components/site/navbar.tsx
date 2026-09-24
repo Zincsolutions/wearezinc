@@ -3,42 +3,15 @@
 import { useRouter } from "next/navigation";
 import { HomeLink } from "./home-link";
 import { useEffect, useRef, useState } from "react";
+import solutionGroups from "./solution-groups.json";
 
 // Solutions mega menu: four categories, each link with a one-line
 // description. AI-Native Websites is the featured entry (Sept 2026).
+// The list lives in solution-groups.json, shared with the static pages'
+// menu (public/js/nav-mega.js); a repository test keeps the two in sync.
 type NavLink = { href: string; label: string; desc: string; featured?: boolean };
 type NavGroup = { heading: string; links: NavLink[] };
-const SOLUTION_GROUPS: NavGroup[] = [
-  {
-    heading: "Websites",
-    links: [
-      { href: "/solutions/ai-native-websites", label: "AI-Native Websites", desc: "Update your site by asking an AI agent.", featured: true },
-      { href: "/solutions/ai-website-migration", label: "AI Website Migration", desc: "Move your site. Keep what works." },
-      { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS", desc: "Webflow Enterprise and CMS integrations." },
-      { href: "/solutions/website-design-development", label: "Website Design & Development", desc: "New builds and focused improvements." },
-      { href: "/solutions/ai-dispatch", label: "Dispatch", desc: "Governance for AI-powered websites." },
-    ],
-  },
-  {
-    heading: "E-commerce Acceleration",
-    links: [
-      { href: "/solutions/ecommerce-acceleration", label: "E-commerce Acceleration", desc: "Storefronts, product discovery, and automation." },
-    ],
-  },
-  {
-    heading: "AI Enablement",
-    links: [
-      { href: "/solutions/ai-enablement", label: "AI Strategy & Training", desc: "Find where AI helps and train your team." },
-      { href: "/solutions/automation-workflows", label: "AI Workflows & Automation", desc: "Connect AI to your CMS, CRM, and marketing." },
-    ],
-  },
-  {
-    heading: "Strategy & Brand",
-    links: [
-      { href: "/solutions/branding-positioning", label: "Brand Strategy & Design", desc: "Positioning, messaging, and identity." },
-    ],
-  },
-];
+const SOLUTION_GROUPS: NavGroup[] = solutionGroups;
 
 function BoltIcon() {
   return (

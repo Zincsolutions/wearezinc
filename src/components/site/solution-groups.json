@@ -1,0 +1,68 @@
+[
+  {
+    "heading": "Websites",
+    "links": [
+      {
+        "href": "/solutions/ai-native-websites",
+        "label": "AI-Native Websites",
+        "desc": "Update your site by asking an AI agent.",
+        "featured": true
+      },
+      {
+        "href": "/solutions/ai-website-migration",
+        "label": "AI Website Migration",
+        "desc": "Move your site. Keep what works."
+      },
+      {
+        "href": "/solutions/enterprise-websites",
+        "label": "Enterprise Websites & CMS",
+        "desc": "Webflow Enterprise and CMS integrations."
+      },
+      {
+        "href": "/solutions/website-design-development",
+        "label": "Website Design & Development",
+        "desc": "New builds and focused improvements."
+      },
+      {
+        "href": "/solutions/ai-dispatch",
+        "label": "Dispatch",
+        "desc": "Governance for AI-powered websites."
+      }
+    ]
+  },
+  {
+    "heading": "E-commerce Acceleration",
+    "links": [
+      {
+        "href": "/solutions/ecommerce-acceleration",
+        "label": "E-commerce Acceleration",
+        "desc": "Storefronts, product discovery, and automation."
+      }
+    ]
+  },
+  {
+    "heading": "AI Enablement",
+    "links": [
+      {
+        "href": "/solutions/ai-enablement",
+        "label": "AI Strategy & Training",
+        "desc": "Find where AI helps and train your team."
+      },
+      {
+        "href": "/solutions/automation-workflows",
+        "label": "AI Workflows & Automation",
+        "desc": "Connect AI to your CMS, CRM, and marketing."
+      }
+    ]
+  },
+  {
+    "heading": "Strategy & Brand",
+    "links": [
+      {
+        "href": "/solutions/branding-positioning",
+        "label": "Brand Strategy & Design",
+        "desc": "Positioning, messaging, and identity."
+      }
+    ]
+  }
+]
