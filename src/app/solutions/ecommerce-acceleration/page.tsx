@@ -8,6 +8,7 @@ import { FAQ_ITEMS } from "./faq-items";
 import { buildServiceSchema, serializeSchema, textFromHtml } from "@/lib/schema";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
+import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "./page.css";
 
@@ -15,9 +16,9 @@ import "./page.css";
 // brief (see content.tsx). Styles are the page's auto-extracted Webflow CSS
 // subset (page.css) plus the shared offering styles.
 
-const TITLE = "E-commerce Acceleration | Shopify, BigCommerce & AI | ZINC";
+const TITLE = "E-commerce Acceleration | AI Shopping Readiness for Shopify | ZINC";
 const DESCRIPTION =
-  "Improve your storefront, product discovery, and commerce operations with ZINC’s strategy, design, development, integrations, and practical AI.";
+  "Get your store found, understood, and bought through AI shopping. ZINC improves Shopify and BigCommerce product data, storefronts, conversion, and commerce workflows, from a free check to implementation.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,7 +37,7 @@ const SERVICE_SCHEMA = buildServiceSchema({
   name: "E-commerce Acceleration",
   description: DESCRIPTION,
   path: "/solutions/ecommerce-acceleration",
-  serviceType: "E-commerce strategy, Shopify and BigCommerce design and development, product discovery, integrations, and AI-assisted operations",
+  serviceType: "AI shopping readiness, agentic commerce, e-commerce strategy, Shopify and BigCommerce design and development, product discovery, integrations, and AI-assisted operations",
   faqs: FAQ_ITEMS.map((item) => ({ question: item.q, answer: textFromHtml(item.a) })),
 });
 

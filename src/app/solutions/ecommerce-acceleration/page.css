@@ -1339,3 +1339,101 @@ margin: 0rem !important;
   background-color: var(--color-scheme-1--text) !important;
   opacity: 1 !important;
 }
+
+/* ---------------------------------------------------------------------------
+   AI shopping readiness (Sept 27, 2026): five-minute self-test, the
+   Shopify-vs-ZINC comparison, and the illustrative before/after listing.
+   Thin rules and mono labels, matching the page's editorial character.
+   --------------------------------------------------------------------------- */
+.ecom-selftest {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--_primitives---colors--orange-500);
+  background: var(--_primitives---colors--gray-100, #f5f5f5);
+  max-width: 52rem;
+}
+.ecom-selftest__label,
+.ecom-listing__label,
+.ecom-rails__tag {
+  font-family: var(--_typography---font-styles--micro);
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--_primitives---colors--orange-500);
+}
+.ecom-selftest__label { margin-bottom: .625rem; }
+.ecom-selftest__text { margin: 0; font-size: 1.05rem; font-weight: 500; }
+
+.ecom-rails { border-top: 1px solid var(--_primitives---colors--black); }
+.ecom-rails__row {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr) minmax(0, 1.4fr);
+  grid-column-gap: 2.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--_primitives---opacity--neutral-darkest-15, rgba(0, 0, 0, .15));
+}
+.ecom-rails__row.is-head {
+  padding: .875rem 0;
+  font-family: var(--_typography---font-styles--micro);
+  font-size: .8125rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--_primitives---colors--gray-500, #5f5f5f);
+}
+.ecom-rails__layer { font-weight: 600; font-size: 1.05rem; }
+.ecom-rails__cell.is-zinc { font-weight: 500; }
+.ecom-rails__tag { display: none; margin-bottom: .375rem; }
+.ecom-rails__cell:not(.is-zinc) .ecom-rails__tag { color: var(--_primitives---colors--gray-500, #5f5f5f); }
+
+.ecom-listing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+}
+.ecom-listing__card {
+  margin: 0;
+  padding: 2rem;
+  border: 1px solid var(--_primitives---opacity--neutral-darkest-15, rgba(0, 0, 0, .15));
+  border-radius: var(--_ui-styles---radius--medium, .75rem);
+  display: flex;
+  flex-direction: column;
+}
+.ecom-listing__card.is-after { border-color: var(--_primitives---colors--black); box-shadow: inset 0 3px 0 var(--_primitives---colors--orange-500); }
+.ecom-listing__card:not(.is-after) .ecom-listing__label { color: var(--_primitives---colors--gray-500, #5f5f5f); }
+.ecom-listing__label { margin-bottom: 1rem; }
+.ecom-listing__name { font-weight: 600; font-size: 1.25rem; margin-bottom: .5rem; }
+.ecom-listing__copy { margin: 0 0 1.5rem; }
+.ecom-listing__facts { margin: 0 0 1.5rem; }
+.ecom-listing__facts > div {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  grid-column-gap: 1rem;
+  padding: .625rem 0;
+  border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10, rgba(0, 0, 0, .1));
+}
+.ecom-listing__facts dt { font-family: var(--_typography---font-styles--micro); font-size: .8125rem; color: var(--_primitives---colors--gray-500, #5f5f5f); }
+.ecom-listing__facts dd { margin: 0; font-weight: 500; }
+.ecom-listing__facts .is-missing dd { color: var(--_primitives---colors--gray-500, #5f5f5f); font-weight: 400; font-style: italic; }
+.ecom-listing__verdict { margin-top: auto; text-align: left; font-size: .9375rem; font-weight: 500; }
+
+@media screen and (max-width: 767px) {
+  .ecom-rails__row { grid-template-columns: 1fr; grid-row-gap: 1rem; }
+  .ecom-rails__row.is-head { display: none; }
+  .ecom-rails__tag { display: block; }
+  .ecom-listing { grid-template-columns: 1fr; }
+  .ecom-listing__card { padding: 1.5rem; }
+  .ecom-listing__facts > div { grid-template-columns: 8rem minmax(0, 1fr); }
+}
+
+/* Hero: the statement sits above the question as a quieter lede so the
+   question carries the display size without running five lines. */
+.max-width-large.ecom-hero { max-width: 70rem !important; }
+.ecom-hero > p { max-width: 48rem; }
+.ecom-hero__lede {
+  display: block;
+  margin-bottom: .5rem;
+  font-size: .45em;
+  line-height: 1.15;
+  color: var(--_primitives---colors--gray-500, #5f5f5f);
+}
