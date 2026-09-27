@@ -83,3 +83,31 @@ main migration opportunity; handle Webflow neutrally, case by case.
 
 Related page promises: "Your move to AI-native. Handled by ZINC." (migration
 page) and "Keep the website you love. Change how you run it." (AI-native page).
+
+## E-commerce Acceleration and AI shopping (added Sept 27, 2026)
+
+**The one-line offer: Get chosen by AI shoppers. Put AI to work for your team.**
+The page hero asks: "Your store is connected to AI shopping. Is it ready to be
+chosen?"
+
+What it means:
+
+- Shopify already connects eligible stores to AI shopping (agents.md,
+  llms.txt, Shopify Catalog, AI channels). ZINC does not sell installing what
+  the platform provides. It separates what Shopify handles from what a store
+  still needs (product facts, variants, policies, channel settings, the tested
+  path to checkout, measurement) and fixes it.
+- Second workstream: practical AI inside the commerce team (catalog, content,
+  reporting). Principle: "AI drafts, your team approves." This is the commerce
+  version of "control built in"; do not name Dispatch for commerce work.
+- Entry offer: a **free AI shopping check** (introductory diagnostic, no
+  platform access). Paid assessment and implementation are scoped after.
+
+Guardrails:
+
+- Don't claim to be first or use "third customer" (competitor phrasing).
+- No guarantees of recommendations, rankings, placement, or in-chat checkout.
+  Channel eligibility and direct checkout vary and change; recheck quarterly.
+- DFND is Shopify credibility, not an AI-commerce case study.
+- Keep protocol names (UCP, MCP, WebMCP) out of headlines; merchant-first copy.
+- Shopify leads; BigCommerce is supported but not in the hero.
