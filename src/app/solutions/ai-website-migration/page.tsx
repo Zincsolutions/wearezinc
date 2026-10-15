@@ -12,12 +12,13 @@ import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "@/components/site/solutions-archetypes.css";
 import "@/components/site/offering-refresh.css";
+import "@/components/site/aeo-blocks.css";
 
 // Built from the section archetypes already componentized on the other
 // solutions pages (see content.tsx); page.css is the ecommerce page's
 // extracted Webflow CSS plus the layout210 rules from the website-design page.
 
-const TITLE = "AI Website Migration Services | ZINC";
+const TITLE = "AI Website Migration | Keep Your Design, Content, and URLs | ZINC";
 const DESCRIPTION =
   "Your move to AI-native, handled by ZINC. We migrate your website with your design and content intact, configure our governance platform, Dispatch, and prepare your team to take over.";
 

@@ -11,13 +11,14 @@ import "@/components/site/page-animations.css";
 import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "./page.css";
+import "@/components/site/aeo-blocks.css";
 
 // Dispatch: rebuilt Sept 22, 2026 from the Dispatch messaging
 // recommendations. Governance-led: control-first hero, the new operating
 // model, governance features, BYOA, the CMS safety net, three paths, AEO as
 // a supporting capability, why ZINC, FAQs, and an enquiry.
 
-const TITLE = "Dispatch: AI Website Governance & Management | ZINC";
+const TITLE = "Dispatch | AI Website Governance with Approvals and Restore | ZINC";
 const DESCRIPTION =
   "Run an AI-powered website without losing control. ZINC connects your agents, team, repository, and host through Dispatch for approvals, attribution, monitoring, and one-click restore.";
 

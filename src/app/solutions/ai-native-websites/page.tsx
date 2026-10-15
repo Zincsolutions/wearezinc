@@ -12,6 +12,7 @@ import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "@/components/site/solutions-archetypes.css";
 import "@/components/site/offering-refresh.css";
+import "@/components/site/aeo-blocks.css";
 
 // AI-native websites: the broad explanation behind the homepage's
 // "Explore AI-Native Websites" path. Conversation-led benefits, an
@@ -19,7 +20,7 @@ import "@/components/site/offering-refresh.css";
 // as the governance layer, the migration overview, team support, FAQs, and
 // the website assessment enquiry. Copy from the Sept 21, 2026 package.
 
-const TITLE = "AI-Native Websites & AI Integration | ZINC";
+const TITLE = "AI-Native Websites | Update Your Site by Asking Your AI Agent | ZINC";
 const DESCRIPTION =
   "Keep the website you love and change how you run it. ZINC moves your site to a foundation your team can update by asking an AI agent, with our governance platform, Dispatch, providing visibility and control.";
 
