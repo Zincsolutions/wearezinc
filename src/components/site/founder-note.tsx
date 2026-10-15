@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 
-// Homepage point of view from Jim. Client stays the hero (they are at the
+// Point of view from Jim. Off the homepage for now (Oct 2026); the same
+// note runs as static markup on /about-us (public/_wf/about-us.html with
+// public/css/founder-note.css). To bring it back, render <FounderNote />
+// above the "We Are ZINC" section in src/app/(home)/content.tsx.
+// Client stays the hero (they are at the
 // helm); ZINC is the guide with 25 years of judgment. Keep it short.
 export function FounderNote() {
   return (
