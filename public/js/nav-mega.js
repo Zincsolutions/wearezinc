@@ -16,15 +16,15 @@
       "heading": "AI-Ready Websites",
       "links": [
         {
-          "href": "/solutions/ai-native-websites",
-          "label": "AI-Native Websites",
-          "desc": "New or rebuilt sites you update by asking AI.",
+          "href": "/solutions/ai-website-migration",
+          "label": "AI Website Migration",
+          "desc": "Leave WordPress, Wix, Squarespace, and more.",
           "featured": true
         },
         {
-          "href": "/solutions/ai-website-migration",
-          "label": "AI Website Migration",
-          "desc": "Leave WordPress, Wix, Squarespace, and more."
+          "href": "/solutions/ai-native-websites",
+          "label": "AI-Native Websites",
+          "desc": "New or rebuilt sites you update by asking AI."
         },
         {
           "href": "/solutions/enterprise-websites",
