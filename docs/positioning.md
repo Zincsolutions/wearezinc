@@ -10,7 +10,7 @@ their business, using AI where it adds value. It is an experienced strategy,
 brand, design, and technology agency. AI-native websites and enterprise CMS
 are both credible choices, chosen by business need.
 
-Four solution categories: Websites, E-commerce Acceleration, AI Enablement,
+Four solution categories: AI-Ready Websites, E-commerce Acceleration, AI Enablement,
 Strategy & Brand.
 
 ## AI-native websites and Dispatch

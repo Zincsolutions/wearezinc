@@ -62,7 +62,7 @@ export default function CompareHub() {
         </section>
         <KeepExploring
           groups={[
-            { heading: "Websites", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.enterprise] },
+            { heading: "AI-Ready Websites", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.enterprise] },
             { heading: "Learn", links: [EXPLORE.glossary, EXPLORE.realChange, EXPLORE.postDispatch] },
             { heading: "Take the next step", links: [EXPLORE.planner, EXPLORE.assessment, EXPLORE.contact] },
           ]}

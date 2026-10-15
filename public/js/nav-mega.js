@@ -12,7 +12,7 @@
   // (tests/repository.test.mjs fails if they drift).
   var GROUPS = /* solution-groups:start */[
     {
-      "heading": "Websites",
+      "heading": "AI-Ready Websites",
       "links": [
         { "href": "/solutions/ai-native-websites", "label": "AI-Native Websites", "desc": "Update your site by asking an AI agent.", "featured": true },
         { "href": "/solutions/ai-website-migration", "label": "AI Website Migration", "desc": "Leave WordPress, Wix, Squarespace, and more." },
