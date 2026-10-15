@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import solutionGroups from "./solution-groups.json";
 
 // Solutions mega menu: four categories, each link with a one-line
-// description. AI-Native Websites is the featured entry (Sept 2026).
+// description. AI Website Migration is the featured entry (Oct 2026).
 // The list lives in solution-groups.json, shared with the static pages'
 // menu (public/js/nav-mega.js); a repository test keeps the two in sync.
 type NavLink = { href: string; label: string; desc: string; featured?: boolean };
