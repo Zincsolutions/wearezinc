@@ -76,15 +76,19 @@ const RAILS = [
 
 // Illustrative listing, not a client product.
 const BEFORE = [
-  ["Material", "Not listed"],
+  ["Price", "$189"],
   ["Waterproof rating", "Not listed"],
+  ["Packed size", "Not listed"],
+  ["Material", "Not listed"],
   ["Sizes in stock", "Unclear"],
   ["Delivery", "Calculated at checkout"],
   ["Returns", "See policy page"],
 ];
 const AFTER = [
-  ["Material", "Recycled nylon ripstop, 2.5-layer"],
+  ["Price", "$189"],
   ["Waterproof rating", "10,000 mm"],
+  ["Packed size", "Packs into its own pocket, 310 g"],
+  ["Material", "Recycled nylon ripstop, 2.5-layer"],
   ["Sizes in stock", "XS to XXL; M and L ship today"],
   ["Delivery", "Free over $75, 2 to 4 days"],
   ["Returns", "30 days, free"],
@@ -156,7 +160,7 @@ export function EcomContent() {
             <div className="layout249_component">
               <Intro tagline="Two ways we help" heading="Get chosen by AI. Put AI to work for your team." text="Two connected workstreams, built on a storefront that works for people first." />
               <Cards items={[
-                { title: "Get found, understood, and bought", text: "Make your products easy for AI assistants and shoppers to understand, compare, and buy, on the channels that matter to your business.", items: ["Product attributes, variants, and catalog mapping", "Clear answers on sizing, delivery, and returns", "AI channel settings and purchase-path testing", "Structured data, feeds, and measurement"] },
+                { title: "Get found, understood, and bought", text: "Make your products easy for AI assistants and shoppers to understand, compare, and buy, on the channels that matter to your business.", items: ["Product identifiers (GTINs), categories, and attributes", "Variants and catalog mapping", "Clear answers on sizing, delivery, and returns", "AI channel settings and purchase-path testing", "Structured data, feeds, and measurement"] },
                 { title: "Put AI to work inside your business", text: "Use AI for catalog, content, and reporting work. AI drafts, your team approves, and nothing reaches customers without review.", items: ["Product content and attribute drafts", "Catalog quality checks", "Campaign adaptation across channels", "Connected store and campaign reporting"] },
                 { id: "storefronts", title: "Storefronts & Conversion", text: "The foundation for both. We design, build, and improve Shopify and BigCommerce stores that are fast, clear, and easy to buy from, for people and AI alike.", items: ["Store design, development, and platform migrations", "Product pages, navigation, and merchandising", "Mobile experience and conversion improvements"] },
               ]} />
@@ -167,16 +171,20 @@ export function EcomContent() {
         {/* Before / after (illustrative listing): facts over adjectives */}
         <section className="section_layout249">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
-            <Intro tagline="What an assistant reads" heading="Adjectives don’t answer questions. Facts do." text="Assistants compare products on their facts: size, material, stock, delivered price, returns. Here is the kind of change we make, shown on an illustrative listing." />
+            <Intro tagline="What an assistant reads" heading="Adjectives don’t answer questions. Facts do." text="An assistant takes a shopper’s request apart and checks each part against your product facts. Here is the kind of change we make, shown on an illustrative listing." />
+            <div className="ecom-request">
+              <div className="ecom-request__label">The shopper asks</div>
+              <p className="ecom-request__text">“Find me a waterproof jacket under $200 that packs small, in a medium, delivered by Friday.”</p>
+            </div>
             <div className="ecom-listing">
               <figure className="ecom-listing__card">
                 <div className="ecom-listing__label">Before</div>
                 <div className="ecom-listing__name">The Everyday Trail Jacket</div>
                 <p className="ecom-listing__copy">Our most versatile jacket yet. Lightweight, packable, and ready for anything the trail throws at you.</p>
                 <dl className="ecom-listing__facts">
-                  {BEFORE.map(([k, v]) => (<div key={k} className="is-missing"><dt>{k}</dt><dd>{v}</dd></div>))}
+                  {BEFORE.map(([k, v]) => (<div key={k} className={k === "Price" ? undefined : "is-missing"}><dt>{k}</dt><dd>{v}</dd></div>))}
                 </dl>
-                <figcaption className="ecom-listing__verdict">An assistant has to guess, so it recommends someone else.</figcaption>
+                <figcaption className="ecom-listing__verdict">It can’t confirm waterproof, packable, or in stock, so the assistant recommends someone else.</figcaption>
               </figure>
               <figure className="ecom-listing__card is-after">
                 <div className="ecom-listing__label">After</div>
@@ -185,7 +193,7 @@ export function EcomContent() {
                 <dl className="ecom-listing__facts">
                   {AFTER.map(([k, v]) => (<div key={k}><dt>{k}</dt><dd>{v}</dd></div>))}
                 </dl>
-                <figcaption className="ecom-listing__verdict">Every shopper question has an answer an assistant can trust.</figcaption>
+                <figcaption className="ecom-listing__verdict">Every part of the request has an answer the assistant can trust.</figcaption>
               </figure>
             </div>
             <p className="offering-note">Illustrative example, not a client listing.</p>
@@ -251,6 +259,20 @@ export function EcomContent() {
           </div></div></div>
         </section>
 
+        {/* Why ZINC (layout249): the guide's credentials, compressed */}
+        <section className="section_layout249">
+          <div className="padding-global"><div className="container-large"><div className="padding-section-large">
+            <div className="layout249_component">
+              <Intro tagline="Why ZINC" heading="Commerce experience, applied to a new kind of shopper." text="The things that win over an AI assistant, clear products and an easy path to buy, are the things good stores have always needed. We bring both sides." />
+              <Cards items={[
+                { title: "Over 25 years of experience.", text: "We have designed, built, and grown brands and online stores since long before assistants started shopping, so the fundamentals come first." },
+                { title: "An honest diagnostic.", text: "We tell you what Shopify already handles, so you only invest in what your store actually needs." },
+                { title: "AI with approval built in.", text: "AI drafts product content, catalog fixes, and reports. Your team reviews and approves before anything reaches customers." },
+              ]} />
+            </div>
+          </div></div></div>
+        </section>
+
         {/* Engagement process (layout249, numbered) */}
         <section className="section_layout249">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
@@ -259,7 +281,7 @@ export function EcomContent() {
               <Cards items={[
                 { n: "01", title: "Assess", text: "Start with a free AI shopping check. Then review your catalog, channel settings, policies, purchase paths, and workflows, and agree priorities and what success looks like." },
                 { n: "02", title: "Fix", text: "Implement the agreed fixes across product information, policies, storefront, channels, and team workflows, with your approval before changes go live." },
-                { n: "03", title: "Measure", text: "Re-test how assistants and shoppers see your store, track channel and conversion performance where platforms report it, and build on what works." },
+                { n: "03", title: "Stay Sharp", text: "AI channels and your catalog keep changing. Ongoing support keeps your store accurate and builds on what works.", items: ["Regular checks of how assistants describe and recommend your products", "AI referral traffic and channel performance, where platforms report it", "New gaps found and fixed as channels and products change"] },
               ]} />
               <div className="offering-links">
                 <a href="#assessment" className="button w-button">Get a Free AI Shopping Check &gt;</a>
