@@ -13,6 +13,73 @@ are both credible choices, chosen by business need.
 Four solution categories: Websites, E-commerce Acceleration, AI Enablement,
 Strategy & Brand.
 
+## Brand line and purpose (updated Sept 23, 2026)
+
+**Brand line: See Further, Go Bigger.** Title case with a comma. In visuals,
+it is bracketed by outward chevrons: `< See Further,  Go Bigger >`.
+
+**Purpose:** Bring ambitious companies closer to their customers, with the
+clarity to see what's next and a partner to build it.
+
+The original pillars predate the AI-native work. This version balances three
+things:
+
+- **The purpose leads.** ZINC brings companies closer to their customers. AI
+  website migration and Dispatch are proof of how we deliver that today, not
+  the whole story.
+- **Control is a choice, not a handoff.** Some clients want to steer
+  themselves. Many still want a partner for support and execution. Don't
+  frame ZINC as handing over the keys and leaving.
+- **The client is the hero, ZINC is the guide.** Steering and helm language
+  is welcome. Sound bite: "You're at the helm. We're right beside you."
+
+**SEE FURTHER: Clarity. Insight. Foundation.** Understanding. ZINC as the
+guide in a fast-changing AI landscape.
+
+- Clarity. Cut through noise and see what actually drives outcomes.
+- Insight. Understand your customers, and how AI is changing the ways they
+  find you, choose, and buy.
+- Foundation. Choose the right platform by business need: AI-native or
+  enterprise CMS.
+- Positioning. Build brands and narratives that stand apart in an
+  AI-saturated market.
+- Alignment. Bring leadership, marketing, and technology into one vision.
+- Foresight. Anticipate how markets, customers, and technology will evolve.
+
+**GO BIGGER: Execution. Control. Scale.** Advancement. Turning clarity into
+momentum, together.
+
+- Execution. Design, build, and launch with precision and speed, alongside
+  the client's team.
+- Control. The client steers as much as they want. On AI-native sites,
+  Dispatch previews changes, routes approvals, and keeps an attributed
+  history with restore.
+- Scale. Systems and workflows that grow with demand.
+- Speed. On AI-native sites, teams change what they need by asking.
+- Partnership. Strategy, brand, design, and new builds, for as long as the
+  client needs them.
+- Growth. Translate strategic vision into tangible business results.
+
+**Ways to work.** The client picks how hands-on to be and can change it over
+time:
+
+- **Hands-on.** The client's team makes changes by asking, governed by
+  Dispatch.
+- **Side by side.** The client's team handles day-to-day updates, and ZINC
+  leads strategy, campaigns, and new builds.
+- **Fully supported.** ZINC plans, builds, and runs it with them.
+
+**The mark.** The Z is two chevrons. The top `>` is the company side and the
+bottom `<` is the customer side, and they meet to form the Z. ZINC brings the
+two sides together so they work as one. The mark also maps to "choose, build,
+and evolve":
+
+- `>` See Further is choose. ZINC guides.
+- The Z is build. ZINC and the client, side by side.
+- `<` Go Bigger is evolve. The client steers, with as much ZINC as they want.
+
+Outward chevrons mean opening up and expanding, not separation.
+
 ## AI-native websites and Dispatch
 
 **The one-line offer: AI website migration, with control built in.**
