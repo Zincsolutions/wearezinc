@@ -11,11 +11,16 @@ const COMPONENT_LAST_MODIFIED: Record<string, string> = {
 };
 // Component routes that have no static twin in the manifest.
 const COMPONENT_ROUTES: Record<string, string> = {
-  "solutions/ai-dispatch": "2026-09-22",
-  "solutions/ai-native-websites": "2026-09-21",
-  "solutions/ai-website-migration": "2026-09-21",
+  "solutions/ai-dispatch": "2026-10-15",
+  "solutions/ai-native-websites": "2026-10-15",
+  "solutions/ai-website-migration": "2026-10-15",
   "solutions/enterprise-websites": "2026-09-21",
   "solutions/wordpress-ai-website-migration": "2026-09-20",
+  "solutions/webflow-ai-website-migration": "2026-10-15",
+  "solutions/wix-ai-website-migration": "2026-10-15",
+  "solutions/squarespace-ai-website-migration": "2026-10-15",
+  "solutions/hubspot-cms-ai-website-migration": "2026-10-15",
+  "solutions/framer-ai-website-migration": "2026-10-15",
 };
 
 export const revalidate = 3600;

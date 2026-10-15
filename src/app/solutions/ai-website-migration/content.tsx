@@ -9,6 +9,7 @@ import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
+import { MigrationPathsHub } from "@/components/site/migration-paths-hub";
 import { MigrationMethod } from "@/components/site/migration-method";
 import { OwnMigrationProof } from "@/components/site/own-migration-proof";
 import { EnquiryForm } from "@/components/site/enquiry-form";
@@ -86,6 +87,9 @@ export function MigrationContent() {
             </div>
           </div></div></div>
         </section>
+
+        {/* Platform-specific paths */}
+        <MigrationPathsHub />
 
         {/* Method, with proof lines from our own move */}
         <MigrationMethod />

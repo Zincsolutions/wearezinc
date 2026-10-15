@@ -25,10 +25,34 @@ const STATS = [
 export function OwnMigrationProof({
   id = "proof",
   cta,
+  compact = false,
 }: {
   id?: string;
   cta?: { href: string; label: string };
+  compact?: boolean;
 }) {
+  if (compact) {
+    return (
+      <section id={id} className="proof is-compact">
+        <div className="padding-global"><div className="container-large"><div className="padding-section-large">
+          <div className="proof_head" data-reveal="">
+            <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Proof, not promises &lt;</div></div>
+            <div className="margin-bottom margin-small"><h2 className="heading-style-h2">We moved our own website first.</h2></div>
+            <p className="text-size-medium">wearezinc.com moved from Webflow to Next.js in August 2026, using the same six steps. Here is what that looked like.</p>
+          </div>
+          <dl className="proof_stats" data-reveal="">
+            {STATS.map((s) => (
+              <div key={s.label} className="proof_stat">
+                <dt className="proof_stat-label">{s.label}</dt>
+                <dd className="proof_stat-value">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <a href="/solutions/ai-website-migration#proof" className="faq-link">See the full URL inventory and what we learned &gt;</a>
+        </div></div></div>
+      </section>
+    );
+  }
   return (
     <section id={id} className="proof">
       <div className="padding-global"><div className="container-large"><div className="padding-section-large">
