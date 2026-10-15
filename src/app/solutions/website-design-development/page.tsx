@@ -9,6 +9,7 @@ import { buildServiceSchema, serializeSchema, textFromHtml } from "@/lib/schema"
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "./page.css";
+import "@/components/site/aeo-blocks.css";
 
 // Componentized from the Webflow capture (Phase B) via
 // scripts/componentize-page.py. Shell, FAQ, parallax, marquee, and reveal

@@ -11,6 +11,7 @@ import "@/components/site/page-animations.css";
 import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "./page.css";
+import "@/components/site/aeo-blocks.css";
 
 // E-commerce Acceleration: rebuilt Sept 21, 2026 from the implementation
 // brief (see content.tsx). Styles are the page's auto-extracted Webflow CSS

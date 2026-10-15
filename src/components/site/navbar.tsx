@@ -159,7 +159,9 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="nav-mega__foot">
-                  <p>Not sure where to start?</p>
+                  <p>Planning a move?</p>
+                  <a href="/migration-planner" className="nav-mega__cta">Run the Free Migration Planner &gt;</a>
+                  <p className="nav-mega__foot-split">Not sure where to start?</p>
                   <a href="/contact-us" className="nav-mega__cta">Talk About Your Goals &gt;</a>
                 </div>
               </div>

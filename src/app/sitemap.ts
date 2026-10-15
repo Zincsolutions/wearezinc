@@ -6,8 +6,9 @@ import { getAllPosts, isContentConfigured } from "@/lib/content";
 const SITE = "https://www.wearezinc.com";
 const COMPONENT_LAST_MODIFIED: Record<string, string> = {
   index: "2026-10-15",
-  "solutions/ecommerce-acceleration": "2026-09-21",
-  "solutions/website-design-development": "2026-08-25",
+  "solutions/automation-workflows": "2026-10-15",
+  "solutions/ecommerce-acceleration": "2026-10-15",
+  "solutions/website-design-development": "2026-10-15",
 };
 // Component routes that have no static twin in the manifest.
 const COMPONENT_ROUTES: Record<string, string> = {

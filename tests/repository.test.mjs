@@ -75,6 +75,7 @@ test("componentized landing pages have one primary heading", () => {
     "src/app/(home)/content.tsx",
     "src/app/solutions/ecommerce-acceleration/content.tsx",
     "src/app/solutions/website-design-development/content.tsx",
+    "src/app/solutions/automation-workflows/content.tsx",
   ];
 
   for (const page of pages) {
@@ -218,7 +219,16 @@ test("static pages use the same Solutions mega menu as the React header", () => 
       .slice(footerTsx.indexOf("const SOLUTION_LINKS"), footerTsx.indexOf("const COMPANY_LINKS"))
       .matchAll(/href: "([^"]+)", label: "([^"]+)"/g),
   ].map((m) => [m[1], m[2]]);
-  assert.equal(footerLinks.length, 9);
+  assert.equal(footerLinks.length, 10);
+  const companyLinks = [
+    ...footerTsx
+      .slice(footerTsx.indexOf("const COMPANY_LINKS"), footerTsx.indexOf("export function Footer"))
+      .matchAll(/href: "([^"]+)", label: "([^"]+)"/g),
+  ].map((m) => [m[1], m[2]]);
+  // reference pages from the DesignMe review stay reachable from every footer
+  for (const href of ["/migration-planner", "/compare", "/glossary"]) {
+    assert.ok(companyLinks.some(([h]) => h === href), `footer.tsx links ${href}`);
+  }
 
   for (const page of pages) {
     const html = read(page);
@@ -238,6 +248,9 @@ test("static pages use the same Solutions mega menu as the React header", () => 
     const footer = $("footer .footer3_link-list").first().find("a")
       .map((_, a) => [[$(a).attr("href"), $(a).text()]]).get();
     assert.deepEqual(footer, footerLinks, `${page} footer Solutions links`);
+    const company = $("footer .footer3_link-list").eq(1).find("a")
+      .map((_, a) => [[$(a).attr("href"), $(a).text()]]).get();
+    assert.deepEqual(company, companyLinks, `${page} footer company links`);
     assert.match($("footer").text(), /This site is governed by Dispatch/, `${page} footer Dispatch line`);
   }
 });

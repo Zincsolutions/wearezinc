@@ -6,7 +6,9 @@ import type { CSSProperties } from "react";
 // production. Weeks are typical for a marketing site; the assessment dates
 // the real plan.
 
-const WEEKS = [
+export type SetupStep = { when: string; title: string; text: string; outputs: string[] };
+
+const WEEKS: SetupStep[] = [
   {
     when: "Week 1",
     title: "Map the requests.",
@@ -39,17 +41,31 @@ const WEEKS = [
   },
 ];
 
-export function DispatchSetup({ id = "setup" }: { id?: string }) {
+// Defaults are the Dispatch setup; other offers pass their own copy and steps
+// (see the CMS and CRM workflow variant on /solutions/automation-workflows).
+export function DispatchSetup({
+  id = "setup",
+  heading = "An agent is only as good as the system it builds with.",
+  intro = "Most AI website setups fail on taste and structure, not on the model. So we design the guardrails first: the components, brand rules, and approvals your agent works inside. Then we connect it, prove it on your real requests, and hand it over.",
+  steps = WEEKS,
+  note = "Typical for a marketing site. Your assessment dates the real plan. Turn Dispatch off at any point and the website keeps running.",
+}: {
+  id?: string;
+  heading?: string;
+  intro?: string;
+  steps?: SetupStep[];
+  note?: string;
+}) {
   return (
     <section id={id} className="setup">
       <div className="padding-global"><div className="container-large"><div className="padding-section-large">
         <div className="setup_head" data-reveal="">
           <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; Foundations first &lt;</div></div>
-          <div className="margin-bottom margin-small"><h2 className="heading-style-h2">An agent is only as good as the system it builds with.</h2></div>
-          <p className="text-size-medium">Most AI website setups fail on taste and structure, not on the model. So we design the guardrails first: the components, brand rules, and approvals your agent works inside. Then we connect it, prove it on your real requests, and hand it over.</p>
+          <div className="margin-bottom margin-small"><h2 className="heading-style-h2">{heading}</h2></div>
+          <p className="text-size-medium">{intro}</p>
         </div>
         <ol role="list" className="setup_list">
-          {WEEKS.map((w, i) => (
+          {steps.map((w, i) => (
             <li key={w.title} className="setup_item" data-reveal="" style={{ "--i": i } as CSSProperties}>
               <div className="setup_when">{w.when}</div>
               <div className="setup_body">
@@ -62,7 +78,7 @@ export function DispatchSetup({ id = "setup" }: { id?: string }) {
             </li>
           ))}
         </ol>
-        <p className="offering-note">Typical for a marketing site. Your assessment dates the real plan. Turn Dispatch off at any point and the website keeps running.</p>
+        <p className="offering-note">{note}</p>
       </div></div></div>
     </section>
   );
