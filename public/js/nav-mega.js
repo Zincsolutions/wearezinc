@@ -1,7 +1,8 @@
 /* ZINC Solutions mega menu for the static (Webflow-ported) pages.
    Replaces the old Webflow dropdown with the same menu the React header
    renders (src/components/site/navbar.tsx): four columns, one-line
-   descriptions, a featured row, and a footer prompt. Opens on hover or
+   descriptions, a featured row, and a footer with the migration planner
+   and a contact prompt. Opens on hover or
    click, Escape closes it, and on tablet and below it becomes an open
    accordion inside the Webflow mobile menu. Styles: /css/nav-mega.css. */
 (function () {
@@ -14,7 +15,8 @@
       "heading": "Websites",
       "links": [
         { "href": "/solutions/ai-native-websites", "label": "AI-Native Websites", "desc": "Update your site by asking an AI agent.", "featured": true },
-        { "href": "/solutions/ai-website-migration", "label": "AI Website Migration", "desc": "Move your site. Keep what works." },
+        { "href": "/solutions/ai-website-migration", "label": "AI Website Migration", "desc": "Leave WordPress, Wix, Squarespace, and more." },
+        { "href": "/solutions/ai-built-website-cleanup", "label": "AI-Built Site Cleanup", "desc": "Make a fast AI build safe to grow." },
         { "href": "/solutions/enterprise-websites", "label": "Enterprise Websites & CMS", "desc": "Webflow Enterprise and CMS integrations." },
         { "href": "/solutions/website-design-development", "label": "Website Design & Development", "desc": "New builds and focused improvements." },
         { "href": "/solutions/ai-dispatch", "label": "Dispatch", "desc": "Governance for AI-powered websites." }
@@ -104,7 +106,11 @@
     grid.appendChild(col);
   });
   var foot = el('div', 'nav-mega__foot');
-  foot.appendChild(el('p', '', 'Not sure where to start?'));
+  foot.appendChild(el('p', '', 'Planning a move?'));
+  var planner = el('a', 'nav-mega__cta', 'Run the Free Migration Planner >');
+  planner.href = '/migration-planner';
+  foot.appendChild(planner);
+  foot.appendChild(el('p', 'nav-mega__foot-split', 'Not sure where to start?'));
   var cta = el('a', 'nav-mega__cta', 'Talk About Your Goals >');
   cta.href = '/contact-us';
   foot.appendChild(cta);

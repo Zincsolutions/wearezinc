@@ -11,7 +11,12 @@
       {
         "href": "/solutions/ai-website-migration",
         "label": "AI Website Migration",
-        "desc": "Move your site. Keep what works."
+        "desc": "Leave WordPress, Wix, Squarespace, and more."
+      },
+      {
+        "href": "/solutions/ai-built-website-cleanup",
+        "label": "AI-Built Site Cleanup",
+        "desc": "Make a fast AI build safe to grow."
       },
       {
         "href": "/solutions/enterprise-websites",
