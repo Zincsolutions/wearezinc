@@ -5,7 +5,7 @@ import { getAllPosts, isContentConfigured } from "@/lib/content";
 
 const SITE = "https://www.wearezinc.com";
 const COMPONENT_LAST_MODIFIED: Record<string, string> = {
-  index: "2026-09-21",
+  index: "2026-10-15",
   "solutions/ecommerce-acceleration": "2026-09-21",
   "solutions/website-design-development": "2026-08-25",
 };
@@ -21,6 +21,12 @@ const COMPONENT_ROUTES: Record<string, string> = {
   "solutions/squarespace-ai-website-migration": "2026-10-15",
   "solutions/hubspot-cms-ai-website-migration": "2026-10-15",
   "solutions/framer-ai-website-migration": "2026-10-15",
+  "solutions/ai-built-website-cleanup": "2026-10-15",
+  "migration-planner": "2026-10-15",
+  glossary: "2026-10-15",
+  compare: "2026-10-15",
+  "compare/dispatch-vs-diy-ai-website-workflow": "2026-10-15",
+  "compare/ai-agent-vs-headless-cms": "2026-10-15",
 };
 
 export const revalidate = 3600;

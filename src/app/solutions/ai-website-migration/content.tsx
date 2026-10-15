@@ -166,8 +166,8 @@ export function MigrationContent() {
         <KeepExploring
           groups={[
             { heading: "Pick your path", links: [EXPLORE.wordpress, EXPLORE.aiNative, { ...EXPLORE.enterprise, note: "Not ready to move? Get more from Webflow Enterprise." }] },
-            { heading: "See the proof", links: [EXPLORE.realChange, EXPLORE.dispatch, EXPLORE.postDispatch] },
-            { heading: "Take the next step", links: [EXPLORE.preview, EXPLORE.assessment, EXPLORE.contact] },
+            { heading: "See the proof", links: [EXPLORE.realChange, EXPLORE.dispatch, EXPLORE.compare, EXPLORE.glossary] },
+            { heading: "Take the next step", links: [EXPLORE.planner, EXPLORE.preview, EXPLORE.assessment] },
           ]}
         />
       </main>

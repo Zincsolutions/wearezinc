@@ -10,6 +10,7 @@ import { buildHomeSchema, serializeSchema, textFromHtml } from "@/lib/schema";
 import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "./page.css";
+import "@/components/site/aeo-blocks.css";
 
 // Homepage, componentized from the Webflow capture (Phase B) via
 // scripts/componentize-page.py. New archetypes vs earlier pages: the

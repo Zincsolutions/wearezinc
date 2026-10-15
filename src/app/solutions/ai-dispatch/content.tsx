@@ -267,7 +267,7 @@ export function DispatchContent() {
         <KeepExploring
           groups={[
             { heading: "Get an agent-ready site", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.wordpress] },
-            { heading: "See it working", links: [EXPLORE.realChange, EXPLORE.postDispatch, EXPLORE.postStructure] },
+            { heading: "See it working", links: [EXPLORE.realChange, { href: "/compare/dispatch-vs-diy-ai-website-workflow", title: "Dispatch vs a DIY agent workflow", note: "Where GitHub is enough, and where it is not." }, EXPLORE.postDispatch] },
             { heading: "Take the next step", links: [EXPLORE.assessment, { ...EXPLORE.enterprise, note: "On Webflow Enterprise? We add AI workflows there too." }, EXPLORE.contact] },
           ]}
         />
