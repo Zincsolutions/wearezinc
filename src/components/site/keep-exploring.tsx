@@ -60,5 +60,9 @@ export const EXPLORE = {
   postBuild: { href: "/post/idea-to-market-fast-ai-build-process", title: "From idea to market, fast", note: "Inside an AI-assisted build process." },
   assessment: { href: "/solutions/ai-native-websites#assessment", title: "Request a website assessment", note: "Improve, migrate, or redesign? Get a straight answer." },
   preview: { href: "/solutions/wordpress-ai-website-migration#preview", title: "Get a free migration preview", note: "Two pages rebuilt and one real change, no commitment." },
+  planner: { href: "/migration-planner", title: "Run the free migration planner", note: "See your URL inventory and what needs a redirect." },
+  glossary: { href: "/glossary", title: "AI website glossary", note: "AI-native, AEO, governance, and more, in plain English." },
+  compare: { href: "/compare", title: "Comparisons", note: "Straight answers on the choices behind an AI-native site." },
+  cleanup: { href: "/solutions/ai-built-website-cleanup", title: "AI-built site cleanup", note: "Built it fast with AI? Make it safe to grow." },
   contact: { href: "/contact-us", title: "Talk to ZINC", note: "Strategy, brand, commerce, or a new site." },
 } satisfies Record<string, ExploreLink>;

@@ -111,3 +111,24 @@ Guardrails:
 - DFND is Shopify credibility, not an AI-commerce case study.
 - Keep protocol names (UCP, MCP, WebMCP) out of headlines; merchant-first copy.
 - Shopify leads; BigCommerce is supported but not in the hero.
+
+## Proof, paths, and reference content (added Oct 15, 2026)
+
+From the DesignMe competitive review (`ZINC Brand & Site/designme-competitive-review.md`).
+
+- **Proof leads.** Use our own migration (Webflow to Next.js, Aug 2026): 49 of
+  49 URLs kept or redirected, 549 files moved, first complete build in one
+  day, 36 reviewed changes in the first six weeks, and the real Dispatch
+  request req-28b8544e (live in 15 minutes). Page weight was about the same;
+  never claim the move made the site lighter or faster.
+- **Webflow stays first-class.** The Webflow path page is a decision page
+  ("Stay on Webflow or go AI-native?"), and every stack or migration
+  recommendation lists Webflow Enterprise as a real answer.
+- **Migration paths:** WordPress, Webflow, Wix, Squarespace, HubSpot CMS,
+  Framer. No Shopify exit page: Shopify leads our commerce work.
+- **New offer: AI-built website cleanup.** For sites shipped with AI builders
+  (Lovable, v0, Bolt, and similar, named only as examples): fix lead paths,
+  exposed secrets, search and AEO signals, accessibility, and structure, then
+  govern with Dispatch. Free first look; full review scoped after.
+- **Reference content:** /glossary, /compare, and the free /migration-planner.
+  Comparisons are written so a reader could decide against us.

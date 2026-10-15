@@ -32,7 +32,7 @@ export function MigrationPathsHub({ id = "paths" }: { id?: string }) {
             </a>
           ))}
         </div>
-        <p className="offering-note">Moving from somewhere else, like Drupal, Sitecore, or a custom CMS? The method is the same. <a href="#quote" className="faq-link">Tell us what you are on &gt;</a></p>
+        <p className="offering-note">Not sure what you have? <a href="/migration-planner" className="faq-link">Run the free migration planner &gt;</a> Moving from Drupal, Sitecore, or a custom CMS? The method is the same. <a href="#quote" className="faq-link">Tell us what you are on &gt;</a></p>
       </div></div></div>
     </section>
   );

@@ -241,7 +241,7 @@ export function OverviewContent() {
         </section>
         <KeepExploring
           groups={[
-            { heading: "Find your path", links: [EXPLORE.migration, EXPLORE.wordpress, { ...EXPLORE.enterprise, note: "Staying on Webflow? Get more from the platform you have." }] },
+            { heading: "Find your path", links: [EXPLORE.migration, EXPLORE.wordpress, { ...EXPLORE.enterprise, note: "Staying on Webflow? Get more from the platform you have." }, EXPLORE.cleanup] },
             { heading: "See how control works", links: [EXPLORE.dispatch, EXPLORE.postDispatch, EXPLORE.postStructure] },
             { heading: "Take the next step", links: [EXPLORE.preview, EXPLORE.assessment, EXPLORE.contact] },
           ]}

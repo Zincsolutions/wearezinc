@@ -30,9 +30,20 @@ const SECTIONS: { heading: string; links: [path: string, title: string, note: st
     ],
   },
   {
+    heading: "Tools and references",
+    links: [
+      ["/migration-planner", "Free Migration Planner", "Enter a website to get its sitemap URL inventory by template, the platform it appears to run on, and the URLs that need a redirect decision."],
+      ["/glossary", "AI Website Glossary", "Plain-language definitions: AI-native website, AI website migration, AI website governance, AEO, llms.txt, MCP, agentic commerce, risk tiers, SEO parity, and more."],
+      ["/compare", "Comparisons", "Fair comparisons: Webflow or AI-native, WordPress or AI-native, Dispatch or a DIY agent workflow, agent editing or a headless CMS."],
+      ["/compare/dispatch-vs-diy-ai-website-workflow", "Dispatch vs a DIY AI Website Workflow", "Where an agent plus GitHub and preview deploys is enough, and where approvals, attribution, and restore for the wider business need Dispatch."],
+      ["/compare/ai-agent-vs-headless-cms", "AI Agent Editing vs Headless CMS", "When to update a site by asking an agent, when structured CMS fields are better, and how to combine them."],
+    ],
+  },
+  {
     heading: "Websites and platforms",
     links: [
       ["/solutions/enterprise-websites", "Enterprise Websites & CMS", "Webflow Enterprise design, development, CMS integrations, and team enablement for organizations whose current platform is the right fit."],
+      ["/solutions/ai-built-website-cleanup", "AI-Built Website Cleanup", "For sites built fast with AI builders such as Lovable, v0, or Bolt: review and fix lead paths, exposed secrets, search and AEO signals, accessibility, and code structure, then govern future changes with Dispatch."],
       ["/solutions/website-design-development", "Website Design & Development", "New websites and redesigns on Webflow, Shopify, or a code-based stack, chosen by business need."],
       ["/partners/webflow", "Webflow Partner", "ZINC's Webflow partnership and enterprise Webflow services."],
       ["/partners/shopify", "Shopify Partner", "ZINC's Shopify partnership and storefront services."],

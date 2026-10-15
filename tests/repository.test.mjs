@@ -404,3 +404,44 @@ test("migration paths keep Webflow neutral and claims disciplined", () => {
   assert.doesNotMatch(data, /—/, "em dash in path copy");
   assert.doesNotMatch(data, /guarantee(d)? (rankings|traffic)|zero SEO impact/i);
 });
+
+test("priority 3 pages exist and are listed in the sitemap and llms.txt", () => {
+  const sitemap = read("src/app/sitemap.ts");
+  const llms = read("src/app/llms.txt/route.ts");
+  const pages = {
+    "src/app/glossary/page.tsx": "glossary",
+    "src/app/compare/page.tsx": "compare",
+    "src/app/compare/dispatch-vs-diy-ai-website-workflow/page.tsx": "compare/dispatch-vs-diy-ai-website-workflow",
+    "src/app/compare/ai-agent-vs-headless-cms/page.tsx": "compare/ai-agent-vs-headless-cms",
+    "src/app/migration-planner/page.tsx": "migration-planner",
+    "src/app/solutions/ai-built-website-cleanup/page.tsx": "solutions/ai-built-website-cleanup",
+  };
+  for (const [file, route] of Object.entries(pages)) {
+    assert.ok(fs.existsSync(path.join(root, file)), `Missing ${file}`);
+    assert.match(sitemap, new RegExp(`"?${route.replace(/\//g, "\\/")}"?:`), `${route} missing from sitemap`);
+    assert.match(llms, new RegExp(`"/${route.replace(/\//g, "\\/")}"`), `${route} missing from llms.txt`);
+  }
+});
+
+test("migration planner only fetches public http(s) addresses with limits", () => {
+  const planner = read("src/lib/migration-planner.ts");
+
+  assert.match(planner, /redirect: "manual"/);
+  assert.match(planner, /AbortSignal\.timeout/);
+  assert.match(planner, /MAX_BYTES/);
+  assert.match(planner, /isPrivateV4/);
+  assert.match(planner, /isPrivateV6/);
+  assert.match(planner, /await assertPublic\(url\)/);
+});
+
+test("glossary terms all link somewhere that exists", () => {
+  const glossary = read("src/lib/glossary.ts");
+  for (const [, href] of glossary.matchAll(/href: "([^"#]+)/g)) {
+    if (href === "/llms.txt") continue;
+    const route = href.replace(/^\//, "");
+    const exists =
+      fs.existsSync(path.join(root, `src/app/${route}/page.tsx`)) ||
+      JSON.parse(read("public/_wf/manifest.json")).pages.includes(route);
+    assert.ok(exists, `Glossary link ${href} has no page`);
+  }
+});

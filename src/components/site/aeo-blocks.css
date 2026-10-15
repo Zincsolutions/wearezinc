@@ -218,7 +218,7 @@
 }
 
 /* ---------- Migration method ---------- */
-.method_list, .proof, .stack, .setup, .path_features, .paths_grid {
+.method_list, .proof, .stack, .setup, .path_features, .paths_grid, .compare {
   --ab-ink: var(--_primitives---colors--black, #161616);
   --ab-muted: var(--_primitives---colors--gray-500, #5f5f5f);
   --ab-orange: var(--_primitives---colors--orange-500, #ff5b19);
@@ -487,4 +487,137 @@
 @media screen and (max-width: 767px) {
   .path_compare, .path_keep, .paths_grid { grid-template-columns: 1fr; }
   .path_compare-col { padding: 1.5rem; }
+}
+
+/* ---------- Glossary ---------- */
+.glossary { --g-hair: rgba(22, 22, 22, 0.1); }
+.glossary_index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 3rem;
+}
+.glossary_index a {
+  padding: .4rem .85rem;
+  border: 1px solid var(--g-hair);
+  border-radius: 99px;
+  font-size: .875rem;
+  color: var(--_primitives---colors--black, #161616);
+  text-decoration: none;
+}
+.glossary_index a:hover { border-color: var(--_primitives---colors--orange-500, #ff5b19); }
+.glossary_list { margin: 0; border-top: 1px solid var(--_primitives---colors--black, #161616); }
+.glossary_item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1rem 3rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--g-hair);
+  scroll-margin-top: 6rem;
+}
+.glossary_item:target { background: linear-gradient(90deg, rgba(255, 91, 25, .06), transparent 60%); }
+.glossary_item h2 { margin: 0; }
+.glossary_def { margin: 0 0 .5rem; font-size: 1.1875rem; line-height: 1.5; font-weight: 500; }
+.glossary_more { margin: 0 0 .75rem; color: var(--_primitives---colors--gray-500, #5f5f5f); }
+@media screen and (max-width: 767px) {
+  .glossary_item { grid-template-columns: 1fr; gap: .5rem; padding: 1.5rem 0; }
+}
+
+/* ---------- Comparisons ---------- */
+.compare_table thead th:nth-child(2), .compare_table thead th:nth-child(3) {
+  font-family: var(--_typography---font-styles--heading, inherit);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ab-ink);
+}
+.compare_label { width: 24%; font-size: 1.0625rem; }
+.compare_table td { width: 38%; }
+.compare_table td.compare_b { color: var(--ab-ink); }
+.compare_choose { margin-top: 3rem; }
+@media screen and (max-width: 767px) {
+  .compare_table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: .2rem;
+    font-family: var(--ab-micro);
+    font-size: .75rem;
+    color: var(--ab-orange);
+  }
+  .compare_table td + td { margin-top: .75rem; }
+  .compare_label { order: -1; margin-bottom: .5rem; }
+}
+
+/* ---------- Migration planner ---------- */
+.planner { margin-top: .5rem; }
+.planner, .planner_result {
+  --ab-ink: var(--_primitives---colors--black, #161616);
+  --ab-muted: var(--_primitives---colors--gray-500, #5f5f5f);
+  --ab-orange: var(--_primitives---colors--orange-500, #ff5b19);
+  --ab-soft: var(--_primitives---colors--gray-100, #f4f4f4);
+  --ab-hairline: rgba(22, 22, 22, 0.1);
+  --ab-micro: var(--_typography---font-styles--micro, ui-monospace, monospace);
+}
+.planner_form { max-width: 44rem; }
+.planner_label { display: block; margin-bottom: .5rem; font-weight: 500; }
+.planner_row { display: flex; gap: .75rem; }
+.planner_input {
+  flex: 1;
+  min-width: 0;
+  padding: .875rem 1rem;
+  border: 1px solid rgba(22, 22, 22, .2);
+  border-radius: .5rem;
+  font: inherit;
+  font-size: 1.0625rem;
+  background: #fff;
+}
+.planner_input:focus { outline: 2px solid var(--ab-orange); outline-offset: 1px; border-color: transparent; }
+.planner_hint { margin: .6rem 0 0; font-size: .875rem; color: var(--ab-muted); }
+.planner_error { margin: 1.25rem 0 0; padding: .875rem 1rem; background: #fff1ea; border-left: 3px solid var(--ab-orange); color: #8a2d06; }
+.planner_result { margin-top: 3rem; }
+.planner_stats { margin-top: 0; }
+.planner_sample { margin: 0; word-break: break-all; }
+.planner_flags { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.planner_flags li { margin: 0; padding: 0; background-image: none; line-height: 1.45; }
+.planner_next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  margin-top: 1.25rem;
+  padding: 1.75rem 2rem;
+  background: var(--ab-ink);
+  color: #fff;
+}
+.planner_next h2 { margin: 0 0 .4rem; color: #fff; }
+.planner_next p { margin: 0; color: rgba(255, 255, 255, .72); }
+.planner_next .button { background: var(--ab-orange); border-color: var(--ab-orange); color: #fff; flex: none; }
+.planner_empty { padding: 2rem; background: #fff; border: 1px solid var(--ab-hairline); display: grid; gap: 1rem; justify-items: start; }
+.planner_empty h2, .planner_empty p { margin: 0; }
+@media screen and (max-width: 767px) {
+  .planner_row { flex-direction: column; }
+  .planner_next { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+}
+
+/* ---------- Founder note (homepage) ---------- */
+.founder-note { background: #fff; border-top: 1px solid rgba(22, 22, 22, 0.1); }
+.founder-note_grid { display: grid; grid-template-columns: minmax(10rem, 1fr) minmax(0, 3fr); gap: 1.5rem 3rem; }
+.founder-note_body { max-width: 46rem; }
+.founder-note_body h2 { margin: 0 0 1.5rem; }
+.founder-note_body p { margin: 0 0 1rem; }
+.founder-note_sign { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+.founder-note_photo { width: 4rem; height: 4rem; border-radius: 50%; object-fit: cover; filter: grayscale(1); }
+.founder-note_role { color: var(--_primitives---colors--gray-500, #5f5f5f); font-size: .9375rem; }
+.testimonial-chips { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0 0; padding: 0; }
+.testimonial-chips li {
+  margin: 0;
+  padding: .3rem .75rem;
+  background-image: none;
+  border: 1px solid rgba(22, 22, 22, 0.16);
+  border-radius: 99px;
+  font-family: var(--_typography---font-styles--micro, monospace);
+  font-size: .75rem;
+}
+.testimonial-chips li strong { color: var(--_primitives---colors--orange-500, #ff5b19); font-weight: 500; }
+@media screen and (max-width: 767px) {
+  .founder-note_grid { grid-template-columns: 1fr; }
 }
