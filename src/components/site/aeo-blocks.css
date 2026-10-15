@@ -704,3 +704,29 @@
   .assessment-hero .heading-style-h1 { font-size: 2.25rem; }
   .assessment-form .form_field-2col { grid-template-columns: 1fr; display: grid; }
 }
+
+/* ---------- Inline callout (links a related offer from inside a section) ---------- */
+.site-callout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .5rem 1.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid rgba(22, 22, 22, .12);
+  border-left: 3px solid var(--_primitives---colors--orange-500, #ff5b19);
+  color: var(--_primitives---colors--black, #161616);
+  text-decoration: none;
+  transition: border-color .2s ease;
+}
+.site-callout_label { font-weight: 600; white-space: nowrap; }
+.site-callout_text { color: var(--_primitives---colors--gray-500, #5f5f5f); line-height: 1.45; }
+.site-callout_go { font-weight: 500; white-space: nowrap; }
+.site-callout:hover { border-color: var(--_primitives---colors--black, #161616); border-left-color: var(--_primitives---colors--orange-500, #ff5b19); }
+.site-callout:hover .site-callout_go { color: var(--_primitives---colors--orange-500, #ff5b19); }
+.site-callout:focus-visible { outline: 2px solid var(--_primitives---colors--orange-500, #ff5b19); outline-offset: 3px; }
+@media screen and (max-width: 991px) {
+  .site-callout { grid-template-columns: 1fr; }
+  .site-callout_label, .site-callout_go { white-space: normal; }
+}

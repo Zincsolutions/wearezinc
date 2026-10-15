@@ -5,7 +5,7 @@
       {
         "href": "/solutions/ai-native-websites",
         "label": "AI-Native Websites",
-        "desc": "Update your site by asking an AI agent.",
+        "desc": "New or rebuilt sites you update by asking AI.",
         "featured": true
       },
       {
@@ -14,19 +14,9 @@
         "desc": "Leave WordPress, Wix, Squarespace, and more."
       },
       {
-        "href": "/solutions/ai-built-website-cleanup",
-        "label": "AI-Built Site Cleanup",
-        "desc": "Make a fast AI build safe to grow."
-      },
-      {
         "href": "/solutions/enterprise-websites",
         "label": "Enterprise Websites & CMS",
         "desc": "Webflow Enterprise and CMS integrations."
-      },
-      {
-        "href": "/solutions/website-design-development",
-        "label": "Website Design & Development",
-        "desc": "New builds and focused improvements."
       },
       {
         "href": "/solutions/ai-dispatch",

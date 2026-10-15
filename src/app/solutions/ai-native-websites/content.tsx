@@ -192,6 +192,11 @@ export function OverviewContent() {
                 <div><h3 className="heading-style-h4"><strong>Room to keep growing.</strong></h3><p>Work with us on content, campaigns, SEO and AEO, and improvements that help turn visits into opportunities.</p></div>
               </div>
               <p className="offering-bottomline">Starting fresh or already running a code-based site? We also design new AI-native websites and integrate agents and Dispatch into compatible sites.</p>
+              <a href="/solutions/ai-built-website-cleanup" className="site-callout" data-reveal="">
+                <span className="site-callout_label">Already built something with AI?</span>
+                <span className="site-callout_text">If your site came together fast in a tool such as Lovable, v0, or Bolt, we make it secure, findable, and safe to keep building on, then put it under Dispatch.</span>
+                <span className="site-callout_go" aria-hidden="true">See AI-built site cleanup &gt;</span>
+              </a>
               <div className="offering-links">
                 <a href="/work" className="button is-link is-icon w-inline-block"><div>Explore ZINC’s Work</div><ArrowIcon /></a>
               </div>
