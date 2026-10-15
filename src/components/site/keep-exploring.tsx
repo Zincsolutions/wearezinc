@@ -58,7 +58,7 @@ export const EXPLORE = {
   postStructure: { href: "/post/structuring-your-site-for-ai-optimization-aeo", title: "Structuring your site for AI optimization", note: "How answer engines read your pages." },
   postSeo: { href: "/post/how-seo-is-evolving-in-the-age-of-ai-search", title: "How SEO is evolving in the age of AI search", note: "What changes when the answer arrives first." },
   postBuild: { href: "/post/idea-to-market-fast-ai-build-process", title: "From idea to market, fast", note: "Inside an AI-assisted build process." },
-  assessment: { href: "/solutions/ai-native-websites#assessment", title: "Request a website assessment", note: "Improve, migrate, or redesign? Get a straight answer." },
+  assessment: { href: "/free-website-assessment", title: "Get a free website assessment", note: "See what AI and your customers see, and your best next move." },
   preview: { href: "/solutions/wordpress-ai-website-migration#preview", title: "Get a free migration preview", note: "Two pages rebuilt and one real change, no commitment." },
   planner: { href: "/migration-planner", title: "Run the free migration planner", note: "See your URL inventory and what needs a redirect." },
   glossary: { href: "/glossary", title: "AI website glossary", note: "AI-native, AEO, governance, and more, in plain English." },

@@ -11,6 +11,12 @@ export const revalidate = 3600;
 
 const SECTIONS: { heading: string; links: [path: string, title: string, note: string][] }[] = [
   {
+    heading: "Start here",
+    links: [
+      ["/free-website-assessment", "Free Website Assessment", "A free, human-reviewed assessment of how AI assistants and search see a business website, where it loses leads, and the best next step (improve, migrate, or redesign). No logins or obligation; delivered within two business days."],
+    ],
+  },
+  {
     heading: "AI-native websites and Dispatch",
     links: [
       ["/solutions/ai-native-websites", "AI-Native Websites", "Keep the website you love and change how you run it: your team updates the site by asking its own AI agent, previews the result, and approves it before it goes live."],

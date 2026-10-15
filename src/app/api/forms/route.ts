@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { createHash } from "node:crypto";
-import { sendLeadNotification } from "@/lib/lead-notify";
+import { sendAssessmentConfirmation, sendLeadNotification } from "@/lib/lead-notify";
+import { ASSESSMENT_FORM_NAME, ASSESSMENT_TURNAROUND, ROLE_FIELD, VENDOR_ROLE } from "@/lib/assessment";
 
 export const runtime = "nodejs";
 
@@ -255,9 +256,14 @@ export async function POST(req: Request) {
     return json({ ok: false, error: "Valid email required" }, 400);
   }
 
+  // People pitching ZINC can say so on the assessment form; store those as
+  // spam so they never reach HubSpot, the team inbox, or a confirmation.
+  const isVendor = p.fields?.[ROLE_FIELD] === VENDOR_ROLE;
+
   const { data: submission, error: storageError } = await db()
     .from("form_submissions")
     .insert({
+      ...(isVendor ? { status: "spam" } : {}),
       form_name: p.formName ?? "unknown",
       name: p.name ?? ([p.firstName, p.lastName].filter(Boolean).join(" ") || null),
       email: p.email,
@@ -272,6 +278,8 @@ export async function POST(req: Request) {
     console.error("Form submission storage failed", storageError);
     return json({ ok: false, error: "Storage failed" }, 500);
   }
+
+  if (isVendor) return json({ ok: true });
 
   let hubspot: HubspotResult;
   try {
@@ -308,6 +316,24 @@ export async function POST(req: Request) {
     console.error(`Lead notification failed for submission ${submission.id}: ${notified}`);
   } else if (notified.startsWith("skipped")) {
     console.warn(`Lead notification skipped for submission ${submission.id}: ${notified}`);
+  }
+
+  // Free website assessment: confirm to the person who asked. Best-effort.
+  if (p.formName === ASSESSMENT_FORM_NAME) {
+    try {
+      const confirmed = await sendAssessmentConfirmation({
+        submissionId: submission.id,
+        email: p.email,
+        name: p.name,
+        url: p.fields?.["Website URL"],
+        turnaround: ASSESSMENT_TURNAROUND,
+      });
+      if (!confirmed.startsWith("sent")) {
+        console.warn(`Assessment confirmation for ${submission.id}: ${confirmed}`);
+      }
+    } catch (error) {
+      console.error(`Assessment confirmation failed for submission ${submission.id}`, error);
+    }
   }
 
   const synced = Boolean(hubspot.contactId);

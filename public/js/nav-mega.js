@@ -111,7 +111,7 @@
   planner.href = '/migration-planner';
   foot.appendChild(planner);
   foot.appendChild(el('p', 'nav-mega__foot-split', 'Not sure where to start?'));
-  var cta = el('a', 'nav-mega__cta', 'Talk About Your Goals >');
+  var cta = el('a', 'nav-mega__cta', 'Book a Call >');
   cta.href = '/contact-us';
   foot.appendChild(cta);
   inner.appendChild(grid);

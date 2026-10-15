@@ -1,5 +1,7 @@
 "use client";
 
+import { readAttribution } from "@/lib/attribution";
+
 import { useState } from "react";
 
 // Short intake for the free migration preview. Posts the same JSON shape the
@@ -45,6 +47,8 @@ export function FitCheckForm({
         "Website URL": get("Preview-URL"),
         "Current platform": get("Preview-Platform"),
         "What would you like to change more easily": get("Preview-Change"),
+        "Source page": window.location.pathname,
+        ...readAttribution(),
       },
     };
     setState("sending");

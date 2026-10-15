@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { AttributionCapture } from "./attribution-capture";
 
 // Same analytics stack as the ported static pages: GA4 everywhere,
 // FullStory + Hotjar gated to the production hostname (dev sessions must
@@ -6,6 +7,7 @@ import Script from "next/script";
 export function SiteAnalytics() {
   return (
     <>
+      <AttributionCapture />
       <Script id="ga4" strategy="afterInteractive">
         {`if(/(^|\.)wearezinc\.com$/.test(location.hostname)){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-H4WRSH6E2G');var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-H4WRSH6E2G';document.head.appendChild(s);}`}
       </Script>
