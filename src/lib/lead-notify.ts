@@ -159,3 +159,76 @@ export async function sendLeadNotification(
   const body = await res.text().catch(() => "");
   return `failed:${res.status}:${body.slice(0, 200)}`;
 }
+
+// Confirmation to the person who asked for a free website assessment, sent
+// from the same Resend domain. Replies go to the team. Best-effort, like the
+// team notification: it never blocks or fails the submission.
+export function buildAssessmentConfirmation(input: { name?: string; url?: string; turnaround: string }) {
+  const first = input.name?.trim().split(/\s+/)[0];
+  const site = input.url?.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const subject = "Got it. Your free website assessment is underway.";
+  const lines = [
+    first ? `Hi ${first},` : "Hi,",
+    "",
+    `Thanks for sending ${site ? site : "your website"}. Here is what happens next:`,
+    "",
+    "1. A senior ZINC strategist reviews your site. A person, not a bot.",
+    `2. Within ${input.turnaround}, you get a short written assessment: how AI assistants and search see your business, where leads are slipping away, and your best next move.`,
+    "3. If it helps, we walk you through it on a 20-minute call. No obligation.",
+    "",
+    "While you wait, here is a real change to our own website, from request to live in 15 minutes:",
+    "https://www.wearezinc.com/solutions/ai-native-websites#real-change",
+    "",
+    "Anything we should know? Just reply to this email.",
+    "",
+    "Jim Zaslaw",
+    "Founder & CEO, ZINC",
+  ];
+  const html = `<!doctype html><html><body style="margin:0;background:#f4f4f4"><div style="max-width:560px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#161616;background:#ffffff">
+${lines
+  .map((l) =>
+    l === ""
+      ? ""
+      : l.startsWith("https://")
+        ? `<p style="margin:0 0 12px"><a href="${escapeHtml(l)}" style="color:#ff5b19">Watch the real change &gt;</a></p>`
+        : `<p style="margin:0 0 12px">${escapeHtml(l)}</p>`
+  )
+  .join("\n")}
+</div></body></html>`;
+  return { subject, text: lines.join("\n"), html };
+}
+
+export async function sendAssessmentConfirmation(input: {
+  submissionId: string;
+  email: string;
+  name?: string;
+  url?: string;
+  turnaround: string;
+}): Promise<"sent" | "skipped:no-config" | `failed:${string}`> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const team = notifyRecipients();
+  if (!apiKey) return "skipped:no-config";
+  const from = process.env.FORM_NOTIFY_FROM ?? "ZINC Website <forms@wearezinc.com>";
+  const { subject, text, html } = buildAssessmentConfirmation(input);
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "Idempotency-Key": `assessment-confirm-${input.submissionId}`,
+    },
+    body: JSON.stringify({
+      from,
+      to: [input.email],
+      ...(team.length ? { reply_to: team[0] } : {}),
+      subject,
+      text,
+      html,
+      tags: [{ name: "type", value: "assessment-confirmation" }],
+    }),
+    signal: AbortSignal.timeout(8_000),
+  });
+  if (res.ok) return "sent";
+  const body = await res.text().catch(() => "");
+  return `failed:${res.status}:${body.slice(0, 200)}`;
+}

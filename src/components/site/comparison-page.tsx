@@ -14,7 +14,7 @@ export function ComparisonPage({ data }: { data: Comparison }) {
       <ContentHero tagline={data.tagline} title={data.h1} lede={data.lede}>
         <div className="button-group">
           <a href="#compare" className="button w-button">See the Comparison &gt;</a>
-          <a href="/solutions/ai-native-websites#assessment" className="button is-link w-button">Get a Straight Answer for Your Site &gt;</a>
+          <a href="/free-website-assessment" className="button is-link w-button">Get a Straight Answer for Your Site &gt;</a>
         </div>
       </ContentHero>
 

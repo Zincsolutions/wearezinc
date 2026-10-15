@@ -1,5 +1,6 @@
 "use client";
 
+import { readAttribution } from "@/lib/attribution";
 import { useId, useRef, useState } from "react";
 
 // Enquiry form for the website offering pages (AI-native, migration,
@@ -92,6 +93,7 @@ export function EnquiryForm({
         [contextLabel]: get("context"),
         Offer: offer,
         "Source page": typeof window !== "undefined" ? window.location.pathname : "",
+        ...readAttribution(),
       },
     };
     setState("sending");

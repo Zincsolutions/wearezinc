@@ -191,8 +191,8 @@ test("shared navigation does not prefetch static Webflow routes as RSC", () => {
 
   assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/(?:on-brand-aeo-sprint|ai-strategy-optimization)"/);
   assert.doesNotMatch(shell, /<Link[^>]+href="\/(?:work|about-us|contact-us)"/);
-  // header pill drives the AI-native websites overview (a component route)
-  assert.match(shell, /const PILL_HREF = "\/solutions\/ai-native-websites";/);
+  // header pill drives the free website assessment (the site's front door, a component route)
+  assert.match(shell, /const PILL_HREF = "\/free-website-assessment";/);
   assert.match(shell, /href=\{PILL_HREF\}/);
   // links in the Solutions mega menu render as plain anchors
   assert.match(shell, /<a href=\{l\.href\} className=\{`nav-mega__link/);
@@ -242,7 +242,7 @@ test("static pages use the same Solutions mega menu as the React header", () => 
     assert.deepEqual(fallback, menuHrefs, `${page} dropdown fallback links`);
     // header pill matches navbar.tsx
     const pill = $("a.button_nav").first();
-    assert.equal(pill.attr("href"), "/solutions/ai-native-websites", `${page} pill link`);
+    assert.equal(pill.attr("href"), "/free-website-assessment", `${page} pill link`);
     assert.equal(pill.find(".div-block-10").text(), "Go AI Native.Website Assessment", `${page} pill text`);
     // footer Solutions links and the Dispatch line match footer.tsx
     const footer = $("footer .footer3_link-list").first().find("a")

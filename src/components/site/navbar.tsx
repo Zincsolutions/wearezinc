@@ -29,7 +29,7 @@ function Chevron() {
   );
 }
 
-const PILL_HREF = "/solutions/ai-native-websites";
+const PILL_HREF = "/free-website-assessment";
 
 export function Navbar() {
   const router = useRouter();

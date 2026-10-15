@@ -24,6 +24,7 @@ const COMPONENT_ROUTES: Record<string, string> = {
   "solutions/framer-ai-website-migration": "2026-10-15",
   "solutions/ai-built-website-cleanup": "2026-10-15",
   "migration-planner": "2026-10-15",
+  "free-website-assessment": "2026-10-15",
   glossary: "2026-10-15",
   compare: "2026-10-15",
   "compare/dispatch-vs-diy-ai-website-workflow": "2026-10-15",
