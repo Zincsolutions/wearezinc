@@ -79,7 +79,7 @@ export default function GlossaryPage() {
         </section>
         <KeepExploring
           groups={[
-            { heading: "Websites", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.enterprise] },
+            { heading: "AI-Ready Websites", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.enterprise] },
             { heading: "Control and visibility", links: [EXPLORE.dispatch, EXPLORE.realChange, EXPLORE.postStructure] },
             { heading: "Take the next step", links: [EXPLORE.planner, EXPLORE.assessment, EXPLORE.contact] },
           ]}
