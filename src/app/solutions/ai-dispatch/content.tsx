@@ -4,6 +4,7 @@
 // (header46, layout249, layout207, layout19, faq2) so it inherits the
 // site's look and feel. Dispatch leads with governance; AEO is supporting.
 import { FaqItems } from "@/components/site/faq";
+import { DispatchSetup } from "@/components/site/dispatch-setup";
 import { InShort } from "@/components/site/in-short";
 import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { EnquiryForm } from "@/components/site/enquiry-form";
@@ -166,6 +167,9 @@ export function DispatchContent() {
             </div>
           </div></div></div>
         </section>
+
+        {/* 6b. Foundations first: typical setup, week by week */}
+        <DispatchSetup />
 
         {/* 7. Three paths (layout249, three cards) */}
         <section className="section_aeo-6 color-scheme-1">
