@@ -162,7 +162,7 @@ export function Navbar() {
                   <p>Planning a move?</p>
                   <a href="/migration-planner" className="nav-mega__cta">Run the Free Migration Planner &gt;</a>
                   <p className="nav-mega__foot-split">Not sure where to start?</p>
-                  <a href="/contact-us" className="nav-mega__cta">Talk About Your Goals &gt;</a>
+                  <a href="/contact-us" className="nav-mega__cta">Book a Call &gt;</a>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export function Navbar() {
               <p className="sm">Website Assessment</p>
             </div>
           </a>
-          <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
+          <a href="/contact-us" className="btn nav-cta">Book a Call</a>
           <button
             type="button"
             className="nav-burger"
