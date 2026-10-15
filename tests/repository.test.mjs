@@ -330,3 +330,54 @@ test("triage migration adds status tracking to form_submissions", () => {
   assert.match(migration, /add column hubspot_contact_id text/);
   assert.match(migration, /add column notified_at timestamptz/);
 });
+
+test("llms.txt route maps the core offers for answer engines", () => {
+  const route = read("src/app/llms.txt/route.ts");
+
+  for (const p of [
+    "/solutions/ai-native-websites",
+    "/solutions/ai-website-migration",
+    "/solutions/wordpress-ai-website-migration",
+    "/solutions/ai-dispatch",
+    "/solutions/enterprise-websites",
+  ]) {
+    assert.match(route, new RegExp(p.replace(/\//g, "\\/")));
+  }
+  assert.match(route, /text\/plain/);
+});
+
+test("AI-native and migration pages lead with an In short answer and end with Keep exploring", () => {
+  for (const page of [
+    "src/app/solutions/ai-native-websites/content.tsx",
+    "src/app/solutions/ai-website-migration/content.tsx",
+    "src/app/solutions/wordpress-ai-website-migration/content.tsx",
+    "src/app/solutions/ai-dispatch/content.tsx",
+    "src/app/solutions/enterprise-websites/content.tsx",
+  ]) {
+    const src = read(page);
+    assert.match(src, /<InShort>/, `${page} is missing In short`);
+    assert.match(src, /<KeepExploring/, `${page} is missing Keep exploring`);
+  }
+});
+
+test("the AI-native walkthrough replays a real change, not an illustration", () => {
+  const page = read("src/app/solutions/ai-native-websites/content.tsx");
+  const replay = read("src/components/site/change-replay.tsx");
+
+  assert.match(page, /<ChangeReplay \/>/);
+  assert.doesNotMatch(page, /Illustrative workflow/);
+  assert.match(replay, /req-28b8544e/);
+});
+
+test("new solutions copy has no em dashes", () => {
+  for (const file of [
+    "src/components/site/in-short.tsx",
+    "src/components/site/keep-exploring.tsx",
+    "src/components/site/change-replay.tsx",
+    "src/app/solutions/ai-native-websites/faq-items.ts",
+    "src/app/solutions/ai-website-migration/faq-items.ts",
+  ]) {
+    const copy = read(file).split("\n").filter((l) => !l.trim().startsWith("//")).join("\n");
+    assert.doesNotMatch(copy, /—/, `${file} contains an em dash`);
+  }
+});

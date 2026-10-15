@@ -12,13 +12,14 @@ import "@/components/site/forms.css";
 import "@/components/site/offering.css";
 import "@/components/site/solutions-archetypes.css";
 import "@/components/site/offering-refresh.css";
+import "@/components/site/aeo-blocks.css";
 
 // Enterprise Websites & CMS: destination for the homepage's "Explore
 // Enterprise Websites" path. Webflow Enterprise expertise, practical AI
 // integration inside the platform, and an ongoing partnership. Copy from
 // the Sept 21, 2026 implementation package.
 
-const TITLE = "Webflow Enterprise & AI CMS Solutions | ZINC";
+const TITLE = "Webflow Enterprise Agency | Design, Development, and AI | ZINC";
 const DESCRIPTION =
   "Get more from Webflow Enterprise and the systems your business relies on. ZINC brings strategy, design, development, and practical AI integration to enterprise websites and CMS platforms.";
 

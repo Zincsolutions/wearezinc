@@ -4,6 +4,8 @@
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
 import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
@@ -60,6 +62,11 @@ export function EnterpriseContent() {
             <OfferingHeroVisual variant="platform" /></div>
           </div></div></div>
         </header>
+
+        <InShort>
+          <p>Webflow Enterprise is the right home for many marketing teams: <strong>a visual canvas, a structured CMS, and enterprise hosting, security, and support.</strong> ZINC designs, builds, and grows Webflow Enterprise sites, connects them to the systems your business runs on, and adds AI where it saves your team real time.</p>
+          <p>If your current platform is the right fit, we will say so, and help you get more from it.</p>
+        </InShort>
 
         <TrustStrip lead="25+ years of strategy, design, and digital delivery for brands including:" />
 
@@ -182,6 +189,14 @@ export function EnterpriseContent() {
             </div></div>
           </div></div></div>
         </section>
+      
+        <KeepExploring
+          groups={[
+            { heading: "Platforms and builds", links: [EXPLORE.design, EXPLORE.aiNative, EXPLORE.migration] },
+            { heading: "Reading", links: [EXPLORE.postStructure, EXPLORE.postSeo, EXPLORE.postBuild] },
+            { heading: "Take the next step", links: [EXPLORE.contact, EXPLORE.assessment, EXPLORE.ecommerce] },
+          ]}
+        />
       </main>
     </>
   );

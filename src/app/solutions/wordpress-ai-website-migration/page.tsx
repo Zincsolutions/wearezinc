@@ -10,13 +10,14 @@ import "@/components/site/site.css";
 import "@/components/site/page-animations.css";
 import "@/components/site/forms.css";
 import "./page.css";
+import "@/components/site/aeo-blocks.css";
 
 // Built from the same section archetypes as the ecommerce-acceleration page
 // (header46 hero, layout207, layout249, layout19, layout210, faq2, cta7).
 // page.css is the ecommerce extract plus the layout210 rules from the
 // website-design-development extract; nav/footer come from the shared shell.
 
-const TITLE = "WordPress to AI Website Migration | Keep Your Site, Move Beyond WordPress | ZINC";
+const TITLE = "WordPress to AI-Native Migration | No Plugins to Patch | ZINC";
 const DESCRIPTION =
   "Move your business website beyond WordPress. ZINC preserves your design, content, and URLs, replaces the plugin functions you rely on, and connects the site to Dispatch so your team can improve it with AI.";
 

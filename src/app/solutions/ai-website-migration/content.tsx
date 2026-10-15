@@ -4,6 +4,8 @@
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
 import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
@@ -60,6 +62,11 @@ export function MigrationContent() {
             <OfferingHeroVisual variant="migration" /></div>
           </div></div></div>
         </header>
+
+        <InShort>
+          <p>An AI website migration moves your pages, content, and search equity onto a codebase <strong>your team updates by asking its own AI agent</strong>. The work that protects you comes first: every URL inventoried, every redirect mapped, every title, form, and integration carried over and tested.</p>
+          <p>Your current site stays live until the new one checks out. From the first day after launch, Dispatch governs every change the agent makes.</p>
+        </InShort>
 
         <TrustStrip lead="25+ years of strategy, design, and digital delivery for brands including:" />
 
@@ -160,6 +167,14 @@ export function MigrationContent() {
             </div>
           </div></div></div>
         </section>
+      
+        <KeepExploring
+          groups={[
+            { heading: "Pick your path", links: [EXPLORE.wordpress, EXPLORE.aiNative, { ...EXPLORE.enterprise, note: "Not ready to move? Get more from Webflow Enterprise." }] },
+            { heading: "See the proof", links: [EXPLORE.realChange, EXPLORE.dispatch, EXPLORE.postDispatch] },
+            { heading: "Take the next step", links: [EXPLORE.preview, EXPLORE.assessment, EXPLORE.contact] },
+          ]}
+        />
       </main>
     </>
   );
