@@ -381,3 +381,26 @@ test("new solutions copy has no em dashes", () => {
     assert.doesNotMatch(copy, /—/, `${file} contains an em dash`);
   }
 });
+
+test("every migration path has a route, a sitemap entry, and an llms.txt entry", () => {
+  const data = read("src/lib/migration-paths.tsx");
+  const sitemap = read("src/app/sitemap.ts");
+  const llms = read("src/app/llms.txt/route.ts");
+  const slugs = [...data.matchAll(/slug: "([a-z-]+)"/g)].map((m) => m[1]);
+
+  assert.ok(slugs.length >= 5);
+  for (const slug of slugs) {
+    assert.ok(fs.existsSync(path.join(root, `src/app/solutions/${slug}/page.tsx`)), `Missing route for ${slug}`);
+    assert.match(sitemap, new RegExp(`"solutions/${slug}"`), `${slug} missing from sitemap`);
+    assert.match(llms, new RegExp(`/solutions/${slug}`), `${slug} missing from llms.txt`);
+  }
+});
+
+test("migration paths keep Webflow neutral and claims disciplined", () => {
+  const data = read("src/lib/migration-paths.tsx");
+
+  assert.match(data, /Stay on Webflow Enterprise when/);
+  assert.match(data, /\/solutions\/enterprise-websites/);
+  assert.doesNotMatch(data, /—/, "em dash in path copy");
+  assert.doesNotMatch(data, /guarantee(d)? (rankings|traffic)|zero SEO impact/i);
+});

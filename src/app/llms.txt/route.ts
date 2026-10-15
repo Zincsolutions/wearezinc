@@ -20,6 +20,16 @@ const SECTIONS: { heading: string; links: [path: string, title: string, note: st
     ],
   },
   {
+    heading: "Migration paths",
+    links: [
+      ["/solutions/webflow-ai-website-migration", "Webflow or AI-Native?", "A straight comparison from a Webflow partner that moved its own site: when Webflow Enterprise is the better call, when an AI-native site is, and how agents can work on Webflow too."],
+      ["/solutions/wix-ai-website-migration", "Wix to AI-Native Migration", "Wix does not export sites to other hosts, so the move is a rebuild: pages recreated, blog and CMS content recovered, every URL kept or redirected."],
+      ["/solutions/squarespace-ai-website-migration", "Squarespace to AI-Native Migration", "Part export, part recovery: pages, blog, and media moved, the design rebuilt without template limits, every URL mapped."],
+      ["/solutions/hubspot-cms-ai-website-migration", "HubSpot CMS to AI-Native Migration", "Keep HubSpot CRM, forms, tracking, and lead routing; move the website onto code you own."],
+      ["/solutions/framer-ai-website-migration", "Framer to AI-Native Migration", "Keep the Framer design and motion, rebuilt on Astro or Next.js in your own repository."],
+    ],
+  },
+  {
     heading: "Websites and platforms",
     links: [
       ["/solutions/enterprise-websites", "Enterprise Websites & CMS", "Webflow Enterprise design, development, CMS integrations, and team enablement for organizations whose current platform is the right fit."],

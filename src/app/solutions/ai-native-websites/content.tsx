@@ -10,6 +10,7 @@ import { StepNumber } from "@/components/site/step-number";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { ChangeReplay } from "@/components/site/change-replay";
+import { StackPicks } from "@/components/site/stack-picks";
 import { InShort } from "@/components/site/in-short";
 import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { FAQ_ITEMS } from "./faq-items";
@@ -177,6 +178,9 @@ export function OverviewContent() {
             </div>
           </div></div></div>
         </section>
+
+        {/* Platform recommendations */}
+        <StackPicks />
 
         {/* Team support (layout249, two cards) */}
         <section className="section_aeo-6 color-scheme-1">
