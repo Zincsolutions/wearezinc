@@ -7,7 +7,7 @@ const SITE = "https://www.wearezinc.com";
 const COMPONENT_LAST_MODIFIED: Record<string, string> = {
   index: "2026-10-15",
   "solutions/automation-workflows": "2026-10-15",
-  "solutions/ecommerce-acceleration": "2026-10-15",
+  "solutions/ecommerce-acceleration": "2026-10-20",
   "solutions/website-design-development": "2026-10-15",
 };
 // Component routes that have no static twin in the manifest.
@@ -23,6 +23,7 @@ const COMPONENT_ROUTES: Record<string, string> = {
   "solutions/hubspot-cms-ai-website-migration": "2026-10-15",
   "solutions/framer-ai-website-migration": "2026-10-15",
   "solutions/ai-built-website-cleanup": "2026-10-15",
+  "solutions/ai-shopping-readiness": "2026-10-20",
   "migration-planner": "2026-10-15",
   "free-website-assessment": "2026-10-15",
   glossary: "2026-10-15",

@@ -74,6 +74,7 @@ test("componentized landing pages have one primary heading", () => {
   const pages = [
     "src/app/(home)/content.tsx",
     "src/app/solutions/ecommerce-acceleration/content.tsx",
+    "src/app/solutions/ai-shopping-readiness/content.tsx",
     "src/app/solutions/website-design-development/content.tsx",
     "src/app/solutions/automation-workflows/content.tsx",
   ];
@@ -456,5 +457,15 @@ test("glossary terms all link somewhere that exists", () => {
       fs.existsSync(path.join(root, `src/app/${route}/page.tsx`)) ||
       JSON.parse(read("public/_wf/manifest.json")).pages.includes(route);
     assert.ok(exists, `Glossary link ${href} has no page`);
+  }
+});
+
+test("every Solutions menu link opens its own page, not an anchor", () => {
+  // Oct 20, 2026: commerce items used to jump to sections of one page.
+  const groups = JSON.parse(read("src/components/site/solution-groups.json"));
+  for (const group of groups) {
+    for (const link of group.links) {
+      assert.doesNotMatch(link.href, /#/, `${link.label} should link to a page, not ${link.href}`);
+    }
   }
 });

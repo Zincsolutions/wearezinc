@@ -58,7 +58,8 @@ const SECTIONS: { heading: string; links: [path: string, title: string, note: st
   {
     heading: "E-commerce and AI enablement",
     links: [
-      ["/solutions/ecommerce-acceleration", "E-commerce Acceleration", "Get chosen by AI shoppers: accurate product facts, policies, and a tested path to checkout, plus practical AI for commerce teams. Starts with a free AI shopping check."],
+      ["/solutions/ai-shopping-readiness", "AI Shopping Readiness", "Get chosen by AI shoppers: accurate product facts, policies, AI channel settings, and a tested path to checkout for Shopify stores. Starts with a free AI shopping check."],
+      ["/solutions/ecommerce-acceleration", "E-commerce Acceleration", "Shopify and BigCommerce storefronts and conversion, AI shopping readiness, and practical AI for commerce teams (AI drafts, your team approves)."],
       ["/solutions/ai-strategy-optimization", "AI Strategy & Training", "Where AI makes a useful difference, which tools to choose, and training so teams apply them with confidence."],
       ["/solutions/automation-workflows", "AI Workflows & Automation", "AI connected to existing CMS, CRM, and marketing systems, with clear review and approval steps."],
       ["/solutions/on-brand-aeo-sprint", "On-Brand AEO Sprint", "A focused sprint to improve how answer engines read, cite, and describe a brand."],

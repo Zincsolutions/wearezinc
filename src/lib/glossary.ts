@@ -27,8 +27,8 @@ export const TERMS: Term[] = [
     term: "Agentic commerce",
     definition: "Agentic commerce is shopping with the help of AI assistants that research, compare, and on some channels buy on a shopper’s behalf.",
     more: "For a store, the question is whether assistants understand its products, prices, and policies well enough to recommend them.",
-    href: "/solutions/ecommerce-acceleration",
-    linkLabel: "E-commerce Acceleration",
+    href: "/solutions/ai-shopping-readiness",
+    linkLabel: "AI Shopping Readiness",
   },
   {
     id: "ai-native-website",

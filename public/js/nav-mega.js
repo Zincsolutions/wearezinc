@@ -42,25 +42,15 @@
       "heading": "E-commerce Acceleration",
       "links": [
         {
-          "href": "/solutions/ecommerce-acceleration#ai-shopping",
+          "href": "/solutions/ai-shopping-readiness",
           "label": "AI Shopping Readiness",
           "desc": "Get found, understood, and bought by AI.",
           "featured": true
         },
         {
-          "href": "/solutions/ecommerce-acceleration#storefronts",
-          "label": "Storefronts & Conversion",
-          "desc": "Shopify and BigCommerce stores that sell."
-        },
-        {
-          "href": "/solutions/ecommerce-acceleration#ai-operations",
-          "label": "AI for Commerce Teams",
-          "desc": "Catalog, content, and reporting workflows."
-        },
-        {
           "href": "/solutions/ecommerce-acceleration",
           "label": "E-commerce Acceleration",
-          "desc": "Everything we do for commerce brands."
+          "desc": "Storefronts, conversion, and AI for commerce teams."
         }
       ]
     },
