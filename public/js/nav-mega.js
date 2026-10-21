@@ -1,7 +1,8 @@
 /* ZINC Solutions mega menu for the static (Webflow-ported) pages.
    Replaces the old Webflow dropdown with the same menu the React header
    renders (src/components/site/navbar.tsx): four columns, one-line
-   descriptions, a featured row, and a footer prompt. Opens on hover or
+   descriptions, a featured row, and a footer with the migration planner
+   and a contact prompt. Opens on hover or
    click, Escape closes it, and on tablet and below it becomes an open
    accordion inside the Webflow mobile menu. Styles: /css/nav-mega.css. */
 (function () {
@@ -9,40 +10,87 @@
 
   // Keep in sync with src/components/site/solution-groups.json
   // (tests/repository.test.mjs fails if they drift).
-  var GROUPS = /* solution-groups:start */[
+  var GROUPS = /* solution-groups:start */
+  [
     {
-      "heading": "Websites",
+      "heading": "AI-Ready Websites",
       "links": [
-        { "href": "/solutions/ai-native-websites", "label": "AI-Native Websites", "desc": "Update your site by asking an AI agent.", "featured": true },
-        { "href": "/solutions/ai-website-migration", "label": "AI Website Migration", "desc": "Move your site. Keep what works." },
-        { "href": "/solutions/enterprise-websites", "label": "Enterprise Websites & CMS", "desc": "Webflow Enterprise and CMS integrations." },
-        { "href": "/solutions/website-design-development", "label": "Website Design & Development", "desc": "New builds and focused improvements." },
-        { "href": "/solutions/ai-dispatch", "label": "Dispatch", "desc": "Governance for AI-powered websites." }
+        {
+          "href": "/solutions/ai-website-migration",
+          "label": "AI Website Migration",
+          "desc": "Leave WordPress, Wix, Squarespace, and more.",
+          "featured": true
+        },
+        {
+          "href": "/solutions/ai-native-websites",
+          "label": "AI-Native Websites",
+          "desc": "New or rebuilt sites you update by asking AI."
+        },
+        {
+          "href": "/solutions/enterprise-websites",
+          "label": "Enterprise Websites & CMS",
+          "desc": "Webflow Enterprise and CMS integrations."
+        },
+        {
+          "href": "/solutions/ai-dispatch",
+          "label": "Dispatch",
+          "desc": "Governance for AI-powered websites."
+        }
       ]
     },
     {
       "heading": "E-commerce Acceleration",
       "links": [
-        { "href": "/solutions/ecommerce-acceleration#ai-shopping", "label": "AI Shopping Readiness", "desc": "Get found, understood, and bought by AI.", "featured": true },
-        { "href": "/solutions/ecommerce-acceleration#storefronts", "label": "Storefronts & Conversion", "desc": "Shopify and BigCommerce stores that sell." },
-        { "href": "/solutions/ecommerce-acceleration#ai-operations", "label": "AI for Commerce Teams", "desc": "Catalog, content, and reporting workflows." },
-        { "href": "/solutions/ecommerce-acceleration", "label": "E-commerce Acceleration", "desc": "Everything we do for commerce brands." }
+        {
+          "href": "/solutions/ecommerce-acceleration#ai-shopping",
+          "label": "AI Shopping Readiness",
+          "desc": "Get found, understood, and bought by AI.",
+          "featured": true
+        },
+        {
+          "href": "/solutions/ecommerce-acceleration#storefronts",
+          "label": "Storefronts & Conversion",
+          "desc": "Shopify and BigCommerce stores that sell."
+        },
+        {
+          "href": "/solutions/ecommerce-acceleration#ai-operations",
+          "label": "AI for Commerce Teams",
+          "desc": "Catalog, content, and reporting workflows."
+        },
+        {
+          "href": "/solutions/ecommerce-acceleration",
+          "label": "E-commerce Acceleration",
+          "desc": "Everything we do for commerce brands."
+        }
       ]
     },
     {
       "heading": "AI Enablement",
       "links": [
-        { "href": "/solutions/ai-enablement", "label": "AI Strategy & Training", "desc": "Find where AI helps and train your team." },
-        { "href": "/solutions/automation-workflows", "label": "AI Workflows & Automation", "desc": "Connect AI to your CMS, CRM, and marketing." }
+        {
+          "href": "/solutions/ai-enablement",
+          "label": "AI Strategy & Training",
+          "desc": "Find where AI helps and train your team."
+        },
+        {
+          "href": "/solutions/automation-workflows",
+          "label": "AI Workflows & Automation",
+          "desc": "Connect AI to your CMS, CRM, and marketing."
+        }
       ]
     },
     {
       "heading": "Strategy & Brand",
       "links": [
-        { "href": "/solutions/branding-positioning", "label": "Brand Strategy & Design", "desc": "Positioning, messaging, and identity." }
+        {
+          "href": "/solutions/branding-positioning",
+          "label": "Brand Strategy & Design",
+          "desc": "Positioning, messaging, and identity."
+        }
       ]
     }
-  ]/* solution-groups:end */;
+  ]
+  /* solution-groups:end */;
 
   var old = document.querySelector('.navbar2_menu-dropdown');
   if (!old) return;
@@ -104,8 +152,12 @@
     grid.appendChild(col);
   });
   var foot = el('div', 'nav-mega__foot');
-  foot.appendChild(el('p', '', 'Not sure where to start?'));
-  var cta = el('a', 'nav-mega__cta', 'Talk About Your Goals >');
+  foot.appendChild(el('p', '', 'Planning a move?'));
+  var planner = el('a', 'nav-mega__cta', 'Run the Free Migration Planner >');
+  planner.href = '/migration-planner';
+  foot.appendChild(planner);
+  foot.appendChild(el('p', 'nav-mega__foot-split', 'Not sure where to start?'));
+  var cta = el('a', 'nav-mega__cta', 'Book a Call >');
   cta.href = '/contact-us';
   foot.appendChild(cta);
   inner.appendChild(grid);

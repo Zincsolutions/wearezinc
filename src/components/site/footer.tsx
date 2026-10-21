@@ -3,6 +3,7 @@ import { HomeLink } from "./home-link";
 const SOLUTION_LINKS = [
   { href: "/solutions/ai-native-websites", label: "AI-Native Websites" },
   { href: "/solutions/ai-website-migration", label: "AI Website Migration" },
+  { href: "/solutions/ai-built-website-cleanup", label: "AI-Built Site Cleanup" },
   { href: "/solutions/enterprise-websites", label: "Enterprise Websites & CMS" },
   { href: "/solutions/ai-dispatch", label: "Dispatch" },
   { href: "/solutions/website-design-development", label: "Website Design & Development" },
@@ -15,6 +16,9 @@ const SOLUTION_LINKS = [
 const COMPANY_LINKS = [
   { href: "/work", label: "Our Work" },
   { href: "/blog", label: "Ideas & Insights" },
+  { href: "/migration-planner", label: "Migration Planner" },
+  { href: "/compare", label: "Comparisons" },
+  { href: "/glossary", label: "Glossary" },
   { href: "/about-us", label: "About" },
   { href: "/contact-us", label: "Contact Us" },
 ];

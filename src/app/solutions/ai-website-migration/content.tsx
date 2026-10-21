@@ -4,9 +4,14 @@
 // Copy is the approved text from the Sept 21, 2026 package, verbatim.
 import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
+import { MigrationPathsHub } from "@/components/site/migration-paths-hub";
+import { MigrationMethod } from "@/components/site/migration-method";
+import { OwnMigrationProof } from "@/components/site/own-migration-proof";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { FAQ_ITEMS } from "./faq-items";
@@ -54,12 +59,17 @@ export function MigrationContent() {
               <p className="text-size-medium hero-seq__item">Bring your website into an AI-native environment with an experienced team handling the migration, our governance platform, Dispatch, providing control, and your team prepared to take over.</p>
               <div className="margin-top margin-medium hero-seq__item"><div className="button-group">
                 <a href="#quote" className="button w-button">Request a Migration Quote &gt;</a>
-                <a href="#scope" className="button is-link is-icon w-inline-block"><div>See What’s Included</div><ArrowIcon /></a>
+                <a href="#proof" className="button is-link is-icon w-inline-block"><div>See Our Own Migration</div><ArrowIcon /></a>
               </div></div>
             </div>
             <OfferingHeroVisual variant="migration" /></div>
           </div></div></div>
         </header>
+
+        <InShort>
+          <p>An AI website migration moves your pages, content, and search equity onto a codebase <strong>your team updates by asking its own AI agent</strong>. The work that protects you comes first: every URL inventoried, every redirect mapped, every title, form, and integration carried over and tested.</p>
+          <p>Your current site stays live until the new one checks out. From the first day after launch, Dispatch governs every change the agent makes.</p>
+        </InShort>
 
         <TrustStrip lead="25+ years of strategy, design, and digital delivery for brands including:" />
 
@@ -78,22 +88,14 @@ export function MigrationContent() {
           </div></div></div>
         </section>
 
-        {/* Process (layout249, numbered) */}
-        <section className="section_aeo-6 color-scheme-1">
-          <div className="padding-global"><div className="container-large"><div className="padding-section-large">
-            <div className="layout249_component">
-              <Intro tagline="A clear path to launch" heading="Know what’s moving. See it before it goes live." />
-              <Cards items={[
-                { n: "01 · Scope", title: "Agree the plan.", text: "We review your site and requirements, then outline what carries over, what needs rebuilding, the timeline, and the costs." },
-                { n: "02 · Migrate", title: "Review your new site.", text: "Your current website stays live while we prepare a staging version, test the agreed functionality, and work through your feedback." },
-                { n: "03 · Launch", title: "Make the move.", text: "We coordinate the switch, run launch checks, and hand over the website, account access, documentation, and team training." },
-              ]} />
-              <div className="offering-links">
-                <a href="#quote" className="button w-button">Plan Your Migration &gt;</a>
-              </div>
-            </div>
-          </div></div></div>
-        </section>
+        {/* Platform-specific paths */}
+        <MigrationPathsHub />
+
+        {/* Method, with proof lines from our own move */}
+        <MigrationMethod />
+
+        {/* Proof: our own migration */}
+        <OwnMigrationProof cta={{ href: "#quote", label: "Plan Your Migration" }} />
 
         {/* ZINC and Dispatch (layout207) */}
         <section className="section_aeo-4">
@@ -160,6 +162,14 @@ export function MigrationContent() {
             </div>
           </div></div></div>
         </section>
+      
+        <KeepExploring
+          groups={[
+            { heading: "Pick your path", links: [EXPLORE.wordpress, EXPLORE.aiNative, { ...EXPLORE.enterprise, note: "Not ready to move? Get more from Webflow Enterprise." }] },
+            { heading: "See the proof", links: [EXPLORE.realChange, EXPLORE.dispatch, EXPLORE.compare, EXPLORE.glossary] },
+            { heading: "Take the next step", links: [EXPLORE.planner, EXPLORE.preview, EXPLORE.assessment] },
+          ]}
+        />
       </main>
     </>
   );

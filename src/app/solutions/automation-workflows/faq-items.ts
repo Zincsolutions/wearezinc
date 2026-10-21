@@ -1,0 +1,10 @@
+import type { FaqItem } from "@/components/site/faq";
+
+// FAQ content extracted verbatim from the Webflow capture.
+export const FAQ_ITEMS: FaqItem[] = [
+  { q: "What is AI workflow automation and how can it help my business?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>AI workflow automation uses artificial intelligence to streamline repetitive tasks, reduce manual input, and improve speed and accuracy across business processes. It helps businesses save time, increase output, and focus human effort on high-impact work.</p></div></div>` },
+  { q: "How does ZINC implement AI automation for marketing and content teams?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>ZINC audits your current workflows, identifies areas for automation, and builds AI-powered systems for content creation, campaign management, and marketing operations. We use tools like Make, Notion, and CustomGPTs to create scalable, efficient systems tailored to your team.</p></div></div>` },
+  { q: "What tools does ZINC use for AI and automation integration?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>We work with leading automation and AI tools including Make (Integromat), Zapier, HubSpot, Notion, Airtable, and OpenAI. We integrate these platforms to build seamless workflows that support marketing, sales, and content operations.</p></div></div>` },
+  { q: "Do I need to replace my current systems to add AI automation?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>No. ZINC works with your existing platforms and systems. We integrate AI tools into your current workflows to enhance performance without disrupting your team or requiring a full rebuild.</p></div></div>` },
+  { q: "How long does it take to implement AI automation workflows?", a: `<div class="margin-bottom margin-small"><div class="max-width-large"><p>Most automation projects take 2 to 6 weeks depending on complexity. We start with a quick-win pilot and then expand into broader systems that scale with your needs.</p></div></div>` },
+];

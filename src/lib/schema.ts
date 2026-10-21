@@ -142,3 +142,50 @@ export function buildServiceSchema({
     ],
   };
 }
+
+// Generic page graph for content pages that are not a single service
+// (glossary, comparisons, tools). `extra` nodes join the same graph.
+export function buildWebPageSchema({
+  name,
+  description,
+  path,
+  faqs = [],
+  extra = [],
+  pageType = "WebPage",
+}: {
+  name: string;
+  description: string;
+  path: string;
+  faqs?: FaqSource[];
+  extra?: Record<string, unknown>[];
+  pageType?: string;
+}) {
+  const url = `${SITE}${path}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      website,
+      {
+        "@type": pageType,
+        "@id": `${url}#webpage`,
+        url,
+        name,
+        description,
+        isPartOf: { "@id": WEBSITE_ID },
+        publisher: { "@id": ORGANIZATION_ID },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+          { "@type": "ListItem", position: 2, name, item: url },
+        ],
+      },
+      ...extra,
+      ...(faqs.length ? [faqPage(faqs, url)] : []),
+    ],
+  };
+}

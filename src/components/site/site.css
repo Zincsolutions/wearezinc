@@ -477,6 +477,7 @@ html.gsap-js [data-gsap-lines] { visibility: hidden; }
   color: rgba(22, 22, 22, 0.7);
 }
 .nav-mega__foot p { margin: 0; }
+.nav-mega__foot .nav-mega__foot-split { margin-left: auto; }
 .nav-mega__cta { color: var(--ink); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; transition: color 160ms ease-out; }
 .nav-mega__cta:hover, .nav-mega__cta:focus-visible { color: var(--orange); }
 

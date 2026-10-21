@@ -5,17 +5,30 @@ import { getAllPosts, isContentConfigured } from "@/lib/content";
 
 const SITE = "https://www.wearezinc.com";
 const COMPONENT_LAST_MODIFIED: Record<string, string> = {
-  index: "2026-09-21",
-  "solutions/ecommerce-acceleration": "2026-09-21",
-  "solutions/website-design-development": "2026-08-25",
+  index: "2026-10-15",
+  "solutions/automation-workflows": "2026-10-15",
+  "solutions/ecommerce-acceleration": "2026-10-15",
+  "solutions/website-design-development": "2026-10-15",
 };
 // Component routes that have no static twin in the manifest.
 const COMPONENT_ROUTES: Record<string, string> = {
-  "solutions/ai-dispatch": "2026-09-22",
-  "solutions/ai-native-websites": "2026-09-21",
-  "solutions/ai-website-migration": "2026-09-21",
+  "solutions/ai-dispatch": "2026-10-15",
+  "solutions/ai-native-websites": "2026-10-15",
+  "solutions/ai-website-migration": "2026-10-15",
   "solutions/enterprise-websites": "2026-09-21",
   "solutions/wordpress-ai-website-migration": "2026-09-20",
+  "solutions/webflow-ai-website-migration": "2026-10-15",
+  "solutions/wix-ai-website-migration": "2026-10-15",
+  "solutions/squarespace-ai-website-migration": "2026-10-15",
+  "solutions/hubspot-cms-ai-website-migration": "2026-10-15",
+  "solutions/framer-ai-website-migration": "2026-10-15",
+  "solutions/ai-built-website-cleanup": "2026-10-15",
+  "migration-planner": "2026-10-15",
+  "free-website-assessment": "2026-10-15",
+  glossary: "2026-10-15",
+  compare: "2026-10-15",
+  "compare/dispatch-vs-diy-ai-website-workflow": "2026-10-15",
+  "compare/ai-agent-vs-headless-cms": "2026-10-15",
 };
 
 export const revalidate = 3600;

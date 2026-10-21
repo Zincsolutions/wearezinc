@@ -136,6 +136,7 @@
   color: var(--mm-muted);
 }
 .has-mega .nav-mega__foot p { margin: 0; font-size: inherit; }
+.has-mega .nav-mega__foot .nav-mega__foot-split { margin-left: auto; }
 .has-mega .nav-mega__cta { color: var(--mm-ink); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; transition: color 160ms ease-out; }
 .has-mega .nav-mega__cta:hover, .has-mega .nav-mega__cta:focus-visible { color: var(--mm-orange); }
 

@@ -9,7 +9,10 @@ import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { StepNumber } from "@/components/site/step-number";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { TrustStrip } from "@/components/site/trust-strip";
-import { WorkflowSteps } from "@/components/site/workflow-steps";
+import { ChangeReplay } from "@/components/site/change-replay";
+import { StackPicks } from "@/components/site/stack-picks";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { FAQ_ITEMS } from "./faq-items";
 
 const ArrowIcon = () => (
@@ -84,6 +87,11 @@ export function OverviewContent() {
           </div></div></div>
         </header>
 
+        <InShort>
+          <p>An AI-native website keeps its code and content where <strong>your own AI agent can change it</strong>. You ask for an update in plain language, preview the result, and approve it before it goes live.</p>
+          <p>ZINC moves, builds, or connects the website. Our governance platform, Dispatch, records every request, approval, and restore point. You keep the code, the hosting, and the content.</p>
+        </InShort>
+
         <TrustStrip
           lead="25+ years of strategy, design, and digital delivery. Trusted by brands including:"
           note="ZINC agency experience across brand, web, and commerce."
@@ -93,12 +101,12 @@ export function OverviewContent() {
         <section id="walkthrough" className="section_aeo-6 color-scheme-1">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
             <div className="max-width-large">
-              <div className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; A different way to work &lt;</div></div>
-              <div className="margin-bottom margin-small"><h2 className="heading-style-h2">Making website updates starts with a conversation.</h2></div>
-              <p className="text-size-medium">Tell your AI agent what you’d like to change. Preview the result, ask for adjustments, and approve it when you’re ready.</p>
+              <div id="real-change" className="margin-bottom margin-xsmall"><div className="text-style-tagline">&gt; A real change, start to finish &lt;</div></div>
+              <div className="margin-bottom margin-small"><h2 className="heading-style-h2">One request. One send-back. Live in 15 minutes.</h2></div>
+              <p className="text-size-medium">No ticket. No developer queue. No surprises on the live site. This is an actual change to the website you’re reading, made on August 18, 2026, with every step on the record.</p>
             </div>
-            <WorkflowSteps />
-            <p className="offering-note">Illustrative workflow, not a live agent or Dispatch product demo.</p>
+            <ChangeReplay />
+            <p className="offering-note">Replay of Dispatch request req-28b8544e on wearezinc.com. Times are Pacific. The line is still in the footer of this page.</p>
             <div className="offering-definition" data-reveal="">
               <strong>That’s the idea behind an AI-native website.</strong>
               Your agent works with the website’s code and content. You describe the change and review the result. ZINC sets up the website and the management tools that make this possible.
@@ -171,6 +179,9 @@ export function OverviewContent() {
           </div></div></div>
         </section>
 
+        {/* Platform recommendations */}
+        <StackPicks />
+
         {/* Team support (layout249, two cards) */}
         <section className="section_aeo-6 color-scheme-1">
           <div className="padding-global"><div className="container-large"><div className="padding-section-large">
@@ -181,6 +192,11 @@ export function OverviewContent() {
                 <div><h3 className="heading-style-h4"><strong>Room to keep growing.</strong></h3><p>Work with us on content, campaigns, SEO and AEO, and improvements that help turn visits into opportunities.</p></div>
               </div>
               <p className="offering-bottomline">Starting fresh or already running a code-based site? We also design new AI-native websites and integrate agents and Dispatch into compatible sites.</p>
+              <a href="/solutions/ai-built-website-cleanup" className="site-callout" data-reveal="">
+                <span className="site-callout_label">Already built something with AI?</span>
+                <span className="site-callout_text">If your site came together fast in a tool such as Lovable, v0, or Bolt, we make it secure, findable, and safe to keep building on, then put it under Dispatch.</span>
+                <span className="site-callout_go" aria-hidden="true">See AI-built site cleanup &gt;</span>
+              </a>
               <div className="offering-links">
                 <a href="/work" className="button is-link is-icon w-inline-block"><div>Explore ZINC’s Work</div><ArrowIcon /></a>
               </div>
@@ -228,6 +244,13 @@ export function OverviewContent() {
             </div></div>
           </div></div></div>
         </section>
+        <KeepExploring
+          groups={[
+            { heading: "Find your path", links: [EXPLORE.migration, EXPLORE.wordpress, { ...EXPLORE.enterprise, note: "Staying on Webflow? Get more from the platform you have." }, EXPLORE.cleanup] },
+            { heading: "See how control works", links: [EXPLORE.dispatch, EXPLORE.postDispatch, EXPLORE.postStructure] },
+            { heading: "Take the next step", links: [EXPLORE.preview, EXPLORE.assessment, EXPLORE.contact] },
+          ]}
+        />
       </main>
     </>
   );

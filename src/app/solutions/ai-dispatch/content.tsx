@@ -4,6 +4,9 @@
 // (header46, layout249, layout207, layout19, faq2) so it inherits the
 // site's look and feel. Dispatch leads with governance; AEO is supporting.
 import { FaqItems } from "@/components/site/faq";
+import { DispatchSetup } from "@/components/site/dispatch-setup";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { FAQ_ITEMS } from "./faq-items";
 
@@ -77,6 +80,10 @@ export function DispatchContent() {
           </div></div></div>
         </header>
         <div className="section-divider"><div className="padding-global"><div className="container-large"><div className="row-top"><div className="divider-line"></div></div></div></div></div>
+        <InShort>
+          <p>Dispatch is the management layer for AI-powered websites. <strong>Your agent builds each change on its own branch. Your team previews it and approves it by role and risk,</strong> and supported changes can be restored with one click.</p>
+          <p>Bring your own agent, such as Claude Code, Codex, or Gemini. The website stays in your repository and hosting account. Turn Dispatch off and the site keeps running.</p>
+        </InShort>
 
         {/* 2. The new operating model (layout207) */}
         <section className="section_aeo-4">
@@ -142,7 +149,7 @@ export function DispatchContent() {
               <div className="margin-bottom margin-small"><p className="text-size-medium">Dispatch does not force your team into one AI model or one hosting platform. Use an agent such as Claude Code, Codex, or Gemini. Keep the website in your own GitHub repository. Deploy through the host that fits the project, including Vercel, Netlify, or Cloudflare.</p></div>
               <p className="text-size-medium">ZINC recommends the architecture around the website’s real needs. Dispatch adds a consistent management layer above the tools, so the team does not have to trade ownership for convenience.</p>
               <p className="offering-bottomline">Your website continues to live in your repository and hosting account. Dispatch governs the work around it.</p>
-              <p className="offering-note">This website runs the same way: Claude Code on the repository, governed through Dispatch.</p>
+              <p className="offering-note">This website runs the same way: Claude Code on the repository, governed through Dispatch. <a href="/solutions/ai-native-websites#real-change" className="faq-link">Watch a real change, step by step &gt;</a></p>
             </Intro>
           </div></div></div>
         </section>
@@ -160,6 +167,9 @@ export function DispatchContent() {
             </div>
           </div></div></div>
         </section>
+
+        {/* 6b. Foundations first: typical setup, week by week */}
+        <DispatchSetup />
 
         {/* 7. Three paths (layout249, three cards) */}
         <section className="section_aeo-6 color-scheme-1">
@@ -253,6 +263,14 @@ export function DispatchContent() {
             </div></div>
           </div></div></div>
         </section>
+      
+        <KeepExploring
+          groups={[
+            { heading: "Get an agent-ready site", links: [EXPLORE.aiNative, EXPLORE.migration, EXPLORE.wordpress] },
+            { heading: "See it working", links: [EXPLORE.realChange, { href: "/compare/dispatch-vs-diy-ai-website-workflow", title: "Dispatch vs a DIY agent workflow", note: "Where GitHub is enough, and where it is not." }, EXPLORE.postDispatch] },
+            { heading: "Take the next step", links: [EXPLORE.assessment, { ...EXPLORE.enterprise, note: "On Webflow Enterprise? We add AI workflows there too." }, EXPLORE.contact] },
+          ]}
+        />
       </main>
     </>
   );

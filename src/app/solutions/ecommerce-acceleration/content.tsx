@@ -10,6 +10,8 @@
 // store still needs, then fixes it. Entry offer is a free AI shopping check.
 import type { CSSProperties } from "react";
 import { FaqItems } from "@/components/site/faq";
+import { InShort } from "@/components/site/in-short";
+import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { StepNumber } from "@/components/site/step-number";
 import { FAQ_ITEMS } from "./faq-items";
@@ -112,6 +114,12 @@ export function EcomContent() {
             </div></div>
           </div></div></div>
         </header>
+
+        <InShort>
+          <p>Shopify already connects eligible stores to AI shopping. <strong>Whether assistants understand your products, trust your policies, and send buyers through to checkout depends on details your store controls.</strong> ZINC separates what the platform handles from what your store still needs, then fixes it.</p>
+          <p>Behind the scenes, we put practical AI to work on catalog, content, and reporting: AI drafts, your team approves. It starts with a free AI shopping check.</p>
+        </InShort>
+
         <div className="section-divider"><div className="padding-global"><div className="container-large"><div className="row-top"><div className="divider-line"></div></div></div></div></div>
 
         {/* The stakes (layout249): three situations merchants recognize, plus the self-test */}
@@ -355,6 +363,14 @@ export function EcomContent() {
             </div></div>
           </div></div></div>
         </section>
+
+        <KeepExploring
+          groups={[
+            { heading: "Commerce and platforms", links: [{ href: "/partners/shopify", title: "Shopify partnership", note: "How we design, build, and grow Shopify stores." }, EXPLORE.design, EXPLORE.enterprise] },
+            { heading: "Reading", links: [{ href: "/glossary", title: "AI search glossary", note: "AEO, agentic commerce, and more, in plain English." }, EXPLORE.postStructure, EXPLORE.postSeo] },
+            { heading: "Take the next step", links: [{ href: "#assessment", title: "Get a free AI shopping check", note: "See your store the way AI assistants do." }, { href: "/work/dfnd-shopify-website-design", title: "See our Shopify work", note: "DFND: a Shopify store built to sell." }, EXPLORE.contact] },
+          ]}
+        />
       </main>
     </>
   );

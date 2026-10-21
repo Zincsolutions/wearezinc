@@ -75,6 +75,7 @@ test("componentized landing pages have one primary heading", () => {
     "src/app/(home)/content.tsx",
     "src/app/solutions/ecommerce-acceleration/content.tsx",
     "src/app/solutions/website-design-development/content.tsx",
+    "src/app/solutions/automation-workflows/content.tsx",
   ];
 
   for (const page of pages) {
@@ -190,8 +191,8 @@ test("shared navigation does not prefetch static Webflow routes as RSC", () => {
 
   assert.doesNotMatch(shell, /<Link[^>]+href="\/solutions\/(?:on-brand-aeo-sprint|ai-strategy-optimization)"/);
   assert.doesNotMatch(shell, /<Link[^>]+href="\/(?:work|about-us|contact-us)"/);
-  // header pill drives the AI-native websites overview (a component route)
-  assert.match(shell, /const PILL_HREF = "\/solutions\/ai-native-websites";/);
+  // header pill drives the free website assessment (the site's front door, a component route)
+  assert.match(shell, /const PILL_HREF = "\/free-website-assessment";/);
   assert.match(shell, /href=\{PILL_HREF\}/);
   // links in the Solutions mega menu render as plain anchors
   assert.match(shell, /<a href=\{l\.href\} className=\{`nav-mega__link/);
@@ -218,7 +219,16 @@ test("static pages use the same Solutions mega menu as the React header", () => 
       .slice(footerTsx.indexOf("const SOLUTION_LINKS"), footerTsx.indexOf("const COMPANY_LINKS"))
       .matchAll(/href: "([^"]+)", label: "([^"]+)"/g),
   ].map((m) => [m[1], m[2]]);
-  assert.equal(footerLinks.length, 9);
+  assert.equal(footerLinks.length, 10);
+  const companyLinks = [
+    ...footerTsx
+      .slice(footerTsx.indexOf("const COMPANY_LINKS"), footerTsx.indexOf("export function Footer"))
+      .matchAll(/href: "([^"]+)", label: "([^"]+)"/g),
+  ].map((m) => [m[1], m[2]]);
+  // reference pages from the DesignMe review stay reachable from every footer
+  for (const href of ["/migration-planner", "/compare", "/glossary"]) {
+    assert.ok(companyLinks.some(([h]) => h === href), `footer.tsx links ${href}`);
+  }
 
   for (const page of pages) {
     const html = read(page);
@@ -232,12 +242,15 @@ test("static pages use the same Solutions mega menu as the React header", () => 
     assert.deepEqual(fallback, menuHrefs, `${page} dropdown fallback links`);
     // header pill matches navbar.tsx
     const pill = $("a.button_nav").first();
-    assert.equal(pill.attr("href"), "/solutions/ai-native-websites", `${page} pill link`);
+    assert.equal(pill.attr("href"), "/free-website-assessment", `${page} pill link`);
     assert.equal(pill.find(".div-block-10").text(), "Go AI Native.Website Assessment", `${page} pill text`);
     // footer Solutions links and the Dispatch line match footer.tsx
     const footer = $("footer .footer3_link-list").first().find("a")
       .map((_, a) => [[$(a).attr("href"), $(a).text()]]).get();
     assert.deepEqual(footer, footerLinks, `${page} footer Solutions links`);
+    const company = $("footer .footer3_link-list").eq(1).find("a")
+      .map((_, a) => [[$(a).attr("href"), $(a).text()]]).get();
+    assert.deepEqual(company, companyLinks, `${page} footer company links`);
     assert.match($("footer").text(), /This site is governed by Dispatch/, `${page} footer Dispatch line`);
   }
 });
@@ -329,4 +342,119 @@ test("triage migration adds status tracking to form_submissions", () => {
   assert.match(migration, /add column status public\.lead_status not null default 'new'/);
   assert.match(migration, /add column hubspot_contact_id text/);
   assert.match(migration, /add column notified_at timestamptz/);
+});
+
+test("llms.txt route maps the core offers for answer engines", () => {
+  const route = read("src/app/llms.txt/route.ts");
+
+  for (const p of [
+    "/solutions/ai-native-websites",
+    "/solutions/ai-website-migration",
+    "/solutions/wordpress-ai-website-migration",
+    "/solutions/ai-dispatch",
+    "/solutions/enterprise-websites",
+  ]) {
+    assert.match(route, new RegExp(p.replace(/\//g, "\\/")));
+  }
+  assert.match(route, /text\/plain/);
+});
+
+test("AI-native and migration pages lead with an In short answer and end with Keep exploring", () => {
+  for (const page of [
+    "src/app/solutions/ai-native-websites/content.tsx",
+    "src/app/solutions/ai-website-migration/content.tsx",
+    "src/app/solutions/wordpress-ai-website-migration/content.tsx",
+    "src/app/solutions/ai-dispatch/content.tsx",
+    "src/app/solutions/enterprise-websites/content.tsx",
+  ]) {
+    const src = read(page);
+    assert.match(src, /<InShort>/, `${page} is missing In short`);
+    assert.match(src, /<KeepExploring/, `${page} is missing Keep exploring`);
+  }
+});
+
+test("the AI-native walkthrough replays a real change, not an illustration", () => {
+  const page = read("src/app/solutions/ai-native-websites/content.tsx");
+  const replay = read("src/components/site/change-replay.tsx");
+
+  assert.match(page, /<ChangeReplay \/>/);
+  assert.doesNotMatch(page, /Illustrative workflow/);
+  assert.match(replay, /req-28b8544e/);
+});
+
+test("new solutions copy has no em dashes", () => {
+  for (const file of [
+    "src/components/site/in-short.tsx",
+    "src/components/site/keep-exploring.tsx",
+    "src/components/site/change-replay.tsx",
+    "src/app/solutions/ai-native-websites/faq-items.ts",
+    "src/app/solutions/ai-website-migration/faq-items.ts",
+  ]) {
+    const copy = read(file).split("\n").filter((l) => !l.trim().startsWith("//")).join("\n");
+    assert.doesNotMatch(copy, /—/, `${file} contains an em dash`);
+  }
+});
+
+test("every migration path has a route, a sitemap entry, and an llms.txt entry", () => {
+  const data = read("src/lib/migration-paths.tsx");
+  const sitemap = read("src/app/sitemap.ts");
+  const llms = read("src/app/llms.txt/route.ts");
+  const slugs = [...data.matchAll(/slug: "([a-z-]+)"/g)].map((m) => m[1]);
+
+  assert.ok(slugs.length >= 5);
+  for (const slug of slugs) {
+    assert.ok(fs.existsSync(path.join(root, `src/app/solutions/${slug}/page.tsx`)), `Missing route for ${slug}`);
+    assert.match(sitemap, new RegExp(`"solutions/${slug}"`), `${slug} missing from sitemap`);
+    assert.match(llms, new RegExp(`/solutions/${slug}`), `${slug} missing from llms.txt`);
+  }
+});
+
+test("migration paths keep Webflow neutral and claims disciplined", () => {
+  const data = read("src/lib/migration-paths.tsx");
+
+  assert.match(data, /Stay on Webflow Enterprise when/);
+  assert.match(data, /\/solutions\/enterprise-websites/);
+  assert.doesNotMatch(data, /—/, "em dash in path copy");
+  assert.doesNotMatch(data, /guarantee(d)? (rankings|traffic)|zero SEO impact/i);
+});
+
+test("priority 3 pages exist and are listed in the sitemap and llms.txt", () => {
+  const sitemap = read("src/app/sitemap.ts");
+  const llms = read("src/app/llms.txt/route.ts");
+  const pages = {
+    "src/app/glossary/page.tsx": "glossary",
+    "src/app/compare/page.tsx": "compare",
+    "src/app/compare/dispatch-vs-diy-ai-website-workflow/page.tsx": "compare/dispatch-vs-diy-ai-website-workflow",
+    "src/app/compare/ai-agent-vs-headless-cms/page.tsx": "compare/ai-agent-vs-headless-cms",
+    "src/app/migration-planner/page.tsx": "migration-planner",
+    "src/app/solutions/ai-built-website-cleanup/page.tsx": "solutions/ai-built-website-cleanup",
+  };
+  for (const [file, route] of Object.entries(pages)) {
+    assert.ok(fs.existsSync(path.join(root, file)), `Missing ${file}`);
+    assert.match(sitemap, new RegExp(`"?${route.replace(/\//g, "\\/")}"?:`), `${route} missing from sitemap`);
+    assert.match(llms, new RegExp(`"/${route.replace(/\//g, "\\/")}"`), `${route} missing from llms.txt`);
+  }
+});
+
+test("migration planner only fetches public http(s) addresses with limits", () => {
+  const planner = read("src/lib/migration-planner.ts");
+
+  assert.match(planner, /redirect: "manual"/);
+  assert.match(planner, /AbortSignal\.timeout/);
+  assert.match(planner, /MAX_BYTES/);
+  assert.match(planner, /isPrivateV4/);
+  assert.match(planner, /isPrivateV6/);
+  assert.match(planner, /await assertPublic\(url\)/);
+});
+
+test("glossary terms all link somewhere that exists", () => {
+  const glossary = read("src/lib/glossary.ts");
+  for (const [, href] of glossary.matchAll(/href: "([^"#]+)/g)) {
+    if (href === "/llms.txt") continue;
+    const route = href.replace(/^\//, "");
+    const exists =
+      fs.existsSync(path.join(root, `src/app/${route}/page.tsx`)) ||
+      JSON.parse(read("public/_wf/manifest.json")).pages.includes(route);
+    assert.ok(exists, `Glossary link ${href} has no page`);
+  }
 });

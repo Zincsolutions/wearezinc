@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import solutionGroups from "./solution-groups.json";
 
 // Solutions mega menu: four categories, each link with a one-line
-// description. AI-Native Websites is the featured entry (Sept 2026).
+// description. AI Website Migration is the featured entry (Oct 2026).
 // The list lives in solution-groups.json, shared with the static pages'
 // menu (public/js/nav-mega.js); a repository test keeps the two in sync.
 type NavLink = { href: string; label: string; desc: string; featured?: boolean };
@@ -29,7 +29,7 @@ function Chevron() {
   );
 }
 
-const PILL_HREF = "/solutions/ai-native-websites";
+const PILL_HREF = "/free-website-assessment";
 
 export function Navbar() {
   const router = useRouter();
@@ -159,8 +159,10 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="nav-mega__foot">
-                  <p>Not sure where to start?</p>
-                  <a href="/contact-us" className="nav-mega__cta">Talk About Your Goals &gt;</a>
+                  <p>Planning a move?</p>
+                  <a href="/migration-planner" className="nav-mega__cta">Run the Free Migration Planner &gt;</a>
+                  <p className="nav-mega__foot-split">Not sure where to start?</p>
+                  <a href="/contact-us" className="nav-mega__cta">Book a Call &gt;</a>
                 </div>
               </div>
             </div>
@@ -187,7 +189,7 @@ export function Navbar() {
               <p className="sm">Website Assessment</p>
             </div>
           </a>
-          <a href="/contact-us" className="btn nav-cta">Let&apos;s Go!</a>
+          <a href="/contact-us" className="btn nav-cta">Book a Call</a>
           <button
             type="button"
             className="nav-burger"

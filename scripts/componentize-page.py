@@ -31,6 +31,8 @@ if "w-slider" in main:
 
 # ---------- CSS subset extraction ----------
 css = "".join(io.open(f, encoding="utf-8", errors="ignore").read() for f in sorted(glob.glob("public/wf/*.css")))
+# Comments can sit between rules; strip them so a selector never swallows one.
+css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
 rules = []
 def parse(block, media=""):
     i = 0
