@@ -14,12 +14,13 @@ import "./page.css";
 import "@/components/site/aeo-blocks.css";
 
 // E-commerce Acceleration: rebuilt Sept 21, 2026 from the implementation
-// brief (see content.tsx). Styles are the page's auto-extracted Webflow CSS
+// brief (see content.tsx); AI shopping split out to
+// /solutions/ai-shopping-readiness on Oct 20, 2026. Styles are the page's auto-extracted Webflow CSS
 // subset (page.css) plus the shared offering styles.
 
-const TITLE = "E-commerce Acceleration | AI Shopping Readiness for Shopify | ZINC";
+const TITLE = "E-commerce Acceleration | Shopify Storefronts, AI Shopping, and Team AI | ZINC";
 const DESCRIPTION =
-  "Get your store found, understood, and bought through AI shopping. ZINC improves Shopify and BigCommerce product data, storefronts, conversion, and commerce workflows, from a free check to implementation.";
+  "ZINC designs, builds, and improves Shopify and BigCommerce stores, gets your products ready to be chosen by AI shopping assistants, and puts practical AI to work for your commerce team.";
 
 export const metadata: Metadata = {
   title: TITLE,
