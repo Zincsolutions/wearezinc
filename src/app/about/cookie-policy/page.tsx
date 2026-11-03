@@ -132,8 +132,8 @@ export default function CookiePolicyPage() {
                     <li>
                       <strong>Performance &amp; Analytics Cookies</strong>: Help us
                       understand how visitors use our site so we can improve
-                      functionality and content (e.g., Google Analytics, Webflow
-                      analytics).
+                      functionality and content (e.g., Google Analytics, FullStory,
+                      Hotjar, PostHog).
                     </li>
                     <li>
                       <strong>Functional Cookies</strong>: Enable enhanced features
