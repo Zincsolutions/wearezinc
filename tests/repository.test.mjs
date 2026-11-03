@@ -277,6 +277,10 @@ test("marketing CTA tracking is consistent and privacy-safe", () => {
   const component = read("src/components/site/analytics.tsx");
 
   assert.match(component, /src="\/js\/zinc-analytics\.js"/);
+  assert.match(component, /src="\/js\/posthog\.js"/);
+  const posthog = read("public/js/posthog.js");
+  assert.match(posthog, /wearezinc\\\.com/);
+  assert.match(posthog, /api_host: "\/ingest"/);
   assert.match(component, /wearezinc\\\.com/);
   assert.match(analytics, /wearezinc\\\.com/);
   assert.match(analytics, /"cta_click"/);
@@ -298,6 +302,11 @@ test("marketing CTA tracking is consistent and privacy-safe", () => {
       document,
       /<script src="\/js\/zinc-analytics\.js" defer><\/script>/,
       `${file} must load CTA tracking`
+    );
+    assert.match(
+      document,
+      /<script src="\/js\/posthog\.js" defer><\/script>/,
+      `${file} must load PostHog`
     );
     assert.match(
       document,

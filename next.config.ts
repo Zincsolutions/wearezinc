@@ -8,6 +8,10 @@ const manifest: { pages: string[] } = JSON.parse(
 );
 
 const nextConfig: NextConfig = {
+  // PostHog posts to /ingest/e/ with a trailing slash, which Next would
+  // otherwise redirect. The redirect below restores the slash redirect for
+  // every other path so each page keeps one URL for search.
+  skipTrailingSlashRedirect: true,
   // bundle the HTML templates into the serverless functions for the blog routes
   outputFileTracingIncludes: {
     "/post/[slug]": ["./src/templates/**"],
@@ -36,10 +40,17 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return manifest.pages.map((p) => ({
-      source: p === "index" ? "/" : `/${p}`,
-      destination: `/_wf/${p}.html`,
-    }));
+    return [
+      // PostHog reverse proxy (2026-11-03): events and the recorder script
+      // ride our own domain so content blockers don't drop them. Vercel
+      // forwards the visitor's IP, which PostHog uses for location.
+      { source: "/ingest/static/:path*", destination: "https://us-assets.i.posthog.com/static/:path*" },
+      { source: "/ingest/:path*", destination: "https://us.i.posthog.com/:path*" },
+      ...manifest.pages.map((p) => ({
+        source: p === "index" ? "/" : `/${p}`,
+        destination: `/_wf/${p}.html`,
+      })),
+    ];
   },
   async redirects() {
     return [
@@ -64,6 +75,8 @@ const nextConfig: NextConfig = {
         destination: "https://www.wearezinc.com/:path*",
         permanent: true,
       },
+      // trailing slash -> none (see skipTrailingSlashRedirect above)
+      { source: "/:path((?!ingest/).+)/", destination: "/:path", permanent: true },
       // /thomabravo stays at its original root URL (highest-traffic page).
       // Safety net for the briefly-used preview path:
       { source: "/work/thomabravo", destination: "/thomabravo", permanent: true },
