@@ -89,6 +89,9 @@ const nextConfig: NextConfig = {
       // Sept 2026: the page described Dispatch as an AI asset vault (retired
       // positioning); AI imagery is covered on the brand page.
       { source: "/solutions/ai-image-library", destination: "/solutions/branding-positioning", permanent: true },
+      // Nov 2026: orphaned Webflow page that was still mostly template filler
+      // (placeholder images, sample testimonials). Retired in favor of About.
+      { source: "/our-approach", destination: "/about-us", permanent: true },
     ];
   },
 };

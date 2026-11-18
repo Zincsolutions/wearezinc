@@ -70,7 +70,6 @@ const SECTIONS: { heading: string; links: [path: string, title: string, note: st
     heading: "Company",
     links: [
       ["/about-us", "About ZINC", "Founded in 1998. More than 25 years of strategy, brand, design, and technology work for companies from Fortune 200s to early-stage startups."],
-      ["/our-approach", "Our Approach", "Strategy first, then design and delivery, with AI applied where it adds value."],
       ["/work", "Our Work", "Case studies including Thoma Bravo, Growth99, DFND, Bravo Foundation, Navigator Global, and Pivot."],
       ["/contact-us", "Contact", "Start a project or request a website assessment. Phone (949) 719-4950, hello@wearezinc.com."],
     ],
