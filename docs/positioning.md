@@ -114,7 +114,7 @@ Guardrails:
 
 ## Proof, paths, and reference content (added Oct 15, 2026)
 
-From the DesignMe competitive review (`ZINC Brand & Site/designme-competitive-review.md`).
+From the DesignMe competitive review (`~/Projects/Wearezinc-brand/designme-competitive-review.md`).
 
 - **Proof leads.** Use our own migration (Webflow to Next.js, Aug 2026): 49 of
   49 URLs kept or redirected, 549 files moved, first complete build in one
