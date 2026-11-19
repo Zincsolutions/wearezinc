@@ -33,17 +33,6 @@ const SCHEMA = buildWebPageSchema({
   name: "Free Website Migration Planner",
   description: DESCRIPTION,
   path: "/migration-planner",
-  extra: [
-    {
-      "@type": "WebApplication",
-      "@id": "https://www.wearezinc.com/migration-planner#app",
-      name: "ZINC Migration Planner",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      url: "https://www.wearezinc.com/migration-planner",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    },
-  ],
 });
 
 export default function MigrationPlannerPage() {
