@@ -37,6 +37,19 @@ const nextConfig: NextConfig = {
         source: "/_wf/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
+      // Static assets in public/ default to max-age=0 on Vercel, so browsers
+      // re-check every file on every page view. The Webflow capture assets
+      // (/wf) rarely change in place; the hand-written scripts and styles
+      // (/js, /css) change more often, so they get a shorter lifetime.
+      // stale-while-revalidate serves the cached copy while fetching the new one.
+      {
+        source: "/wf/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+      },
+      {
+        source: "/:dir(js|css)/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }],
+      },
     ];
   },
   async rewrites() {

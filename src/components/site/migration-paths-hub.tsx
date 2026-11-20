@@ -5,12 +5,12 @@ import type { CSSProperties } from "react";
 // Webflow is a decision page, not an exit.
 
 const PATHS = [
-  { href: "/solutions/wordpress-ai-website-migration", from: "From WordPress", title: "WordPress to AI-native", text: "No plugins to patch. Every plugin function gets an agreed replacement." },
-  { href: "/solutions/webflow-ai-website-migration", from: "From Webflow", title: "Webflow or AI-native?", text: "Two good answers. We build both and will tell you which fits your team." },
-  { href: "/solutions/wix-ai-website-migration", from: "From Wix", title: "Wix to AI-native", text: "Wix will not let the site leave. We rebuild it and recover the content." },
-  { href: "/solutions/squarespace-ai-website-migration", from: "From Squarespace", title: "Squarespace to AI-native", text: "When the brand outgrows the template. Blog and media moved, design freed." },
-  { href: "/solutions/hubspot-cms-ai-website-migration", from: "From HubSpot CMS", title: "Keep HubSpot. Move the website.", text: "The CRM, forms, and attribution stay. The website moves." },
-  { href: "/solutions/framer-ai-website-migration", from: "From Framer", title: "Framer to AI-native", text: "Keep the design, motion included. Own the code underneath it." },
+  { href: "/solutions/wordpress-ai-website-migration", platform: "WordPress", from: "From WordPress", title: "WordPress to AI-native", text: "No plugins to patch. Every plugin function gets an agreed replacement." },
+  { href: "/solutions/webflow-ai-website-migration", platform: "Webflow", from: "From Webflow", title: "Webflow or AI-native?", text: "Two good answers. We build both and will tell you which fits your team." },
+  { href: "/solutions/wix-ai-website-migration", platform: "Wix", from: "From Wix", title: "Wix to AI-native", text: "Wix will not let the site leave. We rebuild it and recover the content." },
+  { href: "/solutions/squarespace-ai-website-migration", platform: "Squarespace", from: "From Squarespace", title: "Squarespace to AI-native", text: "When the brand outgrows the template. Blog and media moved, design freed." },
+  { href: "/solutions/hubspot-cms-ai-website-migration", platform: "HubSpot CMS", from: "From HubSpot CMS", title: "Keep HubSpot. Move the website.", text: "The CRM, forms, and attribution stay. The website moves." },
+  { href: "/solutions/framer-ai-website-migration", platform: "Framer", from: "From Framer", title: "Framer to AI-native", text: "Keep the design, motion included. Own the code underneath it." },
 ];
 
 export function MigrationPathsHub({ id = "paths" }: { id?: string }) {
@@ -35,5 +35,21 @@ export function MigrationPathsHub({ id = "paths" }: { id?: string }) {
         <p className="offering-note">Not sure what you have? <a href="/migration-planner" className="faq-link">Run the free migration planner &gt;</a> Moving from Drupal, Sitecore, or a custom CMS? The method is the same. <a href="#quote" className="faq-link">Tell us what you are on &gt;</a></p>
       </div></div></div>
     </section>
+  );
+}
+
+// One quiet line near the end of each platform page, so a reader on the
+// wrong path can switch and every path links to its siblings (the hub on the
+// AI Website Migration page was otherwise their only inbound link).
+export function OtherMigrationPaths({ current }: { current: string }) {
+  const others = PATHS.filter((p) => p.href !== current);
+  return (
+    <p className="offering-note">
+      Moving from a different platform?{" "}
+      {others.map((p) => (
+        <span key={p.href}><a href={p.href} className="faq-link">{p.platform} migration &gt;</a>{" "}</span>
+      ))}
+      <a href="/solutions/ai-website-migration" className="faq-link">All migration paths &gt;</a>
+    </p>
   );
 }

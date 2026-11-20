@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 // "Keep exploring": the closing link block on solutions pages. Three short
 // columns (usually: related paths, reading, and the decision the reader is
@@ -11,9 +11,12 @@ export type ExploreGroup = { heading: string; links: ExploreLink[] };
 export function KeepExploring({
   heading = "Where to go from here.",
   groups,
+  footnote,
 }: {
   heading?: string;
   groups: ExploreGroup[];
+  /** Optional line under the columns, e.g. links to sibling pages. */
+  footnote?: ReactNode;
 }) {
   return (
     <section className="keep-exploring" aria-labelledby="keep-exploring-heading">
@@ -39,6 +42,7 @@ export function KeepExploring({
             </nav>
           ))}
         </div>
+        {footnote}
       </div></div></div>
     </section>
   );
