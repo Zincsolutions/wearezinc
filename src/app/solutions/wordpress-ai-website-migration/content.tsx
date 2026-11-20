@@ -6,6 +6,7 @@
 import { FaqItems } from "@/components/site/faq";
 import { InShort } from "@/components/site/in-short";
 import { KeepExploring, EXPLORE } from "@/components/site/keep-exploring";
+import { OtherMigrationPaths } from "@/components/site/migration-paths-hub";
 import { FitCheckForm } from "@/components/site/fit-check-form";
 import { FAQ_ITEMS } from "./faq-items";
 
@@ -33,6 +34,7 @@ export function WordPressContent() {
     { heading: "See the proof", links: [EXPLORE.realChange, EXPLORE.dispatch, EXPLORE.postSeo] },
     { heading: "Take the next step", links: [EXPLORE.assessment, EXPLORE.design, EXPLORE.contact] },
   ]}
+  footnote={<OtherMigrationPaths current="/solutions/wordpress-ai-website-migration" />}
 />
 </main>
     </>

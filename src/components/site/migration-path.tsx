@@ -4,6 +4,7 @@ import { FitCheckForm } from "@/components/site/fit-check-form";
 import { InShort } from "@/components/site/in-short";
 import { KeepExploring, type ExploreGroup } from "@/components/site/keep-exploring";
 import { MigrationMethod } from "@/components/site/migration-method";
+import { OtherMigrationPaths } from "@/components/site/migration-paths-hub";
 import { OfferingHeroVisual } from "@/components/site/offering-hero-visual";
 import { OwnMigrationProof } from "@/components/site/own-migration-proof";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
@@ -208,7 +209,7 @@ export function MigrationPath({ data }: { data: PathData }) {
         </div></div></div>
       </section>
 
-      <KeepExploring groups={data.explore} />
+      <KeepExploring groups={data.explore} footnote={<OtherMigrationPaths current={`/solutions/${data.slug}`} />} />
     </main>
   );
 }
