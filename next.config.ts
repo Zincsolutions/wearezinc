@@ -105,6 +105,9 @@ const nextConfig: NextConfig = {
       // Nov 2026: orphaned Webflow page that was still mostly template filler
       // (placeholder images, sample testimonials). Retired in favor of About.
       { source: "/our-approach", destination: "/about-us", permanent: true },
+      // Nov 2026: orphaned Webflow partner page that was still Webflow template
+      // copy. The Webflow offer lives on the Enterprise Websites page.
+      { source: "/partners/webflow", destination: "/solutions/enterprise-websites", permanent: true },
     ];
   },
 };

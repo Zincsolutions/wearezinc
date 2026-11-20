@@ -51,7 +51,6 @@ const SECTIONS: { heading: string; links: [path: string, title: string, note: st
       ["/solutions/enterprise-websites", "Enterprise Websites & CMS", "Webflow Enterprise design, development, CMS integrations, and team enablement for organizations whose current platform is the right fit."],
       ["/solutions/ai-built-website-cleanup", "AI-Built Website Cleanup", "For sites built fast with AI builders such as Lovable, v0, or Bolt: review and fix lead paths, exposed secrets, search and AEO signals, accessibility, and code structure, then govern future changes with Dispatch."],
       ["/solutions/website-design-development", "Website Design & Development", "New websites and redesigns on Webflow, Shopify, or a code-based stack, chosen by business need."],
-      ["/partners/webflow", "Webflow Partner", "ZINC's Webflow partnership and enterprise Webflow services."],
       ["/partners/shopify", "Shopify Partner", "ZINC's Shopify partnership and storefront services."],
     ],
   },
